@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Dashboard\Views\Wisata\" />
+    <Content Remove="Areas\Dashboard\Views\Wisata\DestinasiWisata.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Dashboard\Views\Wisata\DestinasiWisata.cshtml" />
   </ItemGroup>
 
 </Project>
