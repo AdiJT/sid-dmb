@@ -6,12 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="Areas\Dashboard\Views\Wisata\DestinasiWisata.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Areas\Dashboard\Views\Wisata\DestinasiWisata.cshtml" />
-  </ItemGroup>
-
 </Project>
