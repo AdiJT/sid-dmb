@@ -17,4 +17,8 @@ public class BudayaController : Controller
     {
         return View();
     }
+    public IActionResult UpacaraBudaya()
+    {
+        return View();
+    }
 }
