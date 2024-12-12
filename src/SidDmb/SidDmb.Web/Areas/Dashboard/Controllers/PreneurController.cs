@@ -8,4 +8,8 @@ public class PreneurController : Controller
     {
         return View();
     }
+    public IActionResult UnitUsaha()
+    {
+        return View();
+    }
 }
