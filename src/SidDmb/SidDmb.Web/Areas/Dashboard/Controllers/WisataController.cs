@@ -13,4 +13,9 @@ public class WisataController : Controller
     {
         return View();
     }
+
+    public IActionResult LaporanKunjungan()
+    {
+        return View();
+    }
 }
