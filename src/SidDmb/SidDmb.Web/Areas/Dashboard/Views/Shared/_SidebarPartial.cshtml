@@ -29,7 +29,7 @@
             <li class="side-nav-title side-nav-item">Navigation</li>
 
             <li class="side-nav-item">
-                <a href="#sidebarDashboards" class="side-nav-link">
+                <a asp-area="Dashboard" asp-controller="Home" asp-action="Index" class="side-nav-link">
                     <i class="uil-home-alt"></i>
                     <span> Dashboard </span>
                 </a>                
@@ -46,7 +46,7 @@
                 <div class="collapse" id="sidebarWisata">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="layouts-horizontal.html">Destinasi Wisata</a>
+                            <a asp-area="Dashboard" asp-controller="Wisata" asp-action="DestinasiWisata">Destinasi Wisata</a>
                         </li>
                         <li>
                             <a href="layouts-detached.html">Kalender Acara</a>
