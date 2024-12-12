@@ -8,4 +8,9 @@ public class BudayaController : Controller
     {
         return View();
     }
+
+    public IActionResult SeniBudaya()
+    {
+        return View();
+    }
 }
