@@ -8,4 +8,8 @@ public class PrimaController : Controller
     {
         return View();
     }
+    public IActionResult KelompokPrima()
+    {
+        return View();
+    }
 }
