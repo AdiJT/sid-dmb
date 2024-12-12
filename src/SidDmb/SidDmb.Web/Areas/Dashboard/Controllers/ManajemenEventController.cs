@@ -8,4 +8,8 @@ public class ManajemenEventController : Controller
     {
         return View();
     }
+    public IActionResult PengelolaanEvent()
+    {
+        return View();
+    }
 }
