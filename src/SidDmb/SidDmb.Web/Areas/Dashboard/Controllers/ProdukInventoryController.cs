@@ -16,4 +16,16 @@ public class ProdukInventoryController : Controller
     {
         return View();
     }
+    public IActionResult Index()
+    {
+        return View();
+    }
+    public IActionResult TambahManajemenProduk()
+    {
+        return View();
+    }
+    public IActionResult TambahSertifikasi()
+    {
+        return View();
+    }
 }

@@ -21,4 +21,22 @@ public class BudayaController : Controller
     {
         return View();
     }
+
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult TambahSeniBudaya()
+    {
+        return View();
+    }
+    public IActionResult TambahSitusBudaya()
+    {
+        return View();
+    }
+    public IActionResult TambahUpacaraBudaya()
+    {
+        return View();
+    }
 }

@@ -12,4 +12,12 @@ public class PelatihanEdukasiController : Controller
     {
         return View();
     }
+    public IActionResult Index()
+    {
+        return View();
+    }
+    public IActionResult TambahPeningkatanKapasitas()
+    {
+        return View();
+    }
 }

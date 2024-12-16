@@ -12,4 +12,12 @@ public class PrimaController : Controller
     {
         return View();
     }
+    public IActionResult Index()
+    {
+        return View();
+    }
+    public IActionResult TambahKelompokPrima()
+    {
+        return View();
+    }
 }

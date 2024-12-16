@@ -12,4 +12,12 @@ public class ResearchDevelopmentController : Controller
     {
         return View();
     }
+    public IActionResult Index()
+    {
+        return View();
+    }
+    public IActionResult TambahRekomendasiProduk()
+    {
+        return View();
+    }
 }

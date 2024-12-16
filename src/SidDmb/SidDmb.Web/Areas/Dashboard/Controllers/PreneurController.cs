@@ -12,4 +12,12 @@ public class PreneurController : Controller
     {
         return View();
     }
+    public IActionResult Index()
+    {
+        return View();
+    }
+    public IActionResult TambahUnitUsaha()
+    {
+        return View();
+    }
 }

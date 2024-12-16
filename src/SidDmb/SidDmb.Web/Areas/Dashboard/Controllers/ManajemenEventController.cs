@@ -12,4 +12,12 @@ public class ManajemenEventController : Controller
     {
         return View();
     }
+    public IActionResult Index()
+    {
+        return View();
+    }
+    public IActionResult TambahPengelolaanEvent()
+    {
+        return View();
+    }
 }

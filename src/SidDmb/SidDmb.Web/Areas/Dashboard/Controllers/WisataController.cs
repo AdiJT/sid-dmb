@@ -22,4 +22,12 @@ public class WisataController : Controller
     {
         return View();
     }
+    public IActionResult TambahLaporanKunjungan()
+    {
+        return View();
+    }
+    public IActionResult TambahKalenderAcara()
+    {
+        return View();
+    }
 }
