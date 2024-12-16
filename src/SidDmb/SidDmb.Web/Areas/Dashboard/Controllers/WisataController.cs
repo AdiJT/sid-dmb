@@ -18,4 +18,8 @@ public class WisataController : Controller
     {
         return View();
     }
+    public IActionResult Index()
+    {
+        return View();
+    }
 }
