@@ -1,5 +1,4 @@
-﻿
-<div class="container-fluid">
+﻿<div class="container-fluid">
 
     <!-- start page title -->
     <div class="row">
@@ -33,18 +32,18 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Nama<span class="text-danger">*</span></label>
+                                    <label for="simpleinput" class="form-label">Nama Acara<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="example-textarea" class="form-label">Deskripsi<span class="text-danger">*</span></label>
+                                    <label for="example-textarea" class="form-label">Deskripsi Acara<span class="text-danger">*</span></label>
                                     <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Kategori<span class="text-danger">*</span></label>
-                                    <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                    <label class="form-label">Kategori Acara<span class="text-danger">*</span></label>
+                                    <select class="form-control select2" data-toggle="select2">
                                         <option value="A">Budaya</option>
                                         <option value="B">Olahraga</option>
                                         <option value="C">Edukasi</option>
@@ -71,10 +70,7 @@
                                     <input type="text" id="simpleinput" class="form-control">
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Harga Tiket Acara (Rp.)<span class="text-danger">*</span></label>
-                                    <input type="number" id="simpleinput" class="form-control">
-                                </div>
+                                
 
                                 @* <p class="mb-1 fw-bold text-muted">Single Select</p>
 
@@ -106,13 +102,17 @@
                         </div> <!-- end col -->
 
                         <div class="col-lg-6">
-                           
+                            <div class="mb-3">
+                                <label for="simpleinput" class="form-label">Harga Tiket Acara (Rp.)<span class="text-danger">*</span></label>
+                                <input type="number" id="simpleinput" class="form-control">
+                            </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Target Peserta<span class="text-danger">*</span></label>
-                                <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                <select class="form-control select2" data-toggle="select2">
                                     <option value="A">Umum</option>
-                                    <option value="B">Pelajar</option>                                  
+                                    <option value="B">Anak-anak</option>
+                                    <option value="C">Pelajar</option>
                                 </select>
                             </div>
 
@@ -121,7 +121,7 @@
                                 <input type="number" id="simpleinput" class="form-control">
                             </div>
 
-                            <div class="mb-4">
+                            <div class="mb-3">
                                 <label class="form-label">Status Pendaftaran<span class="text-danger">*</span></label>
                                 <select class="form-control select2" data-toggle="select2">
                                     <option value="A">Dibuka</option>
@@ -137,7 +137,7 @@
 
                             <div class="mb-3">
                                 <label for="example-textarea" class="form-label">Sponsor Acara<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                                <textarea class="form-control" id="example-textarea" rows="3"></textarea>
                             </div>
 
                             <div class="mb-3">
@@ -146,7 +146,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="simpleinput" class="form-label">Rating<span class="text-danger">*</span></label>
+                                <label for="simpleinput" class="form-label">Rating Acara<span class="text-danger">*</span></label>
                                 <input type="number" id="simpleinput" class="form-control">
                             </div>
 
