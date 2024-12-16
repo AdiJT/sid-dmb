@@ -1,5 +1,4 @@
-﻿
-<div class="container-fluid">
+﻿<div class="container-fluid">
 
     <!-- start page title -->
     <div class="row">
@@ -7,8 +6,8 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Wisata</a></li>
-                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="Wisata" asp-action="ArtefakBudaya">Artefak Budaya</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Budaya</a></li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="Budaya" asp-action="ArtefakBudaya">Artefak Budaya</a></li>
                         <li class="breadcrumb-item active">Tambah</li>
                     </ol>
                 </div>
@@ -33,18 +32,18 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Nama<span class="text-danger">*</span></label>
+                                    <label for="simpleinput" class="form-label">Nama Artefak<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="example-textarea" class="form-label">Deskripsi<span class="text-danger">*</span></label>
+                                    <label for="example-textarea" class="form-label">Deskripsi Artefak<span class="text-danger">*</span></label>
                                     <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Kategori<span class="text-danger">*</span></label>
-                                    <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                    <label class="form-label">Kategori Artefak<span class="text-danger">*</span></label>
+                                    <select class="form-control select2" data-toggle="select2">
                                         <option value="A">Ritual</option>
                                         <option value="B">Seni</option>
                                         <option value="C">Utilitas</option>
@@ -57,7 +56,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <label class="form-label">Status<span class="text-danger">*</span></label>
+                                    <label class="form-label">Kondisi Artefak<span class="text-danger">*</span></label>
                                     <select class="form-control select2" data-toggle="select2">
                                         <option value="A">Baik</option>
                                         <option value="B">Memerlukan Perawatan</option>
