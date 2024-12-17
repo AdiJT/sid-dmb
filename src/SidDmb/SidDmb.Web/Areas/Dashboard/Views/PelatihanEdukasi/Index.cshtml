@@ -7,7 +7,7 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Pelatihan & Edukasi</a></li>
-                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="MateriEdukasi">Materi Edukasi</a></li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="MateriEdukasi">Materi Edukasi & Pembelajaran</a></li>
                         <li class="breadcrumb-item active">Tambah</li>
                     </ol>
                 </div>
@@ -21,7 +21,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Tambah Materi Edukasi</h4>
+                    <h4 class="header-title">Tambah Materi Edukasi & Pembelajaran</h4>
                     <div class="row">
                         <div class="col-lg-6">
                             <form>
@@ -31,22 +31,23 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Nama<span class="text-danger">*</span></label>
+                                    <label for="simpleinput" class="form-label">Judul Materi<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="example-textarea" class="form-label">Deskripsi<span class="text-danger">*</span></label>
+                                    <label for="example-textarea" class="form-label">Deskripsi Materi<span class="text-danger">*</span></label>
                                     <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Kategori<span class="text-danger">*</span></label>
-                                    <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                    <label class="form-label">Kategori Materi<span class="text-danger">*</span></label>
+                                    <select class="form-control select2" data-toggle="select2">
                                         <option value="A">Praktis</option>
                                         <option value="B">Teoritis</option>
                                     </select>
                                 </div>
+
 
                                 <div class="mb-3">
                                     <label for="simpleinput" class="form-label">Penyedia Materi<span class="text-danger">*</span></label>
@@ -55,7 +56,7 @@
 
                                 <div class="mb-3">
                                     <label class="form-label">Target Audiens<span class="text-danger">*</span></label>
-                                    <select class="form-control select2" data-toggle="select2">
+                                    <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
                                         <option value="A">Pokdarwis</option>
                                         <option value="B">Kelompok Budaya</option>
                                         <option value="C">UMKM</option>
@@ -136,7 +137,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Status Materi<span class="text-danger">*</span></label>
-                                <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                <select class="form-control select2" data-toggle="select2">
                                     <option value="A">Berlaku</option>
                                     <option value="B">Kadaluarsa</option>
                                     <option value="C">Perlu Pembaruan</option>
@@ -149,7 +150,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
-                                <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Destinasi Wisata</button>
+                                <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Materi</button>
                                 <button type="reset" class="btn btn-danger">Batal</button>
                             </div>
 

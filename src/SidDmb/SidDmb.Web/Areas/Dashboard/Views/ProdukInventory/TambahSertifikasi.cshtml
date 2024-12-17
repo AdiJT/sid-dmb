@@ -6,8 +6,8 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Pelatihan & Edukasi</a></li>
-                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="MateriEdukasi">Materi Edukasi</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Produk & Inventory</a></li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="ProdukInventory" asp-action="Sertifikasi">Sertifikasi</a></li>
                         <li class="breadcrumb-item active">Tambah</li>
                     </ol>
                 </div>
@@ -36,7 +36,7 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Nama<span class="text-danger">*</span></label>
+                                    <label for="simpleinput" class="form-label">Nama Produk<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control">
                                 </div>
 
@@ -111,8 +111,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Status Sertifikasi<span class="text-danger">*</span></label>
-                                <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                <label class="form-label">Status<span class="text-danger">*</span></label>
+                                <select class="form-control select2" data-toggle="select2">
                                     <option value="A">Diproses</option>
                                     <option value="B">Aktif</option>
                                     <option value="C">Kadaluarsa</option>
@@ -126,7 +126,7 @@
 
                             <div class="mb-3">
                                 <label class="form-label">Pihak Kolaborator<span class="text-danger">*</span></label>
-                                <select class="form-control select2" data-toggle="select2">
+                                <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
                                     <option value="A">BPOM</option>
                                     <option value="B">Akademisi</option>
                                     <option value="C">Asosiasi Pariwisata</option>
@@ -134,7 +134,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
-                                <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Destinasi Wisata</button>
+                                <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Sertifikasi</button>
                                 <button type="reset" class="btn btn-danger">Batal</button>
                             </div>
 
