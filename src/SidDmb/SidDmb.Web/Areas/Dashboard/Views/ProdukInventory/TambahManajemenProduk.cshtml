@@ -24,12 +24,7 @@
                     <h4 class="header-title">Tambah Manajemen Produk</h4>
                     <div class="row">
                         <div class="col-lg-6">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">ID<span class="text-danger">*</span></label>
-                                    <input type="text" id="simpleinput" class="form-control" autofocus>
-                                </div>                             
-
+                            <form>                         
                                 <div class="mb-3">
                                     <label for="simpleinput" class="form-label">Nama Produk<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control">
@@ -64,12 +59,6 @@
                                     <input type="number" id="simpleinput" class="form-control">
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Stok Saat Ini<span class="text-danger">*</span></label>
-                                    <input type="number" id="simpleinput" class="form-control">
-                                </div>
-
-
                                 @* <p class="mb-1 fw-bold text-muted">Single Select</p>
 
                                 <select class="form-control select2" data-toggle="select2">
@@ -101,6 +90,11 @@
 
                         <div class="col-lg-6">
                             <div class="mb-3">
+                                <label for="simpleinput" class="form-label">Stok Saat Ini<span class="text-danger">*</span></label>
+                                <input type="number" id="simpleinput" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
                                 <label class="form-label">Status Ketersediaan<span class="text-danger">*</span></label>
                                 <select class="form-control select2" data-toggle="select2">
                                     <option value="A">Tersedia</option>
@@ -130,7 +124,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Entitas Kolaborator<span class="text-danger">*</span></label>
+                                <label class="form-label">Kolaborator<span class="text-danger">*</span></label>
                                 <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
                                     <option value="A">BPOM</option>
                                     <option value="B">Asosiasi</option>
@@ -139,7 +133,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
-                                <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Manajemen Produk</button>
+                                <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Produk</button>
                                 <button type="reset" class="btn btn-danger">Batal</button>
                             </div>
 
