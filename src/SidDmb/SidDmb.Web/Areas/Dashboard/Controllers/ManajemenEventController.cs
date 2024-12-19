@@ -20,4 +20,12 @@ public class ManajemenEventController : Controller
     {
         return View();
     }
+    public IActionResult EditPelaporanDokumentasi()
+    {
+        return View();
+    }
+    public IActionResult EditPengelolaanEvent()
+    {
+        return View();
+    }
 }

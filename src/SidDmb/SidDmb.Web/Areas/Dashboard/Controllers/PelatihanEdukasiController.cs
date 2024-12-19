@@ -20,4 +20,12 @@ public class PelatihanEdukasiController : Controller
     {
         return View();
     }
+    public IActionResult EditMateriEdukasi()
+    {
+        return View();
+    }
+    public IActionResult EditPeningkatanKapasitas()
+    {
+        return View();
+    }
 }

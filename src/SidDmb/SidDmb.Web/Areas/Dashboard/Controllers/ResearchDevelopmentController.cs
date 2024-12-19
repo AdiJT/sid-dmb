@@ -20,4 +20,12 @@ public class ResearchDevelopmentController : Controller
     {
         return View();
     }
+    public IActionResult EditManajemenDataRiset()
+    {
+        return View();
+    }
+    public IActionResult EditRekomendasiProduk()
+    {
+        return View();
+    }
 }

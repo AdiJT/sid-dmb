@@ -20,4 +20,12 @@ public class PreneurController : Controller
     {
         return View();
     }
+    public IActionResult EditProdukLokal()
+    {
+        return View();
+    }
+    public IActionResult EditUnitUsaha()
+    {
+        return View();
+    }
 }

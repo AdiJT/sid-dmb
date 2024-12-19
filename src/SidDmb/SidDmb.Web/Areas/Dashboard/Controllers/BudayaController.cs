@@ -8,7 +8,6 @@ public class BudayaController : Controller
     {
         return View();
     }
-
     public IActionResult SeniBudaya()
     {
         return View();
@@ -36,6 +35,22 @@ public class BudayaController : Controller
         return View();
     }
     public IActionResult TambahUpacaraBudaya()
+    {
+        return View();
+    }
+    public IActionResult EditArtefakBudaya()
+    {
+        return View();
+    }
+    public IActionResult EditSeniBudaya()
+    {
+        return View();
+    }
+    public IActionResult EditSitusBudaya()
+    {
+        return View();
+    }
+    public IActionResult EditUpacaraBudaya()
     {
         return View();
     }

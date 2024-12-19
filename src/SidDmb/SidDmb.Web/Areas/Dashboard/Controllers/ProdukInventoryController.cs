@@ -28,4 +28,16 @@ public class ProdukInventoryController : Controller
     {
         return View();
     }
+    public IActionResult EditManajemenDistribusi()
+    {
+        return View();
+    }
+    public IActionResult EditManajemenProduk()
+    {
+        return View();
+    }
+    public IActionResult EditSertifikasi()
+    {
+        return View();
+    }
 }

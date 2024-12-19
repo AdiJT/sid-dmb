@@ -20,4 +20,12 @@ public class PrimaController : Controller
     {
         return View();
     }
+    public IActionResult EditKegiatanPrima()
+    {
+        return View();
+    }
+    public IActionResult EditKelompokPrima()
+    {
+        return View();
+    }
 }

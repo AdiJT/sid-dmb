@@ -30,4 +30,16 @@ public class WisataController : Controller
     {
         return View();
     }
+    public IActionResult EditDestinasiWisata()
+    {
+        return View();
+    }
+    public IActionResult EditKalenderAcara()
+    {
+        return View();
+    }
+    public IActionResult EditLaporanKunjungan()
+    {
+        return View();
+    }
 }
