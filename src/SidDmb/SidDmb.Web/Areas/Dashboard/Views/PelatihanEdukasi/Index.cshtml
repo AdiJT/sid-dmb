@@ -26,11 +26,6 @@
                         <div class="col-lg-6">
                             <form>
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">ID<span class="text-danger">*</span></label>
-                                    <input type="text" id="simpleinput" class="form-control" autofocus>
-                                </div>
-
-                                <div class="mb-3">
                                     <label for="simpleinput" class="form-label">Judul Materi<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control">
                                 </div>
@@ -77,6 +72,11 @@
                                     <input type="file" id="example-fileinput" class="form-control">
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="example-date" class="form-label">Tanggal Rilis<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="example-date" type="date" name="date">
+                                </div>
+
                                 @* <p class="mb-1 fw-bold text-muted">Single Select</p>
 
                                 <select class="form-control select2" data-toggle="select2">
@@ -107,11 +107,6 @@
                         </div> <!-- end col -->
 
                         <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label for="example-date" class="form-label">Tanggal Rilis<span class="text-danger">*</span></label>
-                                <input class="form-control" id="example-date" type="date" name="date">
-                            </div>
-
                             <div class="mb-3">
                                 <label for="example-textarea" class="form-label">Feedback dari Audiens<span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="example-textarea" rows="5"></textarea>
