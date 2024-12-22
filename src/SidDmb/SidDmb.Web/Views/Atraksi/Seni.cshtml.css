@@ -1,6 +1,6 @@
 ﻿.card-gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Default untuk layar besar */
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 20px 0px;
     max-width: 1200px;
@@ -54,16 +54,16 @@
         text-overflow: ellipsis; /* Tambahkan "..." di akhir teks */
     }
 
-    .card-content .read-more {
+    .card-content ::deep .read-more {
         font-size: 0.9rem;
         color: #ff6600;
         text-decoration: none;
         font-weight: bold;
     }
 
-        .card-content .read-more:hover {
-            text-decoration: underline;
-        }
+    .card-content ::deep .read-more:hover {
+        text-decoration: underline;
+    }
 
 /* Media Queries untuk Responsiveness */
 
@@ -107,7 +107,7 @@
             font-size: 0.85rem; /* Perkecil font deskripsi */
         }
 
-        .card-content .read-more {
+        .card-content ::deep .read-more {
             font-size: 0.85rem; /* Perkecil ukuran link */
         }
 }

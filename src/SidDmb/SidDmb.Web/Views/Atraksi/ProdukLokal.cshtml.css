@@ -54,14 +54,14 @@
         text-overflow: ellipsis; /* Tambahkan "..." di akhir teks */
     }
 
-    .card-content .read-more {
+    .card-content ::deep .read-more {
         font-size: 0.9rem;
         color: #ff6600;
         text-decoration: none;
         font-weight: bold;
     }
 
-        .card-content .read-more:hover {
+        .card-content ::deep .read-more:hover {
             text-decoration: underline;
         }
 
@@ -107,7 +107,7 @@
             font-size: 0.85rem; /* Perkecil font deskripsi */
         }
 
-        .card-content .read-more {
+        .card-content ::deep .read-more {
             font-size: 0.85rem; /* Perkecil ukuran link */
         }
 }
