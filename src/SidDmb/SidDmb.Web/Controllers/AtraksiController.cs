@@ -8,5 +8,9 @@ namespace SidDmb.Web.Controllers
         {
             return View();
         }
+        public IActionResult Destinasi()
+        {
+            return View();
+        }
     }
 }
