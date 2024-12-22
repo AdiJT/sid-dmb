@@ -1,0 +1,38 @@
+﻿/*=============================================================================================================================*\
+  #HALAMAN BERANDA
+\*=============================================================================================================================*/
+
+/*-----------------------------------*\
+  #HEADER
+\*-----------------------------------*/
+.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/header.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.header__container {
+    padding-block: 10rem 15rem;
+}
+
+    .header__container p {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: var(--white);
+        text-align: center;
+        opacity: 0.6;
+    }
+
+    .header__container h1 {
+        font-size: 4rem;
+        font-weight: 600;
+        line-height: 4.5rem;
+        color: var(--white);
+        text-align: center;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+        .header__container h1 span {
+            color: #1b88ec;
+        }

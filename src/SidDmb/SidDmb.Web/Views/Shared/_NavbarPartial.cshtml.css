@@ -1,0 +1,120 @@
+﻿/*-----------------------------------*\
+  #NAVBAR
+\*-----------------------------------*/
+.navbar_warna {
+    background-color: var(--primary-color);
+}
+
+nav {
+    position: fixed;
+    isolation: isolate;
+    top: 0;
+    width: 100%;
+    margin: auto;
+    z-index: 9;
+}
+
+.nav__bar {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background-color: var(--primary-color);
+}
+
+.nav__menu__btn {
+    font-size: 1.5rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.nav__links {
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: rgba(188, 28, 92, 0.9);
+    transform: translateY(-100%);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+    .nav__links.open {
+        transform: translateY(0);
+    }
+
+    .nav__links a {
+        position: relative;
+        isolation: isolate;
+        padding-bottom: 8px;
+        color: var(--white);
+        transition: 0.3s;
+    }
+
+.nav_login a {
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 8px;
+    color: var(--white);
+    transition: 0.3s;
+}
+
+.nav__btn {
+    color: var(--white);
+    display: none;
+}
+
+
+/* =============================== DIATAS 768px =============================== */
+@media (min-width: 768px) {
+    /*-----------------------------------*\
+    #NAVBAR
+    \*-----------------------------------*/
+    nav {
+        padding: 1.5rem 12rem;
+        position: static;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .nav__bar {
+        padding: 0;
+        background-color: transparent;
+    }
+
+        .nav__bar h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+
+    .nav__menu__btn {
+        display: none;
+    }
+
+    .nav__links {
+        padding: 0;
+        width: unset;
+        position: static;
+        transform: none;
+        flex-direction: row;
+        background-color: transparent;
+    }
+
+    .nav__btn {
+        display: block;
+    }
+
+    ::deep .nav__btn {
+        color: white;
+    }
+
+    ::deep .nav__links a:hover {
+        color: white;
+    }
+}

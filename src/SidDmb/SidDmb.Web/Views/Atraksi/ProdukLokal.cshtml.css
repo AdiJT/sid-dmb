@@ -1,0 +1,113 @@
+﻿.card-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Default untuk layar besar */
+    gap: 20px;
+    padding: 20px 0px;
+    max-width: 1200px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .card ::deep img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+.card-content {
+    padding: 15px;
+}
+
+    .card-content .category {
+        font-size: 0.9rem;
+        color: #ff6600;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .card-content .title {
+        margin: 10px 0;
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    .card-content .description {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.4;
+        margin-bottom: 15px;
+        display: -webkit-box; /* Mengaktifkan fleksibilitas box */
+        -webkit-box-orient: vertical; /* Orientasi box secara vertikal */
+        -webkit-line-clamp: 2; /* Maksimal 2 baris */
+        overflow: hidden; /* Sembunyikan teks yang melampaui 2 baris */
+        text-overflow: ellipsis; /* Tambahkan "..." di akhir teks */
+    }
+
+    .card-content .read-more {
+        font-size: 0.9rem;
+        color: #ff6600;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .card-content .read-more:hover {
+            text-decoration: underline;
+        }
+
+/* Media Queries untuk Responsiveness */
+
+/* Tablet Landscape dan Desktop Kecil */
+@media (max-width: 1024px) {
+    .card-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+    .card-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card ::deep img {
+        height: 120px; /* Sesuaikan tinggi gambar */
+    }
+}
+
+/* Ponsel */
+@media (max-width: 480px) {
+    .card-gallery {
+        grid-template-columns: 1fr; /* Satu kolom */
+    }
+
+    .card ::deep img {
+        height: 100px; /* Sesuaikan tinggi gambar */
+    }
+
+    .card-content {
+        padding: 10px; /* Kurangi padding untuk layar kecil */
+    }
+
+        .card-content .title {
+            font-size: 1rem; /* Perkecil font judul */
+        }
+
+        .card-content .description {
+            font-size: 0.85rem; /* Perkecil font deskripsi */
+        }
+
+        .card-content .read-more {
+            font-size: 0.85rem; /* Perkecil ukuran link */
+        }
+}
