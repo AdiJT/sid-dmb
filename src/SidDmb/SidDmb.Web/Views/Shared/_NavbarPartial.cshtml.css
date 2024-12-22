@@ -48,7 +48,7 @@ nav {
         transform: translateY(0);
     }
 
-    .nav__links a {
+    .nav__links ::deep a {
         position: relative;
         isolation: isolate;
         padding-bottom: 8px;
@@ -56,7 +56,7 @@ nav {
         transition: 0.3s;
     }
 
-.nav_login a {
+.nav_login ::deep a {
     position: relative;
     isolation: isolate;
     padding-bottom: 8px;
@@ -114,7 +114,7 @@ nav {
         color: white;
     }
 
-    ::deep .nav__links a:hover {
+    ::deep .nav__links ::deep a:hover {
         color: white;
     }
 }
