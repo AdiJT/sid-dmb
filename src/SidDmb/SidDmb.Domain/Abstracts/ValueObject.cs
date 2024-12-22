@@ -22,18 +22,9 @@ public abstract class ValueObject : IEquatable<ValueObject>
                 HashCode.Combine);
     }
 
-    private bool ValueObjectEquals(ValueObject other)
-    {
-        return other.GetAtomicValues().SequenceEqual(GetAtomicValues());
-    }
+    private bool ValueObjectEquals(ValueObject other) => other.GetAtomicValues().SequenceEqual(GetAtomicValues());
 
-    public static bool operator ==(ValueObject? left, ValueObject? right)
-    {
-        return left is not null && left.Equals(right);
-    }
+    public static bool operator ==(ValueObject? left, ValueObject? right) =>left is not null && left.Equals(right);
 
-    public static bool operator !=(ValueObject? left, ValueObject? right)
-    {
-        return !(left == right);
-    }
+    public static bool operator !=(ValueObject? left, ValueObject? right) => !(left == right);
 }
