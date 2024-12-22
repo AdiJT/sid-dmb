@@ -1,22 +1,139 @@
-html {
-  font-size: 14px;
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+/*-----------------------------------*\
+  #CSS GLOBAL
+\*-----------------------------------*/
+:root {
+    --primary-color: #003b95;
+    --primary-color-dark: rgb(16, 4, 73);
+    --text-dark: #0c0a09;
+    --text-light: #78716c;
+    --white: #ffffff;
+    --max-width: 1300px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/*-----------------------------------*\
+  #CSS YANG DIGUNAKAN ULANG / REUSABLE
+\*-----------------------------------*/
+.section__container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.section__subheader {
+    margin-bottom: 0.5rem;
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--text-dark);
+}
+
+    .section__subheader::after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        transform: translate(1rem, -50%);
+        height: 2px;
+        width: 4rem;
+        background-color: var(--primary-color);
+    }
+
+.section__header {
+    max-width: 600px;
+    margin-bottom: 1rem;
+    font-size: 2.3rem;
+    font-weight: 600;
+    line-height: 3rem;
+    color: var(--text-dark);
+}
+
+.section__description {
+    max-width: 600px;
+    text-align: justify;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.filter-dropdown {
+    display: none;
+    padding: 8px 20px;
+    background-color: white;
+    border: 1px solid var(--primary-color-dark);
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 5px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 315px;
+    overflow-y: auto;
+}
+
+    .filter-dropdown input[type="checkbox"] {
+        color: #000 !important;
+        margin-right: 8px;
+        transform: scale(1.5);
+        cursor: pointer;
+    }
+
+button {
+    font-family: "Lexend", sans-serif;
+}
+
+.btn {
+    font-family: "Lexend", sans-serif;
+    padding: 0.75rem 1.5rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .btn:hover {
+        background-color: var(--primary-color-dark);
+    }
+
+img {
+    width: 100%;
+    display: flex;
+}
+
+ul {
+    margin-bottom: 0rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.logo {
+    max-width: 120px;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: "Lexend", sans-serif;
+}
+
+input, select, textarea {
+    font-family: "Lexend", sans-serif;
 }

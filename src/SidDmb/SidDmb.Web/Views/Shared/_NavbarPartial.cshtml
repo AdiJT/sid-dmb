@@ -1,0 +1,22 @@
+﻿<!--======================================================= NAVBAR ====================================================-->
+<nav class="navbar_warna">
+    <div class="nav__bar">
+        <div class="logo">
+            <a asp-area="" asp-controller="Home" asp-action="Index"><h3>WebSID</h3></a>
+        </div>
+        <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+        </div>
+    </div>
+    <ul class="nav__links" id="nav-links">
+        <li><a asp-area="" asp-controller="" asp-action="">Home</a></li>
+        <li><a asp-area="" asp-controller="" asp-action="">Atraksi</a></li>
+        <li><a asp-area="" asp-controller="" asp-action="">Event</a></li>
+        <li><a asp-area="" asp-controller="" asp-action="">Laporan</a></li>
+        @* <li><a asp-area="" asp-controller="Home" asp-action="Kontak">Kontak</a></li> *@
+    </ul>
+    <div class="nav_login">
+        <a asp-area="Dashboard" asp-controller="Home" asp-action="Login" class="nav__btn">Login</a>
+    </div>
+</nav>
+<!--======================================================= AKHIR NAVBAR ===============================================-->
