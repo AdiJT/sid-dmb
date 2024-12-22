@@ -1,0 +1,38 @@
+﻿.atraksi-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    padding: 20px 0px;
+    max-width: 1200px;
+}
+
+.atraksi-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+    .atraksi-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .atraksi-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .atraksi-card h3 {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
