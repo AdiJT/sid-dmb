@@ -2,7 +2,7 @@
 using SidDmb.Domain.Shared;
 using System.Text.RegularExpressions;
 
-namespace SidDmb.Domain.ModelBudaya;
+namespace SidDmb.Domain.MasterDataFunction.ModulBudaya;
 
 public class SitusBudaya : Entity<IdSitus>, IAuditableEntity
 {
@@ -50,7 +50,7 @@ public class IdSitus : ValueObject, IEquatable<IdSitus>
             .LastOrDefault() + 1;
 
         return new($"SB{newId:D3}");
-    } 
+    }
 }
 
 public interface IRepositoriSitusBudaya

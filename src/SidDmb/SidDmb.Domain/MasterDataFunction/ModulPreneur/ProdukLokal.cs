@@ -2,7 +2,7 @@
 using SidDmb.Domain.Shared;
 using System.Text.RegularExpressions;
 
-namespace SidDmb.Domain.ModulPreneur;
+namespace SidDmb.Domain.MasterDataFunction.ModulPreneur;
 
 public class ProdukLokal : Entity<IdProduk>, IAuditableEntity
 {

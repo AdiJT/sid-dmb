@@ -2,7 +2,7 @@
 using SidDmb.Domain.Shared;
 using System.Text.RegularExpressions;
 
-namespace SidDmb.Domain.ModelBudaya;
+namespace SidDmb.Domain.MasterDataFunction.ModulBudaya;
 
 public class UpacaraBudaya : Entity<IdUpacara>, IAuditableEntity
 {

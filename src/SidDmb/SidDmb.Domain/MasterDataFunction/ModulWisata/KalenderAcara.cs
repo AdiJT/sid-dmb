@@ -2,7 +2,7 @@
 using SidDmb.Domain.Shared;
 using System.Text.RegularExpressions;
 
-namespace SidDmb.Domain.ModulWisata;
+namespace SidDmb.Domain.MasterDataFunction.ModulWisata;
 
 public class KalenderAcara : Entity<IdAcara>, IAuditableEntity
 {

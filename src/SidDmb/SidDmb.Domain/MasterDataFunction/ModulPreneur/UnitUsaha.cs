@@ -3,7 +3,7 @@ using SidDmb.Domain.Abstracts;
 using SidDmb.Domain.Shared;
 using System.Text.RegularExpressions;
 
-namespace SidDmb.Domain.ModulPreneur;
+namespace SidDmb.Domain.MasterDataFunction.ModulPreneur;
 
 public class UnitUsaha : Entity<IdUnitUsaha>, IAuditableEntity
 {
@@ -24,7 +24,7 @@ public class UnitUsaha : Entity<IdUnitUsaha>, IAuditableEntity
     public DateTime TanggalPembaruanData { get; set; }
 }
 
-public enum KategoriUnitUsaha 
+public enum KategoriUnitUsaha
 {
     Produksi, Jasa, Distribusi, Lainnya
 }

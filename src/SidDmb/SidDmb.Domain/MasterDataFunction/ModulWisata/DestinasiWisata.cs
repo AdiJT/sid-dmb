@@ -3,7 +3,7 @@ using SidDmb.Domain.Abstracts;
 using SidDmb.Domain.Shared;
 using System.Text.RegularExpressions;
 
-namespace SidDmb.Domain.ModulWisata;
+namespace SidDmb.Domain.MasterDataFunction.ModulWisata;
 
 public class DestinasiWisata : Entity<IdDestinasi>, IAuditableEntity
 {
