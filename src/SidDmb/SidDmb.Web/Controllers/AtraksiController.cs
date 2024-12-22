@@ -12,5 +12,25 @@ namespace SidDmb.Web.Controllers
         {
             return View();
         }
+        public IActionResult Artefak()
+        {
+            return View();
+        }
+        public IActionResult Seni()
+        {
+            return View();
+        }
+        public IActionResult Situs()
+        {
+            return View();
+        }
+        public IActionResult Upacara()
+        {
+            return View();
+        }
+        public IActionResult ProdukLokal()
+        {
+            return View();
+        }
     }
 }
