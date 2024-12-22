@@ -22,7 +22,7 @@ p {
 
 .grup_kategori_status {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
     margin-bottom: 10px;
 }
 
