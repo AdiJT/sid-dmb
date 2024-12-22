@@ -54,14 +54,14 @@
         text-overflow: ellipsis; /* Tambahkan "..." di akhir teks */
     }
 
-    .card-content ::deep .read-more {
+    .card-content .read-more {
         font-size: 0.9rem;
         color: #ff6600;
         text-decoration: none;
         font-weight: bold;
     }
 
-        .card-content ::deep .read-more:hover {
+        .card-content .read-more:hover {
             text-decoration: underline;
         }
 
@@ -80,7 +80,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .card img {
+    .card ::deep img {
         height: 120px; /* Sesuaikan tinggi gambar */
     }
 }
@@ -91,7 +91,7 @@
         grid-template-columns: 1fr; /* Satu kolom */
     }
 
-    .card img {
+    .card ::deep img {
         height: 100px; /* Sesuaikan tinggi gambar */
     }
 
@@ -107,7 +107,7 @@
             font-size: 0.85rem; /* Perkecil font deskripsi */
         }
 
-        .card-content ::deep .read-more {
+        .card-content .read-more {
             font-size: 0.85rem; /* Perkecil ukuran link */
         }
 }

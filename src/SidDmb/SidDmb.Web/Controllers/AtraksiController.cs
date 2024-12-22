@@ -32,5 +32,29 @@ namespace SidDmb.Web.Controllers
         {
             return View();
         }
+        public IActionResult DetailDestinasi()
+        {
+            return View();
+        }
+        public IActionResult DetailArtefak()
+        {
+            return View();
+        }
+        public IActionResult DetailSeni()
+        {
+            return View();
+        }
+        public IActionResult DetailSitus()
+        {
+            return View();
+        }
+        public IActionResult DetailUpacara()
+        {
+            return View();
+        }
+        public IActionResult DetailProdukLokal()
+        {
+            return View();
+        }
     }
 }

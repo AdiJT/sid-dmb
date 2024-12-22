@@ -80,7 +80,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .card img {
+    .card ::deep img {
         height: 120px; /* Sesuaikan tinggi gambar */
     }
 }
@@ -91,7 +91,7 @@
         grid-template-columns: 1fr; /* Satu kolom */
     }
 
-    .card img {
+    .card ::deep img {
         height: 100px; /* Sesuaikan tinggi gambar */
     }
 
