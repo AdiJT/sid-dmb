@@ -2,13 +2,13 @@
 using SidDmb.Domain.Shared;
 using System.Text.RegularExpressions;
 
-namespace SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokas;
+namespace SidDmb.Domain.CollaborationFunction.ModulProdukDanInventory.ManajemenProduk;
 
 public class IdProduk : ValueObject, IEquatable<IdProduk>
 {
-    public const string ValidPattern = "^PL[0-9]{3}$";
+    public const string ValidPattern = "^MP[0-9]{3}$";
 
-    public string Value { get; set; }
+    public string Value { get; }
 
     private IdProduk(string value)
     {
@@ -29,18 +29,18 @@ public class IdProduk : ValueObject, IEquatable<IdProduk>
     public static Result<IdProduk> Create(string value)
     {
         if (!Regex.IsMatch(value, ValidPattern))
-            return new Error("IdProduk.TidakValid", "Id valid dimulai oleh PL diikuti 3 angka. Contoh PL001");
+            return new Error("IdProduk.TidakValid", "Id valid dimulai MP dan diikuti 3 angka. Contoh MP001");
 
         return new IdProduk(value);
     }
 
-    public static async Task<IdProduk> Generate(IRepositoriProdukLokal repositoriProdukLokal)
+    public static async Task<IdProduk> Generate(IRepositoriProduk repositoriProduk)
     {
-        var newId = (await repositoriProdukLokal.GetAll())
+        var newId = (await repositoriProduk.GetAll())
             .Select(p => int.Parse(p.Id.Value.Substring(2)))
             .Order()
             .LastOrDefault() + 1;
 
-        return new($"PL{newId:D3}");
+        return new($"MP{newId:D3}");
     }
 }

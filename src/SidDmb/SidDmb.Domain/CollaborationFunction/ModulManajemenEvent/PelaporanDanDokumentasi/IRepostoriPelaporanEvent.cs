@@ -1,4 +1,4 @@
-﻿namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent;
+﻿namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 
 public interface IRepostoriPelaporanEvent
 {

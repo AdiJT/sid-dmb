@@ -1,7 +1,7 @@
 ﻿using SidDmb.Domain.Abstracts;
 using SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
 
-namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent;
+namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 
 public class LaporanEvent : Entity<IdLaporanEvent>, IAuditableEntity
 {

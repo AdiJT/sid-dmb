@@ -1,4 +1,4 @@
-﻿namespace SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokas;
+﻿namespace SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokals;
 
 public enum StatusKetersediaanProduk
 {
