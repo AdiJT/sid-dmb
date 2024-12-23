@@ -1,11 +1,4 @@
-﻿/*=============================================================================================================================*\
-  #HALAMAN BERANDA
-\*=============================================================================================================================*/
-
-/*-----------------------------------*\
-  #HEADER
-\*-----------------------------------*/
-.header {
+﻿.header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/home-header.png");
     background-position: center center;
     background-size: cover;
@@ -22,25 +15,250 @@
         color: var(--white);
         text-align: center;
         opacity: 0.6;
-        padding-top: 30px;
+    }
+
+    .header__container h6 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: #f8f8f8;
+        text-align: center;
     }
 
     .header__container h1 {
         text-transform: uppercase;
-        font-size: 3.8rem;
+        margin-bottom: 1rem;
+        font-size: 4rem;
         font-weight: 600;
         line-height: 4.5rem;
         color: var(--white);
         text-align: center;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     }
 
         .header__container h1 span {
-            color: #4e70f6;
+            color: #e6d817;
         }
+
+.home__container {
+    padding: 3rem 1rem;
+}
 
 .tombol_home {
     display: flex;
     justify-content: center;
     padding-top: 10px;
+}
+
+.grup_header_button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grup_button {
+    align-content: center;
+}
+
+.read_more {
+    display: flex;
+    justify-content: center;
+}
+
+
+.berita-container {
+    display: flex;
+    padding: 20px 0px;
+}
+
+.berita {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.berita-card {
+    cursor: pointer;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+    .berita-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+.berita-image ::deep img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.grup_berita {
+    display: flex;
+}
+
+.berita-date {
+    display: inline-block;
+    color: var(--text-dark);
+    padding: 8px 6px 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 15px 0px 0px 0px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+    .berita-date .month {
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    .berita-date .day {
+        font-size: 18px;
+    }
+
+.berita-content {
+    padding: 20px 10px;
+    text-align: left;
+}
+
+    .berita-content h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 10px;
+        color: #333;
+    }
+
+    .berita-content p {
+        font-size: 14px;
+        color: #666;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+.map_gilangharjo iframe {
+    width: 100%;
+    height: 450px;
+}
+
+.card-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px 0px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .card ::deep img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+.card-content {
+    padding: 15px;
+}
+
+    .card-content .category {
+        font-size: 0.9rem;
+        color: #ff6600;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .card-content .title {
+        margin: 10px 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .card-content .description {
+        font-size: 0.95rem;
+        color: #555;
+        line-height: 1.4;
+        margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card-content ::deep .read-more {
+        font-size: 0.9rem;
+        color: #ff6600;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .card-content ::deep .read-more:hover {
+            text-decoration: underline;
+        }
+
+/* Media Queries untuk Responsiveness */
+
+/* Tablet Landscape dan Desktop Kecil */
+@media (max-width: 1024px) {
+    .card-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+    .card-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card img {
+        height: 120px;
+    }
+}
+
+/* Ponsel */
+@media (max-width: 480px) {
+    .card-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        height: 100px;
+    }
+
+    .card-content {
+        padding: 10px;
+    }
+
+        .card-content .title {
+            font-size: 1rem;
+        }
+
+        .card-content .description {
+            font-size: 0.85rem;
+        }
+
+        .card-content ::deep .read-more {
+            font-size: 0.85rem;
+        }
 }

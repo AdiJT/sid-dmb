@@ -6,10 +6,162 @@
 <header class="header">
     <div class="section__container header__container" id="home">
         <p>Bersama Membangun Desa Digital</p>
-        <h1>Sistem Informasi <span>Desa</span><br /><span>Gilangharjo</span> Yogyakarta</h1>
+        <h1>Sistem Informasi Desa<br /><span>Gilangharjo</span></h1>
+        <h6>Sistem Informasi Desa Gilangharjo: Platform Digital untuk<br>Menyediakan Informasi Lengkap Tentang Event, Atraksi Wisata, dan Layanan Desa</h6>
         <div class="tombol_home">
             <a asp-area="" asp-controller="Event" asp-action="Index" asp-fragment="Populer" class="btn">Lihat Event Terbaru</a>
         </div>    
     </div>
 </header>
 <!--======================================================= LANDING ===================================================-->
+<!--======================================================= EVENT TERBARU ==================================================-->
+
+<section class="section__container home__container">
+    <div class="grup_header_button">
+        <div>
+            <p class="section__subheader">Eksplorasi Lokal</p>
+            <h2 class="section__header">Atraksi Wisata Terpopuler</h2>
+        </div>
+        <div class="grup_button">
+            <a asp-area="" asp-controller="Atraksi" asp-action="Index" class="btn">Lihat Semua</a>
+        </div>
+    </div>
+    <div class="card-gallery">
+        <div class="card">
+            <img src="~/assets/header.jpg" alt="Image 1">
+            <div class="card-content">
+                <div class="category">Destinasi Alam</div>
+                <h3 class="title">Pantai Gilang</h3>
+                <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
+                <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/assets/situs-test.png" alt="Image 1">
+            <div class="card-content">
+                <div class="category">Situs Sejarah</div>
+                <h3 class="title">Petilasan Ki Ageng Gilang </h3>
+                <p class="description">Situs ini diyakini sebagai tempat peristirahatan terakhir Ki Ageng Gilang.</p>
+                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSitus" class="read-more">Lihat Lebih Lanjut</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/assets/artefak-test.png" alt="Image 1">
+            <div class="card-content">
+                <div class="category">Artefak Ritual</div>
+                <h3 class="title">Keris Ki Ageng Gilang</h3>
+                <p class="description">Keris ini dipercaya sebagai pusaka warisan Ki Ageng Gilang.....</p>
+                <a asp-area="" asp-controller="Atraksi" asp-action="DetailArtefak" class="read-more">Lihat Lebih Lanjut</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="~/assets/produklokal-test.png" alt="Image 1">
+            <div class="card-content">
+                <div class="category">Kerajinan</div>
+                <h3 class="title">Batik Tulis Motif Gilang</h3>
+                <p class="description">Batik tulis berbahan katun dengan motif khas Desa Gilangharjo.</p>
+                <a asp-area="" asp-controller="Atraksi" asp-action="DetailProdukLokal" class="read-more">Lihat Lebih Lanjut</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--======================================================= EVENT TERBARU ==================================================-->
+
+
+<!--======================================================= EVENT TERBARU ==================================================-->
+
+<section class="section__container home__container">
+    <div class="grup_header_button">
+        <div>
+            <p class="section__subheader">Update Terkini Desa</p>
+            <h2 class="section__header">Berita & Event Terbaru</h2>          
+        </div>
+        <div class="grup_button">
+            <a asp-area="" asp-controller="Event" asp-action="Index" class="btn">Lihat Semua</a>
+        </div>
+    </div>
+    
+    <div class="berita-container">
+        <div class="berita">
+            <div class="berita-card">
+                <div class="berita-image">
+                    <img src="~/assets/event2-test.png" alt="Concert Image">
+                </div>
+                <div class="grup_berita">
+                    <div class="berita-date">
+                        <span class="month">Des</span>
+                        <span class="day">20</span>
+                    </div>
+                    <div class="berita-content">
+                        <h3>Festival Seni dan Budaya Gilang</h3>
+                        <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="berita-card">
+                <div class="berita-image">
+                    <img src="~/assets/event2-test.png" alt="Concert Image">
+                </div>
+                <div class="grup_berita">
+                    <div class="berita-date">
+                        <span class="month">Des</span>
+                        <span class="day">20</span>
+                    </div>
+                    <div class="berita-content">
+                        <h3>Festival Seni dan Budaya Gilang</h3>
+                        <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="berita-card">
+                <div class="berita-image">
+                    <img src="~/assets/event2-test.png" alt="Concert Image">
+                </div>
+                <div class="grup_berita">
+                    <div class="berita-date">
+                        <span class="month">Des</span>
+                        <span class="day">20</span>
+                    </div>
+                    <div class="berita-content">
+                        <h3>Festival Seni dan Budaya Gilang</h3>
+                        <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="berita-card">
+                <div class="berita-image">
+                    <img src="~/assets/event2-test.png" alt="Concert Image">
+                </div>
+                <div class="grup_berita">
+                    <div class="berita-date">
+                        <span class="month">Des</span>
+                        <span class="day">20</span>
+                    </div>
+                    <div class="berita-content">
+                        <h3>Festival Seni dan Budaya Gilang</h3>
+                        <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
+                    </div>
+                </div>
+            </div>         
+        </div>
+    </div>
+</section>
+
+
+<!--======================================================= EVENT TERBARU ==================================================-->
+
+
+<!--======================================================= MAP KUPANG =======================================================-->
+<section class="section__container home__container" id="map_gilangharjo">
+    <p class="section__subheader">Peta Daerah</p>
+    <h2 class="section__header">Desa Gilangharjo</h2>
+    <div class="map_gilangharjo">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44709.68957069951!2d110.28474279132516!3d-7.9143239124456555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aff0ea8ade661%3A0x3eec593195fabc67!2sGilangharjo%2C%20Kec.%20Pandak%2C%20Kabupaten%20Bantul%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1734945796150!5m2!1sid!2sid"
+        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+<!--======================================================= AKHIR MAP KUPANG =======================================================-->
