@@ -15,6 +15,19 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
     <PackageReference Include="NetTopologySuite" Version="2.5.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="9.0.2" />
+    <PackageReference Include="Npgsql.NetTopologySuite" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SidDmb.Domain\SidDmb.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MasterDataFunction\ModulPrenuer\" />
+    <Folder Include="MasterDataFunction\ModulPrima\" />
+    <Folder Include="MasterDataFunction\ModulWisata\" />
   </ItemGroup>
 
 </Project>

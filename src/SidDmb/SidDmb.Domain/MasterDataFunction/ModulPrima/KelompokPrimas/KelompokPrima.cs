@@ -1,4 +1,5 @@
 ﻿using SidDmb.Domain.Abstracts;
+using SidDmb.Domain.MasterDataFunction.ModulPrima.KegiatanPrimas;
 
 namespace SidDmb.Domain.MasterDataFunction.ModulPrima.KelompokPrimas;
 
@@ -19,5 +20,5 @@ public class KelompokPrima : Entity<IdKelompok>, IAuditableEntity
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<KelompokPrima> DaftarKelompokPrima { get; set; } = [];
+    public List<KegiatanPrima> DaftarKegiatanPrima { get; set; } = [];
 }
