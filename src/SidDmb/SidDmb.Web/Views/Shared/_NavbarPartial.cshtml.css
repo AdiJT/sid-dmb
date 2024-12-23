@@ -69,6 +69,17 @@ nav {
     display: none;
 }
 
+/* Hover Effect untuk Navbar Links */
+.nav__links ::deep a:hover, .nav_login ::deep a:hover {
+    color: #FFD700; /* Warna kuning */
+    border-bottom: 1px solid #FFD700;
+}
+
+/* Untuk memberikan efek transisi yang halus */
+.nav__links ::deep a, .nav_login ::deep a {
+    transition: color 0.3s, text-decoration 0.5s; /* Transisi warna dan underline */
+}
+
 
 /* =============================== DIATAS 768px =============================== */
 @media (min-width: 768px) {
