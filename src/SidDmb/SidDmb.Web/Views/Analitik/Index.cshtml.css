@@ -1,0 +1,33 @@
+﻿.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/analitik-header.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50vh;
+    display: flex;
+    justify-content: center; /* Menempatkan konten di tengah horizontal */
+    align-items: center; /* Menempatkan konten di tengah vertikal */
+}
+
+.header__container {
+    text-align: center; /* Memastikan teks di dalamnya tetap terpusat */
+}
+
+    .header__container p {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: var(--white);
+        opacity: 0.6;
+    }
+
+    .header__container h1 {
+        font-size: 4rem;
+        font-weight: 600;
+        line-height: 4.5rem;
+        color: var(--white);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+        .header__container h1 span {
+            color: #1b88ec;
+        }
