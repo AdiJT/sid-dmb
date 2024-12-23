@@ -1,11 +1,4 @@
-﻿/*=============================================================================================================================*\
-  #HALAMAN BERANDA
-\*=============================================================================================================================*/
-
-/*-----------------------------------*\
-  #HEADER
-\*-----------------------------------*/
-.header {
+﻿.header {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/home-header.png");
     background-position: center center;
     background-size: cover;
@@ -22,21 +15,28 @@
         color: var(--white);
         text-align: center;
         opacity: 0.6;
-        padding-top: 30px;
+    }
+
+    .header__container h6 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: #f8f8f8;
+        text-align: center;
     }
 
     .header__container h1 {
         text-transform: uppercase;
-        font-size: 3.8rem;
+        margin-bottom: 1rem;
+        font-size: 4rem;
         font-weight: 600;
         line-height: 4.5rem;
         color: var(--white);
         text-align: center;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     }
 
         .header__container h1 span {
-            color: #4e70f6;
+            color: #c4e617;
         }
 
 .tombol_home {
