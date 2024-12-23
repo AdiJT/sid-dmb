@@ -11,6 +11,9 @@ using SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokals;
 using SidDmb.Domain.MasterDataFunction.ModulPreneur.UnitUsahas;
 using SidDmb.Domain.MasterDataFunction.ModulPrima.KegiatanPrimas;
 using SidDmb.Domain.MasterDataFunction.ModulPrima.KelompokPrimas;
+using SidDmb.Domain.MasterDataFunction.ModulWisata.DestinasiWisatas;
+using SidDmb.Domain.MasterDataFunction.ModulWisata.KalenderAcaras;
+using SidDmb.Domain.MasterDataFunction.ModulWisata.LaporanKunjungans;
 using SidDmb.Infrastructure.Database;
 using SidDmb.Infrastructure.MasterDataFunction.ModulBudaya;
 using SidDmb.Infrastructure.MasterDataFunction.ModulBudaya.ArtefakBudayas;
@@ -21,6 +24,9 @@ using SidDmb.Infrastructure.MasterDataFunction.ModulPrenuer.ProdukLokals;
 using SidDmb.Infrastructure.MasterDataFunction.ModulPrenuer.UnitUsahas;
 using SidDmb.Infrastructure.MasterDataFunction.ModulPrima.KegiatanPrimas;
 using SidDmb.Infrastructure.MasterDataFunction.ModulPrima.KelompokPrimas;
+using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.DestinasiWisatas;
+using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.KalenderAcaras;
+using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.LaporanKunjungans;
 
 namespace SidDmb.Infrastructure;
 
@@ -45,6 +51,11 @@ public static class DepedencyInjection
         services.AddScoped<IRepositoriKegiatanPrima, RepositoriKegiatanPrima>();
         services.AddScoped<IRepositoriKolaboratorKegiatanPrima, RepositoriKolaboratorKegiatanPrima>();
         services.AddScoped<IRepositoriKelompokPrima, RepositoriKelompokPrima>();
+        services.AddScoped<IRepositoriDestinasiWisata, RepositoriDestinasiWisata>();
+        services.AddScoped<IRepositoriAktivitasDestinasiWisata, RepositoriAktivitasDestinasiWisata>();
+        services.AddScoped<IRepositoriFasilitasDestinasiWisata, RepositoriFasilitasDestinasiWisata>();
+        services.AddScoped<IRepositoriKalenderAcara, RepositoriKalenderAcara>();
+        services.AddScoped<IRepositoriLaporanKunjungan, RepositoriLaporanKunjungan>();
 
         return services;
     }
