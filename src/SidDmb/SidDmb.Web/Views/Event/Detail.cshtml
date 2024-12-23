@@ -1,12 +1,22 @@
-﻿<section class="section__container atraksi_container">
+﻿<section class="breadcumbs__container ">
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><i class="ri-arrow-right-s-line"></i></li>
+            <li><a asp-area="" asp-controller="Event" asp-action="Index">Berita & Event</a></li>
+            <li><i class="ri-arrow-right-s-line"></i></li>
+            <li><a href="">Festival Seni dan Budaya Gilang</a></li>
+        </ul>
+    </nav>
+</section>
+
+<section class="section__container atraksi_container">
     <div class="col-md-4">
-        <!-- Gambar/Foto -->
         <div class="section">
-            <img src="~/assets/event-test.png" alt="Pantai Gilang" class="main-image">
+            <img src="~/assets/event2-test.png" alt="Pantai Gilang" class="main-image">
         </div>
     </div>
     <div class="col-md-8">
-        <!-- Kategori, Status, Judul, Deskripsi -->
         <div class="section">
             <div class="grup_kategori_status">
                 <div class="kategori">
@@ -24,7 +34,6 @@
             </a>
         </div>
 
-        <!-- Informasi Detail -->
         <div class="section">
             <div class="info-grid">
                 <div>
@@ -70,11 +79,4 @@
             </div>
         </div>
     </div>
-
 </section>
-
-
-
-
-
-
