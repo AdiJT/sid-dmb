@@ -64,6 +64,25 @@
 }
 
 
+
+
+/*-----------------------------------*\
+  #TENTANG
+\*-----------------------------------*/
+
+.about__container {
+    display: grid;
+    padding: 5rem 1rem;
+    overflow: hidden;
+}
+
+.about__image ::deep img {
+    max-width: 550px;
+    border-radius: 5px;
+}
+
+
+
 .berita-container {
     display: flex;
     padding: 20px 0px;
@@ -261,4 +280,12 @@
         .card-content ::deep .read-more {
             font-size: 0.85rem;
         }
+}
+
+/* =============================== DIATAS 768px =============================== */
+@media (min-width: 768px) {
+    .about__container {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
 }

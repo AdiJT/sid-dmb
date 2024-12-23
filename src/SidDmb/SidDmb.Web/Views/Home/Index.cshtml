@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";  
+    ViewData["Title"] = "Home Page";
 }
 
 <!--======================================================= LANDING ==================================================-->
@@ -7,13 +7,38 @@
     <div class="section__container header__container" id="home">
         <p>Bersama Membangun Desa Digital</p>
         <h1>Sistem Informasi Desa<br /><span>Gilangharjo</span></h1>
-        <h6>Sistem Informasi Desa Gilangharjo: Platform Digital untuk<br>Menyediakan Informasi Lengkap Tentang Event, Atraksi Wisata, dan Layanan Desa</h6>
+        <h6>Menyediakan Informasi Lengkap Tentang Event, Atraksi Wisata, dan Layanan Desa</h6>
         <div class="tombol_home">
             <a asp-area="" asp-controller="Event" asp-action="Index" asp-fragment="Populer" class="btn">Lihat Event Terbaru</a>
         </div>    
     </div>
 </header>
 <!--======================================================= LANDING ===================================================-->
+
+
+<!--======================================================= TENTANG KUPANG =======================================================-->
+<section class="section__container about__container" id="about">
+    <div class="about__image">
+        <img src="~/assets/map-about.jpg" alt="about" />
+    </div>
+    <div class="about__content">
+        <p class="section__subheader">Tentang Gilangharjo</p>
+        <h2 class="section__header">Selamat Datang di Gilangharjo!</h2>
+        <p class="section__description">
+            Desa Gilangharjo di Kapanewon Pandak, Bantul, Yogyakarta, memiliki luas 749,1 hektar dengan lanskap beragam dari 
+            utara ke selatan. Wilayah ini mencakup pemukiman padat, persawahan subur, dan perbukitan asri, lengkap dengan fasilitas
+            umum, lokasi budaya, dan sungai kecil. Sebagian besar penduduk bekerja di sektor pertanian, perdagangan, dan pekerjaan 
+            informal lainnya. Kekayaan budaya dan alamnya menjadikan Gilangharjo sebagai tempat yang ideal untuk pengembangan pariwisata
+            pedesaan dan agrikultur berkelanjutan.
+        </p>
+        <div class="about__btn">
+            <a href="#map_gilangharjo" class="btn">Lihat Peta Gilangharjo</a>
+        </div>
+    </div>
+</section>
+<!--======================================================= AKHIR TENTANG KUPANG =======================================================-->
+
+
 <!--======================================================= EVENT TERBARU ==================================================-->
 
 <section class="section__container home__container">
