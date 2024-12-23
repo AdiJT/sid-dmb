@@ -1,7 +1,7 @@
 ﻿using SidDmb.Domain.Abstracts;
 using SidDmb.Domain.MasterDataFunction.ModulPreneur.UnitUsahas;
 
-namespace SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokas;
+namespace SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokals;
 
 public class ProdukLokal : Entity<IdProduk>, IAuditableEntity
 {

@@ -1,6 +1,6 @@
 ﻿using NetTopologySuite.Geometries;
 using SidDmb.Domain.Abstracts;
-using SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokas;
+using SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokals;
 
 namespace SidDmb.Domain.MasterDataFunction.ModulPreneur.UnitUsahas;
 

@@ -2,7 +2,7 @@
 using SidDmb.Domain.Shared;
 using System.Text.RegularExpressions;
 
-namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent;
+namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 
 public class IdLaporanEvent : ValueObject, IEquatable<IdLaporanEvent>
 {
