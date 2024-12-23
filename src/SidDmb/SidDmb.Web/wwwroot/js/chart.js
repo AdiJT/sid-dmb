@@ -3,10 +3,10 @@ const visitStatsCtx = document.getElementById('visitStatsChart');
 new Chart(visitStatsCtx, {
     type: 'bar',
     data: {
-        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
+        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
         datasets: [{
             label: 'Jumlah Kunjungan',
-            data: [150, 200, 180, 250, 300, 400],
+            data: [150, 200, 180, 250, 300, 400, 250, 130, 200, 150, 145, 150],
             backgroundColor: 'rgba(54, 162, 235, 0.5)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
@@ -36,7 +36,7 @@ const incomeCompositionCtx = document.getElementById('incomeCompositionChart');
 new Chart(incomeCompositionCtx, {
     type: 'pie',
     data: {
-        labels: ['Pertanian', 'Perdagangan', 'Pariwisata', 'Lainnya'],
+        labels: ['Destinasi', 'Artefak', 'Situs', 'Lainnya'],
         datasets: [{
             data: [40, 25, 20, 15],
             backgroundColor: [
