@@ -4,19 +4,19 @@
         initialView: 'dayGridMonth',
         events: [
             {
-                title: 'Seren Taun Kasepuhan Cisungsang',
-                start: '2024-12-02T10:00:00',
-                end: '2024-12-02T12:00:00'
+                title: 'tari Gilang',
+                start: '2025-01-02T10:00:00',
+                end: '2025-01-02T12:00:00'
             },
             {
-                title: 'Festival Kota Lama Semarang',
-                start: '2024-12-05T14:00:00',
-                end: '2024-12-06T16:00:00'
+                title: 'Natal Kedua',
+                start: '2024-12-25T14:00:00',
+                end: '2024-12-26T16:00:00'
             },
             {
-                title: 'Sawahlunto International Songket Carnival',
+                title: 'Malam Natal',
                 start: '2024-12-24T19:00:00',
-                end: '2024-12-26T21:00:00'
+                end: '2024-12-25T21:00:00'
             }
         ],
         eventDidMount: function (info) {
