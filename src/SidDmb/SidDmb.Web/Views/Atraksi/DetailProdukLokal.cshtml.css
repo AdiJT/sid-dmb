@@ -1,4 +1,10 @@
-﻿.atraksi_container {
+﻿.breadcrumbs {
+    display: flex !important;
+    justify-content: start !important;
+}
+
+.atraksi_container {
+    padding: 1rem 1rem;
     display: flex;
     gap: 40px;
 }

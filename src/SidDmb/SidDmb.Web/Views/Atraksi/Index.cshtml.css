@@ -5,12 +5,12 @@
     background-repeat: no-repeat;
     height: 50vh;
     display: flex;
-    justify-content: center; /* Menempatkan konten di tengah horizontal */
-    align-items: center; /* Menempatkan konten di tengah vertikal */
+    justify-content: center; 
+    align-items: center;
 }
 
 .header__container {
-    text-align: center; /* Memastikan teks di dalamnya tetap terpusat */
+    text-align: center;
 }
 
     .header__container p {
@@ -33,7 +33,7 @@
         }
 
 .atraksi__container {
-    padding: 1rem 1rem;
+    padding: 0rem 1rem;
 }
 
 .atraksi-gallery {

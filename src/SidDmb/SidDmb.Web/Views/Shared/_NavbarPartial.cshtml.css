@@ -3,6 +3,7 @@
 \*-----------------------------------*/
 .navbar_warna {
     background-color: var(--primary-color);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
 }
 
 nav {
@@ -85,15 +86,14 @@ nav {
     display: none;
 }
 
-/* Hover Effect untuk Navbar Links */
+
 .nav__links ::deep a:hover, .nav_login ::deep a:hover {
-    color: #FFD700; /* Warna kuning */
+    color: #FFD700;
     border-bottom: 1px solid #FFD700;
 }
 
-/* Untuk memberikan efek transisi yang halus */
 .nav__links ::deep a, .nav_login ::deep a {
-    transition: color 0.3s, text-decoration 0.5s; /* Transisi warna dan underline */
+    transition: color 0.3s, text-decoration 0.5s;
 }
 
 
@@ -119,10 +119,7 @@ nav {
             font-size: 1.3rem;
             color: var(--white);
         }
-
-        
-
-
+     
         .nav__menu__btn {
             display: none;
         }

@@ -1,11 +1,29 @@
-﻿<section class="section__container">
-    <p class="section__subheader">Informasi Desa</p>
+﻿<header class="header">
+    <div class="section__container header__container" id="home">
+        <h1>Seni Budaya</h1>
+    </div>
+</header>
+
+<section class="breadcumbs__container ">
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><i class="ri-arrow-right-s-line"></i></li>
+            <li><a asp-area="" asp-controller="Atraksi" asp-action="Index">Atraksi Wisata</a></li>
+            <li><i class="ri-arrow-right-s-line"></i></li>
+            <li><a href="">Seni Budaya</a></li>
+        </ul>
+    </nav>
+</section>
+
+<section class="section__container seni__container">
+    <p class="section__subheader">Keindahan Tradisi</p>
     <h2 class="section__header">Seni Budaya</h2>
     <div class="card-gallery">
         <div class="card">
             <img src="~/assets/seni-test.png" alt="Image 1">
             <div class="card-content">
-                <div class="category">Kategori</div>
+                <div class="category">Seni Tari</div>
                 <h3 class="title">Tari Gamelan Gilang</h3>
                 <p class="description">Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
                 <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" class="read-more">Lihat Lebih Lanjut</a>
@@ -14,7 +32,7 @@
         <div class="card">
             <img src="~/assets/seni-test.png" alt="Image 1">
             <div class="card-content">
-                <div class="category">Kategori</div>
+                <div class="category">Seni Tari</div>
                 <h3 class="title">Tari Gamelan Gilang</h3>
                 <p class="description">Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
                 <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" class="read-more">Lihat Lebih Lanjut</a>
@@ -23,7 +41,7 @@
         <div class="card">
             <img src="~/assets/seni-test.png" alt="Image 1">
             <div class="card-content">
-                <div class="category">Kategori</div>
+                <div class="category">Seni Tari</div>
                 <h3 class="title">Tari Gamelan Gilang</h3>
                 <p class="description">Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
                 <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" class="read-more">Lihat Lebih Lanjut</a>
@@ -32,7 +50,7 @@
         <div class="card">
             <img src="~/assets/seni-test.png" alt="Image 1">
             <div class="card-content">
-                <div class="category">Kategori</div>
+                <div class="category">Seni Tari</div>
                 <h3 class="title">Tari Gamelan Gilang</h3>
                 <p class="description">Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
                 <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" class="read-more">Lihat Lebih Lanjut</a>

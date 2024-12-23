@@ -1,38 +1,56 @@
-﻿<section class="section__container">
-    <p class="section__subheader">Informasi Desa</p>
+﻿<header class="header">
+    <div class="section__container header__container" id="home">
+        <h1>Destinasi Wisata</h1>
+    </div>
+</header>
+
+<section class="breadcumbs__container ">
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><i class="ri-arrow-right-s-line"></i></li>
+            <li><a asp-area="" asp-controller="Atraksi" asp-action="Index">Atraksi Wisata</a></li>
+            <li><i class="ri-arrow-right-s-line"></i></li>
+            <li><a href="">Destinasi Wisata</a></li>
+        </ul>
+    </nav>
+</section>
+
+<section class="section__container destinasi__container">
+    <p class="section__subheader">Panduan Wisata</p>
     <h2 class="section__header">Destinasi Wisata</h2>
     <div class="card-gallery">
         <div class="card">
             <img src="~/assets/header.jpg" alt="Image 1">
             <div class="card-content">
-                <div class="category">Kategori</div>
+                <div class="category">Destinasi Alam</div>
                 <h3 class="title">Pantai Gilang</h3>
                 <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
                 <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
             </div>
         </div>
         <div class="card">
-            <img src="~/assets/header.jpg" alt="Image 1">
+            <img src="~/assets/header.jpg" alt="Image 2">
             <div class="card-content">
-                <div class="category">Kategori</div>
+                <div class="category">Destinasi Alam</div>
                 <h3 class="title">Pantai Gilang</h3>
                 <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
                 <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
             </div>
         </div>
         <div class="card">
-            <img src="~/assets/header.jpg" alt="Image 1">
+            <img src="~/assets/header.jpg" alt="Image 3">
             <div class="card-content">
-                <div class="category">Kategori</div>
+                <div class="category">Destinasi Alam</div>
                 <h3 class="title">Pantai Gilang</h3>
                 <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
                 <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
             </div>
         </div>
         <div class="card">
-            <img src="~/assets/header.jpg" alt="Image 1">
+            <img src="~/assets/header.jpg" alt="Image 4">
             <div class="card-content">
-                <div class="category">Kategori</div>
+                <div class="category">Destinasi Alam</div>
                 <h3 class="title">Pantai Gilang</h3>
                 <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
                 <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>

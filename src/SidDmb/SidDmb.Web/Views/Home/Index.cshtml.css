@@ -6,7 +6,7 @@
   #HEADER
 \*-----------------------------------*/
 .header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url("assets/home-header.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/home-header.png");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -42,4 +42,5 @@
 .tombol_home {
     display: flex;
     justify-content: center;
+    padding-top: 10px;
 }

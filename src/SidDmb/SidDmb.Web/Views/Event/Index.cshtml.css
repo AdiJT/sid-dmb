@@ -5,12 +5,12 @@
     background-repeat: no-repeat;
     height: 50vh;
     display: flex;
-    justify-content: center; /* Menempatkan konten di tengah horizontal */
-    align-items: center; /* Menempatkan konten di tengah vertikal */
+    justify-content: center;
+    align-items: center;
 }
 
 .header__container {
-    text-align: center; /* Memastikan teks di dalamnya tetap terpusat */
+    text-align: center;
 }
 
     .header__container p {
@@ -116,15 +116,15 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-    width: 40px; /* Ukuran lingkaran */
-    height: 40px; /* Ukuran lingkaran */
+    width: 40px; 
+    height: 40px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    background-color: white; /* Latar belakang putih */
-    color: black; /* Warna arrow hitam */
-    border-radius: 50%; /* Membuat lingkaran */
+    background-color: white; 
+    color: black; 
+    border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     justify-content: center;
@@ -140,16 +140,16 @@
     }
 
 .swiper-button-next {
-    right: 10px; /* Posisi kanan */
+    right: 10px; 
 }
 
 .swiper-button-prev {
-    left: 10px; /* Posisi kiri */
+    left: 10px; 
 }
 
     .swiper-button-next::after,
     .swiper-button-prev::after {
-        font-size: 14px; /* Perkecil ukuran arrow */
+        font-size: 14px;
         font-weight: bold;
     }
 

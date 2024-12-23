@@ -1,6 +1,12 @@
 ﻿// Ambil elemen tombol
 var mybutton = document.getElementById("goToTopBtn");
 
+// Reset visibilitas tombol saat halaman dimuat
+window.onload = function () {
+    mybutton.style.display = "none"; // Tombol tidak terlihat
+    mybutton.classList.add('hidden'); // Tombol memiliki kelas 'hidden'
+};
+
 // Ketika pengguna menggulir ke bawah 20px dari atas, tampilkan tombol
 window.onscroll = function () {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {

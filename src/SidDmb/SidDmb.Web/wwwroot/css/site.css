@@ -75,7 +75,7 @@
 .section__description {
     max-width: 600px;
     text-align: justify;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: var(--text-light);
 }
 
@@ -156,7 +156,6 @@ input, select, textarea {
     font-family: "Lexend", sans-serif;
 }
 
-
 .breadcrumbs {
     display: flex;
     justify-content: end;
@@ -180,13 +179,13 @@ input, select, textarea {
 
     .breadcrumbs a {
         text-decoration: none;
-        color: #888; /* Warna default untuk tautan */
+        color: #888;
         font-weight: 500;
         transition: color 0.3s ease;
     }
 
         .breadcrumbs a:hover {
-            color: #0056b3; /* Warna biru saat hover */
+            color: #0056b3;
         }
 
     .breadcrumbs i {
@@ -195,12 +194,11 @@ input, select, textarea {
     }
 
     .breadcrumbs li:last-child i {
-        color: #0056b3; /* Ikon panah terakhir berwarna biru */
+        color: #0056b3;
     }
 
-    /* Warna biru untuk tautan terakhir di breadcrumb */
     .breadcrumbs li:last-child a {
-        color: #0056b3; /* Warna biru untuk tautan terakhir */
+        color: #0056b3;
     }
 
     .breadcrumbs a:focus {
