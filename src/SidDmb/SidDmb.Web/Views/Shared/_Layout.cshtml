@@ -14,7 +14,7 @@
 </head>
 <body>
     <partial name="_NavbarPartial"></partial>
-    <!-- Tombol Go to Top dengan ikon Remixicon -->
+
     <button id="goToTopBtn" class="go-to-top-btn">
         <i class="ri-arrow-up-s-line"></i>
     </button>
@@ -35,25 +35,26 @@
                 <p class="section__description">
                     Melalui Sistem Informasi Desa ini, kami memudahkan Anda mengakses potensi dan layanan desa secara cepat dan praktis.
                 </p>
-                <a asp-area="" asp-controller="" asp-action="" class="btn">Informasi Desa</a>
+                <a asp-area="" asp-controller="" asp-action="" class="btn">Event Terbaru</a>
             </div>
             <div class="footer__col jarak_footer">
                 <h4>LINK CEPAT</h4>
                 <ul class="footer__links">
-                    <li><a asp-area="" asp-controller="" asp-action="">Home</a></li>
-                    <li><a asp-area="" asp-controller="" asp-action="">Atraksi</a></li>
-                    <li><a asp-area="" asp-controller="" asp-action="">Berita & Event</a></li>
-                    <li><a asp-area="" asp-controller="" asp-action="">Analitik</a></li>
-                    @* <li><a asp-area="" asp-controller="Home" asp-action="Kontak">Kontak</a></li> *@
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Atraksi" asp-action="Index">Atraksi Wisata</a></li>
+                    <li><a asp-area="" asp-controller="Event" asp-action="Index">Berita & Event</a></li>
+                    <li><a asp-area="" asp-controller="Analitik" asp-action="Index">Analitik</a></li>
                 </ul>
             </div>
             <div class="footer__col jarak__footer">
-                <h4>LAYANAN KAMI</h4>
+                <h4>ATRAKSI WISATA</h4>
                 <ul class="footer__links">
-                    <li><a href="#">Destinasi Wisata</a></li>
-                    <li><a href="#">Artefak Budaya</a></li>
-                    <li><a href="#">Situs Budaya</a></li>
-                    <li><a href="#">Produk Khas</a></li>
+                    <li><a asp-area="" asp-controller="Atraksi" asp-action="Destinasi">Destinasi Wisata</a></li>
+                    <li><a asp-area="" asp-controller="Atraksi" asp-action="Artefak">Artefak Budaya</a></li>
+                    <li><a asp-area="" asp-controller="Atraksi" asp-action="Seni">Seni Budaya</a></li>
+                    <li><a asp-area="" asp-controller="Atraksi" asp-action="Situs">Situs Khas</a></li>
+                    <li><a asp-area="" asp-controller="Atraksi" asp-action="Upacara">Upacara Budaya</a></li>
+                    <li><a asp-area="" asp-controller="Atraksi" asp-action="ProdukLokal">Produk/Kuliner Khas</a></li>
                 </ul>
             </div>
             <div class="footer__col">
