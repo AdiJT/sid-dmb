@@ -14,6 +14,10 @@
 </head>
 <body>
     <partial name="_NavbarPartial"></partial>
+    <!-- Tombol Go to Top dengan ikon Remixicon -->
+    <button id="goToTopBtn" class="go-to-top-btn">
+        <i class="ri-arrow-up-s-line"></i>
+    </button>
 
     <div class="">
         <main role="main" class="pb-3">
@@ -31,7 +35,7 @@
                 <p class="section__description">
                     Melalui Sistem Informasi Desa ini, kami memudahkan Anda mengakses potensi dan layanan desa secara cepat dan praktis.
                 </p>
-                <a asp-area="" asp-controller="Hotel" asp-action="Pemetaan" class="btn">Lihat Pemetaan</a>
+                <a asp-area="" asp-controller="" asp-action="" class="btn">Informasi Desa</a>
             </div>
             <div class="footer__col jarak_footer">
                 <h4>LINK CEPAT</h4>
@@ -75,6 +79,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/swiper.js" asp-append-version="true"></script>
     <script src="~/js/calender.js" asp-append-version="true"></script>
+    <script src="~/js/gotop.js" asp-append-version="true"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/@@popperjs/core@2"></script>
