@@ -13,7 +13,7 @@
 }
 
 .header__container {
-    padding-block: 10rem 15rem;
+    padding-block: 8rem 15rem;
 }
 
     .header__container p {
@@ -22,6 +22,7 @@
         color: var(--white);
         text-align: center;
         opacity: 0.6;
+        padding-top: 30px;
     }
 
     .header__container h1 {
@@ -37,3 +38,8 @@
         .header__container h1 span {
             color: #4e70f6;
         }
+
+.tombol_home {
+    display: flex;
+    justify-content: center;
+}
