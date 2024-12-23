@@ -1,6 +1,44 @@
-﻿.event__container {
+﻿.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/berita-header.png");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50vh;
     display: flex;
-    gap: 20px;
+    justify-content: center; /* Menempatkan konten di tengah horizontal */
+    align-items: center; /* Menempatkan konten di tengah vertikal */
+}
+
+.header__container {
+    text-align: center; /* Memastikan teks di dalamnya tetap terpusat */
+}
+
+    .header__container p {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        color: var(--white);
+        opacity: 0.6;
+    }
+
+    .header__container h1 {
+        font-size: 4rem;
+        font-weight: 600;
+        line-height: 4.5rem;
+        color: var(--white);
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+        .header__container h1 span {
+            color: #1b88ec;
+        }
+
+.eventberita__container {
+    padding: 1rem 1rem;
+}
+
+.event__container {
+    display: flex;
+    gap: 10px;
     margin-bottom: 50px;
 }
 
@@ -10,7 +48,7 @@
 
 .swiper-container {
     width: 100%;
-    height: 250px; 
+    height: 250px;
     position: relative;
 }
 
@@ -20,117 +58,195 @@
     justify-content: center;
 }
 
-.news-item {
-    display: flex;
-    width: 100%; 
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.swiper-slide ::deep a {
+    display: block;
+    text-decoration: none;
 }
 
-    .news-item ::deep img {
-        width: 50%;
-        height: auto;
-        object-fit: cover;
-        border-right: 1px solid #ddd;
+.news-item {
+    border-radius: 12px;
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .news-item:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
     }
+
+.news-item ::deep img {
+    border-radius: 12px;
+    width: 30%;
+    height: auto;
+    object-fit: cover;
+    border-right: 1px solid #ddd;
+}
 
 .news-content {
     padding: 20px;
 }
 
     .news-content h3 {
-        margin-bottom: 10px;
+        font-size: 38px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333;
     }
 
     .news-content p {
+        margin-bottom: 5px !important;
+        font-size: 16px;
+        color: var(--text-dark)
+    }
+
+    .news-content .deskripsi {
+        font-size: 16px;
         margin-bottom: 5px;
+        color: #666;
+    }
+
+    .news-content .kategori {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000;
     }
 
 .swiper-button-next,
 .swiper-button-prev {
-    width: 10px;
+    width: 40px; /* Ukuran lingkaran */
+    height: 40px; /* Ukuran lingkaran */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
+    background-color: white; /* Latar belakang putih */
+    color: black; /* Warna arrow hitam */
+    border-radius: 50%; /* Membuat lingkaran */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+    }
+
 .swiper-button-next {
-    right: 10px;
+    right: 10px; /* Posisi kanan */
 }
 
 .swiper-button-prev {
-    left: 10px;
+    left: 10px; /* Posisi kiri */
 }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 14px; /* Perkecil ukuran arrow */
+        font-weight: bold;
+    }
+
 
 
 #calendar {
-    height: 300px;
+    height: 350px;
 }
 
 
+.grup_kalender_berita {
+    display: flex;
+    gap: 30px;
+}
+
+.stik {
+    position: sticky;
+    top: 40px;
+}
 
 
 .berita-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
+    padding: 20px 0px;
 }
 
 .berita {
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    flex: 1 1 calc(25% - 32px); /* 25% lebar untuk 4 elemen per baris */
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
 }
 
-::deep .berita-image {
+.berita-card {
+    cursor: pointer;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+    .berita-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+.berita-image ::deep img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    display: block;
 }
 
-.berita-content {
-    padding: 16px;
-}
-
-.berita-category {
-    font-size: 14px;
-    color: #007bff;
-    margin: 0;
-}
-
-.berita-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 8px 0;
+.grup_berita {
+    display: flex;
 }
 
 .berita-date {
-    font-size: 12px;
-    color: #6c757d;
+    display: inline-block;
+    color: var(--text-dark);
+    padding: 8px 6px 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 15px 0px 0px 0px;
+    text-align: center;
+    line-height: 1.2;
 }
 
-/* Responsiveness */
-@media (max-width: 992px) { /* Untuk tablet */
-    .berita {
-        flex: 1 1 calc(33.33% - 32px); /* 3 elemen per baris */
+    .berita-date .month {
+        font-size: 12px;
+        text-transform: uppercase;
     }
+
+    .berita-date .day {
+        font-size: 18px;
+    }
+
+.berita-content {
+    padding: 20px 10px;
+    text-align: left;
 }
 
-@media (max-width: 768px) { /* Untuk layar kecil */
-    .berita {
-        flex: 1 1 calc(50% - 32px); /* 2 elemen per baris */
+    .berita-content h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 0 10px;
+        color: #333;
     }
-}
 
-@media (max-width: 576px) { /* Untuk layar sangat kecil */
-    .berita {
-        flex: 1 1 100%; /* 1 elemen per baris */
+    .berita-content p {
+        font-size: 14px;
+        color: #666;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
-}

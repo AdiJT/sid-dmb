@@ -1,41 +1,56 @@
-﻿
-<section class="section__container">
+﻿<header class="header">
+    <div class="section__container header__container" id="home">
+        <h1>Atraksi</h1>
+    </div>
+</header>
+
+<section class="breadcumbs__container ">
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><i class="ri-arrow-right-s-line"></i></li>
+            <li><a href="">Atraksi</a></li>
+        </ul>
+    </nav>
+</section>
+
+<section class="section__container atraksi__container">
     <p class="section__subheader">Informasi Desa</p>
     <h2 class="section__header">Atraksi Wisata</h2>
     <div class="atraksi-gallery">
         <a asp-area="" asp-controller="Atraksi" asp-action="Destinasi">
             <div class="atraksi-card">
-                <img src="~/assets/gallery-1.jpg" alt="Danau Toba">
+                <img src="~/assets/atraksi-destinasi.png" alt="Danau Toba">
                 <h3>Destinasi Wisata</h3>
             </div>
         </a>
         <a asp-area="" asp-controller="Atraksi" asp-action="Artefak">
             <div class="atraksi-card">
-                <img src="~/assets/gallery-1.jpg" alt="Borobudur">
+                <img src="~/assets/atraksi-artefak.png" alt="Borobudur">
                 <h3>Artefak</h3>
             </div>
         </a>
         <a asp-area="" asp-controller="Atraksi" asp-action="Seni">
             <div class="atraksi-card">
-                <img src="~/assets/gallery-1.jpg" alt="Mandalika">
+                <img src="~/assets/atraksi-seni.png" alt="Mandalika">
                 <h3>Seni</h3>
             </div>
         </a>
         <a asp-area="" asp-controller="Atraksi" asp-action="Situs">
             <div class="atraksi-card">
-                <img src="~/assets/gallery-1.jpg" alt="Labuan Bajo">
+                <img src="~/assets/atraksi-situs.png" alt="Labuan Bajo">
                 <h3>Situs</h3>
             </div>
         </a>
         <a asp-area="" asp-controller="Atraksi" asp-action="Upacara">
             <div class="atraksi-card">
-                <img src="~/assets/gallery-1.jpg" alt="Likupang">
+                <img src="~/assets/atraksi-upacara.png" alt="Likupang">
                 <h3>Upacara Budaya</h3>
             </div>
         </a>
         <a asp-area="" asp-controller="Atraksi" asp-action="ProdukLokal">
             <div class="atraksi-card">
-                <img src="~/assets/gallery-1.jpg" alt="Likupang">
+                <img src="~/assets/atraksi-produk.png" alt="Likupang">
                 <h3>Produk/Kuliner Lokal</h3>
             </div>
         </a>        
