@@ -3,7 +3,7 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 50vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,6 +21,7 @@
     }
 
     .header__container h1 {
+        padding-top: 60px;
         font-size: 4rem;
         font-weight: 600;
         line-height: 4.5rem;

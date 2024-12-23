@@ -33,6 +33,11 @@
 /*-----------------------------------*\
   #CSS YANG DIGUNAKAN ULANG / REUSABLE
 \*-----------------------------------*/
+.pembungkus {
+    padding-top: 12vh;
+}
+
+
 .section__container {
     max-width: var(--max-width);
     margin: auto;

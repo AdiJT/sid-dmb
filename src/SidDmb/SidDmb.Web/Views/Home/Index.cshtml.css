@@ -6,7 +6,7 @@
 }
 
 .header__container {
-    padding-block: 8rem 15rem;
+    padding-block: 13rem 15rem;
 }
 
     .header__container p {
@@ -62,9 +62,6 @@
     display: flex;
     justify-content: center;
 }
-
-
-
 
 /*-----------------------------------*\
   #TENTANG
