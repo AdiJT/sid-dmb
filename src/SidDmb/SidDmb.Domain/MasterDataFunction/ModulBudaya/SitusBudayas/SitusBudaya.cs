@@ -24,5 +24,5 @@ public class SitusBudaya : Entity<IdSitus>, IAuditableEntity
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<FasilitasSitusBudaya> DaftarFasilitas { get; set; } = [];
+    public List<Fasilitas> DaftarFasilitas { get; set; } = [];
 }

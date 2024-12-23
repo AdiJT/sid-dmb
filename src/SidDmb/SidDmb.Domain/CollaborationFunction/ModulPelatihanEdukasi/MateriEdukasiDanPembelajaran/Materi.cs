@@ -21,5 +21,5 @@ public class Materi : Entity<IdMateri>, IAuditableEntity
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<KolabolatorMateri> DaftarKolaborator { get; set; } = [];
+    public List<Kolaborator> DaftarKolaborator { get; set; } = [];
 }

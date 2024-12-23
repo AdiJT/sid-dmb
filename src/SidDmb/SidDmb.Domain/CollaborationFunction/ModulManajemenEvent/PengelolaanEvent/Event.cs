@@ -21,5 +21,5 @@ public class Event : Entity<IdEvent>, IAuditableEntity
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<KolaboratorEvent> DaftarKolaborator { get; set; } = [];
+    public List<Kolaborator> DaftarKolaborator { get; set; } = [];
 }

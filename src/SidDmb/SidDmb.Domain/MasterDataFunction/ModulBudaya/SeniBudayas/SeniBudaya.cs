@@ -20,5 +20,5 @@ public class SeniBudaya : Entity<IdSeni>, IAuditableEntity
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<FasilitasSeniBudaya> FasilitasPertunjukan { get; set; } = [];
+    public List<Fasilitas> FasilitasPertunjukan { get; set; } = [];
 }

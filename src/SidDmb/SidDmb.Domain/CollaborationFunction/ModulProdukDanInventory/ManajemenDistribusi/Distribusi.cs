@@ -17,5 +17,5 @@ public class Distribusi : Entity<IdDistribusi>, IAuditableEntity
     public DateTime TanggalPembaruanData { get; set; }
 
     public Produk Produk { get; set; }
-    public List<KolaboratorDistribusi> DaftarKolaborator { get; set; } = [];
+    public List<Kolaborator> DaftarKolaborator { get; set; } = [];
 }

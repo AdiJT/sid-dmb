@@ -19,5 +19,5 @@ public class Sertifikasi : Entity<IdSertifikasi>, IAuditableEntity
     public DateTime TanggalPembaruanData { get; set; }
 
     public Produk Produk { get; set; }
-    public List<KolaboratorSertifikasi> DaftarKolaborator { get; set; } = [];
+    public List<Kolaborator> DaftarKolaborator { get; set; } = [];
 }

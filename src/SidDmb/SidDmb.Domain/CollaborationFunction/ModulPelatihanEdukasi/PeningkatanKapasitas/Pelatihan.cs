@@ -22,5 +22,5 @@ public class Pelatihan : Entity<IdPelatihan>, IAuditableEntity
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
-    public List<KolaboratorPelatihan> DaftarKolaborator { get; set; } = [];
+    public List<Kolaborator> DaftarKolaborator { get; set; } = [];
 }

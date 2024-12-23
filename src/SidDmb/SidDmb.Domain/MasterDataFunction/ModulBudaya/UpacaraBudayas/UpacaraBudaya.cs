@@ -21,5 +21,5 @@ public class UpacaraBudaya : Entity<IdUpacara>, IAuditableEntity
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<FasilitasUpacaraBudaya> FasilitasPendukung { get; set; } = [];
+    public List<Fasilitas> FasilitasPendukung { get; set; } = [];
 }

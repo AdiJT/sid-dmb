@@ -21,6 +21,6 @@ public class Produk : Entity<IdProduk>, IAuditableEntity
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<KolaboratorProduk> DaftarKolaborator { get; set; } = [];
+    public List<Kolaborator> DaftarKolaborator { get; set; } = [];
     public List<Distribusi> DaftarDistribusi { get; set; } = [];
 }
