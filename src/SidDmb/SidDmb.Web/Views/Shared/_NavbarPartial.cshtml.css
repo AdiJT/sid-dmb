@@ -23,6 +23,22 @@ nav {
     background-color: var(--primary-color);
 }
 
+    .nav__bar .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav__bar .logo ::deep a h3 {
+        margin-bottom: 0 !important;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .nav__bar .logo ::deep img {
+        width: 35px;
+    }
+
 .nav__menu__btn {
     font-size: 1.5rem;
     color: var(--white);
@@ -104,9 +120,12 @@ nav {
             color: var(--white);
         }
 
-    .nav__menu__btn {
-        display: none;
-    }
+        
+
+
+        .nav__menu__btn {
+            display: none;
+        }
 
     .nav__links {
         padding: 0;

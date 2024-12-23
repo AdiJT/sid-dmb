@@ -3,6 +3,7 @@
 /*-----------------------------------*\
   #CSS GLOBAL
 \*-----------------------------------*/
+
 :root {
     --primary-color: #003b95;
     --primary-color-dark: rgb(16, 4, 73);
@@ -11,6 +12,17 @@
     --white: #ffffff;
     --max-width: 1300px;
 }
+
+
+/*:root {
+    --primary-color: #2C6B3F;*/ /* Hijau tua, lebih natural dan dewasa */
+    /*--primary-color-dark: #1D4F2B;*/ /* Hijau lebih gelap */
+    /*--text-dark: #2C2C2C;*/ /* Abu-abu gelap untuk teks utama */
+    /*--text-light: #B0B0B0;*/ /* Abu-abu terang untuk teks sekunder */
+    /*--white: #FFFFFF;*/ /* Putih bersih */
+    /*--max-width: 1300px;
+}*/
+
 
 * {
     padding: 0;
@@ -110,6 +122,7 @@ button {
 }
 
     .btn:hover {
+        color: var(--white);
         background-color: var(--primary-color-dark);
     }
 

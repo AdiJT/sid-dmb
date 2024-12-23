@@ -73,6 +73,70 @@
     text-align: center;
 }
 
+.go-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Mulai dengan transparan */
+    transform: translateY(50px); /* Mulai dari bawah */
+    animation: slideIn 0.5s forwards; /* Animasi masuk */
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+    .go-to-top-btn i {
+        font-size: 20px; /* Ukuran ikon */
+    }
+
+    .go-to-top-btn:hover {     
+        opacity: 1;
+    }
+
+    .go-to-top-btn:focus {
+        outline: none;
+    }
+
+/* Animasi masuk (slide in dari bawah) */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animasi keluar ketika tombol hilang */
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+
+/* Ketika tombol disembunyikan setelah scroll ke atas */
+.go-to-top-btn.hidden {
+    animation: slideOut 0.5s forwards;
+}
+
+
+
 
 /* =============================== DIATAS 576px =============================== */
 @media (min-width: 576px) {

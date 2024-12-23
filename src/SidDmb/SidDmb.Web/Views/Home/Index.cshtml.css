@@ -6,14 +6,14 @@
   #HEADER
 \*-----------------------------------*/
 .header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/header.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url("assets/home-header.png");
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .header__container {
-    padding-block: 10rem 15rem;
+    padding-block: 8rem 15rem;
 }
 
     .header__container p {
@@ -22,10 +22,12 @@
         color: var(--white);
         text-align: center;
         opacity: 0.6;
+        padding-top: 30px;
     }
 
     .header__container h1 {
-        font-size: 4rem;
+        text-transform: uppercase;
+        font-size: 3.8rem;
         font-weight: 600;
         line-height: 4.5rem;
         color: var(--white);
@@ -34,5 +36,10 @@
     }
 
         .header__container h1 span {
-            color: #1b88ec;
+            color: #4e70f6;
         }
+
+.tombol_home {
+    display: flex;
+    justify-content: center;
+}
