@@ -27,7 +27,7 @@
     .header__container h1 {
         text-transform: uppercase;
         margin-bottom: 1rem;
-        font-size: 3.5rem;
+        font-size: 4rem;
         font-weight: 600;
         line-height: 4rem;
         color: var(--white);
@@ -35,7 +35,7 @@
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-        .header__container h1 span {
+        .header__container h6 span {
             color: #e6d817;
         }
 
