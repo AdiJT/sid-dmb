@@ -3,7 +3,10 @@
 \*-----------------------------------*/
 .navbar_warna {
     background-color: var(--primary-color);
+    opacity: .89;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+    position: fixed;
+    margin-bottom: 100px;
 }
 
 nav {
@@ -12,7 +15,7 @@ nav {
     top: 0;
     width: 100%;
     margin: auto;
-    z-index: 9;
+    z-index: 9999;
 }
 
 .nav__bar {
@@ -104,7 +107,6 @@ nav {
     \*-----------------------------------*/
     nav {
         padding: 1.5rem 12rem;
-        position: static;
         display: flex;
         align-items: center;
         justify-content: space-between;

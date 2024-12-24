@@ -52,7 +52,7 @@
                     <li><a asp-area="" asp-controller="Atraksi" asp-action="Destinasi">Destinasi Wisata</a></li>
                     <li><a asp-area="" asp-controller="Atraksi" asp-action="Artefak">Artefak Budaya</a></li>
                     <li><a asp-area="" asp-controller="Atraksi" asp-action="Seni">Seni Budaya</a></li>
-                    <li><a asp-area="" asp-controller="Atraksi" asp-action="Situs">Situs Khas</a></li>
+                    <li><a asp-area="" asp-controller="Atraksi" asp-action="Situs">Situs Budaya</a></li>
                     <li><a asp-area="" asp-controller="Atraksi" asp-action="Upacara">Upacara Budaya</a></li>
                     <li><a asp-area="" asp-controller="Atraksi" asp-action="ProdukLokal">Produk/Kuliner Khas</a></li>
                 </ul>
@@ -77,14 +77,16 @@
     <!--======================================================= AKHIR FOOTER =======================================================-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/swiper.js" asp-append-version="true"></script>
-    <script src="~/js/calender.js" asp-append-version="true"></script>
-    <script src="~/js/gotop.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/@@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/swiper.js" asp-append-version="true"></script>
+    <script src="~/js/calender.js" asp-append-version="true"></script>
+    <script src="~/js/gotop.js" asp-append-version="true"></script>
+    <script src="~/js/chart.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
