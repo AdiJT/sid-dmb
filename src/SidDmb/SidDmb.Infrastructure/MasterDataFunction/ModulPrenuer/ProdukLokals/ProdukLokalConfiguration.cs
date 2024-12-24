@@ -10,8 +10,8 @@ internal class ProdukLokalConfiguration : IEntityTypeConfiguration<ProdukLokal>
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).HasConversion(i => i.Value, s => IdProduk.Create(s).Value);
-        builder.Property(x => x.TanggalProduksiTerakhir).HasColumnType("timestamp without time stamp");
-        builder.Property(x => x.TanggalKadaluarsa).HasColumnType("timestamp without time stamp");
+        builder.Property(x => x.TanggalProduksiTerakhir).HasColumnType("timestamp without time zone");
+        builder.Property(x => x.TanggalKadaluarsa).HasColumnType("timestamp without time zone");
 
         builder.HasOne(x => x.UnitUsaha).WithMany(u => u.DaftarProduk);
     }

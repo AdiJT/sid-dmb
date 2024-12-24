@@ -24,8 +24,4 @@
     <ProjectReference Include="..\SidDmb.Domain\SidDmb.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="MasterDataFunction\ModulWisata\" />
-  </ItemGroup>
-
 </Project>

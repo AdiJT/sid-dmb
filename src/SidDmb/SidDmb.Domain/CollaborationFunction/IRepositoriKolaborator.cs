@@ -2,7 +2,7 @@
 
 public interface IRepositoriKolaborator
 {
-    Task<Kolaborator> Get(int id);
+    Task<Kolaborator?> Get(int id);
     Task<List<Kolaborator>> GetAll();
     
     void Add(Kolaborator kolaborator);
