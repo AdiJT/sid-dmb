@@ -9,6 +9,7 @@ namespace SidDmb.Domain.MasterDataFunction.ModulBudaya;
 public class Komentar : Entity<int>
 {
     public required string Nama { get; set; }
+    public required string Isi { get; set; }
     public required double Rating { get; set; }
 
     public ArtefakBudaya? ArtefakBudaya { get; set; }
