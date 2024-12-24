@@ -28,7 +28,7 @@ new Chart(incomeCompositionCtx, {
             },
             title: {
                 display: true,
-                text: 'Komposisi Pendapatan Kunjungan'
+                text: 'Komposisi Pendapatan Kunjungan',              
             }
         }
     }

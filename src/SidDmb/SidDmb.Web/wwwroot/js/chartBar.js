@@ -86,7 +86,7 @@ new Chart(weeklyVisitStatsCtx, {
             },
             title: {
                 display: true,
-                text: 'Statistik Kunjungan Mingguan'
+                text: 'Statistik Kunjungan 4 Minggu Terakhir'
             }
         },
         scales: {
