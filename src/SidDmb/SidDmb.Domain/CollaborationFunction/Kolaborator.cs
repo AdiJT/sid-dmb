@@ -1,4 +1,5 @@
 ﻿using SidDmb.Domain.Abstracts;
+using SidDmb.Domain.Authentication;
 using SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
 using SidDmb.Domain.CollaborationFunction.ModulPelatihanEdukasi.MateriEdukasiDanPembelajaran;
 using SidDmb.Domain.CollaborationFunction.ModulPelatihanEdukasi.PeningkatanKapasitas;
@@ -24,4 +25,6 @@ public class Kolaborator : Entity<int>
     public List<DataRiset> DaftarDataRiset { get; set; } = [];
     public List<Rekomendasi> DaftarRekomendasi { get; set; } = [];
     public List<KegiatanPrima> DaftarKegiatanPrima { get; set; } = [];
+
+    public AppUser AppUser { get; set; }
 }

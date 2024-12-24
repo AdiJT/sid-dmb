@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SidDmb.Domain.Abstracts;
+using SidDmb.Domain.Authentication;
 using SidDmb.Domain.CollaborationFunction;
 using SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 using SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
@@ -46,6 +47,8 @@ internal class AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : D
 
         base.OnModelCreating(modelBuilder);
     }
+
+    public DbSet<AppUser> AppUser { get; set; }
 
     #region ModulWisata
     public DbSet<DestinasiWisata> DestinasiWisata { get; set; }

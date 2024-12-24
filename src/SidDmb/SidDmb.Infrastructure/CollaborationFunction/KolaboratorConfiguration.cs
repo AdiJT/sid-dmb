@@ -10,6 +10,7 @@ internal class KolaboratorConfiguration : IEntityTypeConfiguration<Kolaborator>
     {
         builder.HasKey(x => x.Id);
 
+        builder.HasOne(x => x.AppUser).WithOne(x => x.Kolaborator).HasForeignKey<Kolaborator>("AppUserId");
         builder.HasMany(x => x.DaftarMateri).WithMany(x => x.DaftarKolaborator);
         builder.HasMany(x => x.DaftarDistribusi).WithMany(x => x.DaftarKolaborator);
         builder.HasMany(x => x.DaftarDataRiset).WithMany(x => x.DaftarKolaboratorPenelitian);
@@ -18,5 +19,6 @@ internal class KolaboratorConfiguration : IEntityTypeConfiguration<Kolaborator>
         builder.HasMany(x => x.DaftarProduk).WithMany(x => x.DaftarKolaborator);
         builder.HasMany(x => x.DaftarRekomendasi).WithMany(x => x.DaftarKolaborator);
         builder.HasMany(x => x.DaftarSertifikasi).WithMany(x => x.DaftarKolaborator);
+        builder.HasMany(x => x.DaftarKegiatanPrima).WithMany(x => x.KolaboratorKegiatan);
     }
 }

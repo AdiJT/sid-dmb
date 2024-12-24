@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SidDmb.Domain.Abstracts;
+using SidDmb.Domain.Authentication;
 using SidDmb.Domain.CollaborationFunction;
 using SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 using SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
@@ -24,6 +25,7 @@ using SidDmb.Domain.MasterDataFunction.ModulPrima.KelompokPrimas;
 using SidDmb.Domain.MasterDataFunction.ModulWisata.DestinasiWisatas;
 using SidDmb.Domain.MasterDataFunction.ModulWisata.KalenderAcaras;
 using SidDmb.Domain.MasterDataFunction.ModulWisata.LaporanKunjungans;
+using SidDmb.Infrastructure.Authentication;
 using SidDmb.Infrastructure.CollaborationFunction;
 using SidDmb.Infrastructure.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 using SidDmb.Infrastructure.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
@@ -61,6 +63,7 @@ public static class DepedencyInjection
             o => o.UseNetTopologySuite()).EnableSensitiveDataLogging());
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IRepositoriAppUser, RepositoriAppUser>();
         services.AddScoped<IRepositoriKomentar, RepositoriKomentar>();
         services.AddScoped<IRepositoriArtefakBudaya, RepositoriArtefakBudaya>();
         services.AddScoped<IRepositoriSeniBudaya, RepositoriSeniBudaya>();
