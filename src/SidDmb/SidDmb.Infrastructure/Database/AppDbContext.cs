@@ -49,14 +49,12 @@ internal class AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : D
 
     #region ModulWisata
     public DbSet<DestinasiWisata> DestinasiWisata { get; set; }
-    public DbSet<FasilitasDestinasiWisata> FasilitasDestinasiWisata { get; set; }
-    public DbSet<AktivitasDestinasiWisata> AktivitasDestinasiWisata { get; set; }
     public DbSet<KalenderAcara> KalenderAcara { get; set; }
     public DbSet<LaporanKunjungan> LaporanKunjungan { get; set; }
     #endregion
 
     #region Budaya
-    public DbSet<Fasilitas> Fasilitas { get; set; }
+    public DbSet<Komentar> Komentar { get; set; }
     public DbSet<ArtefakBudaya> ArtefakBudaya { get; set; }
     public DbSet<SeniBudaya> SeniBudaya { get; set; }
     public DbSet<SitusBudaya> SitusBudaya { get; set; }
@@ -71,7 +69,6 @@ internal class AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : D
     #region Prima
     public DbSet<KelompokPrima> KelompokPrima { get; set; }
     public DbSet<KegiatanPrima> KegiatanPrima { get; set; }
-    public DbSet<KolaboratorKegiatanPrima> KolaboratorKegiatanPrima { get; set; }
     #endregion
 
     public DbSet<Kolaborator> Kolaborator { get; set; }
@@ -94,7 +91,6 @@ internal class AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : D
 
     #region ModulResearchAndDevelopment
     public DbSet<DataRiset> DataRiset { get; set; }
-    public DbSet<JenisDataRiset> JenisDataRiset { get; set; }
     public DbSet<Rekomendasi> Rekomendasi { get; set; }
     #endregion
 }

@@ -22,6 +22,7 @@ internal class RepositoriKolaborator : IRepositoriKolaborator
         .Include(x => x.DaftarProduk)
         .Include(x => x.DaftarRekomendasi)
         .Include(x => x.DaftarSertifikasi)
+        .Include(x => x.DaftarKegiatanPrima)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<Kolaborator>> GetAll() => await _appDbContext.Kolaborator
@@ -33,6 +34,7 @@ internal class RepositoriKolaborator : IRepositoriKolaborator
         .Include(x => x.DaftarProduk)
         .Include(x => x.DaftarRekomendasi)
         .Include(x => x.DaftarSertifikasi)
+        .Include(x => x.DaftarKegiatanPrima)
         .ToListAsync();
 
     public void Add(Kolaborator kolaborator) => _appDbContext.Kolaborator.Add(kolaborator);

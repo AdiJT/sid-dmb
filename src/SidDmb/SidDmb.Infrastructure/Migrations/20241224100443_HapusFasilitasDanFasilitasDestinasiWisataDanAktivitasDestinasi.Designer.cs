@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -12,9 +13,11 @@ using SidDmb.Infrastructure.Database;
 namespace SidDmb.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241224100443_HapusFasilitasDanFasilitasDestinasiWisataDanAktivitasDestinasi")]
+    partial class HapusFasilitasDanFasilitasDestinasiWisataDanAktivitasDestinasi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,6 +26,21 @@ namespace SidDmb.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "postgis");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("DataRisetJenisDataRiset", b =>
+                {
+                    b.Property<string>("DaftarDataRisetId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("DaftarJenisDataRisetId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("DaftarDataRisetId", "DaftarJenisDataRisetId");
+
+                    b.HasIndex("DaftarJenisDataRisetId");
+
+                    b.ToTable("DataRisetJenisDataRiset");
+                });
 
             modelBuilder.Entity("DataRisetKolaborator", b =>
                 {
@@ -69,7 +87,7 @@ namespace SidDmb.Infrastructure.Migrations
                     b.ToTable("EventKolaborator");
                 });
 
-            modelBuilder.Entity("KegiatanPrimaKolaborator", b =>
+            modelBuilder.Entity("KegiatanPrimaKolaboratorKegiatanPrima", b =>
                 {
                     b.Property<string>("DaftarKegiatanPrimaId")
                         .HasColumnType("text");
@@ -81,7 +99,7 @@ namespace SidDmb.Infrastructure.Migrations
 
                     b.HasIndex("KolaboratorKegiatanId");
 
-                    b.ToTable("KegiatanPrimaKolaborator");
+                    b.ToTable("KegiatanPrimaKolaboratorKegiatanPrima");
                 });
 
             modelBuilder.Entity("KolaboratorMateri", b =>
@@ -592,10 +610,6 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.PrimitiveCollection<string[]>("DaftarJenisDataRiset")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
                     b.Property<string>("DekripsiPenelitian")
                         .IsRequired()
                         .HasColumnType("text");
@@ -649,6 +663,23 @@ namespace SidDmb.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DataRiset");
+                });
+
+            modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset.JenisDataRiset", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nama")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JenisDataRiset");
                 });
 
             modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.RekomendasiDanPengembanganProduk.Rekomendasi", b =>
@@ -786,41 +817,6 @@ namespace SidDmb.Infrastructure.Migrations
                     b.ToTable("ArtefakBudaya");
                 });
 
-            modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulBudaya.Komentar", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Nama")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<double>("Rating")
-                        .HasColumnType("double precision");
-
-                    b.Property<string>("SeniBudayaId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("SitusBudayaId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UpacaraBudayaId")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SeniBudayaId");
-
-                    b.HasIndex("SitusBudayaId");
-
-                    b.HasIndex("UpacaraBudayaId");
-
-                    b.ToTable("Komentar");
-                });
-
             modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas.SeniBudaya", b =>
                 {
                     b.Property<string>("Id")
@@ -843,6 +839,10 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<int>("Kategori")
                         .HasColumnType("integer");
 
+                    b.Property<string>("KomentarPenonton")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("LokasiPertunjukan")
                         .IsRequired()
                         .HasColumnType("text");
@@ -862,6 +862,9 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<string>("PeraturanKhusus")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<double>("RatingPenonton")
+                        .HasColumnType("double precision");
 
                     b.Property<DateTime>("TanggalDiinputkan")
                         .HasColumnType("timestamp without time zone");
@@ -909,6 +912,10 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<int>("Kategori")
                         .HasColumnType("integer");
 
+                    b.Property<string>("KomentarPengunjung")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("KontakInformasi")
                         .IsRequired()
                         .HasColumnType("text");
@@ -928,6 +935,9 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<string>("PeraturanKhusus")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("double precision");
 
                     b.Property<int>("Status")
                         .HasColumnType("integer");
@@ -965,6 +975,10 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<int>("Kategori")
                         .HasColumnType("integer");
 
+                    b.Property<string>("KomentarPeserta")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("LokasiPelaksanaan")
                         .IsRequired()
                         .HasColumnType("text");
@@ -988,6 +1002,9 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<string>("RangkaianAcara")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<double>("RatingPeserta")
+                        .HasColumnType("double precision");
 
                     b.Property<DateTime>("TanggalDiinputkan")
                         .HasColumnType("timestamp without time zone");
@@ -1187,6 +1204,23 @@ namespace SidDmb.Infrastructure.Migrations
                     b.HasIndex("KelompokPrimaId");
 
                     b.ToTable("KegiatanPrima");
+                });
+
+            modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulPrima.KegiatanPrimas.KolaboratorKegiatanPrima", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nama")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("KolaboratorKegiatanPrima");
                 });
 
             modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulPrima.KelompokPrimas.KelompokPrima", b =>
@@ -1419,6 +1453,21 @@ namespace SidDmb.Infrastructure.Migrations
                     b.ToTable("LaporanKunjungan");
                 });
 
+            modelBuilder.Entity("DataRisetJenisDataRiset", b =>
+                {
+                    b.HasOne("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset.DataRiset", null)
+                        .WithMany()
+                        .HasForeignKey("DaftarDataRisetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset.JenisDataRiset", null)
+                        .WithMany()
+                        .HasForeignKey("DaftarJenisDataRisetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DataRisetKolaborator", b =>
                 {
                     b.HasOne("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset.DataRiset", null)
@@ -1464,7 +1513,7 @@ namespace SidDmb.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("KegiatanPrimaKolaborator", b =>
+            modelBuilder.Entity("KegiatanPrimaKolaboratorKegiatanPrima", b =>
                 {
                     b.HasOne("SidDmb.Domain.MasterDataFunction.ModulPrima.KegiatanPrimas.KegiatanPrima", null)
                         .WithMany()
@@ -1472,7 +1521,7 @@ namespace SidDmb.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SidDmb.Domain.CollaborationFunction.Kolaborator", null)
+                    b.HasOne("SidDmb.Domain.MasterDataFunction.ModulPrima.KegiatanPrimas.KolaboratorKegiatanPrima", null)
                         .WithMany()
                         .HasForeignKey("KolaboratorKegiatanId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1598,27 +1647,6 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Navigation("ProdukTerkait");
                 });
 
-            modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulBudaya.Komentar", b =>
-                {
-                    b.HasOne("SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas.SeniBudaya", "SeniBudaya")
-                        .WithMany("DaftarKomentar")
-                        .HasForeignKey("SeniBudayaId");
-
-                    b.HasOne("SidDmb.Domain.MasterDataFunction.ModulBudaya.SitusBudayas.SitusBudaya", "SitusBudaya")
-                        .WithMany("DaftarKomentar")
-                        .HasForeignKey("SitusBudayaId");
-
-                    b.HasOne("SidDmb.Domain.MasterDataFunction.ModulBudaya.UpacaraBudayas.UpacaraBudaya", "UpacaraBudaya")
-                        .WithMany("DaftarKomentar")
-                        .HasForeignKey("UpacaraBudayaId");
-
-                    b.Navigation("SeniBudaya");
-
-                    b.Navigation("SitusBudaya");
-
-                    b.Navigation("UpacaraBudaya");
-                });
-
             modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokals.ProdukLokal", b =>
                 {
                     b.HasOne("SidDmb.Domain.MasterDataFunction.ModulPreneur.UnitUsahas.UnitUsaha", "UnitUsaha")
@@ -1655,21 +1683,6 @@ namespace SidDmb.Infrastructure.Migrations
             modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulProdukDanInventory.ManajemenProduk.Produk", b =>
                 {
                     b.Navigation("DaftarDistribusi");
-                });
-
-            modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas.SeniBudaya", b =>
-                {
-                    b.Navigation("DaftarKomentar");
-                });
-
-            modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulBudaya.SitusBudayas.SitusBudaya", b =>
-                {
-                    b.Navigation("DaftarKomentar");
-                });
-
-            modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulBudaya.UpacaraBudayas.UpacaraBudaya", b =>
-                {
-                    b.Navigation("DaftarKomentar");
                 });
 
             modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulPreneur.UnitUsahas.UnitUsaha", b =>

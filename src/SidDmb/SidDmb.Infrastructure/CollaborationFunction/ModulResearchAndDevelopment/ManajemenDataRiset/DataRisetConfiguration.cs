@@ -12,7 +12,6 @@ internal class DataRisetConfiguration : IEntityTypeConfiguration<DataRiset>
 
         builder.Property(x => x.Id).HasConversion(i => i.Value, s => IdDataRiset.Create(s).Value);
 
-        builder.HasMany(x => x.DaftarJenisDataRiset).WithMany(x => x.DaftarDataRiset);
         builder.HasMany(x => x.DaftarKolaboratorPenelitian).WithMany(x => x.DaftarDataRiset);
     }
 }

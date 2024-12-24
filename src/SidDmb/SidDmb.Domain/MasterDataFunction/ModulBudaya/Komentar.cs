@@ -5,11 +5,12 @@ using SidDmb.Domain.MasterDataFunction.ModulBudaya.UpacaraBudayas;
 
 namespace SidDmb.Domain.MasterDataFunction.ModulBudaya;
 
-public class Fasilitas : Entity<int>
+public class Komentar : Entity<int>
 {
     public required string Nama { get; set; }
+    public required double Rating { get; set; }
 
-    public List<SeniBudaya> DaftarSeniBudaya { get; set; } = [];
-    public List<UpacaraBudaya> DaftarUpacaraBudaya { get; set; } = [];
-    public List<SitusBudaya> DaftarSitusBudaya { get; set; } = [];
+    public UpacaraBudaya? UpacaraBudaya { get; set; }
+    public SitusBudaya? SitusBudaya { get; set; }
+    public SeniBudaya? SeniBudaya { get; set; }
 }

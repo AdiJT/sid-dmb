@@ -9,6 +9,7 @@ internal class ArtefakBudayaConfiguration : IEntityTypeConfiguration<ArtefakBuda
     public void Configure(EntityTypeBuilder<ArtefakBudaya> builder)
     {
         builder.HasKey(x => x.Id);
+
         builder.Property(x => x.Id).HasConversion(i => i.Value, s => IdArtefak.Create(s).Value);
     }
 }

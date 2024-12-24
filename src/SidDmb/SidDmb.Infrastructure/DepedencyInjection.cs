@@ -61,7 +61,7 @@ public static class DepedencyInjection
             o => o.UseNetTopologySuite()).EnableSensitiveDataLogging());
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-        services.AddScoped<IRepositoriFasilitas, RepositoriFasilitas>();
+        services.AddScoped<IRepositoriKomentar, RepositoriKomentar>();
         services.AddScoped<IRepositoriArtefakBudaya, RepositoriArtefakBudaya>();
         services.AddScoped<IRepositoriSeniBudaya, RepositoriSeniBudaya>();
         services.AddScoped<IRepositoriSitusBudaya, RepositorSitusBudaya>();
@@ -69,11 +69,8 @@ public static class DepedencyInjection
         services.AddScoped<IRepositoriProdukLokal, RepositoriProdukLokal>();
         services.AddScoped<IRepositoriUnitUsaha, RepositoriUnitUsaha>();
         services.AddScoped<IRepositoriKegiatanPrima, RepositoriKegiatanPrima>();
-        services.AddScoped<IRepositoriKolaboratorKegiatanPrima, RepositoriKolaboratorKegiatanPrima>();
         services.AddScoped<IRepositoriKelompokPrima, RepositoriKelompokPrima>();
         services.AddScoped<IRepositoriDestinasiWisata, RepositoriDestinasiWisata>();
-        services.AddScoped<IRepositoriAktivitasDestinasiWisata, RepositoriAktivitasDestinasiWisata>();
-        services.AddScoped<IRepositoriFasilitasDestinasiWisata, RepositoriFasilitasDestinasiWisata>();
         services.AddScoped<IRepositoriKalenderAcara, RepositoriKalenderAcara>();
         services.AddScoped<IRepositoriLaporanKunjungan, RepositoriLaporanKunjungan>();
         services.AddScoped<IRepositoriKolaborator, RepositoriKolaborator>();
@@ -85,7 +82,6 @@ public static class DepedencyInjection
         services.AddScoped<IRepositoriProduk, RepositoriProduk>();
         services.AddScoped<IRepositoriSertifikasi, RepositoriSertifikasi>();
         services.AddScoped<IRepositoriDataRiset, RepositoriDataRiset>();
-        services.AddScoped<IRepositoriJenisDataRiset, RepositoriJenisDataRiset>();
         services.AddScoped<IRepositoriRekomendasi, RepositoriRekomendasi>();
 
         return services;

@@ -14,12 +14,13 @@ public class UpacaraBudaya : Entity<IdUpacara>, IAuditableEntity
     public required string RangkaianAcara { get; set; }
     public required int JumlahUpacara { get; set; }
     public required Uri MediaPromosi { get; set; }
-    public required double RatingPeserta { get; set; }
-    public required string KomentarPeserta { get; set; }
     public required string PeraturanKhusus { get; set; }
+    public required string[] FasilitasPendukung { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<Fasilitas> FasilitasPendukung { get; set; } = [];
+    public double Rating => DaftarKomentar.Average(k => k.Rating);
+
+    public List<Komentar> DaftarKomentar { get; set; } = [];
 }

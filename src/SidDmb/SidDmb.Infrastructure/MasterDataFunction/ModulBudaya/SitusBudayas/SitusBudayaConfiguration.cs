@@ -11,6 +11,6 @@ internal class SitusBudayaConfiguration : IEntityTypeConfiguration<SitusBudaya>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).HasConversion(x => x.Value, s => IdSitus.Create(s).Value);
 
-        builder.HasMany(x => x.DaftarFasilitas).WithMany(x => x.DaftarSitusBudaya);
+        builder.HasMany(x => x.DaftarKomentar).WithOne(x => x.SitusBudaya);
     }
 }

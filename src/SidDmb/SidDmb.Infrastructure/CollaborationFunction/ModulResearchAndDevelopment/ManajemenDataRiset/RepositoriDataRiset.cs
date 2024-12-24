@@ -14,12 +14,10 @@ internal class RepositoriDataRiset : IRepositoriDataRiset
     }
 
     public async Task<DataRiset?> Get(IdDataRiset id) => await _appDbContext.DataRiset
-        .Include(x => x.DaftarJenisDataRiset)
         .Include(x => x.DaftarKolaboratorPenelitian)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<DataRiset>> GetAll() => await _appDbContext.DataRiset
-        .Include(x => x.DaftarJenisDataRiset)
         .Include(x => x.DaftarKolaboratorPenelitian)
         .ToListAsync();
 

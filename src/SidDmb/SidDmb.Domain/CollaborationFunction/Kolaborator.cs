@@ -7,6 +7,7 @@ using SidDmb.Domain.CollaborationFunction.ModulProdukDanInventory.ManajemenProdu
 using SidDmb.Domain.CollaborationFunction.ModulProdukDanInventory.SertifikasiDanLegalitas;
 using SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset;
 using SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.RekomendasiDanPengembanganProduk;
+using SidDmb.Domain.MasterDataFunction.ModulPrima.KegiatanPrimas;
 
 namespace SidDmb.Domain.CollaborationFunction;
 
@@ -22,4 +23,5 @@ public class Kolaborator : Entity<int>
     public List<Sertifikasi> DaftarSertifikasi { get; set; } = [];
     public List<DataRiset> DaftarDataRiset { get; set; } = [];
     public List<Rekomendasi> DaftarRekomendasi { get; set; } = [];
+    public List<KegiatanPrima> DaftarKegiatanPrima { get; set; } = [];
 }

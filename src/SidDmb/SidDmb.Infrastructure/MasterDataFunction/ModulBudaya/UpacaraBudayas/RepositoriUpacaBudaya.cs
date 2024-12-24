@@ -14,11 +14,11 @@ internal class RepositoriUpacaBudaya : IRepositoriUpacaraBudaya
     }
 
     public async Task<UpacaraBudaya?> Get(IdUpacara id) => await _appDbContext.UpacaraBudaya
-        .Include(x => x.FasilitasPendukung)
+        .Include(x => x.DaftarKomentar)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<UpacaraBudaya>> GetAll() => await _appDbContext.UpacaraBudaya
-        .Include(x => x.FasilitasPendukung)
+        .Include(x => x.DaftarKomentar)
         .ToListAsync();
 
     public void Add(UpacaraBudaya upacaraBudaya) => _appDbContext.UpacaraBudaya.Add(upacaraBudaya);

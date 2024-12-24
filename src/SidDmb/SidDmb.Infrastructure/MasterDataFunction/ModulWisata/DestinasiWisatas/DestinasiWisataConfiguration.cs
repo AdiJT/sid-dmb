@@ -13,7 +13,5 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
         builder.Property(x => x.TitikKoordinat).HasColumnType("geography (point)");
 
         builder.HasMany(x => x.DaftarLaporanKunjungan).WithOne(x => x.DestinasiWisata);
-        builder.HasMany(x => x.DaftarAktivitas).WithMany(x => x.DaftarDestinasiWisata);
-        builder.HasMany(x => x.DaftarFasilitas).WithMany(x => x.DaftarDestinasiWisata);
     }
 }

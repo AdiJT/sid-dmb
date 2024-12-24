@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -12,9 +13,11 @@ using SidDmb.Infrastructure.Database;
 namespace SidDmb.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241224104139_TambahKomentar")]
+    partial class TambahKomentar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,6 +26,21 @@ namespace SidDmb.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.HasPostgresExtension(modelBuilder, "postgis");
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("DataRisetJenisDataRiset", b =>
+                {
+                    b.Property<string>("DaftarDataRisetId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("DaftarJenisDataRisetId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("DaftarDataRisetId", "DaftarJenisDataRisetId");
+
+                    b.HasIndex("DaftarJenisDataRisetId");
+
+                    b.ToTable("DataRisetJenisDataRiset");
+                });
 
             modelBuilder.Entity("DataRisetKolaborator", b =>
                 {
@@ -592,10 +610,6 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("text");
 
-                    b.PrimitiveCollection<string[]>("DaftarJenisDataRiset")
-                        .IsRequired()
-                        .HasColumnType("text[]");
-
                     b.Property<string>("DekripsiPenelitian")
                         .IsRequired()
                         .HasColumnType("text");
@@ -649,6 +663,23 @@ namespace SidDmb.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DataRiset");
+                });
+
+            modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset.JenisDataRiset", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nama")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JenisDataRiset");
                 });
 
             modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.RekomendasiDanPengembanganProduk.Rekomendasi", b =>
@@ -1417,6 +1448,21 @@ namespace SidDmb.Infrastructure.Migrations
                     b.HasIndex("DestinasiWisataId");
 
                     b.ToTable("LaporanKunjungan");
+                });
+
+            modelBuilder.Entity("DataRisetJenisDataRiset", b =>
+                {
+                    b.HasOne("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset.DataRiset", null)
+                        .WithMany()
+                        .HasForeignKey("DaftarDataRisetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SidDmb.Domain.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset.JenisDataRiset", null)
+                        .WithMany()
+                        .HasForeignKey("DaftarJenisDataRisetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DataRisetKolaborator", b =>

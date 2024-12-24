@@ -12,6 +12,6 @@ internal class UpacaraBudayaConfiguration : IEntityTypeConfiguration<UpacaraBuda
         builder.Property(x => x.Id).HasConversion(i => i.Value, s => IdUpacara.Create(s).Value);
         builder.Property(x => x.WaktuPelaksanaan).HasColumnType("timestamp without time zone");
 
-        builder.HasMany(x => x.FasilitasPendukung).WithMany(x => x.DaftarUpacaraBudaya);
+        builder.HasMany(x => x.DaftarKomentar).WithOne(x => x.UpacaraBudaya);
     }
 }

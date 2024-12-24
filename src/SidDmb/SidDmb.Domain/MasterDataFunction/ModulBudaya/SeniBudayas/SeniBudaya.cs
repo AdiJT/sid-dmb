@@ -14,11 +14,12 @@ public class SeniBudaya : Entity<IdSeni>, IAuditableEntity
     public required double HargaTiket { get; set; }
     public required string PeraturanKhusus { get; set; }
     public required Uri MediaPromosi { get; set; }
-    public required double RatingPenonton { get; set; }
-    public required string KomentarPenonton { get; set; }
+    public required string[] FasilitasPertunjukan { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<Fasilitas> FasilitasPertunjukan { get; set; } = [];
+    public double Rating => DaftarKomentar.Average(k => k.Rating);
+
+    public List<Komentar> DaftarKomentar { get; set; } = [];
 }

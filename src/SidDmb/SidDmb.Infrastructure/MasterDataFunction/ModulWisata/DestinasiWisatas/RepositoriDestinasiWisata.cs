@@ -15,14 +15,10 @@ internal class RepositoriDestinasiWisata : IRepositoriDestinasiWisata
 
     public async Task<DestinasiWisata?> Get(IdDestinasi id) => await _appDbContext.DestinasiWisata
         .Include(x => x.DaftarLaporanKunjungan)
-        .Include(x => x.DaftarAktivitas)
-        .Include(x => x.DaftarFasilitas)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<DestinasiWisata>> GetAll() => await _appDbContext.DestinasiWisata
         .Include(x => x.DaftarLaporanKunjungan)
-        .Include(x => x.DaftarAktivitas)
-        .Include(x => x.DaftarFasilitas)
         .ToListAsync();
 
     public void Add(DestinasiWisata destinasi) => _appDbContext.DestinasiWisata.Add(destinasi);

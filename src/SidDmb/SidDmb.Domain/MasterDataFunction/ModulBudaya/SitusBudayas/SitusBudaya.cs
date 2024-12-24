@@ -15,14 +15,15 @@ public class SitusBudaya : Entity<IdSitus>, IAuditableEntity
     public required string JamOperasional { get; set; }
     public required string KontakInformasi { get; set; }
     public required Uri FotoPromosi { get; set; }
-    public required double Rating { get; set; }
     public required string PengelolaSitus { get; set; }
     public required StatusOperasional Status { get; set; }
     public required string PeraturanKhusus { get; set; }
-    public required string KomentarPengunjung { get; set; }
+    public required string[] DaftarFasilitas { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public List<Fasilitas> DaftarFasilitas { get; set; } = [];
+    public double Rating => DaftarKomentar.Average(k => k.Rating);
+
+    public List<Komentar> DaftarKomentar { get; set; } = [];
 }
