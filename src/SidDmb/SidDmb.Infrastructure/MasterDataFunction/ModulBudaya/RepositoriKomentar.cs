@@ -17,12 +17,14 @@ internal class RepositoriKomentar : IRepositoriKomentar
         .Include(x => x.SeniBudaya)
         .Include(x => x.UpacaraBudaya)
         .Include(x => x.SitusBudaya)
+        .Include(x => x.ArtefakBudaya)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<Komentar>> GetAll() => await _appDbContext.Komentar
         .Include(x => x.SeniBudaya)
         .Include(x => x.UpacaraBudaya)
         .Include(x => x.SitusBudaya)
+        .Include(x => x.ArtefakBudaya)
         .ToListAsync();
 
     public void Add(Komentar komentar) => _appDbContext.Komentar.Add(komentar);

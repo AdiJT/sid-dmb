@@ -11,5 +11,7 @@ internal class ArtefakBudayaConfiguration : IEntityTypeConfiguration<ArtefakBuda
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id).HasConversion(i => i.Value, s => IdArtefak.Create(s).Value);
+
+        builder.HasMany(x => x.DaftarKomentar).WithOne(x => x.ArtefakBudaya);
     }
 }

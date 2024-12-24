@@ -13,9 +13,13 @@ internal class RepositoriArtefakBudaya : IRepositoriArtefakBudaya
         _appDbContext = appDbContext;
     }
 
-    public async Task<ArtefakBudaya?> Get(IdArtefak id) => await _appDbContext.ArtefakBudaya.FirstOrDefaultAsync(x => x.Id == id);
+    public async Task<ArtefakBudaya?> Get(IdArtefak id) => await _appDbContext.ArtefakBudaya
+        .Include(x => x.DaftarKomentar)
+        .FirstOrDefaultAsync(x => x.Id == id);
 
-    public async Task<List<ArtefakBudaya>> GetAll() => await _appDbContext.ArtefakBudaya.ToListAsync();
+    public async Task<List<ArtefakBudaya>> GetAll() => await _appDbContext.ArtefakBudaya
+        .Include(x => x.DaftarKomentar)
+        .ToListAsync();
 
     public void Add(ArtefakBudaya artefakBudaya) => _appDbContext.ArtefakBudaya.Add(artefakBudaya);
 

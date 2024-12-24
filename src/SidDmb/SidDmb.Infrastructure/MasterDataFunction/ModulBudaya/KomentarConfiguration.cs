@@ -10,6 +10,7 @@ internal class KomentarConfiguration : IEntityTypeConfiguration<Komentar>
     {
         builder.HasKey(x => x.Id);
 
+        builder.HasOne(x => x.ArtefakBudaya).WithMany(x => x.DaftarKomentar);
         builder.HasOne(x => x.UpacaraBudaya).WithMany(x => x.DaftarKomentar);
         builder.HasOne(x => x.SeniBudaya).WithMany(x => x.DaftarKomentar);
         builder.HasOne(x => x.SitusBudaya).WithMany(x => x.DaftarKomentar);
