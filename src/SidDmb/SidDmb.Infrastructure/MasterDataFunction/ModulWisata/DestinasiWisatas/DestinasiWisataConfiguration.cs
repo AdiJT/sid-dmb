@@ -39,6 +39,7 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Fotografi",
                     "Tari Barong"
                 ],
+                Foto = new Uri("/assets/Destinasi_Candi_Prambanan.jpg", UriKind.Relative)
             },
             new DestinasiWisata
             {
@@ -63,6 +64,7 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Jelajah Gua",
                     "Trekking"
                 ],
+                Foto = new Uri("/assets/Destinasi_Gua_Pindul.jpg", UriKind.Relative)
             },
             new DestinasiWisata
             {
@@ -87,6 +89,7 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Fotografi Alam",
                     "Trekking Gunung"
                 ],
+                Foto = new Uri("/assets/Destinasi_Gunung_Merapi.jpg", UriKind.Relative)
             },
             new DestinasiWisata
             {
@@ -111,6 +114,7 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Jalan-jalan",
                     "Wisata Alam"
                 ],
+                Foto = new Uri("/assets/Destinasi_Hutan_Pinus_Mangunan.jpg", UriKind.Relative)
             },
             new DestinasiWisata
             {
@@ -135,6 +139,7 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Fotografi",
                     "Pemandangan Matahari Terbenam"
                 ],
+                Foto = new Uri("/assets/Destinasi_Pantai_Parangtritis.jpg", UriKind.Relative)
             }
         );
     }
