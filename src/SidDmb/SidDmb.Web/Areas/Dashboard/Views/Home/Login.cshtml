@@ -1,0 +1,31 @@
+﻿@model LoginVM
+
+@{
+    Layout = null;
+}
+
+<form asp-action="@nameof(HomeController.Login)">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div>
+        <label asp-for="@Model.UserName"></label>
+        <input asp-for="@Model.UserName" />
+        <span asp-validation-for="@Model.UserName"></span>
+    </div>
+
+    <div>
+        <label asp-for="@Model.Password"></label>
+        <input asp-for="@Model.Password" type="password" />
+        <span asp-validation-for="@Model.Password"></span>
+    </div>
+
+    <div>
+        <input asp-for="@Model.RememberMe" type="checkbox" />
+        <label asp-for="@Model.RememberMe"></label>
+        <span asp-validation-for="@Model.RememberMe"></span>
+    </div>
+
+    <input asp-for="@Model.ReturnUrl" readonly hidden />
+
+    <button type="submit">Login</button>
+</form>
