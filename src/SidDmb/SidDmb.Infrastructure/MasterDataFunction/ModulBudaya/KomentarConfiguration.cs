@@ -4,6 +4,7 @@ using SidDmb.Domain.MasterDataFunction.ModulBudaya;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.ArtefakBudayas;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.SitusBudayas;
+using SidDmb.Domain.MasterDataFunction.ModulBudaya.UpacaraBudayas;
 
 namespace SidDmb.Infrastructure.MasterDataFunction.ModulBudaya;
 
@@ -378,6 +379,126 @@ internal class KomentarConfiguration : IEntityTypeConfiguration<Komentar>
                 Isi = "Situs Mangir adalah destinasi yang harus dikunjungi bagi penggemar sejarah. Banyak hal yang bisa dipelajari di sini.",
                 Rating = 4.9d,
                 SitusBudayaId = IdSitus.Create("SB005").Value
+            },
+            new
+            {
+                Id = 46,
+                Nama = "Agus Subekti",
+                Isi = "Labuhan Glagah adalah upacara yang penuh dengan nilai sejarah dan budaya. Sangat mengesankan.",
+                Rating = 5.0d,
+                UpacaraBudayaId = IdUpacara.Create("UB001").Value
+            },
+            new
+            {
+                Id = 47,
+                Nama = "Dian Purnama",
+                Isi = "Labuhan Merapi memberikan pengalaman spiritual yang luar biasa. Prosesi sangat terhormat.",
+                Rating = 4.8d,
+                UpacaraBudayaId = IdUpacara.Create("UB002").Value
+            },
+            new
+            {
+                Id = 48,
+                Nama = "Rina Santosa",
+                Isi = "Labuhan Parangkusumo selalu menyentuh hati, suasananya sangat tenang dan penuh makna.",
+                Rating = 5.0d,
+                UpacaraBudayaId = IdUpacara.Create("UB003").Value
+            },
+            new
+            {
+                Id = 49,
+                Nama = "Haris Iskandar",
+                Isi = "Ngalap Berkah di Pantai Ngobaran adalah acara yang sangat mendalam, penuh dengan doa dan harapan.",
+                Rating = 4.9d,
+                UpacaraBudayaId = IdUpacara.Create("UB004").Value
+            },
+            new
+            {
+                Id = 50,
+                Nama = "Maya Sekar",
+                Isi = "Sekaten Sleman adalah pesta budaya yang sangat meriah dan menyenangkan. Sangat layak untuk dikunjungi.",
+                Rating = 4.7d,
+                UpacaraBudayaId = IdUpacara.Create("UB005").Value
+            },
+            new
+            {
+                Id = 51,
+                Nama = "Budi Prasetyo",
+                Isi = "Labuhan Glagah memberikan nuansa yang sangat khas Yogyakarta. Sangat berkesan dan mendalam.",
+                Rating = 4.8d,
+                UpacaraBudayaId = IdUpacara.Create("UB001").Value
+            },
+            new
+            {
+                Id = 52,
+                Nama = "Siti Aisyah",
+                Isi = "Labuhan Merapi adalah upacara yang mempesona dan sangat penuh dengan makna spiritual.",
+                Rating = 5.0d,
+                UpacaraBudayaId = IdUpacara.Create("UB002").Value
+            },
+            new
+            {
+                Id = 53,
+                Nama = "Rudi Hartono",
+                Isi = "Labuhan Parangkusumo menawarkan kedamaian dan sangat cocok untuk meditasi.",
+                Rating = 4.9d,
+                UpacaraBudayaId = IdUpacara.Create("UB003").Value
+            },
+            new
+            {
+                Id = 54,
+                Nama = "Dewi Yuliana",
+                Isi = "Ngalap Berkah adalah pengalaman spiritual yang sangat berharga bagi saya. Sangat menyentuh hati.",
+                Rating = 5.0d,
+                UpacaraBudayaId = IdUpacara.Create("UB004").Value
+            },
+            new
+            {
+                Id = 55,
+                Nama = "Agus Wijaya",
+                Isi = "Sekaten Sleman adalah acara yang penuh warna dan sangat memikat. Terbaik untuk wisata budaya.",
+                Rating = 4.8d,
+                UpacaraBudayaId = IdUpacara.Create("UB005").Value
+            },
+            new
+            {
+                Id = 56,
+                Nama = "Lina Kurnia",
+                Isi = "Labuhan Glagah sangat menarik. Saya akan datang lagi untuk menyaksikan upacara ini.",
+                Rating = 5.0d,
+                UpacaraBudayaId = IdUpacara.Create("UB001").Value
+            },
+            new
+            {
+                Id = 57,
+                Nama = "Anton Subroto",
+                Isi = "Labuhan Merapi adalah acara yang memberikan kedamaian, sangat menghargai budaya lokal.",
+                Rating = 4.7d,
+                UpacaraBudayaId = IdUpacara.Create("UB002").Value
+            },
+            new
+            {
+                Id = 58,
+                Nama = "Mira Oktaviani",
+                Isi = "Labuhan Parangkusumo adalah tempat yang sangat cocok untuk berdoa dan merenung.",
+                Rating = 5.0d,
+                UpacaraBudayaId = IdUpacara.Create("UB003").Value
+            },
+            new
+            {
+                Id = 59,
+                Nama = "Hadi Pranata",
+                Isi = "Ngalap Berkah Pantai Ngobaran adalah upacara yang penuh kesakralan dan kedamaian. Sangat menyentuh.",
+                Rating = 5.0d,
+                UpacaraBudayaId = IdUpacara.Create("UB004").Value
+            },
+            new
+            {
+                Id = 60,
+                Nama = "Sari Lestari",
+                Isi = "Sekaten Sleman adalah perayaan yang luar biasa, penuh dengan acara menarik dan penuh semangat.",
+                Rating = 4.9d,
+                UpacaraBudayaId = IdUpacara.Create("UB005").Value
             }
         );
     }
