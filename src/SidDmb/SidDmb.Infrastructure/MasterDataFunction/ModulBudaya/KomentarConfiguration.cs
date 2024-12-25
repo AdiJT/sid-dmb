@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.ArtefakBudayas;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas;
+using SidDmb.Domain.MasterDataFunction.ModulBudaya.SitusBudayas;
 
 namespace SidDmb.Infrastructure.MasterDataFunction.ModulBudaya;
 
@@ -257,6 +258,126 @@ internal class KomentarConfiguration : IEntityTypeConfiguration<Komentar>
                 Isi = "Tari Kuda Lumping memperlihatkan kekuatan dan keindahan gerakan yang sangat memikat.",
                 Rating = 4.9d,
                 SeniBudayaId = IdSeni.Create("SB005").Value
+            },
+            new
+            {
+                Id = 31,
+                Nama = "Budi Santoso",
+                Isi = "Candi Sambisari adalah situs yang sangat memukau dan penuh sejarah. Saya sangat menghargai upaya pelestariannya.",
+                Rating = 5.0d,
+                SitusBudayaId = IdSitus.Create("SB001").Value
+            },
+            new
+            {
+                Id = 32,
+                Nama = "Dewi Lestari",
+                Isi = "Gua Maria Tritis memberikan pengalaman spiritual yang mendalam, pemandangan alamnya juga luar biasa.",
+                Rating = 4.8d,
+                SitusBudayaId = IdSitus.Create("SB002").Value
+            },
+            new
+            {
+                Id = 33,
+                Nama = "Rina Sari",
+                Isi = "Gua Rancang Kencono menawarkan pengalaman petualangan yang luar biasa. Formasi gua sangat indah dan mempesona.",
+                Rating = 4.9d,
+                SitusBudayaId = IdSitus.Create("SB003").Value
+            },
+            new
+            {
+                Id = 34,
+                Nama = "Eko Yulianto",
+                Isi = "Situs Gunung Wukir adalah situs yang sangat kaya akan nilai sejarah. Keindahan alamnya juga tidak kalah menarik.",
+                Rating = 4.9d,
+                SitusBudayaId = IdSitus.Create("SB004").Value
+            },
+            new
+            {
+                Id = 35,
+                Nama = "Maya Widya",
+                Isi = "Situs Mangir memberikan wawasan baru tentang kerajaan Mataram Kuno, sangat mendalam dan penuh informasi.",
+                Rating = 4.7d,
+                SitusBudayaId = IdSitus.Create("SB005").Value
+            },
+            new
+            {
+                Id = 36,
+                Nama = "Andi Wijaya",
+                Isi = "Candi Sambisari adalah tempat yang sangat mengesankan. Saya menikmati setiap detil arsitekturnya.",
+                Rating = 4.8d,
+                SitusBudayaId = IdSitus.Create("SB001").Value
+            },
+            new
+            {
+                Id = 37,
+                Nama = "Siti Khadijah",
+                Isi = "Gua Maria Tritis sangat tenang dan damai. Tempat yang cocok untuk merenung dan berdoa.",
+                Rating = 5.0d,
+                SitusBudayaId = IdSitus.Create("SB002").Value
+            },
+            new
+            {
+                Id = 38,
+                Nama = "Haris Setiawan",
+                Isi = "Gua Rancang Kencono sangat menantang. Pemandangannya menakjubkan dan cocok bagi pecinta alam.",
+                Rating = 4.6d,
+                SitusBudayaId = IdSitus.Create("SB003").Value
+            },
+            new
+            {
+                Id = 39,
+                Nama = "Lina Hartini",
+                Isi = "Situs Gunung Wukir memberikan nuansa sejarah yang kuat, tempat yang sangat bersejarah dan penuh nilai budaya.",
+                Rating = 4.9d,
+                SitusBudayaId = IdSitus.Create("SB004").Value
+            },
+            new
+            {
+                Id = 40,
+                Nama = "Anton Dwi",
+                Isi = "Situs Mangir benar-benar menarik, ada banyak cerita yang bisa dipelajari dari sini.",
+                Rating = 4.7d,
+                SitusBudayaId = IdSitus.Create("SB005").Value
+            },
+            new
+            {
+                Id = 41,
+                Nama = "Rudi Hartono",
+                Isi = "Saya sangat menikmati kunjungan saya ke Candi Sambisari. Tempat yang sangat historis dan penuh pesona.",
+                Rating = 5.0d,
+                SitusBudayaId = IdSitus.Create("SB001").Value
+            },
+            new
+            {
+                Id = 42,
+                Nama = "Indah Sari",
+                Isi = "Gua Maria Tritis adalah tempat yang sangat spiritual. Sangat menenangkan untuk berdoa di sana.",
+                Rating = 5.0d,
+                SitusBudayaId = IdSitus.Create("SB002").Value
+            },
+            new
+            {
+                Id = 43,
+                Nama = "Joko Prasetyo",
+                Isi = "Gua Rancang Kencono adalah tempat yang cocok untuk berpetualang. Keindahan gua dan alamnya luar biasa.",
+                Rating = 4.7d,
+                SitusBudayaId = IdSitus.Create("SB003").Value
+            },
+            new
+            {
+                Id = 44,
+                Nama = "Eka Rizki",
+                Isi = "Situs Gunung Wukir penuh dengan keindahan alam dan sejarah. Benar-benar menarik untuk dipelajari.",
+                Rating = 4.8d,
+                SitusBudayaId = IdSitus.Create("SB004").Value
+            },
+            new
+            {
+                Id = 45,
+                Nama = "Nina Ayu",
+                Isi = "Situs Mangir adalah destinasi yang harus dikunjungi bagi penggemar sejarah. Banyak hal yang bisa dipelajari di sini.",
+                Rating = 4.9d,
+                SitusBudayaId = IdSitus.Create("SB005").Value
             }
         );
     }
