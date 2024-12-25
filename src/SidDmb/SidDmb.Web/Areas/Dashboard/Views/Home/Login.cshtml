@@ -4,7 +4,117 @@
     Layout = null;
 }
 
-<form asp-action="@nameof(HomeController.Login)">
+<style>
+    body {
+        /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/home-header.png");
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat; */
+    }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SidDmb.Web</title>
+    <!-- third party css -->
+    <link href="~/css/vendor/dataTables.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link href="~/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link href="~/css/vendor/buttons.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link href="~/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css">
+    <!-- third party css end -->
+    <!-- App css -->
+    <link href="~/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/test.css" rel="stylesheet" type="text/css" id="light-style">
+    <link href="~/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style">
+    <link href="https://cdn.materialdesignicons.com/6.9.96/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body class="loading authentication-bg" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xxl-4 col-lg-5">
+                    <div class="card">
+
+                        <!-- Logo -->
+                        <div class="card-header pt-3 pb-3 text-center bg-primary d-flex justify-content-center align-items-center">
+                            <span><img src="~/assets/kemendesa-seeklogo.png" alt="" height="50"></span>
+                            <h4 class="m-0 pt-1" style="padding-left: 10px; color: white">DASHBOARD SI DESA</h4>
+                        </div>
+
+                        <div class="card-body p-4">
+
+                            <div class="text-center w-75 m-auto">
+                                <h4 class="text-dark-50 text-center pb-0 fw-bold">Log In</h4>
+                                <p class="text-muted mb-4">Enter your User Name and Password to access dashboard admin.</p>
+                            </div>
+
+                            <form asp-action="@nameof(HomeController.Login)">
+                                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.UserName" class="form-label">User Name</label>
+                                    <input asp-for="@Model.UserName" class="form-control" required="" placeholder="Enter your user name">
+                                    <span class="text-danger" asp-validation-for="@Model.UserName"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    @* <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a> *@
+                                    <label asp-for="@Model.Password" class="form-label">Password</label>
+                                    <div class="input-group input-group-merge">
+                                        <input asp-for="@Model.Password" type="password" class="form-control" required="" placeholder="Enter your password">
+                                        <div class="input-group-text" data-password="false">
+                                            <span class="password-eye"></span>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger" asp-validation-for="@Model.Password"></span>
+                                </div>
+
+                                <div class="mb-3 mb-3">
+                                    <div class="form-check">
+                                        <input asp-for="@Model.RememberMe" type="checkbox" class="form-check-input" checked>
+                                        <label class="form-check-label" asp-for="@Model.RememberMe">Remember me</label>
+                                        <span class="text-danger" asp-validation-for="@Model.RememberMe"></span>
+                                    </div>
+                                </div>
+
+                                <input asp-for="@Model.ReturnUrl" readonly hidden />
+
+                                <div class="mb-3 mb-0 text-center">
+                                    <button class="btn btn-primary" type="submit"> Log In </button>
+                                </div>
+
+                            </form>
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+
+    <footer class="footer footer-alt">
+        Copyright © 2024 WebSID. All rights reserved.
+    </footer>
+
+    <!-- bundle -->
+    <script src="~/js/vendor.min.js"></script>
+    <script src="~/js/app.min.js"></script>
+
+</body>
+</html>
+
+
+@* <form asp-action="@nameof(HomeController.Login)">
     <div asp-validation-summary="ModelOnly"></div>
 
     <div>
@@ -28,7 +138,7 @@
     <input asp-for="@Model.ReturnUrl" readonly hidden />
 
     <button type="submit">Login</button>
-</form>
+</form> *@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
