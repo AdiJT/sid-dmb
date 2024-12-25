@@ -170,4 +170,16 @@ public class ArtefakBudayaController : Controller
 
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Komentar(string id)
+    {
+        var resultId = IdArtefak.Create(id);
+        if (resultId.IsFailure) return NotFound();
+
+        var artefak = await _repositoriArtefakBudaya.Get(resultId.Value);
+        if (artefak is null) return NotFound();
+
+        return PartialView("_KomentarPartial", artefak.DaftarKomentar);
+    }
 }

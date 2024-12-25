@@ -1,0 +1,22 @@
+﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya
+@model List<Komentar>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nama Komentator</th>
+            <th>Isi Komentar</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var komentar in Model)
+        {
+            <tr>
+                <td>@komentar.Nama</td>
+                <td>@komentar.Isi</td>
+                <td>@komentar.Rating.ToString("F1")</td>
+            </tr>
+        }
+    </tbody>
+</table>

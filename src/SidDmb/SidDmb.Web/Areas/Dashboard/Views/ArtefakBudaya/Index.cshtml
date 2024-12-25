@@ -4,7 +4,25 @@
     ViewData["Title"] = "Artefak Budaya";
 }
 
+
 <div class="container-fluid">
+    <!-- Modal -->
+    <div class="modal fade" id="komentarModal" tabindex="-1" aria-labelledby="komentarModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="komentarModal">Daftar Komentar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -72,23 +90,22 @@
                                         <a href="@artefak.Foto.ToString()">@artefak.Foto.ToString()</a>
                                     </td>
                                     <td>@artefak.Ketersediaan.Humanize()</td>
-                                    <td>@artefak.Rating</td>
-                                    <td>@string.Join("|", artefak.DaftarKomentar)</td>
+                                    <td>@artefak.Rating.ToString("F1")</td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary btn-komentar" data-id="@artefak.Id.Value" data-bs-toggle="modal" data-bs-target="#komentarModal">
+                                            Lihat Daftar Komentar
+                                        </button>
+                                    </td>
                                     <td>@artefak.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
                                     <td>@artefak.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
                                     <td class="table-action">
                                         <a asp-area="Dashboard" asp-controller="ArtefakBudaya" asp-action="Edit" asp-route-id="@artefak.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                        @* <button type="button" class="action-icon" data-toggle="modal" data-target="#basicModal2"
-                                    data-url="@Url.Action("Hapus", new { id = artefak.Id.Value })"
-                                    title="Hapus">
-                                    <i class="mdi mdi-delete"></i>
-                                    </button> *@
-
-                                        <form style="display:inline" asp-action="Hapus" asp-route-id="@artefak.Id.Value">
-                                            <button type="submit" class="action-icon" data-toggle="modal" data-target="#basicModal2" title="Hapus">
-                                                <i class="mdi mdi-delete"></i>
-                                            </button>
-                                        </form>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = artefak.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             }
@@ -100,3 +117,16 @@
     </div>
     <!-- end row -->
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        const url = '@(Url.Action(nameof(ArtefakBudayaController.Komentar)))';
+
+        $(document).on('click', '[data-bs-target="#komentarModal"]', async function (e) {
+            const id = $(e.target).data('id');
+            const response = await fetch(url + '/' + id);
+
+            $('#komentarModal .modal-body').html(await response.text());
+        });
+    </script>
+}

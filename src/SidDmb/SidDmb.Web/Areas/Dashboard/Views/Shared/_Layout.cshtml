@@ -9,6 +9,7 @@
     <link href="~/css/vendor/responsive.bootstrap5.css" rel="stylesheet" type="text/css">
     <link href="~/css/vendor/buttons.bootstrap5.css" rel="stylesheet" type="text/css">
     <link href="~/css/vendor/select.bootstrap5.css" rel="stylesheet" type="text/css">
+    <link href="~/lib//bootstrap/dist/css/bootstrap.min.css" type="text/css"/>
     <!-- third party css end -->
     <!-- App css -->
     <link href="~/css/icons.min.css" rel="stylesheet" type="text/css">
@@ -35,6 +36,9 @@
         <partial name="_ModalPartial" />
     </div>
     <partial name="_RightsidebarPartial" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- bundle -->
     <script src="~/js/vendor.min.js"></script>
@@ -66,7 +70,7 @@
         let currentDeleteUrl = '';
 
         // Ketika tombol Hapus di tabel diklik
-        $(document).on('click', '[data-target="#basicModal2"]', function () {
+        $(document).on('click', '[data-bs-target="#basicModal2"]', function () {
             // Ambil URL penghapusan dari data-url tombol
             currentDeleteUrl = $(this).data('url');
             $('#formModalHapus').attr('action', currentDeleteUrl);
