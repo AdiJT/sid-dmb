@@ -131,6 +131,24 @@ button {
         background-color: var(--primary-color-dark);
     }
 
+.btn-komentar {
+    font-family: "Lexend", sans-serif;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: .95rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    cursor: pointer;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+    .btn-komentar:hover {
+        color: #654a48;
+    }
+
+
 img {
     width: 100%;
     display: flex;
@@ -210,3 +228,51 @@ input, select, textarea {
         outline: none;
         border-bottom: 2px solid #007bff;
     }
+
+
+/*======================== Komentar ========================*/
+.komentar__container {
+    padding: 1rem 0rem 2rem 1rem;
+}
+
+.grup_judul_tambah_komentar {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .grup_judul_tambah_komentar h4 {
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+.kumpulan_komentar {
+    margin-top: 15px;
+}       
+
+.card_komentar {
+    padding: 10px 0px;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+    .card_komentar h3 {
+        font-size: 18px;
+    }
+
+    .card_komentar h6 {
+        font-size: 15px;
+    }
+
+    .card_komentar .rating_text {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+.rating_tanggal_komentar {
+    display: flex;
+    justify-content: space-between;
+}
