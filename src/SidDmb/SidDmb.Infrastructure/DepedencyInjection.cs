@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using SidDmb.Domain.Abstracts;
 using SidDmb.Domain.Authentication;
 using SidDmb.Domain.CollaborationFunction;
@@ -36,6 +37,7 @@ using SidDmb.Infrastructure.CollaborationFunction.ModulProdukDanInventory.Manaje
 using SidDmb.Infrastructure.CollaborationFunction.ModulProdukDanInventory.SertifikasiDanLegalitas;
 using SidDmb.Infrastructure.CollaborationFunction.ModulResearchAndDevelopment.ManajemenDataRiset;
 using SidDmb.Infrastructure.CollaborationFunction.ModulResearchAndDevelopment.RekomendasiDanPengembanganProduk;
+using SidDmb.Infrastructure.Configurations;
 using SidDmb.Infrastructure.Database;
 using SidDmb.Infrastructure.MasterDataFunction.ModulBudaya;
 using SidDmb.Infrastructure.MasterDataFunction.ModulBudaya.ArtefakBudayas;
@@ -49,6 +51,7 @@ using SidDmb.Infrastructure.MasterDataFunction.ModulPrima.KelompokPrimas;
 using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.DestinasiWisatas;
 using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.KalenderAcaras;
 using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.LaporanKunjungans;
+using SidDmb.Infrastructure.Services.FileUpload;
 
 namespace SidDmb.Infrastructure;
 
@@ -86,6 +89,12 @@ public static class DepedencyInjection
         services.AddScoped<IRepositoriSertifikasi, RepositoriSertifikasi>();
         services.AddScoped<IRepositoriDataRiset, RepositoriDataRiset>();
         services.AddScoped<IRepositoriRekomendasi, RepositoriRekomendasi>();
+
+        services.Configure<FileConfigurationOptions>(configuration.GetSection(FileConfigurationOptions.FileConfiguration));
+
+        services.AddScoped(sp => sp.GetRequiredService<IOptionsSnapshot<FileConfigurationOptions>>().Value);
+
+        services.AddScoped<IFileService, FileService>();
 
         return services;
     }
