@@ -30,7 +30,9 @@
                     </main>
                 </div>                
             </div>
-        </div>        
+        </div> 
+        
+        <partial name="_ModalPartial" />
     </div>
     <partial name="_RightsidebarPartial" />
 
@@ -59,6 +61,18 @@
     <script src="assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script> *@
     <!-- third party js ends -->
+
+    <script>
+        let currentDeleteUrl = '';
+
+        // Ketika tombol Hapus di tabel diklik
+        $(document).on('click', '[data-target="#basicModal2"]', function () {
+            // Ambil URL penghapusan dari data-url tombol
+            currentDeleteUrl = $(this).data('url');
+            $('#formModalHapus').attr('action', currentDeleteUrl);
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

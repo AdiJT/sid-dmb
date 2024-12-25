@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SidDmb.Domain.Authentication;
 using SidDmb.Web.Areas.Dashboard.Models.HomeModels;
 using SidDmb.Web.Authentication;
 
 namespace SidDmb.Web.Areas.Dashboard.Controllers;
 
 [Area("Dashboard")]
+[Authorize(Roles = UserRoles.ADMIN)]
 public class HomeController : Controller
 {
     private readonly ISignInManager _signInManager;
@@ -20,6 +23,7 @@ public class HomeController : Controller
     }
 
     [Route("[controller]/[action]")]
+    [AllowAnonymous]
     public IActionResult Login(string? returnUrl = null)
     {
         return View(new LoginVM
@@ -30,6 +34,7 @@ public class HomeController : Controller
 
     [HttpPost]
     [Route("[controller]/[action]")]
+    [AllowAnonymous]
     public async Task<IActionResult> Login(LoginVM vm)
     {
         if (!ModelState.IsValid)

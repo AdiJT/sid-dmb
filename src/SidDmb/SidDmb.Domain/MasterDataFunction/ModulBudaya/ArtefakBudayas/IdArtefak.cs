@@ -37,7 +37,7 @@ public class IdArtefak : ValueObject, IEquatable<IdArtefak>
             .Order()
             .LastOrDefault() + 1;
 
-        return new($"AC{newId:D3}");
+        return new($"AR{newId:D3}");
     }
 
     public override bool Equals(object? obj) => base.Equals(obj);

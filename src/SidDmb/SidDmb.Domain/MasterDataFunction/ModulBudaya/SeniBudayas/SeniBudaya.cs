@@ -19,7 +19,7 @@ public class SeniBudaya : Entity<IdSeni>, IAuditableEntity
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
-    public double Rating => DaftarKomentar.Average(k => k.Rating);
+    public double Rating => DaftarKomentar.Count > 0 ? DaftarKomentar.Average(k => k.Rating) : 0;
 
     public List<Komentar> DaftarKomentar { get; set; } = [];
 }

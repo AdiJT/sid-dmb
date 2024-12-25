@@ -1,0 +1,102 @@
+﻿@model List<ArtefakBudaya>
+
+@{
+    ViewData["Title"] = "Artefak Budaya";
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Budaya</a></li>
+                        <li class="breadcrumb-item active">Artefak Budaya</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Artefak Budaya</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Artefak Budaya</h4>
+                    <div class="pb-3 pt-1">
+                        <a asp-area="Dashboard" asp-controller="ArtefakBudaya" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
+                    </div>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Artefak</th>
+                                <th>Nama Artefak</th>
+                                <th>Deskripsi Artefak</th>
+                                <th>Kategori Artefak</th>
+                                <th>Lokasi Penyimpanan</th>
+                                <th>Kondisi Artefak</th>
+                                <th>Usia Artefak</th>
+                                <th>Bahan Artefak</th>
+                                <th>Dimensi Artefak</th>
+                                <th>Pemilik/Pengelola</th>
+                                <th>Nilai Historis</th>
+                                <th>Foto/Gambar Artefak</th>
+                                <th>Ketersediaan untuk Pameran</th>
+                                <th>Rating dari Pengunjung</th>
+                                <th>Komentar Pengunjung</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var artefak in Model)
+                            {
+                                <tr>
+                                    <td>@artefak.Id.Value</td>
+                                    <td>@artefak.Nama</td>
+                                    <td>@artefak.Dekripsi</td>
+                                    <td>@artefak.Kategori.Humanize()</td>
+                                    <td>@artefak.LokasiPenyimpanan</td>
+                                    <td>@artefak.Kondisi.Humanize()</td>
+                                    <td>@artefak.Usia</td>
+                                    <td>@artefak.Bahan</td>
+                                    <td>@artefak.Dimensi</td>
+                                    <td>@artefak.Pengelola</td>
+                                    <td>@artefak.NilaiHistoris</td>
+                                    <td>
+                                        <a href="@artefak.Foto.ToString()">@artefak.Foto.ToString()</a>
+                                    </td>
+                                    <td>@artefak.Ketersediaan.Humanize()</td>
+                                    <td>@artefak.Rating</td>
+                                    <td>@string.Join("|", artefak.DaftarKomentar)</td>
+                                    <td>@artefak.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@artefak.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="ArtefakBudaya" asp-action="Edit" asp-route-id="@artefak.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        @* <button type="button" class="action-icon" data-toggle="modal" data-target="#basicModal2"
+                                    data-url="@Url.Action("Hapus", new { id = artefak.Id.Value })"
+                                    title="Hapus">
+                                    <i class="mdi mdi-delete"></i>
+                                    </button> *@
+
+                                        <form style="display:inline" asp-action="Hapus" asp-route-id="@artefak.Id.Value">
+                                            <button type="submit" class="action-icon" data-toggle="modal" data-target="#basicModal2" title="Hapus">
+                                                <i class="mdi mdi-delete"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
