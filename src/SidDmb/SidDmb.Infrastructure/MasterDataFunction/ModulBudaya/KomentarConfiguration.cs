@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.ArtefakBudayas;
+using SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas;
 
 namespace SidDmb.Infrastructure.MasterDataFunction.ModulBudaya;
 
@@ -136,6 +137,126 @@ internal class KomentarConfiguration : IEntityTypeConfiguration<Komentar>
                 Isi = "Prasasti ini adalah salah satu peninggalan budaya paling menarik di wilayah ini.",
                 Rating = 4.8d,
                 ArtefakBudayaId = IdArtefak.Create("AR005").Value,
+            },
+            new
+            {
+                Id = 16,
+                Nama = "Siti Aisyah",
+                Isi = "Tari Angguk sangat memukau dengan energinya yang menghidupkan suasana. Saya berharap dapat melihatnya lagi.",
+                Rating = 4.9d,
+                SeniBudayaId = IdSeni.Create("SB001").Value
+            },
+            new
+            {
+                Id = 17,
+                Nama = "Joko Prasetyo",
+                Isi = "Tari Angguk sangat unik, gerakannya menggambarkan kebersamaan yang menyentuh hati.",
+                Rating = 4.8d,
+                SeniBudayaId = IdSeni.Create("SB001").Value
+            },
+            new
+            {
+                Id = 18,
+                Nama = "Rina Sari",
+                Isi = "Tari Angguk memberikan nuansa kebudayaan yang kental, sangat indah dan layak diapresiasi.",
+                Rating = 4.7d,
+                SeniBudayaId = IdSeni.Create("SB001").Value
+            },
+            new
+            {
+                Id = 19,
+                Nama = "Agus Prabowo",
+                Isi = "Tari Bedhaya memberikan suasana yang damai dan khidmat, cocok untuk momen upacara besar.",
+                Rating = 5.0d,
+                SeniBudayaId = IdSeni.Create("SB002").Value
+            },
+            new
+            {
+                Id = 20,
+                Nama = "Dewi Lestari",
+                Isi = "Tari Bedhaya menunjukkan keanggunan yang luar biasa, sangat membanggakan budaya Yogyakarta.",
+                Rating = 4.9d,
+                SeniBudayaId = IdSeni.Create("SB002").Value
+            },
+            new
+            {
+                Id = 21,
+                Nama = "Budi Santoso",
+                Isi = "Tari Bedhaya sangat elegan, setiap gerakan sangat terkoordinasi dengan baik, membuat saya terpesona.",
+                Rating = 4.8d,
+                SeniBudayaId = IdSeni.Create("SB002").Value
+            },
+            new
+            {
+                Id = 22,
+                Nama = "Maya Widya",
+                Isi = "Tari Dolalak sangat menghibur dan penuh semangat. Tariannya sangat energik dan membangkitkan semangat juang.",
+                Rating = 4.7d,
+                SeniBudayaId = IdSeni.Create("SB003").Value
+            },
+            new
+            {
+                Id = 23,
+                Nama = "Rudi Setiawan",
+                Isi = "Tari Dolalak membawa energi yang luar biasa, sangat memotivasi dan memberikan kesan yang mendalam.",
+                Rating = 4.9d,
+                SeniBudayaId = IdSeni.Create("SB003").Value
+            },
+            new
+            {
+                Id = 24,
+                Nama = "Lina Susanti",
+                Isi = "Tari Dolalak penuh dengan dinamika dan semangat yang sangat menular. Pertunjukan yang luar biasa!",
+                Rating = 4.8d,
+                SeniBudayaId = IdSeni.Create("SB003").Value
+            },
+            new
+            {
+                Id = 25,
+                Nama = "Eko Yulianto",
+                Isi = "Tari Gambyong mempesona dengan gerakan yang lembut dan sangat anggun. Saya sangat menikmati setiap detiknya.",
+                Rating = 4.9d,
+                SeniBudayaId = IdSeni.Create("SB004").Value
+            },
+            new
+            {
+                Id = 26,
+                Nama = "Fanny Farida",
+                Isi = "Tari Gambyong sangat memukau dengan keselarasan antara musik dan gerakan penarinya.",
+                Rating = 4.8d,
+                SeniBudayaId = IdSeni.Create("SB004").Value
+            },
+            new
+            {
+                Id = 27,
+                Nama = "Rina Saraswati",
+                Isi = "Tari Gambyong menunjukkan kebudayaan yang kaya akan nilai estetika, sangat mengagumkan!",
+                Rating = 5.0d,
+                SeniBudayaId = IdSeni.Create("SB004").Value
+            },
+            new
+            {
+                Id = 28,
+                Nama = "Mita Anggraini",
+                Isi = "Tari Kuda Lumping membawa suasana yang seru dan penuh semangat, sangat menghibur penonton.",
+                Rating = 4.7d,
+                SeniBudayaId = IdSeni.Create("SB005").Value
+            },
+            new
+            {
+                Id = 29,
+                Nama = "Iwan Setiawan",
+                Isi = "Tari Kuda Lumping sangat seru dengan gerakan yang energik dan membawa nuansa magis.",
+                Rating = 4.8d,
+                SeniBudayaId = IdSeni.Create("SB005").Value
+            },
+            new
+            {
+                Id = 30,
+                Nama = "Siti Amalia",
+                Isi = "Tari Kuda Lumping memperlihatkan kekuatan dan keindahan gerakan yang sangat memikat.",
+                Rating = 4.9d,
+                SeniBudayaId = IdSeni.Create("SB005").Value
             }
         );
     }
