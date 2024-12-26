@@ -55,7 +55,7 @@ public class UpacaraBudayaController : Controller
             Nama = vm.Nama,
             PeraturanKhusus = vm.PeraturanKhusus,
             PihakTerlibat = vm.PihakTerlibat,
-            WaktuPelaksanaan = vm.WaktuPelaksanaan,
+            WaktuPelaksanaan = new DateTime(vm.WaktuPelaksanaan.Ticks, DateTimeKind.Unspecified)
         };
 
         _repositoriUpacaraBudaya.Add(upacaraBudaya);
@@ -65,6 +65,93 @@ public class UpacaraBudayaController : Controller
             ModelState.AddModelError(string.Empty, result.Error.Message);
             return View(vm);
         }
+
+        return RedirectToAction(nameof(Index));
+    }
+
+    public async Task<IActionResult> Edit(string id)
+    {
+        var resultId = IdUpacara.Create(id);
+        if (resultId.IsFailure) return NotFound();
+
+        var upacaraBudaya = await _repositoriUpacaraBudaya.Get(resultId.Value);
+        if (upacaraBudaya is null) return NotFound();
+
+        return View(new EditVM
+        {
+            Id = id,
+            Dekripsi = upacaraBudaya.Dekripsi,
+            Nama = upacaraBudaya.Nama,
+            RangkaianAcara = upacaraBudaya.RangkaianAcara,
+            Durasi = upacaraBudaya.Durasi,
+            FasilitasPendukung = upacaraBudaya.FasilitasPendukung,
+            JumlahPeserta = upacaraBudaya.JumlahPeserta,
+            Kategori = upacaraBudaya.Kategori,
+            LokasiPelaksanaan = upacaraBudaya.LokasiPelaksanaan,
+            PeraturanKhusus = upacaraBudaya.PeraturanKhusus,
+            PihakTerlibat = upacaraBudaya.PihakTerlibat,
+            WaktuPelaksanaan = upacaraBudaya.WaktuPelaksanaan,
+        });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit(EditVM vm)
+    {
+        var resultId = IdUpacara.Create(vm.Id);
+        if (resultId.IsFailure) return NotFound();
+
+        var upacaraBudaya = await _repositoriUpacaraBudaya.Get(resultId.Value);
+        if (upacaraBudaya is null) return NotFound();
+
+        if(vm.MediaPromosiBaru is not null)
+        {
+            var fileResult = await _fileService.UploadFile<EditVM>(vm.MediaPromosiBaru, "/upacara_budaya", [".jpg", ".png", ".jpeg"], 0, long.MaxValue);
+            if (fileResult.IsFailure)
+            {
+                ModelState.AddModelError(nameof(EditVM.MediaPromosiBaru), fileResult.Error.Message);
+                return View(vm);
+            }
+
+            upacaraBudaya.MediaPromosi = fileResult.Value;
+        }
+
+        upacaraBudaya.Dekripsi = vm.Dekripsi;
+        upacaraBudaya.Nama = vm.Nama;
+        upacaraBudaya.RangkaianAcara = vm.RangkaianAcara;
+        upacaraBudaya.Durasi = vm.Durasi;
+        upacaraBudaya.FasilitasPendukung = vm.FasilitasPendukung;
+        upacaraBudaya.JumlahPeserta = vm.JumlahPeserta;
+        upacaraBudaya.Kategori = vm.Kategori;
+        upacaraBudaya.LokasiPelaksanaan = vm.LokasiPelaksanaan;
+        upacaraBudaya.PeraturanKhusus = vm.PeraturanKhusus;
+        upacaraBudaya.PihakTerlibat = vm.PihakTerlibat;
+        upacaraBudaya.WaktuPelaksanaan = new DateTime(vm.WaktuPelaksanaan.Ticks, DateTimeKind.Unspecified);
+
+        _repositoriUpacaraBudaya.Update(upacaraBudaya);
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result.IsFailure)
+        {
+            ModelState.AddModelError(string.Empty, result.Error.Message);
+            return View(vm);
+        }
+
+        return RedirectToAction(nameof(Index));
+
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Hapus(string id)
+    {
+        var resultId = IdUpacara.Create(id);
+        if (resultId.IsFailure) return NotFound();
+
+        var upacaraBudaya = await _repositoriUpacaraBudaya.Get(resultId.Value);
+        if (upacaraBudaya is null) return NotFound();
+
+        _repositoriUpacaraBudaya.Delete(upacaraBudaya);
+
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result.IsFailure) return StatusCode(StatusCodes.Status500InternalServerError);
 
         return RedirectToAction(nameof(Index));
     }
