@@ -4,9 +4,9 @@
 }
 
 .atraksi_container {
-    padding: 1rem 1rem;
+    padding: 1rem 1rem 0rem;
     display: flex;
-    gap: 40px;
+    gap: 20px;
 }
 
 p {
