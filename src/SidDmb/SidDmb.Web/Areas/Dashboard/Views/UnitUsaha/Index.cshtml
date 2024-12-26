@@ -1,4 +1,10 @@
-﻿<div class="container-fluid">
+﻿@model List<UnitUsaha>
+
+@{
+    ViewData["Title"] = "Unit Usaha";
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -21,7 +27,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Daftar Unit Usaha</h4>
                     <div class="pb-3 pt-1">
-                        <a asp-area="Dashboard" asp-controller="Preneur" asp-action="TambahUnitUsaha" class="btn btn-primary">+ Tambah</a>
+                        <a asp-area="Dashboard" asp-controller="UnitUsaha" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
                     </div>
                     <table id="alternative-page-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -46,50 +52,36 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>UU001</td>
-                                <td>Batik Gilang Sejahtera</td>
-                                <td>Unit usaha yang memproduksi batik tulis dengan motif khas Gilangharjo.</td>
-                                <td>Produksi</td>
-                                <td>Jl. Raya Gilang No. 15, Bantul</td>
-                                <td>-7.917, 110.329</td>
-                                <td>Ibu Siti Aisyah</td>
-                                <td>10</td>
-                                <td>Batik Tulis, Batik Cap</td>
-                                <td>Memiliki Izin</td>
-                                <td>2015-07-15</td>
-                                <td>+62 812-3456-7890</td>
-                                <td>poster_batik.jpg</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Preneur" asp-action="EditUnitUsaha" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>UU001</td>
-                                <td>Batik Gilang Sejahtera</td>
-                                <td>Unit usaha yang memproduksi batik tulis dengan motif khas Gilangharjo.</td>
-                                <td>Produksi</td>
-                                <td>Jl. Raya Gilang No. 15, Bantul</td>
-                                <td>-7.917, 110.329</td>
-                                <td>Ibu Siti Aisyah</td>
-                                <td>10</td>
-                                <td>Batik Tulis, Batik Cap</td>
-                                <td>Memiliki Izin</td>
-                                <td>2015-07-15</td>
-                                <td>+62 812-3456-7890</td>
-                                <td>poster_batik.jpg</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Preneur" asp-action="EditUnitUsaha" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach (var unitUsaha in Model)
+                            {
+                                <tr>
+                                    <td>@unitUsaha.Id.Value</td>
+                                    <td>@unitUsaha.Nama</td>
+                                    <td>@unitUsaha.Dekripsi</td>
+                                    <td>@unitUsaha.Kategori.Humanize()</td>
+                                    <td>@unitUsaha.Alamat</td>
+                                    <td>@unitUsaha.TitikKoordinat.Y.ToString("F3"), @unitUsaha.TitikKoordinat.X.ToString("F3")</td>
+                                    <td>@unitUsaha.PemilikUsaha</td>
+                                    <td>@unitUsaha.JumlahKaryawan</td>
+                                    <td>@string.Join(", ", unitUsaha.DaftarProduk.Select(p => p.Nama))</td>
+                                    <td>@unitUsaha.Legalitas.Humanize()</td>
+                                    <td>@unitUsaha.TanggalBerdiri.ToString("yyyy-MM-dd")</td>
+                                    <td>@unitUsaha.KontakInformasi</td>
+                                    <td>
+                                        <a href="@unitUsaha.MediaPromosi">@unitUsaha.MediaPromosi</a>
+                                    </td>
+                                    <td>@unitUsaha.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@unitUsaha.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="UnitUsaha" asp-action="Edit" asp-route-id="@unitUsaha.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = unitUsaha.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

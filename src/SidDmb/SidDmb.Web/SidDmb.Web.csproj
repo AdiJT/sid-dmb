@@ -25,8 +25,4 @@
     <ProjectReference Include="..\SidDmb.Infrastructure\SidDmb.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Dashboard\MasterDataFunction\ModulPreneur\UnitUsahas\" />
-  </ItemGroup>
-
 </Project>
