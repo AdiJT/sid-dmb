@@ -5,11 +5,10 @@
 }
 
 <style>
-    body {
-        /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url("assets/home-header.png");
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat; */
+    .button_login {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: center !important;
     }
 </style>
 
@@ -63,8 +62,7 @@
                                     <span class="text-danger" asp-validation-for="@Model.UserName"></span>
                                 </div>
 
-                                <div class="mb-3">
-                                    @* <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a> *@
+                                <div class="mb-3">                        
                                     <label asp-for="@Model.Password" class="form-label">Password</label>
                                     <div class="input-group input-group-merge">
                                         <input asp-for="@Model.Password" type="password" class="form-control" required="" placeholder="Enter your password">
@@ -86,7 +84,7 @@
                                 <input asp-for="@Model.ReturnUrl" readonly hidden />
 
                                 <div class="mb-3 mb-0 text-center">
-                                    <button class="btn btn-primary" type="submit"> Log In </button>
+                                    <button class="btn btn-primary button_login" type="submit"> Log In </button>
                                 </div>
 
                             </form>
@@ -112,33 +110,6 @@
 
 </body>
 </html>
-
-
-@* <form asp-action="@nameof(HomeController.Login)">
-    <div asp-validation-summary="ModelOnly"></div>
-
-    <div>
-        <label asp-for="@Model.UserName"></label>
-        <input asp-for="@Model.UserName" />
-        <span asp-validation-for="@Model.UserName"></span>
-    </div>
-
-    <div>
-        <label asp-for="@Model.Password"></label>
-        <input asp-for="@Model.Password" type="password" />
-        <span asp-validation-for="@Model.Password"></span>
-    </div>
-
-    <div>
-        <input asp-for="@Model.RememberMe" type="checkbox" />
-        <label asp-for="@Model.RememberMe"></label>
-        <span asp-validation-for="@Model.RememberMe"></span>
-    </div>
-
-    <input asp-for="@Model.ReturnUrl" readonly hidden />
-
-    <button type="submit">Login</button>
-</form> *@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
