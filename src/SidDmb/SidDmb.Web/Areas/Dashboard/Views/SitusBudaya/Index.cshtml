@@ -1,0 +1,134 @@
+﻿@model List<SitusBudaya>
+
+@{
+    ViewData["Title"] = "Situs Budaya";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<!-- Modal -->
+<div class="modal fade" id="komentarModal" tabindex="-1" aria-labelledby="komentarModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="komentarModal">Daftar Komentar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Budaya</a></li>
+                        <li class="breadcrumb-item active">Situs Budaya</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Situs Budaya</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Situs Budaya</h4>
+                    <div class="pb-3 pt-1">
+                        <a asp-area="Dashboard" asp-controller="SitusBudaya" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
+                    </div>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Situs</th>
+                                <th>Nama Situs</th>
+                                <th>Deskripsi</th>
+                                <th>Kategori Situs</th>
+                                <th>Alamat/Lokasi</th>
+                                <th>Koordinat Lokasi</th>
+                                <th>Fasilitas</th>
+                                <th>Harga Tiket Masuk</th>
+                                <th>Jam Operasional</th>
+                                <th>Kontak Informasi</th>
+                                <th>Foto/Gambar Situs</th>
+                                <th>Pengelola Situs</th>
+                                <th>Status Operasional</th>
+                                <th>Peraturan Khusus</th>
+                                <th>Rating dari Pengunjung</th>
+                                <th>Komentar Pengunjung</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var situs in Model)
+                            {
+                                <tr>
+                                    <td>@situs.Id.Value</td>
+                                    <td>@situs.Nama</td>
+                                    <td>@situs.Dekripsi</td>
+                                    <td>@situs.Kategori.Humanize()</td>
+                                    <td>@situs.Alamat</td>
+                                    <td>@situs.KoordinatLokasi.Y.ToString("F3") @situs.KoordinatLokasi.X.ToString("F3")</td>
+                                    <td>@string.Join(", ", situs.DaftarFasilitas)</td>
+                                    <td>@situs.HargaTiketMasuk.ToString("C2", cultureInfo)</td>
+                                    <td>@situs.JamOperasional</td>
+                                    <td>@situs.KontakInformasi</td>
+                                    <td>
+                                        <a href="@situs.FotoPromosi.ToString()">@situs.FotoPromosi.ToString()</a>
+                                    </td>
+                                    <td>@situs.PengelolaSitus</td>
+                                    <td>@situs.Status.Humanize()</td>
+                                    <td>@situs.PeraturanKhusus</td>
+                                    <td>@situs.Rating.ToString("F1")</td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary btn-komentar" data-id="@situs.Id.Value" data-bs-toggle="modal" data-bs-target="#komentarModal">
+                                            Lihat Daftar Komentar
+                                        </button>
+                                    </td>
+                                    <td>@situs.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@situs.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td>
+                                        <a asp-area="Dashboard" asp-controller="SitusBudaya" asp-action="Edit" asp-route-id="@situs.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = situs.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        const url = '@(Url.Action(nameof(SitusBudayaController.Komentar)))';
+
+        $(document).on('click', '[data-bs-target="#komentarModal"]', async function (e) {
+            const id = $(e.target).data('id');
+            const response = await fetch(url + '/' + id);
+
+            $('#komentarModal .modal-body').html(await response.text());
+        });
+    </script>
+}

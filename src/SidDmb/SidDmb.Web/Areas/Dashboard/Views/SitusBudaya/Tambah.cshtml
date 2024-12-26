@@ -1,0 +1,251 @@
+﻿@using SidDmb.Domain.MasterDataFunction.ModulWisata.DestinasiWisatas
+@model TambahVM
+
+@{
+    ViewData["Title"] = "Situs Budaya | Tambah";
+}
+
+<!-- Modal -->
+<div class="modal fade" id="fasilitasModal" tabindex="-1" aria-labelledby="fasilitasModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="komentarModal">Daftar Komentar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#">
+                <div class="modal-body">
+                    <label for="namaFasilitas" class="form-label">Nama Fasilitas<span class="text-danger">*</span></label>
+                    <input name="namaFasilitas" required id="namaFasilitas" class="form-control" type="text" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="tambahFasilitas" class="btn btn-secondary" data-bs-dismiss="modal">Tambah</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Budaya</a></li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="Budaya" asp-action="SitusBudaya">Situs Budaya</a></li>
+                        <li class="breadcrumb-item active">Tambah</li>
+                    </ol>
+                </div>
+                @* <h4 class="page-title">Tambah</h4> *@
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Tambah Situs Budaya</h4>
+                    <form asp-action="@nameof(SitusBudayaController.Tambah)" enctype="multipart/form-data">
+                        <div class="row">
+                            <div asp-validation-summary="All" class="form-text text-danger"></div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Nama" class="form-label">Nama Situs<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.Nama" class="form-control">
+                                    <span asp-validation-for="@Model.Nama" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Dekripsi" class="form-label">Deskripsi Situs<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.Dekripsi" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.Dekripsi" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="@Model.Kategori">Kategori Situs<span class="text-danger">*</span></label>
+                                    <select class="form-control select2" data-toggle="select2" asp-for="@Model.Kategori">
+                                        @foreach (var kategori in Enum.GetValues<KategoriSitus>())
+                                        {
+                                            <option value="@kategori">@kategori.Humanize()</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.Kategori" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Alamat" class="form-label">Alamat/Lokasi<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.Alamat" rows="3"></textarea>
+                                    <span asp-validation-for="@Model.Alamat" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3 row">
+                                    <label asp-for="@Model.Lng" class="form-label">Koordinat Lokasi (Lng, Lat)<span class="text-danger">*</span></label>
+                                    <div class="col-md-6">
+                                        <label asp-for="@Model.Lng" class="form-label"></label>
+                                        <input type="text" asp-for="@Model.Lng" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label asp-for="@Model.Lat" class="form-label"></label>
+                                        <input type="text" asp-for="@Model.Lat" class="form-control">
+                                    </div>
+                                    <span asp-validation-for="@Model.Lng" class="form-text text-danger"></span>
+                                    <span asp-validation-for="@Model.Lat" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.DaftarFasilitas" class="form-label">Fasilitas<span class="text-danger">*</span></label>
+                                    <select asp-for="@Model.DaftarFasilitas" id="fasilitas" class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                        @foreach (var fasilitas in Model.DaftarFasilitas)
+                                        {
+                                            <option value="@fasilitas" selected>@fasilitas</option>
+                                        }
+                                    </select>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#fasilitasModal">Tambah</button>
+                                    <span asp-validation-for="@Model.DaftarFasilitas" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.PengelolaSitus" class="form-label">Pengelola Situs<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.PengelolaSitus" class="form-control">
+                                    <span asp-validation-for="@Model.PengelolaSitus" class="form-text text-danger"></span>
+                                </div>
+
+                                @* <p class="mb-1 fw-bold text-muted">Single Select</p>
+
+                                <select class="form-control select2" data-toggle="select2">
+                                <option>Select</option>
+                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                <option value="AK">Alaska</option>
+                                <option value="HI">Hawaii</option>
+                                </optgroup>
+                                <optgroup label="Pacific Time Zone">
+                                <option value="CA">California</option>
+                                <option value="NV">Nevada</option>
+                                <option value="OR">Oregon</option>
+                                <option value="WA">Washington</option>
+                                </optgroup>
+                                <optgroup label="Mountain Time Zone">
+                                <option value="AZ">Arizona</option>
+                                <option value="CO">Colorado</option>
+                                <option value="ID">Idaho</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="UT">Utah</option>
+                                <option value="WY">Wyoming</option>
+                                </optgroup>
+                                </select> *@
+                            </div> <!-- end col -->
+
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <label class="form-label" asp-for="@Model.Status">Status Operasional<span class="text-danger">*</span></label>
+                                    <select class="form-control select2" data-toggle="select2" asp-for="@Model.Status">
+                                        @foreach(var status in Enum.GetValues<StatusOperasional>())
+                                        {
+                                            <option value="@status">@status.Humanize()</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.Status" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.JamOperasional" class="form-label">Jam Operasional<span class="text-danger">*</span></label>
+                                    <input type="text" asp-for="@Model.JamOperasional" class="form-control">
+                                    <span asp-validation-for="@Model.JamOperasional" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.HargaTiketMasuk" class="form-label">Harga Tiket Masuk (Rp.)<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.HargaTiketMasuk" type="text" class="form-control">
+                                    <span asp-validation-for="@Model.HargaTiketMasuk" class="form-text text-danger"></span>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.PeraturanKhusus" class="form-label">Peraturan Khusus<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.PeraturanKhusus" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.PeraturanKhusus" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.KontakInformasi" class="form-label">Kontak Informasi<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.KontakInformasi" type="text" class="form-control">
+                                    <span asp-validation-for="@Model.KontakInformasi" class="form-text text-danger"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label asp-for="@Model.FotoPromosi" class="form-label">Foto/Gambar Situs<span class="text-danger">*</span></label>
+                                    <input type="file" asp-for="@Model.FotoPromosi" class="form-control">
+                                    <span asp-validation-for="@Model.FotoPromosi" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
+                                    <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Situs</button>
+                                    <button type="reset" class="btn btn-danger">Batal</button>
+                                </div>
+
+                                @* <p class="mb-1 fw-bold text-muted">Multiple Select</p>
+
+                                <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                <option value="AK">Alaska</option>
+                                <option value="HI">Hawaii</option>
+                                </optgroup>
+                                <optgroup label="Pacific Time Zone">
+                                <option value="CA">California</option>
+                                <option value="NV">Nevada</option>
+                                <option value="OR">Oregon</option>
+                                <option value="WA">Washington</option>
+                                </optgroup>
+                                <optgroup label="Mountain Time Zone">
+                                <option value="AZ">Arizona</option>
+                                <option value="CO">Colorado</option>
+                                <option value="ID">Idaho</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="UT">Utah</option>
+                                <option value="WY">Wyoming</option>
+                                </optgroup>
+                                </select> *@
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+                    </form>
+
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col-->
+    </div>
+    <!-- end row-->
+
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script type="text/javascript">
+        const selectFasilitas = $('select#fasilitas');
+        const modalFasilitas = $('#fasilitasModal');
+        const formTambahFasilitas = $('#fasilitasModal form');
+        const inputNamaFasilitas = $('#fasilitasModal form #namaFasilitas');
+
+        $(formTambahFasilitas).on('submit', (e) => {
+            e.preventDefault();
+
+            const namaFasilitasBaru = $(inputNamaFasilitas).val();
+
+            if (selectFasilitas.children("option").toArray().some(x => x.value == namaFasilitasBaru))
+                return;
+
+            selectFasilitas.append(`<option value="${namaFasilitasBaru}" selected>${namaFasilitasBaru}</option>`);
+        });
+    </script>
+}
