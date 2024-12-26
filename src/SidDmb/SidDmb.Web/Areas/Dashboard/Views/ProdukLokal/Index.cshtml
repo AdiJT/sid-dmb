@@ -1,0 +1,92 @@
+﻿@model List<ProdukLokal>
+
+@{
+    ViewData["Title"] = "Produk Lokal";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Preneur</a></li>
+                        <li class="breadcrumb-item active">Produk Lokal</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Produk Lokal</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Produk Lokal</h4>
+                    <div class="pb-3 pt-1">
+                        <a asp-area="Dashboard" asp-controller="ProdukLokal" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
+                    </div>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Produk</th>
+                                <th>Nama Produk</th>
+                                <th>Deskripsi Produk</th>
+                                <th>Kategori Produk</th>
+                                <th>Harga Produk</th>
+                                <th>Unit Usaha Terkait</th>
+                                <th>Bahan Utama</th>
+                                <th>Status Ketersediaan</th>
+                                <th>Tanggal Produksi Terkahir</th>
+                                <th>Tanggal Kadaluarsa</th>
+                                <th>Legalitas & Sertifikasi</th>
+                                <th>Kontak Informasi</th>
+                                <th>Media Promosi</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var produkLokal in Model)
+                            {
+                                <tr>
+                                    <td>@produkLokal.Id.Value</td>
+                                    <td>@produkLokal.Nama</td>
+                                    <td>@produkLokal.Dekripsi</td>
+                                    <td>@produkLokal.Kategori.Humanize()</td>
+                                    <td>@produkLokal.Harga.ToString("C2", cultureInfo)</td>
+                                    <td>@produkLokal.UnitUsaha.Nama</td>
+                                    <td>@produkLokal.BahanUtama</td>
+                                    <td>@produkLokal.StatusKetersediaan.Humanize()</td>
+                                    <td>@produkLokal.TanggalProduksiTerakhir.ToString("yyyy-MM-dd")</td>
+                                    <td>@produkLokal.TanggalKadaluarsa.ToString("yyyy-MM-dd")</td>
+                                    <td>@produkLokal.LegalitasDanSertifikat</td>
+                                    <td>@produkLokal.KontakInformasi</td>
+                                    <td>
+                                        <a href="@produkLokal.MediaPromosi">@produkLokal.MediaPromosi</a>
+                                    </td>
+                                    <td>@produkLokal.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@produkLokal.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="ProdukLokal" asp-action="Edit" asp-route-id="@produkLokal.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = produkLokal.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
