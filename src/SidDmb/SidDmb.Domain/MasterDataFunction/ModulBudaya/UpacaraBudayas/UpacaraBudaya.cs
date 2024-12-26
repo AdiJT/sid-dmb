@@ -12,7 +12,7 @@ public class UpacaraBudaya : Entity<IdUpacara>, IAuditableEntity
     public required TimeSpan Durasi { get; set; }
     public required string PihakTerlibat { get; set; }
     public required string RangkaianAcara { get; set; }
-    public required int JumlahUpacara { get; set; }
+    public required int JumlahPeserta { get; set; }
     public required Uri MediaPromosi { get; set; }
     public required string PeraturanKhusus { get; set; }
     public required string[] FasilitasPendukung { get; set; }

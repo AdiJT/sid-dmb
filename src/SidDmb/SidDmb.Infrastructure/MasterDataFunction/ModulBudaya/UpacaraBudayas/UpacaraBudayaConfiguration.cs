@@ -26,7 +26,7 @@ internal class UpacaraBudayaConfiguration : IEntityTypeConfiguration<UpacaraBuda
                 Durasi = TimeSpan.FromHours(2),
                 PihakTerlibat = "Masyarakat lokal, Dinas Kebudayaan Yogyakarta, Pekerja Seni",
                 RangkaianAcara = "Pembukaan, prosesi labuhan, doa bersama, penutupan.",
-                JumlahUpacara = 200,
+                JumlahPeserta = 200,
                 FasilitasPendukung = [
                     "Panggung Utama",
                     "Tempat Duduk Penonton",
@@ -46,7 +46,7 @@ internal class UpacaraBudayaConfiguration : IEntityTypeConfiguration<UpacaraBuda
                 Durasi = TimeSpan.FromHours(3),
                 PihakTerlibat = "Masyarakat sekitar, Pemerintah Daerah, Dinas Kebudayaan Yogyakarta",
                 RangkaianAcara = "Doa bersama, persembahan sesaji, parade budaya.",
-                JumlahUpacara = 150,
+                JumlahPeserta = 150,
                 FasilitasPendukung = [
                     "Tempat Parkir",
                     "Panggung Budaya",
@@ -66,7 +66,7 @@ internal class UpacaraBudayaConfiguration : IEntityTypeConfiguration<UpacaraBuda
                 Durasi = TimeSpan.FromHours(3),
                 PihakTerlibat = "Pemerintah Daerah, Masyarakat Pesisir, Budayawan",
                 RangkaianAcara = "Prosesi Labuhan, doa keselamatan, pelarungan sesaji.",
-                JumlahUpacara = 250,
+                JumlahPeserta = 250,
                 FasilitasPendukung = [
                     "Tempat Ibadah",
                     "Area Parkir",
@@ -86,7 +86,7 @@ internal class UpacaraBudayaConfiguration : IEntityTypeConfiguration<UpacaraBuda
                 Durasi = TimeSpan.FromHours(4),
                 PihakTerlibat = "Masyarakat Gunungkidul, Dinas Pariwisata, Budayawan",
                 RangkaianAcara = "Doa bersama, pelarungan sesaji ke laut, tarian budaya.",
-                JumlahUpacara = 300,
+                JumlahPeserta = 300,
                 FasilitasPendukung = [
                     "Tempat Ibadah",
                     "Area Panggung",
@@ -106,7 +106,7 @@ internal class UpacaraBudayaConfiguration : IEntityTypeConfiguration<UpacaraBuda
                 Durasi = TimeSpan.FromHours(5),
                 PihakTerlibat = "Pemerintah Daerah Sleman, Masyarakat Sleman, Pengusaha Lokal",
                 RangkaianAcara = "Pawai budaya, pertunjukan seni, pasar rakyat.",
-                JumlahUpacara = 400,
+                JumlahPeserta = 400,
                 FasilitasPendukung = [
                     "Tempat Duduk Penonton",
                     "Area Stand Makanan",

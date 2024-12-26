@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -12,9 +13,11 @@ using SidDmb.Infrastructure.Database;
 namespace SidDmb.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241226080216_UbahNamaKolomDiUpacaraBudaya")]
+    partial class UbahNamaKolomDiUpacaraBudaya
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2060,26 +2063,6 @@ namespace SidDmb.Infrastructure.Migrations
                     b.HasIndex("UnitUsahaId");
 
                     b.ToTable("ProdukLokal");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "PL001",
-                            BahanUtama = "Katun, Pewarna Alami",
-                            Dekripsi = "Batik tulis berbahan katun dengan motif khas Desa Gilangharjo.",
-                            Harga = 150000.0,
-                            Kategori = 0,
-                            KontakInformasi = "+62 812-3456-7890",
-                            LegalitasDanSertifikat = "PIRT 12345/2024, Halal MUI",
-                            MediaPromosi = "/assets/produklokal2-test.png",
-                            Nama = "Batik Tulis Motif Gilang",
-                            StatusKetersediaan = 0,
-                            TanggalDiinputkan = new DateTime(2024, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TanggalKadaluarsa = new DateTime(2025, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TanggalPembaruanData = new DateTime(2024, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TanggalProduksiTerakhir = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UnitUsahaId = "UU001"
-                        });
                 });
 
             modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulPreneur.UnitUsahas.UnitUsaha", b =>
@@ -2136,25 +2119,6 @@ namespace SidDmb.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UnitUsaha");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "UU001",
-                            Alamat = "Jl. Raya Gilang No. 15, Bantul",
-                            Dekripsi = "Unit usaha yang memproduksi batik tulis dengan motif khas Gilangharjo.",
-                            JumlahKaryawan = 10,
-                            Kategori = 0,
-                            KontakInformasi = "+62 812-3456-7890",
-                            Legalitas = 0,
-                            MediaPromosi = "/assets/produklokal-test.png",
-                            Nama = "Batik Gilang Sejahtera",
-                            PemilikUsaha = "Ibu Siti Aisyah",
-                            TanggalBerdiri = new DateOnly(2015, 7, 15),
-                            TanggalDiinputkan = new DateTime(2024, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TanggalPembaruanData = new DateTime(2024, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            TitikKoordinat = (NetTopologySuite.Geometries.Point)new NetTopologySuite.IO.WKTReader().Read("SRID=0;POINT (110.329 -7.917)")
-                        });
                 });
 
             modelBuilder.Entity("SidDmb.Domain.MasterDataFunction.ModulPrima.KegiatanPrimas.KegiatanPrima", b =>

@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿@model List<UpacaraBudaya>
+
+@{
+    ViewData["Title"] = "Upacara Budaya";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -22,7 +29,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Daftar Upacara Budaya</h4>
                     <div class="pb-3 pt-1">
-                        <a asp-area="Dashboard" asp-controller="Budaya" asp-action="TambahUpacaraBudaya" class="btn btn-primary">+ Tambah</a>
+                        <a asp-area="Dashboard" asp-controller="UpacaraBudaya" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
                     </div>
                     <table id="alternative-page-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -48,56 +55,44 @@
                             </tr>
                         </thead>
 
-
                         <tbody>
-                            <tr>
-                                <td>UB001</td>
-                                <td>Ritual Sedekah Laut</td>
-                                <td>Ritual tahunan untuk memohon keberkahan hasil laut bagi masyarakat pesisir.</td>
-                                <td>Keagamaan</td>
-                                <td>Pantai Gilang</td>
-                                <td>2024-12-15 07:00 - 2024-12-15 12:00</td>
-                                <td>5</td>
-                                <td>Tokoh Adat, Kelompok Budaya, Masyarakat Desa</td>
-                                <td>Pembukaan, Doa Bersama, Pelepasan Persembahan</td>
-                                <td>300</td>
-                                <td>Tenda, Panggung, Toilet Umum</td>
-                                <td>poster_upacara.jpg</td>
-                                <td>4.9</td>
-                                <td>Upacara sangat khidmat, tetapi waktu pelaksanaannya kurang fleksibel.</td>
-                                <td>Tidak diperbolehkan membawa makanan dari luar area.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Budaya" asp-action="EditUpacaraBudaya" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>UB001</td>
-                                <td>Ritual Sedekah Laut</td>
-                                <td>Ritual tahunan untuk memohon keberkahan hasil laut bagi masyarakat pesisir.</td>
-                                <td>Keagamaan</td>
-                                <td>Pantai Gilang</td>
-                                <td>2024-12-15 07:00 - 2024-12-15 12:00</td>
-                                <td>5</td>
-                                <td>Tokoh Adat, Kelompok Budaya, Masyarakat Desa</td>
-                                <td>Pembukaan, Doa Bersama, Pelepasan Persembahan</td>
-                                <td>300</td>
-                                <td>Tenda, Panggung, Toilet Umum</td>
-                                <td>poster_upacara.jpg</td>
-                                <td>4.9</td>
-                                <td>Upacara sangat khidmat, tetapi waktu pelaksanaannya kurang fleksibel.</td>
-                                <td>Tidak diperbolehkan membawa makanan dari luar area.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Budaya" asp-action="EditUpacaraBudaya" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach(var upacara in Model)
+                            {
+                                <tr>
+                                    <td>@upacara.Id.Value</td>
+                                    <td>@upacara.Nama</td>
+                                    <td>@upacara.Dekripsi</td>
+                                    <td>@upacara.Kategori.Humanize()</td>
+                                    <td>@upacara.LokasiPelaksanaan</td>
+                                    <td>@upacara.WaktuPelaksanaan.ToString("yyyy-MM-dd HH:mm") @upacara.WaktuPelaksanaan.Add(upacara.Durasi).ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>@upacara.Durasi.TotalHours.ToString("F1") Jam</td>
+                                    <td>@upacara.PihakTerlibat</td>
+                                    <td>@upacara.RangkaianAcara</td>
+                                    <td>@upacara.JumlahPeserta</td>
+                                    <td>@string.Join(", ", upacara.FasilitasPendukung)</td>
+                                    <td>
+                                        <a href="@upacara.MediaPromosi">@upacara.MediaPromosi</a>
+                                    </td>
+                                    <td>@upacara.Rating.ToString("F1")</td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary btn-komentar" data-id="@upacara.Id.Value" data-bs-toggle="modal" data-bs-target="#komentarModal">
+                                            Lihat Daftar Komentar
+                                        </button>
+                                    </td>
+                                    <td>@upacara.PeraturanKhusus</td>
+                                    <td>@upacara.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@upacara.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="UpacaraBudaya" asp-action="Edit" asp-route-id="@upacara.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = upacara.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -106,3 +101,33 @@
     </div>
     <!-- end row -->
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="komentarModal" tabindex="-1" aria-labelledby="komentarModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="komentarModal">Daftar Komentar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        const url = '@(Url.Action(nameof(UpacaraBudayaController.Komentar)))';
+
+        $(document).on('click', '[data-bs-target="#komentarModal"]', async function (e) {
+            const id = $(e.target).data('id');
+            const response = await fetch(url + '/' + id);
+
+            $('#komentarModal .modal-body').html(await response.text());
+        });
+    </script>
+}
