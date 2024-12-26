@@ -6,6 +6,23 @@
 }
 
 <div class="container-fluid">
+    <!-- Modal -->
+    <div class="modal fade" id="komentarModal" tabindex="-1" aria-labelledby="komentarModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="komentarModal">Daftar Komentar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -65,14 +82,20 @@
                                     <td>@seniBudaya.LokasiPertunjukan</td>
                                     <td>@seniBudaya.WaktuPertunjukan</td>
                                     <td>@string.Join(", ", seniBudaya.FasilitasPertunjukan)</td>
-                                    <td>@seniBudaya.DurasiPentunjukan.Humanize(culture:cultureInfo, maxUnit:TimeUnit.Hour, minUnit:TimeUnit.Minute)</td>
+                                    <td>@seniBudaya.DurasiPentunjukan.TotalHours.ToString("F1") Jam</td>
+                                    @* <td>@seniBudaya.DurasiPentunjukan.Humanize(culture:cultureInfo, maxUnit:TimeUnit.Hour, minUnit:TimeUnit.Second)</td> *@
                                     <td>@seniBudaya.HargaTiket.ToString("C2", cultureInfo)</td>
                                     <td>@seniBudaya.PeraturanKhusus</td>
                                     <td>
                                         <a href="@seniBudaya.MediaPromosi.ToString()">@seniBudaya.MediaPromosi.ToString()</a>
                                     </td>
                                     <td>@seniBudaya.Rating.ToString("F1")</td>
-                                    <td>@string.Join(", ", seniBudaya.DaftarKomentar.Select(x => x.Isi))</td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary btn-komentar" data-id="@seniBudaya.Id.Value" data-bs-toggle="modal" data-bs-target="#komentarModal">
+                                            Lihat Daftar Komentar
+                                        </button>
+                                    </td>
                                     <td>@seniBudaya.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
                                     <td>@seniBudaya.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
                                     <td class="table-action">
@@ -93,3 +116,16 @@
     </div>
     <!-- end row -->
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+        const url = '@(Url.Action(nameof(SeniBudayaController.Komentar)))';
+
+        $(document).on('click', '[data-bs-target="#komentarModal"]', async function (e) {
+            const id = $(e.target).data('id');
+            const response = await fetch(url + '/' + id);
+
+            $('#komentarModal .modal-body').html(await response.text());
+        });
+    </script>
+}

@@ -131,7 +131,7 @@ internal class FileService : IFileService
             return new Error("FileService.UploadFailed", "Upload File Gagal");
         }
 
-        return new Uri($"{_fileConfigurationOptions.FolderPath}/{folderPath}/{fileName}", UriKind.Relative);
+        return new Uri($"{_fileConfigurationOptions.FolderPath}{folderPath}/{fileName}", UriKind.Relative);
     }
 
     private void EnsureDirectoryCreated(string folderPath)
