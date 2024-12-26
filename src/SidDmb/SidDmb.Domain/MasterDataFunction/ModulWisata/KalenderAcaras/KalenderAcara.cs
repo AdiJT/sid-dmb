@@ -20,6 +20,6 @@ public class KalenderAcara : Entity<IdAcara>, IAuditableEntity
     public required Uri TautanPendaftaran { get; set; }
     public required double RatingAcara { get; set; }
 
-    public required DateTime TanggalDiinputkan { get; set; }
-    public required DateTime TanggalPembaruanData { get; set; }
+    public DateTime TanggalDiinputkan { get; set; }
+    public DateTime TanggalPembaruanData { get; set; }
 }
