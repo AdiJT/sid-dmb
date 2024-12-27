@@ -12,6 +12,6 @@ internal class LaporanEventConfiguration : IEntityTypeConfiguration<LaporanEvent
 
         builder.Property(x => x.Id).HasConversion(i => i.Value, s => IdLaporanEvent.Create(s).Value);
 
-        builder.HasOne(x => x.Event).WithOne().HasForeignKey<LaporanEvent>("EventId");
+        builder.HasOne(x => x.Event).WithOne(x => x.LaporanEvent).HasForeignKey<LaporanEvent>("EventId");
     }
 }

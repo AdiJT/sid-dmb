@@ -1,4 +1,5 @@
 ﻿using SidDmb.Domain.Abstracts;
+using SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 
 namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
 
@@ -15,11 +16,12 @@ public class Event : Entity<IdEvent>, IAuditableEntity
     public required StatusPendaftaran StatusPendaftaran { get; set; }
     public required string Sponsor { get; set; }
     public required double Anggaran { get; set; }
-    public required double Pendapatan { get; set; }
     public required Uri MediaPromosi { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
     public List<Kolaborator> DaftarKolaborator { get; set; } = [];
+    public List<KolaboratorEvent> DaftarKolaboratorEvent { get; set; } = [];
+    public LaporanEvent? LaporanEvent { get; set; }
 }

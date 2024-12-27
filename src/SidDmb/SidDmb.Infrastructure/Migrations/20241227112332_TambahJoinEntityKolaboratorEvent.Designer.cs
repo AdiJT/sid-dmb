@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -12,9 +13,11 @@ using SidDmb.Infrastructure.Database;
 namespace SidDmb.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241227112332_TambahJoinEntityKolaboratorEvent")]
+    partial class TambahJoinEntityKolaboratorEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -316,11 +319,16 @@ namespace SidDmb.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<double>("PendapatanEvent")
-                        .HasColumnType("double precision");
+                    b.Property<string>("MasukanKolaborator")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<double>("PengeluaranEvent")
                         .HasColumnType("double precision");
+
+                    b.Property<string>("RekomendasiUntukEventBerikutnya")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("TanggalDiinputkan")
                         .HasColumnType("timestamp without time zone");
@@ -377,6 +385,9 @@ namespace SidDmb.Infrastructure.Migrations
                     b.Property<string>("Nama")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<double>("Pendapatan")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("Penyelenggara")
                         .IsRequired()

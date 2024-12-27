@@ -25,4 +25,14 @@
     <ProjectReference Include="..\SidDmb.Infrastructure\SidDmb.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Dashboard\CollaborationFunction\ModulPelatihanEdukasi\MateriEdukasiDanPembelajaran\" />
+    <Folder Include="Areas\Dashboard\CollaborationFunction\ModulPelatihanEdukasi\PeningkatanKapasitas\" />
+    <Folder Include="Areas\Dashboard\CollaborationFunction\ModulProdukDanInventory\ManajemenDistribusi\" />
+    <Folder Include="Areas\Dashboard\CollaborationFunction\ModulProdukDanInventory\ManajemenProduk\" />
+    <Folder Include="Areas\Dashboard\CollaborationFunction\ModulProdukDanInventory\SertifikasiDanLegalitas\" />
+    <Folder Include="Areas\Dashboard\CollaborationFunction\ModulResearchAndDevelopment\ManajemenDataRiset\" />
+    <Folder Include="Areas\Dashboard\CollaborationFunction\ModulResearchAndDevelopment\RekomendasiDanPengembanganProduk\" />
+  </ItemGroup>
+
 </Project>

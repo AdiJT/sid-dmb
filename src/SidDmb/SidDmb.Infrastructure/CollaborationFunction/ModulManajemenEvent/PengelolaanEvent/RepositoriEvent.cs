@@ -15,10 +15,14 @@ internal class RepositoriEvent : IRepostoriEvent
 
     public async Task<Event?> Get(IdEvent id) => await _appDbContext.Event
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.LaporanEvent)
+        .Include(x => x.DaftarKolaboratorEvent).ThenInclude(x => x.Entity2)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<Event>> GetAll() => await _appDbContext.Event
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.LaporanEvent)
+        .Include(x => x.DaftarKolaboratorEvent).ThenInclude(x => x.Entity2)
         .ToListAsync();
 
     public void Add(Event @event) => _appDbContext.Event.Add(@event);

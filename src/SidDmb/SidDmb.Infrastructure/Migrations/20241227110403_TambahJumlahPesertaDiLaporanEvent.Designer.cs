@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -12,9 +13,11 @@ using SidDmb.Infrastructure.Database;
 namespace SidDmb.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241227110403_TambahJumlahPesertaDiLaporanEvent")]
+    partial class TambahJumlahPesertaDiLaporanEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,6 +55,21 @@ namespace SidDmb.Infrastructure.Migrations
                     b.HasIndex("DaftarKolaboratorId");
 
                     b.ToTable("DistribusiKolaborator");
+                });
+
+            modelBuilder.Entity("EventKolaborator", b =>
+                {
+                    b.Property<string>("DaftarEventId")
+                        .HasColumnType("text");
+
+                    b.Property<int>("DaftarKolaboratorId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("DaftarEventId", "DaftarKolaboratorId");
+
+                    b.HasIndex("DaftarKolaboratorId");
+
+                    b.ToTable("EventKolaborator");
                 });
 
             modelBuilder.Entity("KolaboratorMateri", b =>
@@ -316,11 +334,16 @@ namespace SidDmb.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<double>("PendapatanEvent")
-                        .HasColumnType("double precision");
+                    b.Property<string>("MasukanKolaborator")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<double>("PengeluaranEvent")
                         .HasColumnType("double precision");
+
+                    b.Property<string>("RekomendasiUntukEventBerikutnya")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("TanggalDiinputkan")
                         .HasColumnType("timestamp without time zone");
@@ -378,6 +401,9 @@ namespace SidDmb.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<double>("Pendapatan")
+                        .HasColumnType("double precision");
+
                     b.Property<string>("Penyelenggara")
                         .IsRequired()
                         .HasColumnType("text");
@@ -404,29 +430,6 @@ namespace SidDmb.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Event");
-                });
-
-            modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent.KolaboratorEvent", b =>
-                {
-                    b.Property<string>("Entity1Id")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Entity2Id")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("MasukanKolaborator")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("RekomedasiEventBerikutnya")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Entity1Id", "Entity2Id");
-
-                    b.HasIndex("Entity2Id");
-
-                    b.ToTable("KolaboratorEvent");
                 });
 
             modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulPelatihanEdukasi.MateriEdukasiDanPembelajaran.Materi", b =>
@@ -2908,6 +2911,21 @@ namespace SidDmb.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("EventKolaborator", b =>
+                {
+                    b.HasOne("SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent.Event", null)
+                        .WithMany()
+                        .HasForeignKey("DaftarEventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SidDmb.Domain.CollaborationFunction.Kolaborator", null)
+                        .WithMany()
+                        .HasForeignKey("DaftarKolaboratorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("KolaboratorMateri", b =>
                 {
                     b.HasOne("SidDmb.Domain.CollaborationFunction.Kolaborator", null)
@@ -3003,25 +3021,6 @@ namespace SidDmb.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Event");
-                });
-
-            modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent.KolaboratorEvent", b =>
-                {
-                    b.HasOne("SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent.Event", "Entity1")
-                        .WithMany("DaftarKolaboratorEvent")
-                        .HasForeignKey("Entity1Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SidDmb.Domain.CollaborationFunction.Kolaborator", "Entity2")
-                        .WithMany("DaftarKolaboratorEvent")
-                        .HasForeignKey("Entity2Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Entity1");
-
-                    b.Navigation("Entity2");
                 });
 
             modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulProdukDanInventory.ManajemenDistribusi.Distribusi", b =>
@@ -3143,15 +3142,11 @@ namespace SidDmb.Infrastructure.Migrations
 
             modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.Kolaborator", b =>
                 {
-                    b.Navigation("DaftarKolaboratorEvent");
-
                     b.Navigation("DaftarKolaboratorKegiatanPrima");
                 });
 
             modelBuilder.Entity("SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent.Event", b =>
                 {
-                    b.Navigation("DaftarKolaboratorEvent");
-
                     b.Navigation("LaporanEvent");
                 });
 

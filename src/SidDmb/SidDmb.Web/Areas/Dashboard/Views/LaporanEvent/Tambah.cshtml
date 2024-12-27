@@ -1,0 +1,122 @@
+﻿@model TambahVM
+
+@inject IRepostoriEvent RepositoriEvent
+
+@{
+    ViewData["Title"] = "Pelaporan dan Dokumentasi | Tambah";
+    var daftarEvent = (await RepositoriEvent.GetAll()).Where(e => e.LaporanEvent is null).ToList();
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Manajemen Event</a></li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="PelaporanEvent" asp-action="Index">Pelaporan & Dokumentasi Event</a></li>
+                        <li class="breadcrumb-item active">Tambah</li>
+                    </ol>
+                </div>
+                @* <h4 class="page-title">Tambah</h4> *@
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Tambah Pelaporan & Dokumentasi Event</h4>
+                    <form asp-action="@nameof(LaporanEventController.Tambah)" enctype="multipart/form-data">
+                        <div class="row">
+                            <div asp-validation-summary="All" class="form-text text-danger"></div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="@Model.EventId" class="form-label">Nama Event (Relasi)<span class="text-danger">*</span></label>
+                                    <select asp-for="@Model.EventId" class="select2 form-control" data-toggle="select2" data-placeholder="Choose ...">
+                                        @foreach (var @event in daftarEvent)
+                                        {
+                                            <option value="@(@event.Id.Value)">@(@event.Nama)</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.EventId"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.TanggalPelaporan" class="form-label">Tanggal Pelaporan<span class="text-danger">*</span></label>
+                                    <input class="form-control" asp-for="@Model.TanggalPelaporan" name="date">
+                                    <span asp-validation-for="@Model.TanggalPelaporan"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.JumlahPeserta" class="form-label">Jumlah Peserta<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.JumlahPeserta" class="form-control">
+                                    <span asp-validation-for="@Model.JumlahPeserta"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.PendapatanEvent" class="form-label">Pendapatan dari Event<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.PendapatanEvent" type="text" class="form-control">
+                                    <span asp-validation-for="@Model.PendapatanEvent"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.PengeluaranEvent" class="form-label">Pengeluaran Event<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.PengeluaranEvent" type="text" class="form-control">
+                                    <span asp-validation-for="@Model.PengeluaranEvent"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.UlasanSingkatEvent" class="form-label">Ulasan Singkat Event<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.UlasanSingkatEvent" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.UlasanSingkatEvent"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.FeedbackPeserta" class="form-label">Feedback dari Peserta<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.FeedbackPeserta" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.FeedbackPeserta"></span>
+                                </div>
+                            </div> <!-- end col -->
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="@Model.FotoDokumentasi" class="form-label">Foto/Gambar Dokumentasi<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.FotoDokumentasi" class="form-control">
+                                    <span asp-validation-for="@Model.FotoDokumentasi"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.VideoDokumentasi" class="form-label">Video Dokumentasi<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.VideoDokumentasi" class="form-control">
+                                    <span asp-validation-for="@Model.VideoDokumentasi"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.LaporanDetail" class="form-label">Laporan Detail<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.LaporanDetail" class="form-control">
+                                    <span asp-validation-for="@Model.LaporanDetail"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
+                                    <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Laporan</button>
+                                    <button type="reset" class="btn btn-danger">Batal</button>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+                    </form>
+
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col-->
+    </div>
+    <!-- end row-->
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

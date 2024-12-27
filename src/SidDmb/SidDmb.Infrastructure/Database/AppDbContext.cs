@@ -79,6 +79,7 @@ internal class AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : D
 
     #region ManajemenEvent
     public DbSet<Event> Event { get; set; }
+    public DbSet<KolaboratorEvent> KolaboratorEvent { get; set; }
     public DbSet<LaporanEvent> LaporanEvent { get; set; }
     #endregion
 
