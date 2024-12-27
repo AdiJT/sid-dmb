@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿@model List<LaporanKunjungan>
+
+@{
+    ViewData["Title"] = "Laporan Kunjungan";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -22,7 +29,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Daftar Laporan Kunjungan</h4>
                     <div class="pb-3 pt-1">
-                        <a asp-area="Dashboard" asp-controller="Wisata" asp-action="TambahLaporanKunjungan" class="btn btn-primary">+ Tambah</a>
+                        <a asp-area="Dashboard" asp-controller="LaporanKunjungan" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
                     </div>
                     <table id="alternative-page-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -43,49 +50,33 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-
-
                         <tbody>
-                            <tr>
-                                <td>LK001</td>
-                                <td>2024-12-05</td>
-                                <td>Pantai Gilang</td>
-                                <td>120</td>
-                                <td>50</td>
-                                <td>2.5</td>
-                                <td>100</td>
-                                <td>1.500.000</td>
-                                <td>Pokdarwis Pantai Gilang</td>
-                                <td>4.7</td>
-                                <td>Pantai bersih, tapi akses jalan perlu diperbaiki.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Wisata" asp-action="EditLaporanKunjungan" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>LK001</td>
-                                <td>2024-12-05</td>
-                                <td>Pantai Gilang</td>
-                                <td>120</td>
-                                <td>50</td>
-                                <td>2.5</td>
-                                <td>100</td>
-                                <td>1.500.000</td>
-                                <td>Pokdarwis Pantai Gilang</td>
-                                <td>4.7</td>
-                                <td>Pantai bersih, tapi akses jalan perlu diperbaiki.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Wisata" asp-action="EditLaporanKunjungan" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach (var laporanKunjungan in Model)
+                            {
+                                <tr>
+                                    <td>@laporanKunjungan.Id.Value</td>
+                                    <td>@laporanKunjungan.TanggalKunjungan.ToString("yyyy-MM-dd")</td>
+                                    <td>@laporanKunjungan.DestinasiWisata.Nama</td>
+                                    <td>@laporanKunjungan.JumlahWisatawanDomestik</td>
+                                    <td>@laporanKunjungan.JumlahWisatawanInternasional</td>
+                                    <td>@laporanKunjungan.DurasiKunjungan.TotalHours.ToString("F1") Jam</td>
+                                    <td>@laporanKunjungan.TiketTerjual</td>
+                                    <td>@laporanKunjungan.PendapatanTiket.ToString("C2", cultureInfo)</td>
+                                    <td>@laporanKunjungan.DestinasiWisata.PengelolaDestinasi</td>
+                                    <td>@laporanKunjungan.RatingPengunjung</td>
+                                    <td>@laporanKunjungan.KomentarPengunjung</td>
+                                    <td>@laporanKunjungan.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@laporanKunjungan.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="LaporanKunjungan" asp-action="Edit" asp-route-id="@laporanKunjungan.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = laporanKunjungan.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

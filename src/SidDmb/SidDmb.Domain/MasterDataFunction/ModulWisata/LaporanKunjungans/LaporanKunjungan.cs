@@ -5,7 +5,7 @@ namespace SidDmb.Domain.MasterDataFunction.ModulWisata.LaporanKunjungans;
 
 public class LaporanKunjungan : Entity<IdKunjungan>, IAuditableEntity
 {
-    public required DateTime TanggalKunjungan { get; set; }
+    public required DateOnly TanggalKunjungan { get; set; }
     public required int JumlahWisatawanDomestik { get; set; }
     public required int JumlahWisatawanInternasional { get; set; }
     public required TimeSpan DurasiKunjungan { get; set; }

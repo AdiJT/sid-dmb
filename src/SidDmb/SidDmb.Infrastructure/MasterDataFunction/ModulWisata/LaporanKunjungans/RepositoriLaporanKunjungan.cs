@@ -14,13 +14,11 @@ internal class RepositoriLaporanKunjungan : IRepositoriLaporanKunjungan
     }
 
     public async Task<LaporanKunjungan?> Get(IdKunjungan id) => await _appDbContext.LaporanKunjungan
-        .Include(x => x.DestinasiWisata).ThenInclude(d => d.DaftarAktivitas)
-        .Include(x => x.DestinasiWisata).ThenInclude(d => d.DaftarFasilitas)
+        .Include(x => x.DestinasiWisata)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<LaporanKunjungan>> GetAll() => await _appDbContext.LaporanKunjungan
-        .Include(x => x.DestinasiWisata).ThenInclude(d => d.DaftarAktivitas)
-        .Include(x => x.DestinasiWisata).ThenInclude(d => d.DaftarFasilitas)
+        .Include(x => x.DestinasiWisata)
         .ToListAsync();
 
     public void Add(LaporanKunjungan laporanKunjungan) => _appDbContext.LaporanKunjungan.Add(laporanKunjungan);
