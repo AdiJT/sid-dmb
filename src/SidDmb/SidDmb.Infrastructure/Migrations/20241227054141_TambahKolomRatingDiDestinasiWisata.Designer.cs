@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -12,9 +13,11 @@ using SidDmb.Infrastructure.Database;
 namespace SidDmb.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241227054141_TambahKolomRatingDiDestinasiWisata")]
+    partial class TambahKolomRatingDiDestinasiWisata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2497,7 +2500,7 @@ namespace SidDmb.Infrastructure.Migrations
                             DaftarAktivitas = new[] { "Tur Sejarah", "Fotografi", "Tari Barong" },
                             DaftarFasilitas = new[] { "Panggung Hiburan", "Toilet Umum", "Taman Parkir" },
                             Deskripsi = "Candi Prambanan adalah kompleks candi Hindu terbesar di Indonesia dan merupakan salah satu situs warisan dunia UNESCO.",
-                            Foto = "/assets/Destinasi_Wisata/Destinasi_Candi_Prambanan.jpg",
+                            Foto = "/assets/Destinasi_Candi_Prambanan.jpg",
                             HargaTiketMasuk = 35000.0,
                             InformasiKontak = "+62 812-3456-7890",
                             JamOperasional = "08:00 - 18:00",
@@ -2517,7 +2520,7 @@ namespace SidDmb.Infrastructure.Migrations
                             DaftarAktivitas = new[] { "Cave Tubing", "Jelajah Gua", "Trekking" },
                             DaftarFasilitas = new[] { "Sewa Perahu", "Toilet Umum", "Area Parkir" },
                             Deskripsi = "Gua Pindul adalah gua alami yang terkenal dengan wisata cave tubing di Yogyakarta.",
-                            Foto = "/assets/Destinasi_Wisata/Destinasi_Gua_Pindul.jpg",
+                            Foto = "/assets/Destinasi_Gua_Pindul.jpg",
                             HargaTiketMasuk = 25000.0,
                             InformasiKontak = "+62 812-3456-7890",
                             JamOperasional = "08:00 - 17:00",
@@ -2537,7 +2540,7 @@ namespace SidDmb.Infrastructure.Migrations
                             DaftarAktivitas = new[] { "Pendakian", "Fotografi Alam", "Trekking Gunung" },
                             DaftarFasilitas = new[] { "Pusat Informasi", "Area Parkir", "Pemandu Gunung" },
                             Deskripsi = "Gunung Merapi adalah gunung berapi aktif yang terkenal dengan pendakian dan pemandangan alam yang mempesona.",
-                            Foto = "/assets/Destinasi_Wisata/Destinasi_Gunung_Merapi.jpg",
+                            Foto = "/assets/Destinasi_Gunung_Merapi.jpg",
                             HargaTiketMasuk = 50000.0,
                             InformasiKontak = "+62 812-3456-7890",
                             JamOperasional = "24 Jam",
@@ -2557,7 +2560,7 @@ namespace SidDmb.Infrastructure.Migrations
                             DaftarAktivitas = new[] { "Fotografi Alam", "Jalan-jalan", "Wisata Alam" },
                             DaftarFasilitas = new[] { "Jalan Setapak", "Tempat Duduk", "Area Parkir" },
                             Deskripsi = "Hutan Pinus Mangunan menawarkan keindahan alam yang asri dengan pemandangan spektakuler dan udara yang sejuk.",
-                            Foto = "/assets/Destinasi_Wisata/Destinasi_Hutan_Pinus_Mangunan.jpg",
+                            Foto = "/assets/Destinasi_Hutan_Pinus_Mangunan.jpg",
                             HargaTiketMasuk = 15000.0,
                             InformasiKontak = "+62 812-3456-7890",
                             JamOperasional = "07:00 - 18:00",
@@ -2577,7 +2580,7 @@ namespace SidDmb.Infrastructure.Migrations
                             DaftarAktivitas = new[] { "Bermain Pasir", "Fotografi", "Pemandangan Matahari Terbenam" },
                             DaftarFasilitas = new[] { "Panggung Hiburan", "Tempat Duduk", "Area Parkir" },
                             Deskripsi = "Pantai Parangtritis terkenal dengan pasir pantainya yang luas dan pemandangan matahari terbenam yang menakjubkan.",
-                            Foto = "/assets/Destinasi_Wisata/Destinasi_Pantai_Parangtritis.jpg",
+                            Foto = "/assets/Destinasi_Pantai_Parangtritis.jpg",
                             HargaTiketMasuk = 20000.0,
                             InformasiKontak = "+62 812-3456-7890",
                             JamOperasional = "24 Jam",

@@ -39,7 +39,8 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Fotografi",
                     "Tari Barong"
                 ],
-                Foto = new Uri("/assets/Destinasi_Candi_Prambanan.jpg", UriKind.Relative)
+                Foto = new Uri("/assets/Destinasi_Wisata/Destinasi_Candi_Prambanan.jpg", UriKind.Relative),
+                Rating = 4.5
             },
             new DestinasiWisata
             {
@@ -64,7 +65,8 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Jelajah Gua",
                     "Trekking"
                 ],
-                Foto = new Uri("/assets/Destinasi_Gua_Pindul.jpg", UriKind.Relative)
+                Foto = new Uri("/assets/Destinasi_Wisata/Destinasi_Gua_Pindul.jpg", UriKind.Relative),
+                Rating = 4.5
             },
             new DestinasiWisata
             {
@@ -89,7 +91,8 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Fotografi Alam",
                     "Trekking Gunung"
                 ],
-                Foto = new Uri("/assets/Destinasi_Gunung_Merapi.jpg", UriKind.Relative)
+                Foto = new Uri("/assets/Destinasi_Wisata/Destinasi_Gunung_Merapi.jpg", UriKind.Relative),
+                Rating = 4.5
             },
             new DestinasiWisata
             {
@@ -114,7 +117,8 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Jalan-jalan",
                     "Wisata Alam"
                 ],
-                Foto = new Uri("/assets/Destinasi_Hutan_Pinus_Mangunan.jpg", UriKind.Relative)
+                Foto = new Uri("/assets/Destinasi_Wisata/Destinasi_Hutan_Pinus_Mangunan.jpg", UriKind.Relative),
+                Rating = 4.5
             },
             new DestinasiWisata
             {
@@ -139,7 +143,8 @@ internal class DestinasiWisataConfiguration : IEntityTypeConfiguration<Destinasi
                     "Fotografi",
                     "Pemandangan Matahari Terbenam"
                 ],
-                Foto = new Uri("/assets/Destinasi_Pantai_Parangtritis.jpg", UriKind.Relative)
+                Foto = new Uri("/assets/Destinasi_Wisata/Destinasi_Pantai_Parangtritis.jpg", UriKind.Relative),
+                Rating = 4.5
             }
         );
     }

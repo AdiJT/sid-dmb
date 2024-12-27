@@ -1,0 +1,97 @@
+﻿@model List<DestinasiWisata>
+
+@{
+    ViewData["Title"] = "Destinasi Wisata";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Wisata</a></li>
+                        <li class="breadcrumb-item active">Destinasi Wisata</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Destinasi Wisata</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Destinasi Wisata</h4>
+                    <div class="pb-3 pt-1">
+                        <a asp-area="Dashboard" asp-controller="DestinasiWisata" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
+                    </div>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Destinasi</th>
+                                <th>Nama Destinasi</th>
+                                <th>Deskripsi</th>
+                                <th>Kategori Destinasi</th>
+                                <th>Alamat/Lokasi</th>
+                                <th>Koordinat Lokasi</th>
+                                <th>Fasilitas</th>
+                                <th>Harga Tiket Masuk</th>
+                                <th>Jam Operasional</th>
+                                <th>Kontak Informasi</th>
+                                <th>Foto/Gambar</th>
+                                <th>Rating</th>
+                                <th>Pengelola Destinasi</th>
+                                <th>Jenis Aktivitas</th>
+                                <th>Status Operasional</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var destinasiWisata in Model)
+                            {
+                                <tr>
+                                    <td>@destinasiWisata.Id.Value</td>
+                                    <td>@destinasiWisata.Nama</td>
+                                    <td>@destinasiWisata.Deskripsi</td>
+                                    <td>@destinasiWisata.Kategori.Humanize()</td>
+                                    <td>@destinasiWisata.Alamat</td>
+                                    <td>@destinasiWisata.TitikKoordinat.Y.ToString("F3") @destinasiWisata.TitikKoordinat.X.ToString("F3")</td>
+                                    <td>@string.Join(", ", destinasiWisata.DaftarFasilitas)</td>
+                                    <td>@destinasiWisata.HargaTiketMasuk.ToString("C2", cultureInfo)</td>
+                                    <td>@destinasiWisata.JamOperasional</td>
+                                    <td>@destinasiWisata.InformasiKontak</td>
+                                    <td>
+                                        <a href="@destinasiWisata.Foto">@destinasiWisata.Foto</a>
+                                    </td>
+                                    <td>@destinasiWisata.Rating.ToString("F1")</td>
+                                    <td>@destinasiWisata.PengelolaDestinasi</td>
+                                    <td>@string.Join(", ", destinasiWisata.DaftarAktivitas)</td>
+                                    <td>@destinasiWisata.StatusOperasional.Humanize()</td>
+                                    <td>@destinasiWisata.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@destinasiWisata.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="DestinasiWisata" asp-action="Edit" asp-route-id="@destinasiWisata.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = destinasiWisata.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->    
+</div>

@@ -17,6 +17,7 @@ public class DestinasiWisata : Entity<IdDestinasi>, IAuditableEntity
     public required string PengelolaDestinasi { get; set; }
     public required StatusOperasional StatusOperasional { get; set; }
     public required Uri Foto { get; set; }
+    public required double Rating { get; set; }
     public required string[] DaftarFasilitas { get; set; }
     public required string[] DaftarAktivitas { get; set; }
 
