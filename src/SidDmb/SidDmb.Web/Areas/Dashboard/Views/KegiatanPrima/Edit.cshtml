@@ -1,0 +1,160 @@
+﻿@model EditVM
+
+@inject IRepositoriKelompokPrima RepositoriKelompokPrima
+@inject IRepositoriKolaborator RepositoriKolaborator
+
+@{
+    ViewData["Title"] = "Kegiatan Prima | Tambah";
+    var daftarKelompokPrima = await RepositoriKelompokPrima.GetAll();
+    var daftarKolaborator = await RepositoriKolaborator.GetAll();
+}
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Prima</a></li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="Prima" asp-action="KegiatanPrima">Kegiatan Prima</a></li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ol>
+                </div>
+                @* <h4 class="page-title">Tambah</h4> *@
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Edit Kegiatan Prima</h4>
+                    <form asp-action="@nameof(KegiatanPrimaController.Edit)" enctype="multipart/form-data">
+                        <div class="row">
+                            <div asp-validation-summary="All" class="form-text text-danger"></div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Nama" class="form-label">Nama Kegiatan<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.Nama" class="form-control">
+                                    <span asp-validation-for="@Model.Nama" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Dekripsi" class="form-label">Deskripsi Kegiatan<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.Dekripsi" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.Dekripsi" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.TanggalPelaksanaan" class="form-label">Tanggal Pelaksanaan<span class="text-danger">*</span></label>
+                                    <input class="form-control" asp-for="@Model.TanggalPelaksanaan" type="date">
+                                    <span asp-validation-for="@Model.TanggalPelaksanaan" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Durasi" class="form-label">Durasi Kegiatan<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.Durasi" class="form-control">
+                                    <span asp-validation-for="@Model.Durasi" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Lokasi" class="form-label">Lokasi Kegiatan<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.Lokasi" rows="3"></textarea>
+                                    <span asp-validation-for="@Model.Lokasi" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Jenis" class="form-label">Jenis Kegiatan<span class="text-danger">*</span></label>
+                                    <select asp-for="@Model.Jenis" class="select2 form-control" data-toggle="select2" data-placeholder="Choose ...">
+                                        @foreach (var jenis in Enum.GetValues<JenisKegiatan>())
+                                        {
+                                            <option value="@jenis">@jenis.Humanize()</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.Jenis" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.JumlahPeserta" class="form-label">Jumlah Peserta<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.JumlahPeserta" class="form-control">
+                                    <span asp-validation-for="@Model.JumlahPeserta" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.KelompokPrimaId" class="form-label">Penyelenggara<span class="text-danger">*</span></label>
+                                    <select asp-for="@Model.KelompokPrimaId" class="select2 form-control" data-toggle="select2" data-placeholder="Choose ...">
+                                        @foreach (var kelompokPrima in daftarKelompokPrima)
+                                        {
+                                            <option value="@kelompokPrima.Id.Value">@kelompokPrima.Nama</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.KelompokPrimaId" class="form-text text-danger"></span>
+                                </div>
+
+                            </div> <!-- end col -->
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Fasilitator" class="form-label">Fasilitator<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.Fasilitator" class="form-control">
+                                    <span asp-validation-for="@Model.Fasilitator" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.AnggaranKegiatan" class="form-label">Anggaran Kegiatan<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.AnggaranKegiatan" type="text" class="form-control">
+                                    <span asp-validation-for="@Model.AnggaranKegiatan" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.DaftarKolaboratorId" class="form-label">Kolabolator Kegiatan<span class="text-danger">*</span></label>
+                                    <select asp-for="@Model.DaftarKolaboratorId" class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                        @foreach (var kolabolator in daftarKolaborator)
+                                        {
+                                            <option value="@kolabolator.Id">@kolabolator.Nama</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.DaftarKolaboratorId" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.HasilKegiatan" class="form-label">Hasil Kegiatan<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.HasilKegiatan" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.HasilKegiatan" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.DokumentasiKegiatanBaru" class="form-label">Dokumentasi Kegiatan<span class="text-danger">*</span></label>
+                                    <input type="file" asp-for="@Model.DokumentasiKegiatanBaru" class="form-control">
+                                    <span asp-validation-for="@Model.DokumentasiKegiatanBaru" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.FeedbackPeserta" class="form-label">Feedback Peserta<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.FeedbackPeserta" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.FeedbackPeserta" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
+                                    <button type="submit" class="btn btn-primary" style="margin-right: 5px">Edit Kegiatan</button>
+                                    <button type="reset" class="btn btn-danger">Batal</button>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+                    </form>
+
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col-->
+    </div>
+    <!-- end row-->
+
+
+</div>
+
+

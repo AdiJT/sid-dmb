@@ -18,11 +18,11 @@ public class KegiatanPrima : Entity<IdKegiatanPrima>, IAuditableEntity
     public required string HasilKegiatan { get; set; }
     public required Uri DokumentasiKegiatan { get; set; }
     public required string FeedbackPeserta { get; set; }
-    public required string RekomendasiUntukKegiatanBerikutnya { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
     public KelompokPrima KelompokPrima { get; set; }
-    public List<Kolaborator> KolaboratorKegiatan { get; set; } = [];
+    public List<Kolaborator> DaftarKolabolator { get; set; } = [];
+    public List<KolaboratorKegiatanPrima> DaftarKolaboratorKegiatan { get; set; } = [];
 }

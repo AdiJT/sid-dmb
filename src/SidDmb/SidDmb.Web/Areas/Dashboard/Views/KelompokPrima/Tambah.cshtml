@@ -1,0 +1,127 @@
+﻿@model TambahVM
+
+@{
+    ViewData["Title"] = "Kelompok Prima | Tambah";
+}
+
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Prima</a></li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="KelompokPrima" asp-action="Index">Kelompok Prima</a></li>
+                        <li class="breadcrumb-item active">Tambah</li>
+                    </ol>
+                </div>
+                @* <h4 class="page-title">Tambah</h4> *@
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Tambah Kelompok Prima</h4>
+                    <form asp-action="@nameof(KelompokPrimaController.Tambah)" enctype="multipart/form-data">
+                        <div class="row">
+                            <div asp-validation-summary="All" class="form-text text-danger"></div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Nama" class="form-label">Nama Kelompok<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.Nama" class="form-control">
+                                    <span asp-validation-for="@Model.Nama" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Dekripsi" class="form-label">Deskripsi Kelompok<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.Dekripsi" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.Dekripsi" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.JumlahAnggota" class="form-label">Jumlah Anggota<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.JumlahAnggota" class="form-control">
+                                    <span asp-validation-for="@Model.JumlahAnggota" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.KetuaKelompok" class="form-label">Ketua Kelompok<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.KetuaKelompok" class="form-control">
+                                    <span asp-validation-for="@Model.KetuaKelompok" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.TahunBerdiri" class="form-label">Tahun Berdiri<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.TahunBerdiri" class="form-control">
+                                    <span asp-validation-for="@Model.TahunBerdiri" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.FokusKegiatan" class="form-label">Fokus Kegiatan<span class="text-danger">*</span></label>
+                                    <select asp-for="@Model.FokusKegiatan" class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                        @foreach(var fokusKegiatan in Enum.GetValues<FokusKegiatanKelompokPrima>())
+                                        {
+                                            <option value="@fokusKegiatan">@fokusKegiatan.Humanize()</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.FokusKegiatan" class="form-text text-danger"></span>
+                                </div>
+                            </div> <!-- end col -->
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="@Model.ProgramUnggulan" class="form-label">Program Unggulan<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.ProgramUnggulan" rows="5"></textarea>
+                                    <span asp-validation-for="@Model.ProgramUnggulan" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Alamat" class="form-label">Alamat/Lokasi<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" asp-for="@Model.Alamat" rows="3"></textarea>
+                                    <span asp-validation-for="@Model.Alamat" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.KontakInformasi" class="form-label">Kontak/Informasi<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.KontakInformasi" class="form-control">
+                                    <span asp-validation-for="@Model.KontakInformasi" class="form-text text-danger"></span>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.MediaPromosi" class="form-label">Media Promosi<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.MediaPromosi" class="form-control">
+                                    <span asp-validation-for="@Model.MediaPromosi" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.JumlahProgramDilaksanakan" class="form-label">Jumlah Program yang Diselenggarakan<span class="text-danger">*</span></label>
+                                    <input asp-for="@Model.JumlahProgramDilaksanakan" class="form-control">
+                                    <span asp-validation-for="@Model.JumlahProgramDilaksanakan" class="form-text text-danger"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
+                                    <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Kelompok</button>
+                                    <button type="reset" class="btn btn-danger">Batal</button>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+                    </form>
+
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col-->
+    </div>
+    <!-- end row-->
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

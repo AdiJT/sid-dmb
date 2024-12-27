@@ -1,0 +1,98 @@
+﻿@model List<KegiatanPrima>
+
+@{
+    ViewData["Title"] = "Kegiatan Prima";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Prima</a></li>
+                        <li class="breadcrumb-item active">Kegiatan Prima</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Kegiatan Prima</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Kegiatan Prima</h4>
+                    <div class="pb-3 pt-1">
+                        <a asp-area="Dashboard" asp-controller="KegiatanPrima" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
+                    </div>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Kegiatan Prima</th>
+                                <th>Nama Kegiatan</th>
+                                <th>Deskripsi Kegiatan</th>
+                                <th>Tanggal Pelaksanaan</th>
+                                <th>Durasi Kegiatan</th>
+                                <th>Lokasi Kegiatan</th>
+                                <th>Jenis Kegiatan</th>
+                                <th>Jumlah Peserta</th>
+                                <th>Penyelenggara</th>
+                                <th>Fasilitator</th>
+                                <th>Anggaran Kegiatan</th>
+                                <th>Kolaborator Kegiatan</th>
+                                <th>Hasil Kegiatan</th>
+                                <th>Dokumentasi Kegiatan</th>
+                                <th>Feedback Peserta</th>
+                                <th>Rekomendasi untuk Kegiatan Berikutnya</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var kegiatanPrima in Model)
+                            {
+                                <tr>
+                                    <td>@kegiatanPrima.Id.Value</td>
+                                    <td>@kegiatanPrima.Nama</td>
+                                    <td>@kegiatanPrima.Dekripsi</td>
+                                    <td>@kegiatanPrima.TanggalPelaksanaan.ToString("yyyy-MM-dd")</td>
+                                    <td>@kegiatanPrima.Durasi.TotalHours.ToString("F1") Jam</td>
+                                    <td>@kegiatanPrima.Lokasi</td>
+                                    <td>@kegiatanPrima.Jenis.Humanize()</td>
+                                    <td>@kegiatanPrima.JumlahPeserta Orang</td>
+                                    <td>@kegiatanPrima.KelompokPrima.Nama</td>
+                                    <td>@kegiatanPrima.Fasilitator</td>
+                                    <td>@kegiatanPrima.AnggaranKegiatan.ToString("C2", cultureInfo)</td>
+                                    <td>@string.Join(", ", kegiatanPrima.DaftarKolabolator.Select(k => k.Nama))</td>
+                                    <td>@kegiatanPrima.HasilKegiatan</td>
+                                    <td>
+                                        <a href="@kegiatanPrima.DokumentasiKegiatan">@kegiatanPrima.DokumentasiKegiatan</a>
+                                    </td>
+                                    <td>@kegiatanPrima.FeedbackPeserta</td>
+                                    <td>@string.Join(", ", kegiatanPrima.DaftarKolaboratorKegiatan.Select(k => k.RekomendasiBerikutnya))</td>
+                                    <td>@kegiatanPrima.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@kegiatanPrima.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="KegiatanPrima" asp-action="Edit" asp-route-id="@kegiatanPrima.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = kegiatanPrima.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

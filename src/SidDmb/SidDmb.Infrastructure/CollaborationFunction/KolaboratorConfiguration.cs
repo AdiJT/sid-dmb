@@ -19,7 +19,7 @@ internal class KolaboratorConfiguration : IEntityTypeConfiguration<Kolaborator>
         builder.HasMany(x => x.DaftarProduk).WithMany(x => x.DaftarKolaborator);
         builder.HasMany(x => x.DaftarRekomendasi).WithMany(x => x.DaftarKolaborator);
         builder.HasMany(x => x.DaftarSertifikasi).WithMany(x => x.DaftarKolaborator);
-        builder.HasMany(x => x.DaftarKegiatanPrima).WithMany(x => x.KolaboratorKegiatan);
+        builder.HasMany(x => x.DaftarKolaboratorKegiatanPrima).WithOne(x => x.Entity2);
 
         builder.HasData(
             new

@@ -72,6 +72,7 @@ internal class AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : D
     #region Prima
     public DbSet<KelompokPrima> KelompokPrima { get; set; }
     public DbSet<KegiatanPrima> KegiatanPrima { get; set; }
+    public DbSet<KolaboratorKegiatanPrima> KolaboratorKegiatanPrima { get; set; }
     #endregion
 
     public DbSet<Kolaborator> Kolaborator { get; set; }

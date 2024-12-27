@@ -1,0 +1,90 @@
+﻿@model List<KelompokPrima>
+
+@{
+    ViewData["Title"] = "Kelompok Prima";
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Prima</a></li>
+                        <li class="breadcrumb-item active">Kelompok Prima</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Kelompok Prima</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Kelompok Prima</h4>
+                    <div class="pb-3 pt-1">
+                        <a asp-area="Dashboard" asp-controller="KelompokPrima" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
+                    </div>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Kelompok</th>
+                                <th>Nama Kelompok</th>
+                                <th>Deskripsi Kelompok</th>
+                                <th>Jumlah Anggota</th>
+                                <th>Ketua Kelompok</th>
+                                <th>Tahun Berdiri</th>
+                                <th>Fokus Kegiatan</th>
+                                <th>Program Unggulan</th>
+                                <th>Alamat/Lokasi</th>
+                                <th>Kontak Informasi</th>
+                                <th>Media Promosi</th>
+                                <th>Jumlah Program yang Dilaksanakan</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach(var kelompokPrima in Model)
+                            {
+                                <tr>
+                                    <td>@kelompokPrima.Id.Value</td>
+                                    <td>@kelompokPrima.Nama</td>
+                                    <td>@kelompokPrima.Dekripsi</td>
+                                    <td>@kelompokPrima.JumlahAnggota</td>
+                                    <td>@kelompokPrima.KetuaKelompok</td>
+                                    <td>@kelompokPrima.TahunBerdiri</td>
+                                    <td>@string.Join(", ", Enum.GetValues<FokusKegiatanKelompokPrima>().Where(f => kelompokPrima.FokusKegiatan.HasFlag(f)).Select(f => f.Humanize()))</td>
+                                    <td>@kelompokPrima.ProgramUnggulan</td>
+                                    <td>@kelompokPrima.Alamat</td>
+                                    <td>@kelompokPrima.KontakInformasi</td>
+                                    <td>
+                                        <a href="@kelompokPrima.MediaPromosi">@kelompokPrima.MediaPromosi</a>
+                                    </td>
+                                    <td>@kelompokPrima.JumlahProgramDilaksanakan</td>
+                                    <td>@kelompokPrima.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@kelompokPrima.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="KelompokPrima" asp-action="Edit" asp-route-id="@kelompokPrima.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = kelompokPrima.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

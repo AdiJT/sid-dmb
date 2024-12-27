@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SidDmb.Web", "SidDmb.Web\Si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SidDmb.Domain", "SidDmb.Domain\SidDmb.Domain.csproj", "{5B942442-326B-4990-9243-357DF57561A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SidDmb.Infrastructure", "SidDmb.Infrastructure\SidDmb.Infrastructure.csproj", "{85A984AD-215D-4D8E-B6B3-DCE58E741D8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SidDmb.Infrastructure", "SidDmb.Infrastructure\SidDmb.Infrastructure.csproj", "{85A984AD-215D-4D8E-B6B3-DCE58E741D8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

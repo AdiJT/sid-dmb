@@ -14,11 +14,11 @@ internal class RepositoriKelompokPrima : IRepositoriKelompokPrima
     }
 
     public async Task<KelompokPrima?> Get(IdKelompok id) => await _appDbContext.KelompokPrima
-        .Include(k => k.DaftarKegiatanPrima).ThenInclude(x => x.KolaboratorKegiatan)
+        .Include(k => k.DaftarKegiatanPrima).ThenInclude(x => x.DaftarKolaboratorKegiatan)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<KelompokPrima>> GetAll() => await _appDbContext.KelompokPrima
-        .Include(k => k.DaftarKegiatanPrima).ThenInclude(x => x.KolaboratorKegiatan)
+        .Include(k => k.DaftarKegiatanPrima).ThenInclude(x => x.DaftarKolaboratorKegiatan)
         .ToListAsync();
 
     public void Add(KelompokPrima kelompokPrima) => _appDbContext.KelompokPrima.Add(kelompokPrima);

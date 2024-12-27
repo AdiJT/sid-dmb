@@ -52,6 +52,7 @@ using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.DestinasiWisatas;
 using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.KalenderAcaras;
 using SidDmb.Infrastructure.MasterDataFunction.ModulWisata.LaporanKunjungans;
 using SidDmb.Infrastructure.Services.FileUpload;
+using SidDmb.Infrastructure.Shared;
 
 namespace SidDmb.Infrastructure;
 
@@ -89,6 +90,8 @@ public static class DepedencyInjection
         services.AddScoped<IRepositoriSertifikasi, RepositoriSertifikasi>();
         services.AddScoped<IRepositoriDataRiset, RepositoriDataRiset>();
         services.AddScoped<IRepositoriRekomendasi, RepositoriRekomendasi>();
+
+        services.AddScoped(typeof(IJoinEntityRepository<>), typeof(JoinEntityRepository<>));
 
         services.Configure<FileConfigurationOptions>(configuration.GetSection(FileConfigurationOptions.FileConfiguration));
 

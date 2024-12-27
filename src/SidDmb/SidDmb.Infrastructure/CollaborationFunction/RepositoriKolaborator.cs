@@ -22,7 +22,7 @@ internal class RepositoriKolaborator : IRepositoriKolaborator
         .Include(x => x.DaftarProduk)
         .Include(x => x.DaftarRekomendasi)
         .Include(x => x.DaftarSertifikasi)
-        .Include(x => x.DaftarKegiatanPrima)
+        .Include(x => x.DaftarKolaboratorKegiatanPrima).ThenInclude(k => k.Entity1)
         .Include(x => x.AppUser)
         .FirstOrDefaultAsync(x => x.Id == id);
 
@@ -35,7 +35,7 @@ internal class RepositoriKolaborator : IRepositoriKolaborator
         .Include(x => x.DaftarProduk)
         .Include(x => x.DaftarRekomendasi)
         .Include(x => x.DaftarSertifikasi)
-        .Include(x => x.DaftarKegiatanPrima)
+        .Include(x => x.DaftarKolaboratorKegiatanPrima).ThenInclude(k => k.Entity1)
         .Include(x => x.AppUser)
         .ToListAsync();
 
