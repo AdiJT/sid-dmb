@@ -1,6 +1,6 @@
 ﻿namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 
-public interface IRepostoriLaporanEvent
+public interface IRepositoriLaporanEvent
 {
     Task<LaporanEvent?> Get(IdLaporanEvent id);
     Task<List<LaporanEvent>> GetAll();

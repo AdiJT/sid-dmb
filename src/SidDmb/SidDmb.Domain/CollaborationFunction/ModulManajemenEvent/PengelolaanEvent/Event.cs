@@ -7,6 +7,7 @@ public class Event : Entity<IdEvent>, IAuditableEntity
 {
     public required string Nama { get; set; }
     public required string Dekripsi { get; set; }
+    public required KategoriEvent Kategori { get; set; }
     public required DateTime TanggalWaktu { get; set; }
     public required string Lokasi { get; set; }
     public required string Penyelenggara { get; set; }

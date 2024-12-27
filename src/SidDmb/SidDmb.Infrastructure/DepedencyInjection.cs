@@ -81,8 +81,8 @@ public static class DepedencyInjection
         services.AddScoped<IRepositoriKalenderAcara, RepositoriKalenderAcara>();
         services.AddScoped<IRepositoriLaporanKunjungan, RepositoriLaporanKunjungan>();
         services.AddScoped<IRepositoriKolaborator, RepositoriKolaborator>();
-        services.AddScoped<IRepostoriLaporanEvent, RepositoriLaporanEvent>();
-        services.AddScoped<IRepostoriEvent, RepositoriEvent>();
+        services.AddScoped<IRepositoriLaporanEvent, RepositoriLaporanEvent>();
+        services.AddScoped<IRepositoriEvent, RepositoriEvent>();
         services.AddScoped<IRepositoriMateri, RepositoriMateri>();
         services.AddScoped<IRepositoriPelatihan, RepositoriPelatihan>();
         services.AddScoped<IRepositoriDistribusi, RepositoriDistribusi>();

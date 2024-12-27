@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿@model List<Event>
+
+@{
+    ViewData["Title"] = "Pengelolaan Event";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -21,7 +28,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Daftar Pengelolaan Event</h4>
                     <div class="pb-3 pt-1">
-                        <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="TambahPengelolaanEvent" class="btn btn-primary">+ Tambah</a>
+                        <a asp-area="Dashboard" asp-controller="Event" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
                     </div>
                     <table id="alternative-page-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -39,7 +46,6 @@
                                 <th>Status Pendaftaran</th>
                                 <th>Sponsor Event</th>
                                 <th>Anggaran Event</th>
-                                <th>Pendapatan dari Event</th>
                                 <th>Kolaborator Event</th>
                                 <th>Media Promosi</th>
                                 <th>Tanggal Input</th>
@@ -47,58 +53,39 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-
                         <tbody>
-                            <tr>
-                                <td>EV001</td>
-                                <td>Festival Budaya Gilang</td>
-                                <td>Festival tahunan yang menampilkan tari, musik, dan kuliner lokal.</td>
-                                <td>Budaya</td>
-                                <td>2024-12-20 08:00 - 2024-12-20 18:00</td>
-                                <td>Balai Desa Gilangharjo</td>
-                                <td>Pokdarwis Desa Gilangharjo</td>
-                                <td><a href="https://desa-wisata/materi001.pdf">Link Unduhan</a></td>
-                                <td>Umum</td>
-                                <td>500</td>
-                                <td>Dibuka</td>
-                                <td>Bank Gilang, Warung Gilang Sejahtera</td>
-                                <td>Rp10.000.000</td>
-                                <td>Rp15.000.000</td>
-                                <td>BPOM, Akademisi, Asosiasi Pariwisata</td>
-                                <td>poster_festival.jpg</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="EditPengelolaanEvent" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>EV001</td>
-                                <td>Festival Budaya Gilang</td>
-                                <td>Festival tahunan yang menampilkan tari, musik, dan kuliner lokal.</td>
-                                <td>Budaya</td>
-                                <td>2024-12-20 08:00 - 2024-12-20 18:00</td>
-                                <td>Balai Desa Gilangharjo</td>
-                                <td>Pokdarwis Desa Gilangharjo</td>
-                                <td><a href="https://desa-wisata/materi001.pdf">Link Unduhan</a></td>
-                                <td>Umum</td>
-                                <td>500</td>
-                                <td>Dibuka</td>
-                                <td>Bank Gilang, Warung Gilang Sejahtera</td>
-                                <td>Rp10.000.000</td>
-                                <td>Rp15.000.000</td>
-                                <td>BPOM, Akademisi, Asosiasi Pariwisata</td>
-                                <td>poster_festival.jpg</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="EditPengelolaanEvent" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach(var eventX in Model)
+                            {
+                                <tr>
+                                    <td>@eventX.Id.Value</td>
+                                    <td>@eventX.Nama</td>
+                                    <td>@eventX.Dekripsi</td>
+                                    <td>@eventX.Kategori.Humanize()</td>
+                                    <td>@eventX.TanggalWaktu.ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>@eventX.Lokasi</td>
+                                    <td>@eventX.Penyelenggara</td>
+                                    <td>@eventX.KontakInformasi</td>
+                                    <td>@eventX.TargetPeserta.Humanize()</td>
+                                    <td>@eventX.JumlahPesertaMaksimal</td>
+                                    <td>@eventX.StatusPendaftaran.Humanize()</td>
+                                    <td>@eventX.Sponsor</td>
+                                    <td>@eventX.Anggaran.ToString("C2", cultureInfo)</td>
+                                    <td>@string.Join(", ", eventX.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td>
+                                        <a href="@eventX.MediaPromosi">@eventX.MediaPromosi</a>
+                                    </td>
+                                    <td>@eventX.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@eventX.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="Event" asp-action="Edit" asp-route-id="@eventX.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = eventX.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

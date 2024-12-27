@@ -4,7 +4,7 @@ using SidDmb.Infrastructure.Database;
 
 namespace SidDmb.Infrastructure.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
 
-internal class RepositoriEvent : IRepostoriEvent
+internal class RepositoriEvent : IRepositoriEvent
 {
     private readonly AppDbContext _appDbContext;
 

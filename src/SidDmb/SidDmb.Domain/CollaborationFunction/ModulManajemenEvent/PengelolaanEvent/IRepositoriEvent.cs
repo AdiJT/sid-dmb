@@ -1,6 +1,6 @@
 ﻿namespace SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
 
-public interface IRepostoriEvent
+public interface IRepositoriEvent
 {
     Task<Event?> Get(IdEvent id);
     Task<List<Event>> GetAll();

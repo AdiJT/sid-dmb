@@ -32,6 +32,8 @@
                         <div class="row">
                             <div asp-validation-summary="All" class="form-text text-danger"></div>
 
+                            <input asp-for="@Model.Id" hidden readonly />
+
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label asp-for="@Model.Nama" class="form-label">Nama Kelompok<span class="text-danger">*</span></label>

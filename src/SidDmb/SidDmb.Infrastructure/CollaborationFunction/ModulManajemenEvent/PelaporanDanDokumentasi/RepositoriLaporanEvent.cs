@@ -4,7 +4,7 @@ using SidDmb.Infrastructure.Database;
 
 namespace SidDmb.Infrastructure.CollaborationFunction.ModulManajemenEvent.PelaporanDanDokumentasi;
 
-internal class RepositoriLaporanEvent : IRepostoriLaporanEvent
+internal class RepositoriLaporanEvent : IRepositoriLaporanEvent
 {
     private readonly AppDbContext _appDbContext;
 
@@ -14,11 +14,13 @@ internal class RepositoriLaporanEvent : IRepostoriLaporanEvent
     }
 
     public async Task<LaporanEvent?> Get(IdLaporanEvent id) => await _appDbContext.LaporanEvent
-        .Include(x => x.Event)
+        .Include(x => x.Event).ThenInclude(e => e.DaftarKolaborator)
+        .Include(x => x.Event).ThenInclude(e => e.DaftarKolaboratorEvent)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<LaporanEvent>> GetAll() => await _appDbContext.LaporanEvent
-        .Include(x => x.Event)
+        .Include(x => x.Event).ThenInclude(e => e.DaftarKolaborator)
+        .Include(x => x.Event).ThenInclude(e => e.DaftarKolaboratorEvent)
         .ToListAsync();
 
     public void Add(LaporanEvent laporanEvent) => _appDbContext.LaporanEvent.Add(laporanEvent);

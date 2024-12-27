@@ -34,7 +34,7 @@ public class IdLaporanEvent : ValueObject, IEquatable<IdLaporanEvent>
         return new IdLaporanEvent(value);
     }
 
-    public static async Task<IdLaporanEvent> Generate(IRepostoriLaporanEvent repostoriLaporanEvent)
+    public static async Task<IdLaporanEvent> Generate(IRepositoriLaporanEvent repostoriLaporanEvent)
     {
         var newId = (await repostoriLaporanEvent.GetAll())
             .Select(e => int.Parse(e.Id.Value.Substring(2)))

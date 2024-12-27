@@ -1,6 +1,6 @@
 ﻿@model EditVM
 
-@inject IRepostoriEvent RepositoriEvent
+@inject IRepositoriEvent RepositoriEvent
 
 @{
     ViewData["Title"] = "Pelaporan dan Dokumentasi | Tambah";
@@ -34,6 +34,8 @@
                     <form asp-action="@nameof(LaporanEventController.Edit)" enctype="multipart/form-data">
                         <div class="row">
                             <div asp-validation-summary="All" class="form-text text-danger"></div>
+
+                            <input asp-for="@Model.Id" hidden readonly />
 
                             <div class="col-lg-6">
                                 <div class="mb-3">

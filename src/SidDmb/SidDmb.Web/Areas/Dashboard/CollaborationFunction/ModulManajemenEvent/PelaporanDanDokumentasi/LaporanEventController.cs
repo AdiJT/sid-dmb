@@ -12,16 +12,16 @@ namespace SidDmb.Web.Areas.Dashboard.CollaborationFunction.ModulManajemenEvent.P
 [Authorize(Roles = UserRoles.ADMIN)]
 public class LaporanEventController : Controller
 {
-    private readonly IRepostoriLaporanEvent _repositoriLaporanEvent;
-    private readonly IRepostoriEvent _repostoriEvent;
+    private readonly IRepositoriLaporanEvent _repositoriLaporanEvent;
+    private readonly IRepositoriEvent _repostoriEvent;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IFileService _fileService;
 
     public LaporanEventController(
-        IRepostoriLaporanEvent repositoriLaporanEvent,
+        IRepositoriLaporanEvent repositoriLaporanEvent,
         IUnitOfWork unitOfWork,
         IFileService fileService,
-        IRepostoriEvent repositoriEvent)
+        IRepositoriEvent repositoriEvent)
     {
         _repositoriLaporanEvent = repositoriLaporanEvent;
         _unitOfWork = unitOfWork;
