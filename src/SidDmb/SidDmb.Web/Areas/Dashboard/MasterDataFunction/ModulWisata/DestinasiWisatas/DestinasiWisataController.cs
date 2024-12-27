@@ -155,7 +155,7 @@ public class DestinasiWisataController : Controller
         var destinasiWisata = await _repositoriDestinasiWisata.Get(resultId.Value);
         if (destinasiWisata is null) return NotFound();
 
-        _repositoriDestinasiWisata.Update(destinasiWisata);
+        _repositoriDestinasiWisata.Delete(destinasiWisata);
         var result = await _unitOfWork.SaveChangesAsync();
         if (result.IsFailure) return StatusCode(StatusCodes.Status500InternalServerError);
 
