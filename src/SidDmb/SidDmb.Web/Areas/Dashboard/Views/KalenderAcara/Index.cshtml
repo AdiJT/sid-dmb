@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿@model List<KalenderAcara>
+
+@{
+    ViewData["Title"] = "Kalender Acara";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -14,7 +21,6 @@
         </div>
     </div>
     <!-- end page title -->
-
     <!-- start row -->
     <div class="row">
         <div class="col-12">
@@ -22,7 +28,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Daftar Kalender Acara</h4>
                     <div class="pb-3 pt-1">
-                        <a asp-area="Dashboard" asp-controller="Wisata" asp-action="TambahKalenderAcara" class="btn btn-primary">+ Tambah</a>
+                        <a asp-area="Dashboard" asp-controller="KalenderAcara" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
                     </div>
                     <table id="alternative-page-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -48,59 +54,38 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-
-
                         <tbody>
-                            <tr>
-                                <td>AC001</td>
-                                <td>Festival Seni dan Budaya Gilang</td>
-                                <td>Festival tahunan yang menampilkan seni tari dan musik tradisional.</td>
-                                <td>Budaya</td>
-                                <td>2024-12-20 08:00 - 2024-12-20 18:00</td>
-                                <td>Balai Desa Gilangharjo</td>
-                                <td>Pokdarwis Desa Gilangharjo</td>
-                                <td>+62 813-4567-8910</td>
-                                <td>25.000</td>
-                                <td>Umum</td>
-                                <td>150</td>
-                                <td>Dibuka</td>
-                                <td>poster_festival.jpg</td>
-                                <td>Bank Gilang, Warung Gilang Sejahtera</td>
-                                <td>https://pendaftaranfestival.com</td>
-                                <td>4.8</td>
-                                <td>2024-12-01</td>
-                                <td>2024-12-05</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Wisata" asp-action="EditKalenderAcara" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>AC001</td>
-                                <td>Festival Seni dan Budaya Gilang</td>
-                                <td>Festival tahunan yang menampilkan seni tari dan musik tradisional.</td>
-                                <td>Budaya</td>
-                                <td>2024-12-20 08:00 - 2024-12-20 18:00</td>
-                                <td>Balai Desa Gilangharjo</td>
-                                <td>Pokdarwis Desa Gilangharjo</td>
-                                <td>+62 813-4567-8910</td>
-                                <td>25.000</td>
-                                <td>Umum</td>
-                                <td>150</td>
-                                <td>Dibuka</td>
-                                <td>poster_festival.jpg</td>
-                                <td>Bank Gilang, Warung Gilang Sejahtera</td>
-                                <td>https://pendaftaranfestival.com</td>
-                                <td>4.8</td>
-                                <td>2024-12-01</td>
-                                <td>2024-12-05</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Wisata" asp-action="EditKalenderAcara" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach (var kalenderAcara in Model)
+                            {
+                                <tr>
+                                    <td>@kalenderAcara.Id.Value</td>
+                                    <td>@kalenderAcara.NamaAcara</td>
+                                    <td>@kalenderAcara.DekripsiAcara</td>
+                                    <td>@kalenderAcara.Kategori.Humanize()</td>
+                                    <td>@kalenderAcara.TanggalDanWaktu.ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>@kalenderAcara.LokasiAcara</td>
+                                    <td>@kalenderAcara.PenanggungJawab</td>
+                                    <td>@kalenderAcara.KontakInformasi</td>
+                                    <td>@kalenderAcara.HargaTiketAcara.ToString("C2", cultureInfo)</td>
+                                    <td>@kalenderAcara.TargetPesertaAcara.Humanize()</td>
+                                    <td>@kalenderAcara.BatasKuotaPeserta</td>
+                                    <td>@kalenderAcara.StatusPendaftaran.Humanize()</td>
+                                    <td><a href="@kalenderAcara.MediaPromosi">@kalenderAcara.MediaPromosi</a></td>
+                                    <td>@kalenderAcara.SponsorAcara</td>
+                                    <td><a href="@kalenderAcara.TautanPendaftaran">@kalenderAcara.TautanPendaftaran</a></td>
+                                    <td>@kalenderAcara.RatingAcara.ToString("F1")</td>
+                                    <td>@kalenderAcara.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@kalenderAcara.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="KalenderAcara" asp-action="Edit" asp-route-id="@kalenderAcara.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = kalenderAcara.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
