@@ -1,5 +1,106 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Research & Development</a></li>
+                        <li class="breadcrumb-item active">Rekomendasi & Pengembangan Produk</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Rekomendasi & Pengembangan Produk</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Rekomendasi & Pengembangan Produk</h4>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Rekomendasi</th>
+                                <th>Judul Rekomendasi</th>
+                                <th>Deskripsi Rekomendasi</th>
+                                <th>ID Produk Terkait</th>
+                                <th>Nama Produk</th>
+                                <th>Tujuan Pengembangan</th>
+                                <th>Pemberi Rekomendasi</th>
+                                <th>Kategori Pengembangan</th>
+                                <th>Strategi yang Direkomendasikan</th>
+                                <th>Timeline Implementasi</th>
+                                <th>Anggaran yang Dibutuhkan</th>
+                                <th>Hasil yang Diharapkan</th>
+                                <th>Kolaborator dalam Pengembangan</th>
+                                <th>Status Implementasi</th>
+                                <th>Feedback dari Kolaborator</th>
+                                <th>Dokumen Pendukung</th>
+                                <th>Tanggal Input Data</th>
+                                <th>Tanggal Pembaruan Data</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>RP001</td>
+                                <td>Optimalisasi Kemasan Produk Batik Tulis</td>
+                                <td>Meningkatkan daya tarik produk dengan menggunakan kemasan ramah lingkungan.</td>
+                                <td>PL001</td>
+                                <td>Batik Tulis Gilang</td>
+                                <td>Memperluas pasar internasional dan meningkatkan daya saing.</td>
+                                <td>Akademisi UGM, BPOM</td>
+                                <td>Desain</td>
+                                <td>Menggunakan platform e-commerce untuk memasarkan produk ke pasar internasional.</td>
+                                <td>3 bulan, mulai dari Januari hingga Maret 2025.</td>
+                                <td>Rp50.000.000</td>
+                                <td>Peningkatan penjualan produk sebesar 20% dalam 6 bulan.</td>
+                                <td>BPOM, Dinas Koperasi & UMKM</td>
+                                <td>Sedang Berjalan</td>
+                                <td>Pengemasan perlu disesuaikan dengan regulasi negara tujuan ekspor.</td>
+                                <td>proposal_pengembangan.pdf</td>
+                                <td>2024-12-05</td>
+                                <td>2024-12-10</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="ResearchAndDevelopment" asp-action="RekomendasiDanPengembanganProdukDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>RP001</td>
+                                <td>Optimalisasi Kemasan Produk Batik Tulis</td>
+                                <td>Meningkatkan daya tarik produk dengan menggunakan kemasan ramah lingkungan.</td>
+                                <td>PL001</td>
+                                <td>Batik Tulis Gilang</td>
+                                <td>Memperluas pasar internasional dan meningkatkan daya saing.</td>
+                                <td>Akademisi UGM, BPOM</td>
+                                <td>Desain</td>
+                                <td>Menggunakan platform e-commerce untuk memasarkan produk ke pasar internasional.</td>
+                                <td>3 bulan, mulai dari Januari hingga Maret 2025.</td>
+                                <td>Rp50.000.000</td>
+                                <td>Peningkatan penjualan produk sebesar 20% dalam 6 bulan.</td>
+                                <td>BPOM, Dinas Koperasi & UMKM</td>
+                                <td>Sedang Berjalan</td>
+                                <td>Pengemasan perlu disesuaikan dengan regulasi negara tujuan ekspor.</td>
+                                <td>proposal_pengembangan.pdf</td>
+                                <td>2024-12-05</td>
+                                <td>2024-12-10</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="ResearchAndDevelopment" asp-action="RekomendasiDanPengembanganProdukDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

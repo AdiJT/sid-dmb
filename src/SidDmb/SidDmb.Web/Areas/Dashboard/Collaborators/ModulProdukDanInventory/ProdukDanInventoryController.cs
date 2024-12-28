@@ -13,12 +13,27 @@ public class ProdukDanInventoryController : Controller
         return View();
     }
 
+    public IActionResult ManajemenDistribusiDetail()
+    {
+        return View();
+    }
+
     public IActionResult ManajemenProduk()
     {
         return View();
     }
 
+    public IActionResult ManajemenProdukDetail()
+    {
+        return View();
+    }
+
     public IActionResult SertifikasiDanLegalitas()
+    {
+        return View();
+    }
+
+    public IActionResult SertifikasiDanLegalitasDetail()
     {
         return View();
     }

@@ -12,8 +12,17 @@ public class ResearchAndDevelopmentController : Controller
     {
         return View();
     }
-    
+
+    public IActionResult ManajemenDataRisetDetail()
+    {
+        return View();
+    }
+
     public IActionResult RekomendasiDanPengembanganProduk()
+    {
+        return View();
+    }
+    public IActionResult RekomendasiDanPengembanganProdukDetail()
     {
         return View();
     }

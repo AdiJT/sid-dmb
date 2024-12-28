@@ -13,7 +13,17 @@ public class PelatihanEdukasiController : Controller
         return View();
     }
 
+    public IActionResult MateriEdukasiDetail()
+    {
+        return View();
+    }
+
     public IActionResult PeningkatanEdukasi()
+    {
+        return View();
+    }
+
+    public IActionResult PeningkatanEdukasiDetail()
     {
         return View();
     }
