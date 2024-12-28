@@ -1,5 +1,103 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Manajemen Event</a></li>
+                        <li class="breadcrumb-item active">Pelaporan & Dokumentasi Event</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Pelaporan & Dokumentasi Event</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Daftar Pelaporan & Dokumentasi Event</h4>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Laporan Event</th>
+                                <th>ID Event</th>
+                                <th>Nama Event</th>
+                                <th>Tanggal Pelaporan</th>
+                                <th>Jumlah Peserta</th>
+                                <th>Pendapatan dari Event</th>
+                                <th>Pengeluaran Event</th>
+                                <th>Ulasan Singkat Event</th>
+                                <th>Feedback dari Peserta</th>
+                                <th>Foto/Gambar Dokumentasi</th>
+                                <th>Video Dokumentasi</th>
+                                <th>Kolaborator dalam Event</th>
+                                <th>Laporan Detail</th>
+                                <th>Masukan Kolaborator</th>
+                                <th>Rekomendasi untuk Event Berikutnya</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>LE001</td>
+                                <td>EV001</td>
+                                <td>Festival Budaya Gilang</td>
+                                <td>2024-12-22</td>
+                                <td>450</td>
+                                <td>Rp15.000.000</td>
+                                <td>Rp12.000.000</td>
+                                <td>Event berjalan sukses, dengan partisipasi masyarakat yang tinggi.</td>
+                                <td>Tingkatkan jumlah fasilitas tempat duduk untuk acara berikutnya.</td>
+                                <td>dokumentasi_festival.jpg</td>
+                                <td>video_festival.mp4</td>
+                                <td>BPOM, Akademisi, Asosiasi Pariwisata</td>
+                                <td>laporan_festival.pdf</td>
+                                <td>Promosi event dapat ditingkatkan untuk menjangkau wisatawan internasional.</td>
+                                <td>Tambahkan atraksi seni tari internasional untuk menarik pengunjung lebih banyak.</td>
+                                <td>2024-12-23</td>
+                                <td>2024-12-25</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PelaporanDanDokumentasiDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>LE001</td>
+                                <td>EV001</td>
+                                <td>Festival Budaya Gilang</td>
+                                <td>2024-12-22</td>
+                                <td>450</td>
+                                <td>Rp15.000.000</td>
+                                <td>Rp12.000.000</td>
+                                <td>Event berjalan sukses, dengan partisipasi masyarakat yang tinggi.</td>
+                                <td>Tingkatkan jumlah fasilitas tempat duduk untuk acara berikutnya.</td>
+                                <td>dokumentasi_festival.jpg</td>
+                                <td>video_festival.mp4</td>
+                                <td>BPOM, Akademisi, Asosiasi Pariwisata</td>
+                                <td>laporan_festival.pdf</td>
+                                <td>Promosi event dapat ditingkatkan untuk menjangkau wisatawan internasional.</td>
+                                <td>Tambahkan atraksi seni tari internasional untuk menarik pengunjung lebih banyak.</td>
+                                <td>2024-12-23</td>
+                                <td>2024-12-25</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PelaporanDanDokumentasiDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

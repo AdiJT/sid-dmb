@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Dashboard\Views\Prima\KegiatanPrimaDetail.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Humanizer.Core.id" Version="2.14.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -36,18 +32,6 @@
     <Folder Include="Areas\Dashboard\CollaborationFunction\ModulResearchAndDevelopment\ManajemenDataRiset\" />
     <Folder Include="Areas\Dashboard\CollaborationFunction\ModulResearchAndDevelopment\RekomendasiDanPengembanganProduk\" />
     <Folder Include="Models\Atraksi\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Areas\Dashboard\Views\Prima\KegiatanPrimaDetail.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Areas\Dashboard\Views\Prima\KegiatanPrimaDetail.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Areas\Dashboard\Views\Prima\KegiatanPrimaDetail.cshtml" />
   </ItemGroup>
 
 </Project>

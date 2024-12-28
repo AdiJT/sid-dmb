@@ -22,4 +22,8 @@ public class ManajemenEventController : Controller
     {
         return View(); 
     }
+    public IActionResult PelaporanDanDokumentasiDetail()
+    {
+        return View();
+    }
 }

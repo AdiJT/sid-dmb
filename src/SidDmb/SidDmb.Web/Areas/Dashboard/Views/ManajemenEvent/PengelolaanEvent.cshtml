@@ -1,5 +1,106 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Manajemen Event</a></li>
+                        <li class="breadcrumb-item active">Pengelolaan Event</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Pengelolaan Event</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Daftar Pengelolaan Event</h4>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Event</th>
+                                <th>Nama Event</th>
+                                <th>Deskripsi Event</th>
+                                <th>Kategori Event</th>
+                                <th>Tanggal dan Waktu</th>
+                                <th>Lokasi Event</th>
+                                <th>Penyelenggara</th>
+                                <th>Kontak Informasi</th>
+                                <th>Target Peserta</th>
+                                <th>Jumlah Peserta Maksimal</th>
+                                <th>Status Pendaftaran</th>
+                                <th>Sponsor Event</th>
+                                <th>Anggaran Event</th>
+                                <th>Pendapatan dari Event</th>
+                                <th>Kolaborator Event</th>
+                                <th>Media Promosi</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>EV001</td>
+                                <td>Festival Budaya Gilang</td>
+                                <td>Festival tahunan yang menampilkan tari, musik, dan kuliner lokal.</td>
+                                <td>Budaya</td>
+                                <td>2024-12-20 08:00 - 2024-12-20 18:00</td>
+                                <td>Balai Desa Gilangharjo</td>
+                                <td>Pokdarwis Desa Gilangharjo</td>
+                                <td><a href="https://desa-wisata/materi001.pdf">Link Unduhan</a></td>
+                                <td>Umum</td>
+                                <td>500</td>
+                                <td>Dibuka</td>
+                                <td>Bank Gilang, Warung Gilang Sejahtera</td>
+                                <td>Rp10.000.000</td>
+                                <td>Rp15.000.000</td>
+                                <td>BPOM, Akademisi, Asosiasi Pariwisata</td>
+                                <td>poster_festival.jpg</td>
+                                <td>2024-12-05</td>
+                                <td>2024-12-10</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PengelolaanEventDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>EV001</td>
+                                <td>Festival Budaya Gilang</td>
+                                <td>Festival tahunan yang menampilkan tari, musik, dan kuliner lokal.</td>
+                                <td>Budaya</td>
+                                <td>2024-12-20 08:00 - 2024-12-20 18:00</td>
+                                <td>Balai Desa Gilangharjo</td>
+                                <td>Pokdarwis Desa Gilangharjo</td>
+                                <td><a href="https://desa-wisata/materi001.pdf">Link Unduhan</a></td>
+                                <td>Umum</td>
+                                <td>500</td>
+                                <td>Dibuka</td>
+                                <td>Bank Gilang, Warung Gilang Sejahtera</td>
+                                <td>Rp10.000.000</td>
+                                <td>Rp15.000.000</td>
+                                <td>BPOM, Akademisi, Asosiasi Pariwisata</td>
+                                <td>poster_festival.jpg</td>
+                                <td>2024-12-05</td>
+                                <td>2024-12-10</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PengelolaanEventDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
