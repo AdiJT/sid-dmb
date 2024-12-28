@@ -85,6 +85,7 @@ internal class AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) : D
 
     #region ModulEdukasiDanPembelajaran
     public DbSet<Materi> Materi { get; set; }
+    public DbSet<KolaboratorMateri> KolaboratorMateri { get; set; }
     public DbSet<Pelatihan> Pelatihan { get; set; }
     #endregion
 

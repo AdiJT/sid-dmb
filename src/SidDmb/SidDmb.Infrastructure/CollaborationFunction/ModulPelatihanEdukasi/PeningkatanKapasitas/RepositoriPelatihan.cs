@@ -15,10 +15,11 @@ internal class RepositoriPelatihan : IRepositoriPelatihan
 
     public async Task<Pelatihan?> Get(IdPelatihan id) => await _appDbContext.Pelatihan
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.DaftarKolaboratorPelatihan)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<Pelatihan>> GetAll() => await _appDbContext.Pelatihan
-        .Include(x => x.DaftarKolaborator)
+        .Include(x => x.DaftarKolaboratorPelatihan)
         .ToListAsync();
 
     public void Add(Pelatihan Pelatihan) => _appDbContext.Pelatihan.Add(Pelatihan);

@@ -12,6 +12,8 @@ internal class MateriConfiguration : IEntityTypeConfiguration<Materi>
 
         builder.Property(x => x.Id).HasConversion(i => i.Value, s => IdMateri.Create(s).Value);
 
-        builder.HasMany(x => x.DaftarKolaborator).WithMany(x => x.DaftarMateri);
+        builder.HasMany(x => x.DaftarKolaborator).WithMany(x => x.DaftarMateri).UsingEntity<KolaboratorMateri>(
+            l => l.HasOne(x => x.Entity2).WithMany(x => x.DaftarKolaboratorMateri).HasForeignKey(x => x.Entity2Id),
+            r => r.HasOne(x => x.Entity1).WithMany(x => x.DaftarKolaboratorMateri).HasForeignKey(x => x.Entity1Id));
     }
 }

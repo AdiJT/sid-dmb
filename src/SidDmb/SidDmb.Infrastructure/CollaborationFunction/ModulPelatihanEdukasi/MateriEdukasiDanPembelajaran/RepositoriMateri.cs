@@ -15,10 +15,12 @@ internal class RepositoriMateri : IRepositoriMateri
 
     public async Task<Materi?> Get(IdMateri id) => await _appDbContext.Materi
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.DaftarKolaboratorMateri)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<Materi>> GetAll() => await _appDbContext.Materi
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.DaftarKolaboratorMateri)
         .ToListAsync();
 
     public void Add(Materi materiEdukasiDanPembelajaran) => _appDbContext.Materi.Add(materiEdukasiDanPembelajaran);

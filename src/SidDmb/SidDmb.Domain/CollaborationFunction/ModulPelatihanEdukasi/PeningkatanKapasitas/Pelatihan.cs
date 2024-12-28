@@ -18,9 +18,9 @@ public class Pelatihan : Entity<IdPelatihan>, IAuditableEntity
     public required string EvaluasiPeserta { get; set; }
     public required Uri DokumenDanMedia { get; set; }
     public required string FeedbackPeserta { get; set; }
-    public required string RekomendasiUntukPelatihanBerikutnya { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
     public List<Kolaborator> DaftarKolaborator { get; set; } = [];
+    public List<KolaboratorPelatihan> DaftarKolaboratorPelatihan { get; set; } = [];
 }

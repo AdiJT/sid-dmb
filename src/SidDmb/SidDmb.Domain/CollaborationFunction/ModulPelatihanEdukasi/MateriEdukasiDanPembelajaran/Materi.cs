@@ -16,10 +16,10 @@ public class Materi : Entity<IdMateri>, IAuditableEntity
     public required Uri DokumenPendukung { get; set; }
     public required int JumlahPengguna { get; set; }
     public required StatusMateri StatusMateri { get; set; }
-    public required string RekomendasiPembaruanMateri { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
     public List<Kolaborator> DaftarKolaborator { get; set; } = [];
+    public List<KolaboratorMateri> DaftarKolaboratorMateri { get; set; } = [];
 }
