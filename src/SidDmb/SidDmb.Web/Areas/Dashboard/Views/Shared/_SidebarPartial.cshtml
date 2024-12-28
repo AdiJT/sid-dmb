@@ -1,4 +1,13 @@
-﻿<!-- ========== Left Sidebar Start ========== -->
+﻿@using SidDmb.Domain.Authentication
+@using SidDmb.Web.Authentication
+
+@inject ISignInManager SignInManager
+
+@{
+    var appUser = await SignInManager.GetUser();
+}
+
+<!-- ========== Left Sidebar Start ========== -->
 <div class="leftside-menu">
 
     <!-- LOGO -->
@@ -25,175 +34,272 @@
 
         <!--- Sidemenu -->
         <ul class="side-nav">
+            @if(appUser is not null && appUser.Role == UserRoles.ADMIN)
+            {
+                <li class="side-nav-title side-nav-item">Dashboard</li>
 
-            <li class="side-nav-title side-nav-item">Dashboard</li>
+                <li class="side-nav-item">
+                    <a asp-area="Dashboard" asp-controller="Home" asp-action="Index" class="side-nav-link">
+                        <i class="uil-home-alt"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
 
-            <li class="side-nav-item">
-                <a asp-area="Dashboard" asp-controller="Home" asp-action="Index" class="side-nav-link">
-                    <i class="uil-home-alt"></i>
-                    <span> Dashboard </span>
-                </a>                
-            </li>
+                <li class="side-nav-title side-nav-item">Master Data</li>
 
-            <li class="side-nav-title side-nav-item">Master Data</li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarWisata" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-scenery"></i>
+                        <span> Wisata </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarWisata">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="DestinasiWisata" asp-action="Index">Destinasi Wisata</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="KalenderAcara" asp-action="Index">Kalender Acara</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="LaporanKunjungan" asp-action="Index">Laporan Kunjungan</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarWisata" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-scenery"></i>
-                    <span> Wisata </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarWisata">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="DestinasiWisata" asp-action="Index">Destinasi Wisata</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="KalenderAcara" asp-action="Index">Kalender Acara</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="LaporanKunjungan" asp-action="Index">Laporan Kunjungan</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarBudaya" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-archway"></i>
+                        <span> Budaya </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarBudaya">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ArtefakBudaya" asp-action="Index">Artefak Budaya</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="SeniBudaya" asp-action="Index">Seni Budaya</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="SitusBudaya" asp-action="Index">Situs Budaya</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="UpacaraBudaya" asp-action="Index">Upacara Budaya</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarBudaya" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-archway"></i>
-                    <span> Budaya </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarBudaya">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="ArtefakBudaya" asp-action="Index">Artefak Budaya</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="SeniBudaya" asp-action="Index">Seni Budaya</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="SitusBudaya" asp-action="Index">Situs Budaya</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="UpacaraBudaya" asp-action="Index">Upacara Budaya</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPreneur" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-briefcase"></i>
+                        <span> Preneur </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPreneur">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ProdukLokal" asp-action="Index">Produk Lokal</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="UnitUsaha" asp-action="Index">Unit Usaha</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPreneur" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-briefcase"></i>
-                    <span> Preneur </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarPreneur">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="ProdukLokal" asp-action="Index">Produk Lokal</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="UnitUsaha" asp-action="Index">Unit Usaha</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPrima" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-star"></i>
+                        <span> Prima </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPrima">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="KegiatanPrima" asp-action="Index">Kegiatan Prima</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="KelompokPrima" asp-action="Index">Kelompok Prima</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPrima" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-star"></i>
-                    <span> Prima </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarPrima">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="KegiatanPrima" asp-action="Index">Kegiatan Prima</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="KelompokPrima" asp-action="Index">Kelompok Prima</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                <li class="side-nav-title side-nav-item">Collaboration</li>
 
-            <li class="side-nav-title side-nav-item">Collaboration</li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarEvent" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-calendar-alt"></i>
+                        <span> Manajemen Event </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarEvent">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="LaporanEvent" asp-action="Index">Pelaporan & Dokumentasi</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="Event" asp-action="Index">Pengelolaan Event</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarEvent" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-calendar-alt"></i>
-                    <span> Manajemen Event </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarEvent">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="LaporanEvent" asp-action="Index">Pelaporan & Dokumentasi</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="Event" asp-action="Index">Pengelolaan Event</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPelatihanEdukasi" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-books"></i>
+                        <span> Pelatihan & Edukasi </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPelatihanEdukasi">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="MateriEdukasi" asp-action="Index">Materi Edukasi & Pembelajaran</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="PeningkatanKapasitas" asp-action="Index">Peningkatan Kapasitas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPelatihanEdukasi" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-books"></i>
-                    <span> Pelatihan & Edukasi </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarPelatihanEdukasi">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="MateriEdukasi" asp-action="Index">Materi Edukasi & Pembelajaran</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="PeningkatanKapasitas" asp-action="Index">Peningkatan Kapasitas</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarProdukInventory" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-box"></i>
+                        <span> Produk & Inventory </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarProdukInventory">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ProdukInventory" asp-action="ManajemenDistribusi">Manajemen Distribusi</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ProdukInventory" asp-action="ManajemenProduk">Manajemen Produk</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ProdukInventory" asp-action="Sertifikasi">Sertifikasi & Legalitas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarProdukInventory" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-box"></i>
-                    <span> Produk & Inventory </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarProdukInventory">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="ProdukInventory" asp-action="ManajemenDistribusi">Manajemen Distribusi</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="ProdukInventory" asp-action="ManajemenProduk">Manajemen Produk</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="ProdukInventory" asp-action="Sertifikasi">Sertifikasi & Legalitas</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarResearchDevelopment" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-search-alt"></i>
+                        <span> Research & Development </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarResearchDevelopment">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ResearchDevelopment" asp-action="ManajemenDataRiset">Manajemen Data Riset</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ResearchDevelopment" asp-action="RekomendasiProduk">Rekomendasi & Pengembangan Produk</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            }
+            
+            @if(appUser is not null && appUser.Role == UserRoles.KOLABORATOR)
+            {
+                <li class="side-nav-title side-nav-item">Collaboration</li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarResearchDevelopment" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-search-alt"></i>
-                    <span> Research & Development </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarResearchDevelopment">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="ResearchDevelopment" asp-action="ManajemenDataRiset">Manajemen Data Riset</a>
-                        </li>
-                        <li>
-                            <a asp-area="Dashboard" asp-controller="ResearchDevelopment" asp-action="RekomendasiProduk">Rekomendasi & Pengembangan Produk</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>            
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPrima" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-star"></i>
+                        <span> Prima </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPrima">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="Prima" asp-action="KegiatanPrima">Kegiatan Prima</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarEvent" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-calendar-alt"></i>
+                        <span> Manajemen Event </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarEvent">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PelaporanDanDokumentasi">Pelaporan & Dokumentasi</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PengelolaanEvent">Pengelolaan Event</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarPelatihanEdukasi" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-books"></i>
+                        <span> Pelatihan & Edukasi </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarPelatihanEdukasi">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="MateriEdukasi">Materi Edukasi & Pembelajaran</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="PeningkatanEdukasi">Peningkatan Kapasitas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarProdukInventory" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-box"></i>
+                        <span> Produk & Inventory </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarProdukInventory">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ProdukDanInventory" asp-action="ManajemenDistribusi">Manajemen Distribusi</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ProdukDanInventory" asp-action="ManajemenProduk">Manajemen Produk</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ProdukDanInventory" asp-action="SertifikasiDanLegalitas">Sertifikasi & Legalitas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="side-nav-item">
+                    <a data-bs-toggle="collapse" href="#sidebarResearchDevelopment" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
+                        <i class="uil-search-alt"></i>
+                        <span> Research & Development </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarResearchDevelopment">
+                        <ul class="side-nav-second-level">
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ResearchAndDevelopment" asp-action="ManajemenDataRiset">Manajemen Data Riset</a>
+                            </li>
+                            <li>
+                                <a asp-area="Dashboard" asp-controller="ResearchAndDevelopment" asp-action="RekomendasiDanPengembanganProduk">Rekomendasi & Pengembangan Produk</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            }
         </ul>
 
     </div>

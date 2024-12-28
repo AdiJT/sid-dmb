@@ -7,7 +7,6 @@ using SidDmb.Web.Authentication;
 namespace SidDmb.Web.Areas.Dashboard.Controllers;
 
 [Area("Dashboard")]
-[Authorize(Roles = UserRoles.ADMIN)]
 public class HomeController : Controller
 {
     private readonly ISignInManager _signInManager;
@@ -17,8 +16,14 @@ public class HomeController : Controller
         _signInManager = signInManager;
     }
 
-    public IActionResult Index()
+    [Authorize(Roles = $"{UserRoles.ADMIN}, {UserRoles.KOLABORATOR}")]
+    public async Task<IActionResult> Index()
     {
+        var appUser = await _signInManager.GetUser();
+
+        if (appUser is not null && appUser.Role == UserRoles.KOLABORATOR)
+            return RedirectToAction("PengelolaanEvent", "ManajemenEvent");
+
         return View();
     }
 
@@ -51,6 +56,7 @@ public class HomeController : Controller
     }
 
     [Route("[controller]/[action]")]
+    [Authorize(Roles = $"{UserRoles.ADMIN}, {UserRoles.KOLABORATOR}")]
     public async Task<IActionResult> Logout()
     {
         await _signInManager.Logout();
