@@ -69,13 +69,7 @@
     width: 100%;
     background-color: #fff;
     cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-    .news-item:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-    }
 
 .news-item ::deep img {
     border-radius: 12px;
