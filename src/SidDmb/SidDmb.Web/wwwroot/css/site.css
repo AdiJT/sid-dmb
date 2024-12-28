@@ -229,8 +229,94 @@ input, select, textarea {
         border-bottom: 2px solid #007bff;
     }
 
+/*======================== Form Komentar ========================*/
+.form_komentar {
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-/*======================== Komentar ========================*/
+
+    .form_komentar h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form_komentar textarea {
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        resize: none;
+        box-sizing: border-box;
+        outline: none;
+        transition: border 0.3s ease;
+    }
+
+        .form_komentar textarea:focus {
+            border-color: #007bff;
+        }
+
+    .form_komentar input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        resize: none;
+        box-sizing: border-box;
+        outline: none;
+        transition: border 0.3s ease;
+    }
+
+        .form_komentar input:focus {
+            border-color: #007bff;
+        }
+
+    .form_komentar .button {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+
+    .form_komentar button {
+        background-color: #002ec9;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+        .form_komentar button:hover {
+            background-color: #001e96;
+        }
+
+        .form_komentar button svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+.grup_form_komentar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/*======================== Kumpulan Komentar ========================*/
 .komentar__container {
     padding: 1rem 0rem 2rem 1rem;
 }
@@ -247,15 +333,15 @@ input, select, textarea {
 
 .kumpulan_komentar {
     margin-top: 15px;
-}       
+}
 
 .card_komentar {
     padding: 10px 0px;
     border-radius: 8px;
-    background-color: #fff;
     padding: 10px;
+    background: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
 }
 
@@ -274,5 +360,5 @@ input, select, textarea {
 
 .rating_tanggal_komentar {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
 }
