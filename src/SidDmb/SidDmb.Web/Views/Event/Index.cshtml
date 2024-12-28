@@ -1,4 +1,12 @@
-﻿<header class="header">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulWisata.KalenderAcaras
+@model List<KalenderAcara>
+
+@{
+    ViewData["Title"] = "Berita & Event";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<header class="header">
     <div class="section__container header__container" id="home">
         <h1>Berita & Event</h1>
     </div>
@@ -24,62 +32,27 @@
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <!-- Slide 1 -->
-                        <div class="swiper-slide">
-                            <a asp-area="" asp-controller="Event" asp-action="Detail">
-                                <div class="news-item">
-                                    <img src="~/assets/event2-test.png" alt="News Image 1">
-                                    <div class="news-content">
-                                        <p class="kategori">Event Budaya</p>
-                                        
-                                        <h3>Festival Seni dan Budaya Gilang</h3>
-                                        <div class="status">
-                                            <p><span class="badge" style="background-color: green; color: white;">Dibuka</span></p>
+
+                        @foreach (var acara in Model)
+                        {
+                            <div class="swiper-slide">
+                                <a asp-area="" asp-controller="Event" asp-action="Detail" asp-route-id="@acara.Id.Value">
+                                    <div class="news-item">
+                                        <img src="@acara.MediaPromosi" alt="News Image 1">
+                                        <div class="news-content">
+                                            <p class="kategori">Event @acara.Kategori.Humanize()</p>
+
+                                            <h3>@acara.NamaAcara</h3>
+                                            <div class="status">
+                                                <p><span class="badge" style="background-color: green; color: white;">@acara.StatusPendaftaran.Humanize()</span></p>
+                                            </div>
+                                            <p>@acara.TanggalDanWaktu.ToString("dd MMMM yyyy", cultureInfo)</p>
+                                            <p class="deskripsi">@acara.DekripsiAcara</p>
                                         </div>
-                                        <p>20 Desember 2024</p>
-                                        <p class="deskripsi">Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                                        
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="swiper-slide">
-                            <a asp-area="" asp-controller="Event" asp-action="Detail">
-                                <div class="news-item">
-                                    <img src="~/assets/event2-test.png" alt="News Image 1">
-                                    <div class="news-content">
-                                        <p class="kategori">Event Budaya</p>
-
-                                        <h3>Festival Seni dan Budaya Gilang</h3>
-                                        <div class="status">
-                                            <p><span class="badge" style="background-color: green; color: white;">Dibuka</span></p>
-                                        </div>
-                                        <p>20 Desember 2024</p>
-                                        <p class="deskripsi">Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="swiper-slide">
-                            <a asp-area="" asp-controller="Event" asp-action="Detail">
-                                <div class="news-item">
-                                    <img src="~/assets/event2-test.png" alt="News Image 1">
-                                    <div class="news-content">
-                                        <p class="kategori">Event Budaya</p>
-
-                                        <h3>Festival Seni dan Budaya Gilang</h3>
-                                        <div class="status">
-                                            <p><span class="badge" style="background-color: green; color: white;">Dibuka</span></p>
-                                        </div>
-                                        <p>20 Desember 2024</p>
-                                        <p class="deskripsi">Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        }
                     </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
@@ -87,112 +60,30 @@
             </div>
         </div>
     </div>
-    <div class="grup_kalender_berita">      
+    <div class="grup_kalender_berita">
         <div class="col-md-8">
             <div class="berita-container">
                 <div class="berita">
-                    <a asp-area="" asp-controller="Event" asp-action="Detail">
-                        <div class="berita-card">
-                            <div class="berita-image">
-                                <img src="~/assets/event2-test.png" alt="Concert Image">
-                            </div>
-                            <div class="grup_berita">
-                                <div class="berita-date">
-                                    <span class="month">Des</span>
-                                    <span class="day">20</span>
+                    @foreach (var acara in Model)
+                    {
+                        <a asp-area="" asp-controller="Event" asp-action="Detail" asp-route-id="@acara.Id.Value">
+                            <div class="berita-card">
+                                <div class="berita-image">
+                                    <img src="@acara.MediaPromosi" alt="Concert Image">
                                 </div>
-                                <div class="berita-content">
-                                    <h3>Festival Seni dan Budaya Gilang</h3>
-                                    <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>                   
-                    <a asp-area="" asp-controller="Event" asp-action="Detail">
-                        <div class="berita-card">
-                            <div class="berita-image">
-                                <img src="~/assets/event2-test.png" alt="Concert Image">
-                            </div>
-                            <div class="grup_berita">
-                                <div class="berita-date">
-                                    <span class="month">Des</span>
-                                    <span class="day">20</span>
-                                </div>
-                                <div class="berita-content">
-                                    <h3>Festival Seni dan Budaya Gilang</h3>
-                                    <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
+                                <div class="grup_berita">
+                                    <div class="berita-date">
+                                        <span class="month">@cultureInfo.DateTimeFormat.GetAbbreviatedMonthName(acara.TanggalDanWaktu.Month)</span>
+                                        <span class="day">@acara.TanggalDanWaktu.Day</span>
+                                    </div>
+                                    <div class="berita-content">
+                                        <h3>@acara.NamaAcara</h3>
+                                        <p>@acara.DekripsiAcara</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <a asp-area="" asp-controller="Event" asp-action="Detail">
-                        <div class="berita-card">
-                            <div class="berita-image">
-                                <img src="~/assets/event2-test.png" alt="Concert Image">
-                            </div>
-                            <div class="grup_berita">
-                                <div class="berita-date">
-                                    <span class="month">Des</span>
-                                    <span class="day">20</span>
-                                </div>
-                                <div class="berita-content">
-                                    <h3>Festival Seni dan Budaya Gilang</h3>
-                                    <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a asp-area="" asp-controller="Event" asp-action="Detail">
-                        <div class="berita-card">
-                            <div class="berita-image">
-                                <img src="~/assets/event2-test.png" alt="Concert Image">
-                            </div>
-                            <div class="grup_berita">
-                                <div class="berita-date">
-                                    <span class="month">Des</span>
-                                    <span class="day">20</span>
-                                </div>
-                                <div class="berita-content">
-                                    <h3>Festival Seni dan Budaya Gilang</h3>
-                                    <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a asp-area="" asp-controller="Event" asp-action="Detail">
-                        <div class="berita-card">
-                            <div class="berita-image">
-                                <img src="~/assets/event2-test.png" alt="Concert Image">
-                            </div>
-                            <div class="grup_berita">
-                                <div class="berita-date">
-                                    <span class="month">Des</span>
-                                    <span class="day">20</span>
-                                </div>
-                                <div class="berita-content">
-                                    <h3>Festival Seni dan Budaya Gilang</h3>
-                                    <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a asp-area="" asp-controller="Event" asp-action="Detail">
-                        <div class="berita-card">
-                            <div class="berita-image">
-                                <img src="~/assets/event2-test.png" alt="Concert Image">
-                            </div>
-                            <div class="grup_berita">
-                                <div class="berita-date">
-                                    <span class="month">Des</span>
-                                    <span class="day">20</span>
-                                </div>
-                                <div class="berita-content">
-                                    <h3>Festival Seni dan Budaya Gilang</h3>
-                                    <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    }
                 </div>
             </div>
         </div>
@@ -238,6 +129,3 @@
         });
     </script>
 }
-
-
-

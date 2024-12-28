@@ -1,4 +1,13 @@
-﻿<div class="pembungkus">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya.SitusBudayas
+@using SidDmb.Web.Configurations
+@model SitusBudaya
+
+@{
+    ViewData["Title"] = $"{Model.Nama} | Situs Budaya";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="pembungkus">
     <section class="breadcumbs__container ">
         <nav class="breadcrumbs">
             <ul>
@@ -8,7 +17,7 @@
                 <li><i class="ri-arrow-right-s-line"></i></li>
                 <li><a asp-area="" asp-controller="Atraksi" asp-action="Situs">Situs Budaya</a></li>
                 <li><i class="ri-arrow-right-s-line"></i></li>
-                <li><a href="">Petilasan Ki Ageng Gilang</a></li>
+                <li><a href="">@Model.Nama</a></li>
             </ul>
         </nav>
     </section>
@@ -16,20 +25,20 @@
     <section class="section__container atraksi_container">
         <!-- Gambar/Foto -->
         <div class="section">
-            <img src="~/assets/situs-test.png" alt="Pantai Gilang" class="main-image">
+            <img src="@Model.FotoPromosi" alt="@Model.Nama" class="main-image">
         </div>
         <!-- Kategori, Status, Judul, Deskripsi -->
         <div class="section">
             <div class="grup_kategori_status">
                 <div class="kategori">
-                    <p>Situs Sejarah</p>
+                    <p>Situs @Model.Kategori.Humanize()</p>
                 </div>
                 <div class="status">
-                    <p><span class="badge" style="background-color: green; color: white; margin-bottom: 0 !important;">Aktif</span></p>
+                    <p><span class="badge" style="background-color: green; color: white; margin-bottom: 0 !important;">@Model.Status.Humanize()</span></p>
                 </div>
             </div>
-            <h2 class="judul">Petilasan Ki Ageng Gilang</h2>
-            <p>Situs ini diyakini sebagai tempat peristirahatan terakhir Ki Ageng Gilang.</p>
+            <h2 class="judul">@Model.Nama</h2>
+            <p>@Model.Dekripsi</p>
         </div>
 
         <!-- Informasi Detail -->
@@ -37,35 +46,35 @@
             <div class="info-grid">
                 <div>
                     <strong>Alamat/Lokasi:</strong>
-                    <p>Dusun Gilangharjo, Kecamatan Bantul</p>
+                    <p>@Model.Alamat</p>
                 </div>
                 <div>
                     <strong>Titik Koordinat:</strong>
-                    <p>-7.915, 110.333</p>
+                    <p>@Model.KoordinatLokasi.Y.ToString("F3") @Model.KoordinatLokasi.X.ToString("F3")</p>
                 </div>
                 <div>
                     <strong>Fasilitas:</strong>
-                    <p>Tempat Parkir, Toilet, Warung</p>
+                    <p>@string.Join(", ", Model.DaftarFasilitas)</p>
                 </div>
                 <div>
                     <strong>Pengelola Situs:</strong>
-                    <p>Kelompok budaya Gilang</p>
+                    <p>@Model.PengelolaSitus</p>
                 </div>
                 <div>
                     <strong>Jam Operasional:</strong>
-                    <p>08:00 - 17:00</p>
+                    <p>@Model.JamOperasional</p>
                 </div>
                 <div>
                     <strong>Harga Tiket:</strong>
-                    <p>Rp.10.000</p>
+                    <p>@Model.HargaTiketMasuk.ToString("C2", cultureInfo)</p>
                 </div>
                 <div>
                     <strong>Popularitas:</strong>
-                    <p>4.5 ★</p>
+                    <p>@Model.Rating.ToString("F1") ★</p>
                 </div>
                 <div>
                     <strong>Peraturan Khusus:</strong>
-                    <p>Tidak diperbolehkan mengambil foto di area tertentu.</p>
+                    <p>@Model.PeraturanKhusus</p>
                 </div>
             </div>
         </div>
@@ -74,7 +83,7 @@
         <div class="section">
             <h2>Peta Lokasi</h2>
             <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3951.8091023217953!2d110.33042507458816!3d-7.914999992108381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwNTQnNTQuMCJTIDExMMKwMTknNTguOCJF!5e0!3m2!1sid!2sid!4v1734859860656!5m2!1sid!2sid"
+                <iframe src="@MapsAPIConfiguration.MapsEmbedApi(Model.Nama, Model.KoordinatLokasi)"
                         style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
@@ -83,41 +92,24 @@
         <div class="grup_judul_tambah_komentar">
             <div class="d-flex" style="gap: 20px; align-items: center;">
                 <h4>Komentar Pengunjung</h4>
-                <p style="font-weight:500;">4.5 ★ (3 Ulasan)</p>
+                <p style="font-weight:500;">@Model.Rating.ToString("F1") ★ (@Model.DaftarKomentar.Count Ulasan)</p>
             </div>
             <button class="btn-komentar">Berikan Ulasan</button>
         </div>
         <div class="kumpulan_komentar">
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
+            @foreach (var komentar in Model.DaftarKomentar)
+            {
+                <div class="card_komentar">
+                    <div class="rating_tanggal_komentar">
+                        <div class="d-flex" style="gap: 10px;">
+                            <h3>@komentar.Nama</h3>
+                            <p class="rating_text">@komentar.Rating.ToString("F1")/5 ★</p>
+                        </div>
+                        @* <h6>26 Desember 2024</h6> *@
                     </div>
-                    <h6>26 Desember 2024</h6>
+                    <p>@komentar.Isi</p>
                 </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
-                    </div>
-                    <h6>26 Desember 2024</h6>
-                </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
-                    </div>
-                    <h6>26 Desember 2024</h6>
-                </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
+            }
         </div>
     </section>
 </div>

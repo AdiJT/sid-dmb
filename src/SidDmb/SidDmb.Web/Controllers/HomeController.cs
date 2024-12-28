@@ -6,6 +6,7 @@ using SidDmb.Domain.MasterDataFunction.ModulBudaya.SitusBudayas;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.UpacaraBudayas;
 using SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokals;
 using SidDmb.Domain.MasterDataFunction.ModulWisata.DestinasiWisatas;
+using SidDmb.Domain.MasterDataFunction.ModulWisata.KalenderAcaras;
 using SidDmb.Web.Models;
 using SidDmb.Web.Models.Home;
 using System.Diagnostics;
@@ -19,9 +20,7 @@ public class HomeController : Controller
     private readonly IRepositoriProdukLokal _repositoriProdukLokal;
     private readonly IRepositoriArtefakBudaya _repositoriArtefakBudaya;
     private readonly IRepositoriSitusBudaya _repositoriSitusBudaya;
-    private readonly IRepositoriSeniBudaya _repositoriSeniBudaya;
-    private readonly IRepositoriUpacaraBudaya _repositoriUpacaraBudaya;
-    private readonly IRepositoriEvent _repositoriEvent;
+    private readonly IRepositoriKalenderAcara _repositoriKalenderAcara;
 
     public HomeController(
         ILogger<HomeController> logger,
@@ -29,18 +28,14 @@ public class HomeController : Controller
         IRepositoriProdukLokal repositoriProdukLokal,
         IRepositoriArtefakBudaya repositoriArtefakBudaya,
         IRepositoriSitusBudaya repositoriSitusBudaya,
-        IRepositoriSeniBudaya repositoriSeniBudaya,
-        IRepositoriUpacaraBudaya repositoriUpacaraBudaya,
-        IRepositoriEvent repositoriEvent)
+        IRepositoriKalenderAcara repositoriKalenderAcara)
     {
         _logger = logger;
         _repositoriDestinasiWisata = repositoriDestinasiWisata;
         _repositoriProdukLokal = repositoriProdukLokal;
         _repositoriArtefakBudaya = repositoriArtefakBudaya;
         _repositoriSitusBudaya = repositoriSitusBudaya;
-        _repositoriSeniBudaya = repositoriSeniBudaya;
-        _repositoriUpacaraBudaya = repositoriUpacaraBudaya;
-        _repositoriEvent = repositoriEvent;
+        _repositoriKalenderAcara = repositoriKalenderAcara;
     }
 
     public async Task<IActionResult> Index()
@@ -51,7 +46,7 @@ public class HomeController : Controller
             SitusBudaya = (await _repositoriSitusBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
             ArtefakBudaya = (await _repositoriArtefakBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
             ProdukLokal = (await _repositoriProdukLokal.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
-            DaftarEvent = (await _repositoriEvent.GetAll()).OrderBy(x => x.TanggalWaktu).TakeLast(4).ToList()
+            DaftarEvent = (await _repositoriKalenderAcara.GetAll()).OrderBy(x => x.TanggalDanWaktu).TakeLast(4).ToList()
         });
     }
 

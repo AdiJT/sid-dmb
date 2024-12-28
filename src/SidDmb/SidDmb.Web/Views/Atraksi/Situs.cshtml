@@ -1,4 +1,11 @@
-﻿<header class="header">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya.SitusBudayas
+@model List<SitusBudaya>
+
+@{
+    ViewData["Title"] = "Situs Budaya | Atraksi Wisata";
+}
+
+<header class="header">
     <div class="section__container header__container" id="home">
         <h1>Situs Budaya</h1>
     </div>
@@ -20,41 +27,17 @@
     <p class="section__subheader">Jejak Sejarah Desa</p>
     <h2 class="section__header">Situs Budaya</h2>
     <div class="card-gallery">
-        <div class="card">
-            <img src="~/assets/situs-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Situs Sejarah</div>
-                <h3 class="title">Petilasan Ki Ageng Gilang </h3>
-                <p class="description">Situs ini diyakini sebagai tempat peristirahatan terakhir Ki Ageng Gilang.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSitus" class="read-more">Lihat Lebih Lanjut</a>
+        @foreach (var situs in Model)
+        {
+            <div class="card">
+                <img src="@situs.FotoPromosi" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Situs @situs.Kategori.Humanize()</div>
+                    <h3 class="title">@situs.Nama</h3>
+                    <p class="description">@situs.Dekripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailSitus" asp-route-id="@situs.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <img src="~/assets/situs-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Situs Sejarah</div>
-                <h3 class="title">Petilasan Ki Ageng Gilang </h3>
-                <p class="description">Situs ini diyakini sebagai tempat peristirahatan terakhir Ki Ageng Gilang.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSitus" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="~/assets/situs-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Situs Sejarah</div>
-                <h3 class="title">Petilasan Ki Ageng Gilang </h3>
-                <p class="description">Situs ini diyakini sebagai tempat peristirahatan terakhir Ki Ageng Gilang.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSitus" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="card">
-            <img src="~/assets/situs-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Situs Sejarah</div>
-                <h3 class="title">Petilasan Ki Ageng Gilang </h3>
-                <p class="description">Situs ini diyakini sebagai tempat peristirahatan terakhir Ki Ageng Gilang.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSitus" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
+        }
     </div>
 </section>

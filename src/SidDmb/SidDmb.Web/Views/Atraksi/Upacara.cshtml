@@ -1,4 +1,11 @@
-﻿<header class="header">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya.UpacaraBudayas
+@model List<UpacaraBudaya>
+
+@{
+    ViewData["Title"] = "Upacara Budaya | Atraksi Wisata";
+}
+
+<header class="header">
     <div class="section__container header__container" id="home">
         <h1>Upacara Budaya</h1>
     </div>
@@ -20,41 +27,17 @@
     <p class="section__subheader">Tradisi dan Upacara Desa</p>
     <h2 class="section__header">Upacara Budaya</h2>
     <div class="card-gallery">
-        <div class="cardku">
-            <img src="~/assets/upacara-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Upacara Keagamaan</div>
-                <h3 class="title">Ritual Sedekah Laut</h3>
-                <p class="description">Ritual tahunan untuk memohon keberkahan hasil laut bagi masyarakat pesisir.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailUpacara" class="read-more">Lihat Lebih Lanjut</a>
+        @foreach (var upacara in Model)
+        {
+            <div class="cardku">
+                <img src="@upacara.MediaPromosi" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Upacara @upacara.Kategori.Humanize()</div>
+                    <h3 class="title">@upacara.Nama</h3>
+                    <p class="description">@upacara.Dekripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailUpacara" asp-route-id="@upacara.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/upacara-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Upacara Keagamaan</div>
-                <h3 class="title">Ritual Sedekah Laut</h3>
-                <p class="description">Ritual tahunan untuk memohon keberkahan hasil laut bagi masyarakat pesisir.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailUpacara" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/upacara-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Upacara Keagamaan</div>
-                <h3 class="title">Ritual Sedekah Laut</h3>
-                <p class="description">Ritual tahunan untuk memohon keberkahan hasil laut bagi masyarakat pesisir.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailUpacara" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/upacara-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Upacara Keagamaan</div>
-                <h3 class="title">Ritual Sedekah Laut</h3>
-                <p class="description">Ritual tahunan untuk memohon keberkahan hasil laut bagi masyarakat pesisir.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailUpacara" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
+        }
     </div>
 </section>
