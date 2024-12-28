@@ -13,11 +13,6 @@ public class ManajemenEventController : Controller
         return View();
     }
 
-    public IActionResult PengelolaanEventDetail()
-    {
-        return View();
-    }
-
     public IActionResult PelaporanDanDokumentasi()
     {
         return View(); 
