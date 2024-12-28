@@ -88,7 +88,21 @@
                 <h4>Komentar Pengunjung</h4>
                 <p style="font-weight:500;">@Model.Rating.ToString("F1") ★ (@Model.DaftarKomentar.Count Ulasan)</p>
             </div>
-            <button class="btn-komentar">Berikan Ulasan</button>
+        </div>
+        <div class="form_komentar">
+            <div class="grup_form_komentar">
+                <input placeholder="Nama Anda...">
+                <input placeholder="Rating Anda (0 - 5)...">
+            </div>
+            <textarea placeholder="Tulis komentar Anda..."></textarea>
+            <div class="button">
+                <button type="button">
+                    Kirim
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+                    </svg>
+                </button>
+            </div>
         </div>
         <div class="kumpulan_komentar">
             @foreach (var komentar in Model.DaftarKomentar)
