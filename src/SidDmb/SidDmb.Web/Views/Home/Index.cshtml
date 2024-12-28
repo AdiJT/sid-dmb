@@ -1,4 +1,8 @@
-﻿@{
+﻿@using SidDmb.Web.Models.Home
+
+@model IndexVM
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -55,15 +59,19 @@
         </div>
     </div>
     <div class="card-gallery">
-        <div class="cardku">
-            <img src="~/assets/header.jpg" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Destinasi Alam</div>
-                <h3 class="title">Pantai Gilang</h3>
-                <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
+        @if(Model.DestinasiWisata is not null)
+        {
+            <div class="cardku">
+                <img src="@Model.DestinasiWisata.Foto" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Destinasi @Model.DestinasiWisata.Kategori.Humanize()</div>
+                    <h3 class="title">@Model.DestinasiWisata.Nama</h3>
+                    <p class="description">@Model.DestinasiWisata.Deskripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" asp-route-id="@Model.DestinasiWisata.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
+        }
+
         <div class="cardku">
             <img src="~/assets/situs-test.png" alt="Image 1">
             <div class="card-content">

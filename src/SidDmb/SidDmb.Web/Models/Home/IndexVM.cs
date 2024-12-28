@@ -10,11 +10,11 @@ namespace SidDmb.Web.Models.Home;
 
 public class IndexVM
 {
-    public required DestinasiWisata DestinasiWisata { get; set; }
-    public required ProdukLokal ProdukLokal { get; set; }
-    public required ArtefakBudaya ArtefakBudaya { get; set; }
-    public required SitusBudaya SitusBudaya { get; set; }
-    public required SeniBudaya SeniBudaya { get; set; }
-    public required UpacaraBudaya UpacaraBudaya { get; set; }
+    public required DestinasiWisata? DestinasiWisata { get; set; }
+    public required ProdukLokal? ProdukLokal { get; set; }
+    public required ArtefakBudaya? ArtefakBudaya { get; set; }
+    public required SitusBudaya? SitusBudaya { get; set; }
+    public required SeniBudaya? SeniBudaya { get; set; }
+    public required UpacaraBudaya? UpacaraBudaya { get; set; }
     public required List<Event> DaftarEvent { get; set; }
 }

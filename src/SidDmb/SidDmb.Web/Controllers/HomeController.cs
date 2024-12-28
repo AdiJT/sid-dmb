@@ -16,7 +16,7 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IRepositoriDestinasiWisata _repositoriDestinasiWisata;
-    private readonly IRepositoriProdukLokal repositoriProdukLokal;
+    private readonly IRepositoriProdukLokal _repositoriProdukLokal;
     private readonly IRepositoriArtefakBudaya _repositoriArtefakBudaya;
     private readonly IRepositoriSitusBudaya _repositoriSitusBudaya;
     private readonly IRepositoriSeniBudaya _repositoriSeniBudaya;
@@ -35,7 +35,7 @@ public class HomeController : Controller
     {
         _logger = logger;
         _repositoriDestinasiWisata = repositoriDestinasiWisata;
-        this.repositoriProdukLokal = repositoriProdukLokal;
+        _repositoriProdukLokal = repositoriProdukLokal;
         _repositoriArtefakBudaya = repositoriArtefakBudaya;
         _repositoriSitusBudaya = repositoriSitusBudaya;
         _repositoriSeniBudaya = repositoriSeniBudaya;
@@ -43,10 +43,18 @@ public class HomeController : Controller
         _repositoriEvent = repositoriEvent;
     }
 
-    [HttpPost]
     public async Task<IActionResult> Index()
     {
-        return View();
+        return View(new IndexVM
+        {
+            DestinasiWisata = (await _repositoriDestinasiWisata.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
+            SitusBudaya = (await _repositoriSitusBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
+            SeniBudaya = (await _repositoriSeniBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
+            ArtefakBudaya = (await _repositoriArtefakBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
+            ProdukLokal = (await _repositoriProdukLokal.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
+            UpacaraBudaya = (await _repositoriUpacaraBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
+            DaftarEvent = (await _repositoriEvent.GetAll()).OrderBy(x => x.TanggalWaktu).TakeLast(4).ToList()
+        });
     }
 
     public IActionResult Privacy()
