@@ -49,10 +49,8 @@ public class HomeController : Controller
         {
             DestinasiWisata = (await _repositoriDestinasiWisata.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
             SitusBudaya = (await _repositoriSitusBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
-            SeniBudaya = (await _repositoriSeniBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
             ArtefakBudaya = (await _repositoriArtefakBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
             ProdukLokal = (await _repositoriProdukLokal.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
-            UpacaraBudaya = (await _repositoriUpacaraBudaya.GetAll()).OrderBy(x => x.Nama).FirstOrDefault(),
             DaftarEvent = (await _repositoriEvent.GetAll()).OrderBy(x => x.TanggalWaktu).TakeLast(4).ToList()
         });
     }

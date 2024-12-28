@@ -31,6 +31,7 @@
     <Folder Include="Areas\Dashboard\CollaborationFunction\ModulProdukDanInventory\SertifikasiDanLegalitas\" />
     <Folder Include="Areas\Dashboard\CollaborationFunction\ModulResearchAndDevelopment\ManajemenDataRiset\" />
     <Folder Include="Areas\Dashboard\CollaborationFunction\ModulResearchAndDevelopment\RekomendasiDanPengembanganProduk\" />
+    <Folder Include="Models\Atraksi\" />
   </ItemGroup>
 
 </Project>

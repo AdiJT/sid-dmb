@@ -1,4 +1,11 @@
-﻿<header class="header">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya.ArtefakBudayas
+@model List<ArtefakBudaya>
+
+@{
+    ViewData["Title"] = "Artefak Budaya";
+}
+
+<header class="header">
     <div class="section__container header__container" id="home">
         <h1>Artefak Budaya</h1>
     </div>
@@ -20,41 +27,17 @@
     <p class="section__subheader">Warisan Lokal</p>
     <h2 class="section__header">Artefak Budaya</h2>
     <div class="card-gallery">
-        <div class="cardku">
-            <img src="~/assets/artefak-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Artefak Ritual</div>
-                <h3 class="title">Keris Ki Ageng Gilang</h3>
-                <p class="description">Keris ini dipercaya sebagai pusaka warisan Ki Ageng Gilang.....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailArtefak" class="read-more">Lihat Lebih Lanjut</a>
+        @foreach (var artefak in Model)
+        {
+            <div class="cardku">
+                <img src="@artefak.Foto" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Artefak @artefak.Kategori.Humanize()</div>
+                    <h3 class="title">@artefak.Nama</h3>
+                    <p class="description">@artefak.Dekripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailArtefak" asp-route-id="@artefak.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/artefak-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Artefak Ritual</div>
-                <h3 class="title">Keris Ki Ageng Gilang</h3>
-                <p class="description">Keris ini dipercaya sebagai pusaka warisan Ki Ageng Gilang.....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailArtefak" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/artefak-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Artefak Ritual</div>
-                <h3 class="title">Keris Ki Ageng Gilang</h3>
-                <p class="description">Keris ini dipercaya sebagai pusaka warisan Ki Ageng Gilang.....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailArtefak" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>     
-        <div class="cardku">
-            <img src="~/assets/artefak-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Artefak Ritual</div>
-                <h3 class="title">Keris Ki Ageng Gilang</h3>
-                <p class="description">Keris ini dipercaya sebagai pusaka warisan Ki Ageng Gilang.....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailArtefak" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
+        }
     </div>
 </section>

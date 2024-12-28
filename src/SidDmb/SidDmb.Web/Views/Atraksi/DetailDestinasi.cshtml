@@ -1,4 +1,13 @@
-﻿<div class="pembungkus">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulWisata.DestinasiWisatas
+@using SidDmb.Web.Configurations
+@model DestinasiWisata
+
+@{
+    ViewData["Title"] = $"{Model.Nama} | Destinasi Wisata";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="pembungkus">
     <section class="breadcumbs__container">
         <nav class="breadcrumbs">
             <ul>
@@ -8,7 +17,7 @@
                 <li><i class="ri-arrow-right-s-line"></i></li>
                 <li><a asp-area="" asp-controller="Atraksi" asp-action="Destinasi">Destinasi Wisata</a></li>
                 <li><i class="ri-arrow-right-s-line"></i></li>
-                <li><a href="">Pantai Gilang Yogyakarta</a></li>
+                <li><a href="">@Model.Nama</a></li>
             </ul>
         </nav>
     </section>
@@ -16,20 +25,20 @@
     <section class="section__container atraksi_container">
         <!-- Gambar/Foto -->
         <div class="section">
-            <img src="~/assets/destinasi-test.png" alt="Pantai Gilang" class="main-image">
+            <img src="@Model.Foto" alt="Pantai Gilang" class="main-image">
         </div>
         <!-- Kategori, Status, Judul, Deskripsi -->
         <div class="section">
             <div class="grup_kategori_status">
                 <div class="kategori">
-                    <p>Destinasi Alam</p>
+                    <p>Destinasi @Model.Kategori.Humanize()</p>
                 </div>
                 <div class="status">
-                    <p><span class="badge" style="background-color: orange; color: white; margin-bottom: 0 !important;">Tutup Sementara</span></p>
+                    <p><span class="badge" style="background-color: orange; color: white; margin-bottom: 0 !important;">@Model.StatusOperasional.Humanize()</span></p>
                 </div>
             </div>
-            <h2 class="judul">Pantai Gilang Yogyakarta</h2>
-            <p>Pantai dengan pasir putih dan tebing karst yang indah.</p>
+            <h2 class="judul">@Model.Nama</h2>
+            <p>@Model.Deskripsi</p>
         </div>
 
         <!-- Informasi Detail -->
@@ -37,39 +46,39 @@
             <div class="info-grid">
                 <div>
                     <strong>Pengelola:</strong>
-                    <p>Pokdarwis Pantai Gilang</p>
+                    <p>@Model.PengelolaDestinasi</p>
                 </div>
                 <div>
                     <strong>Lokasi:</strong>
-                    <p>Desa Gilangharjo, Kecamatan Bantul</p>
+                    <p>@Model.Alamat</p>
                 </div>
                 <div>
                     <strong>Titik Koordinat:</strong>
-                    <p>-7.915, 110.333</p>
+                    <p>@Model.TitikKoordinat.Y.ToString("F3"), @Model.TitikKoordinat.X.ToString("F3")</p>
                 </div>
                 <div>
                     <strong>Aktivitas:</strong>
-                    <p>Snorkeling, Berkemah</p>
+                    <p>@string.Join(", ", Model.DaftarAktivitas)</p>
                 </div>
                 <div>
                     <strong>Fasilitas:</strong>
-                    <p>Toilet, Warung, Parkir</p>
+                    <p>@string.Join(", ", Model.DaftarFasilitas)</p>
                 </div>
                 <div>
                     <strong>Harga Tiket:</strong>
-                    <p>Rp15.000</p>
+                    <p>@Model.HargaTiketMasuk.ToString("C2", cultureInfo)</p>
                 </div>
                 <div>
                     <strong>Jam Operasional:</strong>
-                    <p>08:00 - 17:00</p>
+                    <p>@Model.JamOperasional</p>
                 </div>
                 <div>
                     <strong>Kontak:</strong>
-                    <p>+62 812-3456-7890</p>
+                    <p>@Model.InformasiKontak</p>
                 </div>
                 <div>
                     <strong>Popularitas:</strong>
-                    <p>4.5 ★</p>
+                    <p>@Model.Rating.ToString("F1") ★</p>
                 </div>
             </div>
         </div>
@@ -78,14 +87,9 @@
         <div class="section">
             <h2>Peta Lokasi</h2>
             <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3951.8091023217953!2d110.33042507458816!3d-7.914999992108381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwNTQnNTQuMCJTIDExMMKwMTknNTguOCJF!5e0!3m2!1sid!2sid!4v1734856345341!5m2!1sid!2sid"
+                <iframe src="@MapsAPIConfiguration.MapsEmbedApi($"{Model.Nama}", Model.TitikKoordinat)"
                         style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
 </div>
-
-
-
-
-

@@ -1,4 +1,11 @@
-﻿<header class="header">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokals
+@model List<ProdukLokal>
+
+@{
+    ViewData["Title"] = "Produk/Kuliner Lokal";
+}
+
+<header class="header">
     <div class="section__container header__container" id="home">
         <h1>Produk/Kuliner Lokal</h1>
     </div>
@@ -20,41 +27,17 @@
     <p class="section__subheader">Produk Khas Gilangharjo</p>
     <h2 class="section__header">Produk/Kuliner Lokal</h2>
     <div class="card-gallery">
-        <div class="cardku">
-            <img src="~/assets/produklokal-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Kerajinan</div>
-                <h3 class="title">Batik Tulis Motif Gilang</h3>
-                <p class="description">Batik tulis berbahan katun dengan motif khas Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailProdukLokal" class="read-more">Lihat Lebih Lanjut</a>
+        @foreach (var produkLokal in Model)
+        {
+            <div class="cardku">
+                <img src="@produkLokal.MediaPromosi" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">@produkLokal.Kategori.Humanize()</div>
+                    <h3 class="title">@produkLokal.Nama</h3>
+                    <p class="description">@produkLokal.Dekripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailProdukLokal" asp-route-id="@produkLokal.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/produklokal-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Kerajinan</div>
-                <h3 class="title">Batik Tulis Motif Gilang</h3>
-                <p class="description">Batik tulis berbahan katun dengan motif khas Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailProdukLokal" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/produklokal-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Kerajinan</div>
-                <h3 class="title">Batik Tulis Motif Gilang</h3>
-                <p class="description">Batik tulis berbahan katun dengan motif khas Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailProdukLokal" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/produklokal-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Kerajinan</div>
-                <h3 class="title">Batik Tulis Motif Gilang</h3>
-                <p class="description">Batik tulis berbahan katun dengan motif khas Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailProdukLokal" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
+        }
     </div>
 </section>

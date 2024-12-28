@@ -1,4 +1,12 @@
-﻿<header class="header">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulWisata.DestinasiWisatas
+
+@model List<DestinasiWisata>
+
+@{
+    ViewData["Title"] = "Atraksi Wisata | Destinasi Wisata";
+}
+
+<header class="header">
     <div class="section__container header__container" id="home">
         <h1>Destinasi Wisata</h1>
     </div>
@@ -20,41 +28,17 @@
     <p class="section__subheader">Panduan Wisata</p>
     <h2 class="section__header">Destinasi Wisata</h2>
     <div class="card-gallery">
-        <div class="cardku">
-            <img src="~/assets/header.jpg" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Destinasi Alam</div>
-                <h3 class="title">Pantai Gilang</h3>
-                <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
+        @foreach (var destinasi in Model)
+        {
+            <div class="cardku">
+                <img src="@destinasi.Foto" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Destinasi @destinasi.Kategori.Humanize()</div>
+                    <h3 class="title">@destinasi.Nama</h3>
+                    <p class="description">@destinasi.Deskripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" asp-route-id="@destinasi.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/header.jpg" alt="Image 2">
-            <div class="card-content">
-                <div class="category">Destinasi Alam</div>
-                <h3 class="title">Pantai Gilang</h3>
-                <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/header.jpg" alt="Image 3">
-            <div class="card-content">
-                <div class="category">Destinasi Alam</div>
-                <h3 class="title">Pantai Gilang</h3>
-                <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/header.jpg" alt="Image 4">
-            <div class="card-content">
-                <div class="category">Destinasi Alam</div>
-                <h3 class="title">Pantai Gilang</h3>
-                <p class="description">Pantai dengan pasir putih dan tebing karst yang indah....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailDestinasi" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
+        }
     </div>
 </section>

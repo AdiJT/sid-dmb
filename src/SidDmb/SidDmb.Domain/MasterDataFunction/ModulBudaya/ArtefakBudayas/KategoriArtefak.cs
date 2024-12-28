@@ -2,5 +2,5 @@
 
 public enum KategoriArtefak
 {
-    Ritual, Seni, Artefak, Lainnya
+    Ritual, Seni, Utilitas, Lainnya
 }

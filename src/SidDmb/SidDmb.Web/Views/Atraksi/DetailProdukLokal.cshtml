@@ -1,4 +1,12 @@
-﻿<div class="pembungkus">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulPreneur.ProdukLokals
+@model ProdukLokal
+
+@{
+    ViewData["Title"] = $"{Model.Nama} | Produk/Kuliner Lokal";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="pembungkus">
     <section class="breadcumbs__container ">
         <nav class="breadcrumbs">
             <ul>
@@ -8,7 +16,7 @@
                 <li><i class="ri-arrow-right-s-line"></i></li>
                 <li><a asp-area="" asp-controller="Atraksi" asp-action="ProdukLokal">Produk/Kuliner Lokal</a></li>
                 <li><i class="ri-arrow-right-s-line"></i></li>
-                <li><a href="">Batik Tulis Motif Gilang</a></li>
+                <li><a href="">@Model.Nama</a></li>
             </ul>
         </nav>
     </section>
@@ -17,7 +25,7 @@
         <div class="col-md-4">
             <!-- Gambar/Foto -->
             <div class="section">
-                <img src="~/assets/produklokal-test.png" alt="Pantai Gilang" class="main-image">
+                <img src="@Model.MediaPromosi" alt="Pantai Gilang" class="main-image">
             </div>
         </div>
         <div class="col-md-8">
@@ -25,14 +33,14 @@
             <div class="section">
                 <div class="grup_kategori_status">
                     <div class="kategori">
-                        <p>Produk Kerajinan</p>
+                        <p>Produk @Model.Kategori.Humanize()</p>
                     </div>
                     <div class="status">
-                        <p><span class="badge" style="background-color: green; color: white;">Tersedia</span></p>
+                        <p><span class="badge" style="background-color: green; color: white;">@Model.StatusKetersediaan.Humanize()</span></p>
                     </div>
                 </div>
-                <h2 class="judul">Batik Tulis Motif Gilang</h2>
-                <p>Batik tulis berbahan katun dengan motif khas Desa Gilangharjo.</p>
+                <h2 class="judul">@Model.Nama</h2>
+                <p>@Model.Dekripsi</p>
             </div>
 
             <!-- Informasi Detail -->
@@ -40,31 +48,31 @@
                 <div class="info-grid">
                     <div>
                         <strong>Harga Produk:</strong>
-                        <p>Rp150.000</p>
+                        <p>@Model.Harga.ToString("C2", cultureInfo)</p>
                     </div>
                     <div>
                         <strong>Unit Usaha Terkait:</strong>
-                        <p>Batik Gilang Sejahtera</p>
+                        <p>@Model.UnitUsaha.Nama</p>
                     </div>
                     <div>
                         <strong>Bahan Utama:</strong>
-                        <p>Katun, Pewarna Alami</p>
+                        <p>@Model.BahanUtama</p>
                     </div>
                     <div>
                         <strong>Tanggal Produksi Terakhir:</strong>
-                        <p>2024-12-01</p>
+                        <p>@Model.TanggalProduksiTerakhir.ToString("yyyy-MM-dd")</p>
                     </div>
                     <div>
                         <strong>Tanggal Kadaluarsa:</strong>
-                        <p>2025-12-01</p>
+                        <p>@Model.TanggalKadaluarsa.ToString("yyyy-MM-dd")</p>
                     </div>
                     <div>
                         <strong>Legalitas & Sertifikasi</strong>
-                        <p>PIRT 12345/2024, Halal MUI</p>
+                        <p>@Model.LegalitasDanSertifikat</p>
                     </div>
                     <div>
                         <strong>Kontak Informasi:</strong>
-                        <p>+62 812-3456-7890"</p>
+                        <p>@Model.KontakInformasi</p>
                     </div>
                 </div>
             </div>
@@ -72,11 +80,3 @@
 
     </section>
 </div>
-
-
-
-
-
-
-
-

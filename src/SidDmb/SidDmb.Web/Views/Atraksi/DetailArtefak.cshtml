@@ -1,4 +1,11 @@
-﻿<div class="pembungkus">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya.ArtefakBudayas
+@model ArtefakBudaya
+
+@{
+    ViewData["Title"] = "Detail Artefak Budaya";
+}
+
+<div class="pembungkus">
     <section class="breadcumbs__container ">
         <nav class="breadcrumbs">
             <ul>
@@ -8,7 +15,7 @@
                 <li><i class="ri-arrow-right-s-line"></i></li>
                 <li><a asp-area="" asp-controller="Atraksi" asp-action="Artefak">Artefak Budaya</a></li>
                 <li><i class="ri-arrow-right-s-line"></i></li>
-                <li><a href="">Keris Ki Ageng Kilang</a></li>
+                <li><a href="">@Model.Nama</a></li>
             </ul>
         </nav>
     </section>
@@ -16,60 +23,67 @@
     <section class="section__container atraksi_container">
         <div class="col-md-4">
             <div class="section">
-                <img src="~/assets/artefak-test.png" alt="Pantai Gilang" class="main-image">
+                <img src="@Model.Foto" alt="Pantai Gilang" class="main-image">
             </div>
         </div>
         <div class="col-md-8">
             <div class="section">
                 <div class="grup_kategori_status">
                     <div class="kategori">
-                        <p>Artefak Ritual</p>
+                        <p>Artefak @Model.Kategori.Humanize()</p>
                     </div>
                     <div class="status">
-                        <p><span class="badge" style="background-color: green; color: white;">Tersedia untuk pameran</span></p>
+                        @if (Model.Ketersediaan == KetersediaanPameran.Ya)
+                        {
+                            <p><span class="badge" style="background-color: green; color: white;">Tersedia untuk pameran</span></p>
+                        }
+                        else
+                        {
+                            <p><span class="badge" style="background-color: green; color: white;">Tidak tersedia untuk pameran</span></p>
+                        }
                     </div>
                 </div>
-                <h2 class="judul">Keris Ki Ageng Kilang</h2>
-                <p>Keris ini dipercaya sebagai pusaka warisan Ki Ageng Gilang.</p>
+                <h2 class="judul">@Model.Nama</h2>
+                <p>@Model.Dekripsi</p>
             </div>
 
             <div class="section">
                 <div class="info-grid">
                     <div>
                         <strong>Lokasi Penyimpanan:</strong>
-                        <p>Museum Desa Gilangharjo</p>
+                        <p>@Model.LokasiPenyimpanan</p>
                     </div>
                     <div>
                         <strong>Kondisi Artefak:</strong>
-                        <p>Baik</p>
+                        <p>@Model.Kondisi.Humanize()</p>
                     </div>
                     <div>
                         <strong>Usia Artefak:</strong>
-                        <p>Abad ke-17</p>
+                        <p>@Model.Usia</p>
                     </div>
                     <div>
                         <strong>Bahan Artefak:</strong>
-                        <p>Besi, Perunggu</p>
+                        <p>@Model.Bahan</p>
                     </div>
                     <div>
                         <strong>Dimensi Artefak:</strong>
-                        <p>Panjang: 40 cm, Lebar: 10 cm</p>
+                        <p>@Model.Dimensi</p>
                     </div>
                     <div>
                         <strong>Pemilik/Pengelola</strong>
-                        <p>Kelompok Budaya Desa Gilangharjo</p>
+                        <p>@Model.Pengelola</p>
                     </div>
                     <div>
                         <strong>Nilai Historis:</strong>
-                        <p>Artefak ini digunakan dalam upacara adat sejak abad ke-17."</p>
+                        <p>@Model.NilaiHistoris</p>
                     </div>
                     <div>
                         <strong>Rating:</strong>
-                        <p>4.5 ★</p>
+                        <p>@Model.Rating.ToString("F1") ★</p>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
@@ -77,41 +91,24 @@
         <div class="grup_judul_tambah_komentar">
             <div class="d-flex" style="gap: 20px; align-items: center;">
                 <h4>Komentar Pengunjung</h4>
-                <p style="font-weight:500;">4.5 ★ (3 Ulasan)</p>
+                <p style="font-weight:500;">@Model.Rating.ToString("F1")★ (@Model.DaftarKomentar.Count Ulasan)</p>
             </div>
             <button class="btn-komentar">Berikan Ulasan</button>
         </div>
         <div class="kumpulan_komentar">
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
+            @foreach(var komentar in Model.DaftarKomentar)
+            {
+                <div class="card_komentar">
+                    <div class="rating_tanggal_komentar">
+                        <div class="d-flex" style="gap: 10px;">
+                            <h3>@komentar.Nama</h3>
+                            <p class="rating_text">@komentar.Rating.ToString("F1")/5 ★</p>
+                        </div>
+                        @* <h6>26 Desember 2024</h6> *@
                     </div>
-                    <h6>26 Desember 2024</h6>
+                    <p>@komentar.Isi</p>
                 </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
-                    </div>
-                    <h6>26 Desember 2024</h6>
-                </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
-                    </div>
-                    <h6>26 Desember 2024</h6>
-                </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
+            }
         </div>
     </section>
 </div>

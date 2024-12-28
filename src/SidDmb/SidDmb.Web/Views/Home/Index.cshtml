@@ -4,6 +4,7 @@
 
 @{
     ViewData["Title"] = "Home Page";
+    var cultureInfo = new CultureInfo("id-ID");
 }
 
 <!--======================================================= LANDING ==================================================-->
@@ -59,7 +60,7 @@
         </div>
     </div>
     <div class="card-gallery">
-        @if(Model.DestinasiWisata is not null)
+        @if (Model.DestinasiWisata is not null)
         {
             <div class="cardku">
                 <img src="@Model.DestinasiWisata.Foto" alt="Image 1">
@@ -72,33 +73,44 @@
             </div>
         }
 
-        <div class="cardku">
-            <img src="~/assets/situs-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Situs Sejarah</div>
-                <h3 class="title">Petilasan Ki Ageng Gilang </h3>
-                <p class="description">Situs ini diyakini sebagai tempat peristirahatan terakhir Ki Ageng Gilang.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSitus" class="read-more">Lihat Lebih Lanjut</a>
+        @if (Model.SitusBudaya is not null)
+        {
+            <div class="cardku">
+                <img src="@Model.SitusBudaya.FotoPromosi" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Situs @Model.SitusBudaya.Kategori.Humanize()</div>
+                    <h3 class="title">@Model.SitusBudaya.Nama</h3>
+                    <p class="description">@Model.SitusBudaya.Dekripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailSitus" asp-route-id="@Model.SitusBudaya.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/artefak-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Artefak Ritual</div>
-                <h3 class="title">Keris Ki Ageng Gilang</h3>
-                <p class="description">Keris ini dipercaya sebagai pusaka warisan Ki Ageng Gilang.....</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailArtefak" class="read-more">Lihat Lebih Lanjut</a>
+        }
+
+        @if (Model.ArtefakBudaya is not null)
+        {
+            <div class="cardku">
+                <img src="@Model.ArtefakBudaya.Foto" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Artefak @Model.ArtefakBudaya.Kategori.Humanize()</div>
+                    <h3 class="title">@Model.ArtefakBudaya.Nama</h3>
+                    <p class="description">@Model.ArtefakBudaya.Dekripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailArtefak" asp-route-id="@Model.ArtefakBudaya.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/produklokal-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Kerajinan</div>
-                <h3 class="title">Batik Tulis Motif Gilang</h3>
-                <p class="description">Batik tulis berbahan katun dengan motif khas Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailProdukLokal" class="read-more">Lihat Lebih Lanjut</a>
+        }
+
+        @if (Model.ProdukLokal is not null)
+        {
+            <div class="cardku">
+                <img src="@Model.ProdukLokal.MediaPromosi" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Produk @Model.ProdukLokal.Kategori.Humanize()</div>
+                    <h3 class="title">@Model.ProdukLokal.Nama</h3>
+                    <p class="description">@Model.ProdukLokal.Dekripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailProdukLokal" asp-route-id="@Model.ProdukLokal.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </section>
 
@@ -119,76 +131,26 @@
 
     <div class="berita-container">
         <div class="berita">
-            <a asp-area="" asp-controller="Event" asp-action="Detail">
-                <div class="berita-card">
-                    <div class="berita-image">
-                        <img src="~/assets/event2-test.png" alt="Concert Image">
-                    </div>
-                    <div class="grup_berita">
-                        <div class="berita-date">
-                            <span class="month">Des</span>
-                            <span class="day">20</span>
+            @foreach (var eventX in Model.DaftarEvent)
+            {
+                <a asp-area="" asp-controller="Event" asp-action="Detail" asp-route-id="@eventX.Id.Value">
+                    <div class="berita-card">
+                        <div class="berita-image">
+                            <img src="@eventX.MediaPromosi" alt="Concert Image">
                         </div>
-                        <div class="berita-content">
-                            <h3>Festival Seni dan Budaya Gilang</h3>
-                            <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a asp-area="" asp-controller="Event" asp-action="Detail">
-                <div class="berita-card">
-                    <div class="berita-image">
-                        <img src="~/assets/event2-test.png" alt="Concert Image">
-                    </div>
-                    <div class="grup_berita">
-                        <div class="berita-date">
-                            <span class="month">Des</span>
-                            <span class="day">20</span>
-                        </div>
-                        <div class="berita-content">
-                            <h3>Festival Seni dan Budaya Gilang</h3>
-                            <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
+                        <div class="grup_berita">
+                            <div class="berita-date">
+                                <span class="month">@cultureInfo.DateTimeFormat.GetAbbreviatedMonthName(eventX.TanggalWaktu.Month)</span>
+                                <span class="day">@eventX.TanggalWaktu.Day</span>
+                            </div>
+                            <div class="berita-content">
+                                <h3>@eventX.Nama</h3>
+                                <p>@eventX.Dekripsi</p>
+                            </div>
                         </div>
                     </div>
-
-                </div>
-            </a>
-            <a asp-area="" asp-controller="Event" asp-action="Detail">
-                <div class="berita-card">
-                    <div class="berita-image">
-                        <img src="~/assets/event2-test.png" alt="Concert Image">
-                    </div>
-                    <div class="grup_berita">
-                        <div class="berita-date">
-                            <span class="month">Des</span>
-                            <span class="day">20</span>
-                        </div>
-                        <div class="berita-content">
-                            <h3>Festival Seni dan Budaya Gilang</h3>
-                            <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </a>
-            <a asp-area="" asp-controller="Event" asp-action="Detail">
-                <div class="berita-card">
-                    <div class="berita-image">
-                        <img src="~/assets/event2-test.png" alt="Concert Image">
-                    </div>
-                    <div class="grup_berita">
-                        <div class="berita-date">
-                            <span class="month">Des</span>
-                            <span class="day">20</span>
-                        </div>
-                        <div class="berita-content">
-                            <h3>Festival Seni dan Budaya Gilang</h3>
-                            <p>Festival tahunan yang menampilkan seni tari dan musik tradisional.</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
+                </a>
+            }
         </div>
     </div>
 </section>

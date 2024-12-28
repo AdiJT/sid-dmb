@@ -1,4 +1,11 @@
-﻿<header class="header">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas
+@model List<SeniBudaya>
+
+@{
+    ViewData["Title"] = "Seni Budaya";
+}
+
+<header class="header">
     <div class="section__container header__container" id="home">
         <h1>Seni Budaya</h1>
     </div>
@@ -20,41 +27,17 @@
     <p class="section__subheader">Keindahan Tradisi</p>
     <h2 class="section__header">Seni Budaya</h2>
     <div class="card-gallery">
-        <div class="cardku">
-            <img src="~/assets/seni-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Seni Tari</div>
-                <h3 class="title">Tari Gamelan Gilang</h3>
-                <p class="description">Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" class="read-more">Lihat Lebih Lanjut</a>
+        @foreach (var seni in Model)
+        {
+            <div class="cardku">
+                <img src="@seni.MediaPromosi" alt="Image 1">
+                <div class="card-content">
+                    <div class="category">Seni @seni.Kategori.Humanize()</div>
+                    <h3 class="title">@seni.Nama</h3>
+                    <p class="description">@seni.Dekripsi</p>
+                    <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" asp-route-id="@seni.Id.Value" class="read-more">Lihat Lebih Lanjut</a>
+                </div>
             </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/seni-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Seni Tari</div>
-                <h3 class="title">Tari Gamelan Gilang</h3>
-                <p class="description">Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/seni-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Seni Tari</div>
-                <h3 class="title">Tari Gamelan Gilang</h3>
-                <p class="description">Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
-        <div class="cardku">
-            <img src="~/assets/seni-test.png" alt="Image 1">
-            <div class="card-content">
-                <div class="category">Seni Tari</div>
-                <h3 class="title">Tari Gamelan Gilang</h3>
-                <p class="description">Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
-                <a asp-area="" asp-controller="Atraksi" asp-action="DetailSeni" class="read-more">Lihat Lebih Lanjut</a>
-            </div>
-        </div>
+        }
     </div>
 </section>

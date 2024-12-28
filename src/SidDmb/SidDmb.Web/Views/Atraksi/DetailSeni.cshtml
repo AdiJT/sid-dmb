@@ -1,4 +1,12 @@
-﻿<div class="pembungkus">
+﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas
+@model SeniBudaya
+
+@{
+    ViewData["Title"] = $"{Model.Nama} | Seni Budaya";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="pembungkus">
     <section class="breadcumbs__container ">
         <nav class="breadcrumbs">
             <ul>
@@ -8,7 +16,7 @@
                 <li><i class="ri-arrow-right-s-line"></i></li>
                 <li><a asp-area="" asp-controller="Atraksi" asp-action="Seni">Seni Budaya</a></li>
                 <li><i class="ri-arrow-right-s-line"></i></li>
-                <li><a href="">Tari Gamelan Gilang</a></li>
+                <li><a href="">@Model.Nama</a></li>
             </ul>
         </nav>
     </section>
@@ -16,17 +24,17 @@
     <section class="section__container atraksi_container">
         <!-- Gambar/Foto -->
         <div class="section">
-            <img src="~/assets/seni2-test.png" alt="Pantai Gilang" class="main-image">
+            <img src="@Model.MediaPromosi" alt="Pantai Gilang" class="main-image">
         </div>
         <!-- Kategori, Status, Judul, Deskripsi -->
         <div class="section">
             <div class="grup_kategori_status">
                 <div class="kategori">
-                    <p>Seni Tari</p>
+                    <p>Seni @Model.Kategori.Humanize()</p>
                 </div>
             </div>
-            <h2 class="judul">Tari Gamelan Gilang</h2>
-            <p>Tari tradisional yang menggambarkan semangat masyarakat Desa Gilangharjo.</p>
+            <h2 class="judul">@Model.Nama</h2>
+            <p>@Model.Dekripsi</p>
         </div>
 
         <!-- Informasi Detail -->
@@ -34,35 +42,35 @@
             <div class="info-grid">
                 <div>
                     <strong>Nama Pelaku Seni:</strong>
-                    <p>Kelompok Tari Langen Mudo</p>
+                    <p>@Model.NamaPelakuSeni</p>
                 </div>
                 <div>
                     <strong>Lokasi Pertunjukan:</strong>
-                    <p>Balai Desa Gilangharjo</p>
+                    <p>@Model.LokasiPertunjukan</p>
                 </div>
                 <div>
                     <strong>Waktu Pertunjukan:</strong>
-                    <p>Sabtu, 19:00 - 21:00</p>
+                    <p>@Model.WaktuPertunjukan</p>
                 </div>
                 <div>
                     <strong>Fasilitas Pertunjukan:</strong>
-                    <p>Panggung, Sistem Audio, Penerangan</p>
+                    <p>@string.Join(", ", Model.FasilitasPertunjukan)</p>
                 </div>
                 <div>
                     <strong>Durasi Pertunjukan:</strong>
-                    <p>1,5 jam</p>
+                    <p>@Model.DurasiPentunjukan.TotalHours.ToString("F1") jam</p>
                 </div>
                 <div>
                     <strong>Harga Tiket:</strong>
-                    <p>Rp.20.000</p>
+                    <p>@Model.HargaTiket.ToString("C2", cultureInfo)</p>
                 </div>
                 <div>
                     <strong>Popularitas:</strong>
-                    <p>4.5 ★</p>
+                    <p>@Model.Rating.ToString("F1") ★</p>
                 </div>
                 <div>
                     <strong>Peraturan Khusus:</strong>
-                    <p>Dilarang merekam video selama pertunjukan berlangsung.</p>
+                    <p>@Model.PeraturanKhusus</p>
                 </div>
             </div>
         </div>
@@ -71,41 +79,24 @@
         <div class="grup_judul_tambah_komentar">
             <div class="d-flex" style="gap: 20px; align-items: center;">
                 <h4>Komentar Pengunjung</h4>
-                <p style="font-weight:500;">4.5 ★ (3 Ulasan)</p>
+                <p style="font-weight:500;">@Model.Rating.ToString("F1") ★ (@Model.DaftarKomentar.Count Ulasan)</p>
             </div>
             <button class="btn-komentar">Berikan Ulasan</button>
         </div>
         <div class="kumpulan_komentar">
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
+            @foreach (var komentar in Model.DaftarKomentar)
+            {
+                <div class="card_komentar">
+                    <div class="rating_tanggal_komentar">
+                        <div class="d-flex" style="gap: 10px;">
+                            <h3>@komentar.Nama</h3>
+                            <p class="rating_text">@komentar.Rating.ToString("F1")/5 ★</p>
+                        </div>
+                        @* <h6>26 Desember 2024</h6> *@
                     </div>
-                    <h6>26 Desember 2024</h6>
+                    <p>@komentar.Isi</p>
                 </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
-                    </div>
-                    <h6>26 Desember 2024</h6>
-                </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
-            <div class="card_komentar">
-                <div class="rating_tanggal_komentar">
-                    <div class="d-flex" style="gap: 10px;">
-                        <h3>Fernand Putra</h3>
-                        <p class="rating_text">4.5/5 ★</p>
-                    </div>
-                    <h6>26 Desember 2024</h6>
-                </div>
-                <p>Artefak yang sangat menarik, tetapi informasi lebih detail diperlukan.</p>
-            </div>
+            }
         </div>
     </section>
 </div>

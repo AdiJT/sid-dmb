@@ -1,4 +1,8 @@
-﻿<header class="header">
+﻿@{
+    ViewData["Title"] = "Atraksi Wisata";
+}
+
+<header class="header">
     <div class="section__container header__container" id="home">
         <h1>Atraksi Wisata</h1>
     </div>
@@ -25,6 +29,7 @@
                 <h3>Destinasi Wisata</h3>
             </div>
         </a>
+
         <a asp-area="" asp-controller="Atraksi" asp-action="Artefak">
             <div class="atraksi-card">
                 <img src="~/assets/atraksi-artefak.png" alt="Borobudur">
@@ -54,6 +59,6 @@
                 <img src="~/assets/atraksi-produk.png" alt="Likupang">
                 <h3>Produk/Kuliner Lokal</h3>
             </div>
-        </a>        
+        </a>
     </div>
 </section>
