@@ -12,4 +12,9 @@ public class PrimaController : Controller
     {
         return View();
     }
+
+    public IActionResult KegiatanPrimaDetail()
+    {
+        return View();
+    }
 }
