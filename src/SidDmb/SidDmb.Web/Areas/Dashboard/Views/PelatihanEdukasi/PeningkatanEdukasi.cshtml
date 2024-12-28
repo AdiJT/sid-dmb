@@ -1,5 +1,109 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Pelatihan & Edukasi</a></li>
+                        <li class="breadcrumb-item active">Peningkatan Kapasitas</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Peningkatan Kapasitas</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Peningkatan Kapasitas</h4>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Pelatihan</th>
+                                <th>Nama Pelatihan</th>
+                                <th>Deskripsi Pelatihan</th>
+                                <th>Kategori Pelatihan</th>
+                                <th>Penyelenggara Pelatihan</th>
+                                <th>Tanggal Pelaksanaan</th>
+                                <th>Durasi Pelatihan</th>
+                                <th>Lokasi Pelatihan</th>
+                                <th>Target Peserta</th>
+                                <th>Jumlah Peserta</th>
+                                <th>Fasilitator</th>
+                                <th>Materi Pelatihan</th>
+                                <th>Evaluasi Peserta</th>
+                                <th>Dokumen dan Media</th>
+                                <th>Feedback dari Peserta</th>
+                                <th>Kolaborator Pelatihan</th>
+                                <th>Rekomendasi untuk Pelatihan Berikutnya</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>PC001</td>
+                                <td>Pelatihan Manajemen Homestay</td>
+                                <td>Pelatihan untuk meningkatkan kemampuan pengelolaan homestay berbasis budaya lokal</td>
+                                <td>Kewirausahaan</td>
+                                <td>Dinas Pariwisata, Akademisi UGM</td>
+                                <td>2024-12-15</td>
+                                <td>3.5</td>
+                                <td>Balai Desa Gilangharjo</td>
+                                <td>Pokdarwis, Kelompok Wisata</td>
+                                <td>30</td>
+                                <td>Dr. Rini Wulandari, Akademisi UGM</td>
+                                <td>Pemasaran digital, Manajemen tamu</td>
+                                <td>90% peserta memahami materi dengan baik.</td>
+                                <td>materi_pelatihan.pdf</td>
+                                <td>Pelatihan sangat bermanfaat, tambahkan simulasi praktis.</td>
+                                <td>Akademisi, Dinas Pariwisata</td>
+                                <td>Tambahkan sesi praktik langsung dengan tamu.</td>
+                                <td>2024-12-05</td>
+                                <td>2024-12-10</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="PeningkatanEdukasiDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>PC001</td>
+                                <td>Pelatihan Manajemen Homestay</td>
+                                <td>Pelatihan untuk meningkatkan kemampuan pengelolaan homestay berbasis budaya lokal</td>
+                                <td>Kewirausahaan</td>
+                                <td>Dinas Pariwisata, Akademisi UGM</td>
+                                <td>2024-12-15</td>
+                                <td>3.5</td>
+                                <td>Balai Desa Gilangharjo</td>
+                                <td>Pokdarwis, Kelompok Wisata</td>
+                                <td>30</td>
+                                <td>Dr. Rini Wulandari, Akademisi UGM</td>
+                                <td>Pemasaran digital, Manajemen tamu</td>
+                                <td>90% peserta memahami materi dengan baik.</td>
+                                <td>materi_pelatihan.pdf</td>
+                                <td>Pelatihan sangat bermanfaat, tambahkan simulasi praktis.</td>
+                                <td>Akademisi, Dinas Pariwisata</td>
+                                <td>Tambahkan sesi praktik langsung dengan tamu.</td>
+                                <td>2024-12-05</td>
+                                <td>2024-12-10</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="PeningkatanEdukasiDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
