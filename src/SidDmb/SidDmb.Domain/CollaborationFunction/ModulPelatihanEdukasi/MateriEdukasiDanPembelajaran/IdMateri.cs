@@ -41,6 +41,6 @@ public class IdMateri : ValueObject, IEquatable<IdMateri>
             .Order()
             .LastOrDefault() + 1;
 
-        return new($"ME{newId:3}");
+        return new($"ME{newId:D3}");
     }
 }

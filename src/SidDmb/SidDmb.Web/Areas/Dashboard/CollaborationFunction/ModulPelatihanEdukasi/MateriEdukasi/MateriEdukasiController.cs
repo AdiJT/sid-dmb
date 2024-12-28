@@ -5,7 +5,6 @@ using SidDmb.Domain.Authentication;
 using SidDmb.Domain.CollaborationFunction;
 using SidDmb.Domain.CollaborationFunction.ModulPelatihanEdukasi.MateriEdukasiDanPembelajaran;
 using SidDmb.Infrastructure.Services.FileUpload;
-using SidDmb.Web.Areas.Dashboard.CollaborationFunction.ModulPelatihanEdukasi.MateriEdukasi;
 
 namespace SidDmb.Web.Areas.Dashboard.CollaborationFunction.ModulPelatihanEdukasi.MateriEdukasi;
 
@@ -39,7 +38,7 @@ public class MateriEdukasiController : Controller
     {
         if(!ModelState.IsValid) return View(vm);
 
-        var linkUnduhanResult = await _fileService.UploadFile<TambahVM>(vm.LinkUnduhan, "/materi_edukasi", [".pdf"], 0, long.MaxValue);
+        var linkUnduhanResult = await _fileService.UploadFile<TambahVM>(vm.LinkUnduhan, "/materi_edukasi", [".pdf", ".mp4", ".pptx"], 0, long.MaxValue);
         if(linkUnduhanResult.IsFailure)
         {
             ModelState.AddModelError(nameof(TambahVM.LinkUnduhan), linkUnduhanResult.Error.Message); 
@@ -131,7 +130,7 @@ public class MateriEdukasiController : Controller
 
         if(vm.LinkUnduhan is not null)
         {
-            var linkUnduhanResult = await _fileService.UploadFile<EditVM>(vm.LinkUnduhan, "/materi_edukasi", [".pdf"], 0, long.MaxValue);
+            var linkUnduhanResult = await _fileService.UploadFile<EditVM>(vm.LinkUnduhan, "/materi_edukasi", [".pdf", ".mp4", ".pptx"], 0, long.MaxValue);
             if (linkUnduhanResult.IsFailure)
             {
                 ModelState.AddModelError(nameof(EditVM.LinkUnduhan), linkUnduhanResult.Error.Message);

@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿@model List<Materi>
+
+@{
+    ViewData["Title"] = "Materi Edukasi & Pembelajaran";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -21,7 +28,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Daftar Materi Edukasi & Pembelajaran</h4>
                     <div class="pb-3 pt-1">
-                        <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="Index" class="btn btn-primary">+ Tambah</a>
+                        <a asp-area="Dashboard" asp-controller="MateriEdukasi" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
                     </div>
                     <table id="alternative-page-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -48,54 +55,36 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>ME001</td>
-                                <td>Panduan Pemasaran Digital untuk Desa Wisata</td>
-                                <td>Materi ini berisi panduan praktis untuk memasarkan produk dan layanan desa wisata melalui platform digital.</td>
-                                <td>Praktis</td>
-                                <td>Akademisi UGM, Dinas Pariwisata</td>
-                                <td>Pokdarwis, Kelompok Preneur</td>
-                                <td>PDF, Video, Presentasi</td>
-                                <td><a href="https://desa-wisata/materi001.pdf">Link Unduhan</a></td>
-                                <td>2024-12-01</td>
-                                <td>Materi sangat membantu, namun perlu penjelasan lebih detail tentang strategi pemasaran internasional.</td>
-                                <td>Akademisi, Dinas Koperasi & UMKM</td>
-                                <td>modul_pemasaran.pdf</td>
-                                <td>120</td>
-                                <td>Berlaku</td>
-                                <td>Tambahkan contoh penggunaan media sosial untuk pasar lokal.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="EditMateriEdukasi" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>ME001</td>
-                                <td>Panduan Pemasaran Digital untuk Desa Wisata</td>
-                                <td>Materi ini berisi panduan praktis untuk memasarkan produk dan layanan desa wisata melalui platform digital.</td>
-                                <td>Praktis</td>
-                                <td>Akademisi UGM, Dinas Pariwisata</td>
-                                <td>Pokdarwis, Kelompok Preneur</td>
-                                <td>PDF, Video, Presentasi</td>
-                                <td><a href="https://desa-wisata/materi001.pdf">Link Unduhan</a></td>
-                                <td>2024-12-01</td>
-                                <td>Materi sangat membantu, namun perlu penjelasan lebih detail tentang strategi pemasaran internasional.</td>
-                                <td>Akademisi, Dinas Koperasi & UMKM</td>
-                                <td>modul_pemasaran.pdf</td>
-                                <td>120</td>
-                                <td>Berlaku</td>
-                                <td>Tambahkan contoh penggunaan media sosial untuk pasar lokal.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="EditMateriEdukasi" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach(var materi in Model)
+                            {
+                                <tr>
+                                    <td>@materi.Id.Value</td>
+                                    <td>@materi.JudulMateri</td>
+                                    <td>@materi.DekripsiMateri</td>
+                                    <td>@materi.KategoriMateri</td>
+                                    <td>@materi.PenyediaMateri</td>
+                                    <td>@string.Join(", ", Enum.GetValues<TargetAudiens>().Where(x => materi.TargetAudiens.HasFlag(x)))</td>
+                                    <td>@materi.TipeMateri.Humanize()</td>
+                                    <td><a href="@materi.LinkUnduhan">Link Unduhan</a></td>
+                                    <td>@materi.TanggalRilis.ToString("yyyy-MM-dd")</td>
+                                    <td>@materi.FeedBackAudiens</td>
+                                    <td>@string.Join(", ", materi.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td><a href="@materi.DokumenPendukung">@materi.DokumenPendukung</a></td>
+                                    <td>@materi.JumlahPengguna</td>
+                                    <td>@materi.StatusMateri.Humanize()</td>
+                                    <td>@string.Join(", ", materi.DaftarKolaboratorMateri.Select(x => x.RekomendasiPembaruanMateri))</td>
+                                    <td>@materi.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@materi.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="MateriEdukasi" asp-action="Edit" asp-route-id="@materi.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = materi.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

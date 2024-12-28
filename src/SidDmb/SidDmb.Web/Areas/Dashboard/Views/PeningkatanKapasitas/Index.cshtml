@@ -1,4 +1,10 @@
-﻿<div class="container-fluid">
+﻿@model List<Pelatihan>
+
+@{
+    ViewData["Title"] = "Peningkatan Kapasitas";
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -21,7 +27,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Daftar Peningkatan Kapasitas</h4>
                     <div class="pb-3 pt-1">
-                        <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="TambahPeningkatanKapasitas" class="btn btn-primary">+ Tambah</a>
+                        <a asp-area="Dashboard" asp-controller="PeningkatanKapasitas" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
                     </div>
                     <table id="alternative-page-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -50,58 +56,38 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>PC001</td>
-                                <td>Pelatihan Manajemen Homestay</td>
-                                <td>Pelatihan untuk meningkatkan kemampuan pengelolaan homestay berbasis budaya lokal</td>
-                                <td>Kewirausahaan</td>
-                                <td>Dinas Pariwisata, Akademisi UGM</td>
-                                <td>2024-12-15</td>
-                                <td>3.5</td>
-                                <td>Balai Desa Gilangharjo</td>
-                                <td>Pokdarwis, Kelompok Wisata</td>
-                                <td>30</td>
-                                <td>Dr. Rini Wulandari, Akademisi UGM</td>
-                                <td>Pemasaran digital, Manajemen tamu</td>
-                                <td>90% peserta memahami materi dengan baik.</td>
-                                <td>materi_pelatihan.pdf</td>
-                                <td>Pelatihan sangat bermanfaat, tambahkan simulasi praktis.</td>
-                                <td>Akademisi, Dinas Pariwisata</td>
-                                <td>Tambahkan sesi praktik langsung dengan tamu.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="EditPeningkatanKapasitas" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>PC001</td>
-                                <td>Pelatihan Manajemen Homestay</td>
-                                <td>Pelatihan untuk meningkatkan kemampuan pengelolaan homestay berbasis budaya lokal</td>
-                                <td>Kewirausahaan</td>
-                                <td>Dinas Pariwisata, Akademisi UGM</td>
-                                <td>2024-12-15</td>
-                                <td>3.5</td>
-                                <td>Balai Desa Gilangharjo</td>
-                                <td>Pokdarwis, Kelompok Wisata</td>
-                                <td>30</td>
-                                <td>Dr. Rini Wulandari, Akademisi UGM</td>
-                                <td>Pemasaran digital, Manajemen tamu</td>
-                                <td>90% peserta memahami materi dengan baik.</td>
-                                <td>materi_pelatihan.pdf</td>
-                                <td>Pelatihan sangat bermanfaat, tambahkan simulasi praktis.</td>
-                                <td>Akademisi, Dinas Pariwisata</td>
-                                <td>Tambahkan sesi praktik langsung dengan tamu.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="EditPeningkatanKapasitas" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
-                                </td>
-                            </tr>
-
+                            @foreach (var pelatihan in Model)
+                            {
+                                <tr>
+                                    <td>@pelatihan.Id.Value</td>
+                                    <td>@pelatihan.Nama</td>
+                                    <td>@pelatihan.Dekripsi</td>
+                                    <td>@pelatihan.Kategori.Humanize()</td>
+                                    <td>@pelatihan.Penyelenggara</td>
+                                    <td>@pelatihan.TanggalPelaksanaan.ToString("yyyy-MM-dd")</td>
+                                    <td>@pelatihan.Durasi.TotalHours.ToString("F1") Jam</td>
+                                    <td>@pelatihan.Lokasi</td>
+                                    <td>@string.Join(", ", Enum.GetValues<TargetPeserta>().Where(x => pelatihan.TargetPeserta.HasFlag(x)).Select(x => x.Humanize()))</td>
+                                    <td>@pelatihan.JumlahPeserta</td>
+                                    <td>@pelatihan.Fasilitator</td>
+                                    <td>@pelatihan.Materi</td>
+                                    <td>@pelatihan.EvaluasiPeserta</td>
+                                    <td><a href="@pelatihan.DokumenDanMedia">@pelatihan.DokumenDanMedia</a></td>
+                                    <td>@pelatihan.FeedbackPeserta</td>
+                                    <td>@string.Join(", ", pelatihan.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td>@string.Join(", ", pelatihan.DaftarKolaboratorPelatihan.Select(x => x.RekomendasiUntukPelatihanBerikutnya))</td>
+                                    <td>@pelatihan.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@pelatihan.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="MateriEdukasi" asp-action="Edit" asp-route-id="@pelatihan.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = pelatihan.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

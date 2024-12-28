@@ -41,6 +41,6 @@ public class IdPelatihan : ValueObject, IEquatable<IdPelatihan>
             .Order()
             .LastOrDefault() + 1;
 
-        return new($"PC{newId:3}");
+        return new($"PC{newId:D3}");
     }
 }
