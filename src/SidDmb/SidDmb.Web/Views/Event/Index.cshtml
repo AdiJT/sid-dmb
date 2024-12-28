@@ -33,7 +33,7 @@
                     <div class="swiper-wrapper">
                         <!-- Slide 1 -->
 
-                        @foreach (var acara in Model)
+                        @foreach (var acara in Model.Take(3))
                         {
                             <div class="swiper-slide">
                                 <a asp-area="" asp-controller="Event" asp-action="Detail" asp-route-id="@acara.Id.Value">

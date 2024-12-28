@@ -1,5 +1,126 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Prima</a></li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="Prima" asp-action="KegiatanPrima">Kegiatan Prima</a></li>
+                        <li class="breadcrumb-item active">Edit</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Edit Kegiatan Prima</h4>
+                    <form>
+                        <div class="row">
+                            <div class="mb-3">
+                                <label for="example-textarea" class="form-label" style="font-weight: bold;">Rekomendasi untuk Kegiatan Berikutnya<span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                            </div>
+                            <div class="col-lg-6">
+
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Nama Kegiatan<span class="text-danger">*</span></label>
+                                    <input type="text" id="simpleinput" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="example-textarea" class="form-label">Deskripsi Kegiatan<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="example-date" class="form-label">Tanggal Pelaksanaan<span class="text-danger">*</span></label>
+                                    <input class="form-control" id="example-date" type="date" name="date">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Durasi Kegiatan<span class="text-danger">*</span></label>
+                                    <input type="number" id="simpleinput" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="example-textarea" class="form-label">Lokasi Kegiatan<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="example-textarea" rows="3"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Jenis Kegiatan<span class="text-danger">*</span></label>
+                                    <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                        <option value="A">Pelatihan</option>
+                                        <option value="B">Seminar</option>
+                                        <option value="C">Praktik Lapangan</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Jumlah Peserta<span class="text-danger">*</span></label>
+                                    <input type="number" id="simpleinput" class="form-control">
+                                </div>
+
+                            </div> <!-- end col -->
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Penyelenggara<span class="text-danger">*</span></label>
+                                    <input type="text" id="simpleinput" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Fasilitator<span class="text-danger">*</span></label>
+                                    <input type="text" id="simpleinput" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Anggaran Kegiatan<span class="text-danger">*</span></label>
+                                    <input type="number" id="simpleinput" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Kolaborator Kegiatan<span class="text-danger">*</span></label>
+                                    <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
+                                        <option value="A">Dinas Koperasi & UMKM</option>
+                                        <option value="B">Akademisi</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="example-textarea" class="form-label">Hasil Kegiatan<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="example-fileinput" class="form-label">Dokumentasi Kegiatan<span class="text-danger">*</span></label>
+                                    <input type="file" id="example-fileinput" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="example-textarea" class="form-label">Feedback Peserta<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                                </div>
+
+                                <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
+                                    <button type="submit" class="btn btn-primary" style="margin-right: 5px">Simpan</button>
+                                    <button type="reset" class="btn btn-danger">Batal</button>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+                    </form>
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col-->
+    </div>
+    <!-- end row-->
+
+
+</div>
