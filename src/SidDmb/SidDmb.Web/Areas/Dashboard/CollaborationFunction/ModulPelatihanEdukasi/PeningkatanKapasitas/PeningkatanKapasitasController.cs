@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite;
 using SidDmb.Domain.Abstracts;
 using SidDmb.Domain.Authentication;
 using SidDmb.Domain.CollaborationFunction;
-using SidDmb.Domain.CollaborationFunction.ModulPelatihanEdukasi.MateriEdukasiDanPembelajaran;
 using SidDmb.Domain.CollaborationFunction.ModulPelatihanEdukasi.PeningkatanKapasitas;
 using SidDmb.Infrastructure.Services.FileUpload;
 
@@ -76,7 +74,8 @@ public class PeningkatanKapasitasController : Controller
             Materi = vm.Materi,
             Penyelenggara = vm.Penyelenggara,
             DokumenDanMedia = fileResult.Value,
-            TargetPeserta = vm.TargetPeserta.Aggregate(vm.TargetPeserta.First(), (acc, f) => acc | f)
+            TargetPeserta = vm.TargetPeserta.Aggregate(vm.TargetPeserta.First(), (acc, f) => acc | f),
+            DaftarKolaborator = daftarKolaborator
         };
 
         _repositoriPelatihan.Add(pelatihan);
@@ -166,6 +165,9 @@ public class PeningkatanKapasitasController : Controller
         pelatihan.Penyelenggara = vm.Penyelenggara;
         pelatihan.TargetPeserta = vm.TargetPeserta.Aggregate(vm.TargetPeserta.First(), (acc, f) => acc | f);
         pelatihan.DaftarKolaborator = daftarKolaborator;
+
+        Console.WriteLine($"{(int)pelatihan.TargetPeserta:B}");
+        Console.WriteLine($"{string.Join(", ", vm.TargetPeserta.Select(x => $"{(int)x:B}"))}");
 
         _repositoriPelatihan.Update(pelatihan);
         var result = await _unitOfWork.SaveChangesAsync();

@@ -32,6 +32,7 @@ public class EditVM
 
     [Display(Name = "Durasi")]
     [Required(ErrorMessage = "{0} harus diisi")]
+    [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
     public required TimeSpan Durasi { get; set; }
 
     [Display(Name = "Lokasi")]
@@ -59,7 +60,6 @@ public class EditVM
     public required string EvaluasiPeserta { get; set; }
 
     [Display(Name = "DokumenDanMedia")]
-    [Required(ErrorMessage = "{0} harus diisi")]
     public IFormFile? DokumenDanMedia { get; set; }
 
     [Display(Name = "FeedbackPeserta")]

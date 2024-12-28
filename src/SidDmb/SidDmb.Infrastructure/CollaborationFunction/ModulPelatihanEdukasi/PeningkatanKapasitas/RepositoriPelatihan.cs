@@ -25,7 +25,7 @@ internal class RepositoriPelatihan : IRepositoriPelatihan
 
     public void Add(Pelatihan Pelatihan) => _appDbContext.Pelatihan.Add(Pelatihan);
 
-    public void Delete(Pelatihan Pelatihan) => _appDbContext.Pelatihan.Update(Pelatihan);
+    public void Delete(Pelatihan Pelatihan) => _appDbContext.Pelatihan.Remove(Pelatihan);
 
-    public void Update(Pelatihan Pelatihan) => _appDbContext.Pelatihan.Remove(Pelatihan);
+    public void Update(Pelatihan Pelatihan) => _appDbContext.Pelatihan.Update(Pelatihan);
 }

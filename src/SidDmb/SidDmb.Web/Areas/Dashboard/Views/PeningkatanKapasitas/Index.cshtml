@@ -79,7 +79,7 @@
                                     <td>@pelatihan.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
                                     <td>@pelatihan.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
                                     <td class="table-action">
-                                        <a asp-area="Dashboard" asp-controller="MateriEdukasi" asp-action="Edit" asp-route-id="@pelatihan.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <a asp-area="Dashboard" asp-controller="PeningkatanKapasitas" asp-action="Edit" asp-route-id="@pelatihan.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
                                         <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
                                                 data-url="@Url.Action("Hapus", new { id = pelatihan.Id.Value })"
                                                 title="Hapus">

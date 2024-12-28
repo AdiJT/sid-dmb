@@ -28,7 +28,8 @@ public class TambahVM
 
     [Display(Name = "Durasi")]
 	[Required(ErrorMessage = "{0} harus diisi")]
-	public TimeSpan Durasi { get; set; }
+    [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+    public TimeSpan Durasi { get; set; }
 
     [Display(Name = "Lokasi")]
 	[Required(ErrorMessage = "{0} harus diisi")]
