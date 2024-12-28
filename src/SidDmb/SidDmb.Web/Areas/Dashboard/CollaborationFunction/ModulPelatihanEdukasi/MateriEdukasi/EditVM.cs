@@ -27,7 +27,7 @@ public class EditVM
 
     [Display(Name = "Target Audiens")]
 	[Required(ErrorMessage = "{0} harus diisi")]
-	public required TargetAudiens TargetAudiens { get; set; }
+	public required TargetAudiens[] TargetAudiens { get; set; }
 
     [Display(Name = "Tipe Materi")]
 	[Required(ErrorMessage = "{0} harus diisi")]

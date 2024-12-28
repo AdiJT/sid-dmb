@@ -15,11 +15,13 @@ internal class RepositoriRekomendasi : IRepositoriRekomendasi
 
     public async Task<Rekomendasi?> Get(IdRekomendasi id) => await _appDbContext.Rekomendasi
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.DaftarKolaboratorRekomendasi)
         .Include(x => x.ProdukTerkait)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<Rekomendasi>> GetAll() => await _appDbContext.Rekomendasi
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.DaftarKolaboratorRekomendasi)
         .Include(x => x.ProdukTerkait)
         .ToListAsync();
 

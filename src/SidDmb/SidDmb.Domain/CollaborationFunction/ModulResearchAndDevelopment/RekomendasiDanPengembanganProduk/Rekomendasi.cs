@@ -15,7 +15,6 @@ public class Rekomendasi : Entity<IdRekomendasi>, IAuditableEntity
     public required double Anggaran { get; set; }
     public required string HasilYangDiharapkan { get; set; }
     public required StatusImplementasi StatusImplementasi { get; set; }
-    public required string FeedbackKolaborator { get; set; }
     public required Uri DokumenPendukung { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
@@ -23,4 +22,10 @@ public class Rekomendasi : Entity<IdRekomendasi>, IAuditableEntity
 
     public Produk ProdukTerkait { get; set; }
     public List<Kolaborator> DaftarKolaborator { get; set; } = [];
+    public List<KolaboratorRekomendasi> DaftarKolaboratorRekomendasi { get; set; } = [];
+}
+
+public class KolaboratorRekomendasi : JoinEntity<Rekomendasi, Kolaborator, IdRekomendasi, int>
+{
+    public string FeedbackKolaborator { get; set; } = string.Empty;
 }

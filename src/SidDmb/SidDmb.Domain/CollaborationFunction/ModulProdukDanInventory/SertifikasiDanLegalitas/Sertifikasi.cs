@@ -13,11 +13,11 @@ public class Sertifikasi : Entity<IdSertifikasi>, IAuditableEntity
     public required Uri DokumenSertifikat { get; set; }
     public required string ProsesYangDilalui { get; set; }
     public required StatusSertifikasi StatusSertifikasi { get; set; }
-    public required string Komentar { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
     public Produk Produk { get; set; }
     public List<Kolaborator> DaftarKolaborator { get; set; } = [];
+    public List<KolaboratorSertifikasi> DaftarKolaboratorSertifikasi { get; set; } = [];
 }

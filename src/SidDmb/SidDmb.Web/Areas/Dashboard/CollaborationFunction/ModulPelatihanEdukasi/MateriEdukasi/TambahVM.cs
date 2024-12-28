@@ -21,9 +21,9 @@ public class TambahVM
 	[Required(ErrorMessage = "{0} harus diisi")]
 	public string PenyediaMateri { get; set; } = string.Empty;
 
-    [Display(Name = "Target Audiens")]
+	[Display(Name = "Target Audiens")]
 	[Required(ErrorMessage = "{0} harus diisi")]
-	public TargetAudiens TargetAudiens { get; set; }
+	public TargetAudiens[] TargetAudiens { get; set; } = [];
 
     [Display(Name = "Tipe Materi")]
 	[Required(ErrorMessage = "{0} harus diisi")]

@@ -30,6 +30,9 @@ public class Kolaborator : Entity<int>
     public List<KolaboratorEvent> DaftarKolaboratorEvent { get; set; } = [];
     public List<KolaboratorMateri> DaftarKolaboratorMateri { get; set; } = [];
     public List<KolaboratorPelatihan> DaftarKolaboratorPelatihan { get; set; } = [];
+    public List<KolaboratorSertifikasi> DaftarKolaboratorSertifikasi { get; set; } = [];
+    public List<KolaboratorDataRiset> DaftarKolaboratorDataRiset { get; set; } = [];
+    public List<KolaboratorRekomendasi> DaftarKolaboratorRekomendasi { get; set; } = [];
 
     public AppUser AppUser { get; set; }
 }

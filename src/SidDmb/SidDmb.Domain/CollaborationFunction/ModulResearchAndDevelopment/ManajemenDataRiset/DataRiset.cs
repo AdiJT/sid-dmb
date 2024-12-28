@@ -15,11 +15,16 @@ public class DataRiset : Entity<IdDataRiset>, IAuditableEntity
     public required Uri DokumenPenelitian { get; set; }
     public required string ManfaatPenelitian { get; set; }
     public required StatusPenelitian StatusPenelitian { get; set; }
-    public required string FeedbackKolaborator { get; set; }
     public required string[] DaftarJenisDataRiset { get; set; }
 
     public DateTime TanggalDiinputkan { get; set; }
     public DateTime TanggalPembaruanData { get; set; }
 
     public List<Kolaborator> DaftarKolaboratorPenelitian { get; set; } = [];
+    public List<KolaboratorDataRiset> DaftarKolaboratorDataRiset { get; set; } = [];
+}
+
+public class KolaboratorDataRiset : JoinEntity<DataRiset, Kolaborator, IdDataRiset, int>
+{
+    public string FeedbackKolaborator { get; set; } = string.Empty;
 }

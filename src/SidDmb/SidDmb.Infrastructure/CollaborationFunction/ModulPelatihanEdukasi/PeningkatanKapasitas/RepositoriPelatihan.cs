@@ -19,6 +19,7 @@ internal class RepositoriPelatihan : IRepositoriPelatihan
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<Pelatihan>> GetAll() => await _appDbContext.Pelatihan
+        .Include(x => x.DaftarKolaborator)
         .Include(x => x.DaftarKolaboratorPelatihan)
         .ToListAsync();
 

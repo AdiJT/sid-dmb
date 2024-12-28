@@ -16,11 +16,13 @@ internal class RepositoriSertifikasi : IRepositoriSertifikasi
     public async Task<Sertifikasi?> Get(IdSertifikasi id) => await _appDbContext.Sertifikasi
         .Include(x => x.Produk).ThenInclude(p => p.DaftarKolaborator)
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.DaftarKolaboratorSertifikasi)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<Sertifikasi>> GetAll() => await _appDbContext.Sertifikasi
         .Include(x => x.Produk).ThenInclude(p => p.DaftarKolaborator)
         .Include(x => x.DaftarKolaborator)
+        .Include(x => x.DaftarKolaboratorSertifikasi)
         .ToListAsync();
 
     public void Add(Sertifikasi sertifikasi) => _appDbContext.Add(sertifikasi);

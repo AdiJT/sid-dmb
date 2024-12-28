@@ -13,6 +13,8 @@ internal class SertifikasiConfiguration : IEntityTypeConfiguration<Sertifikasi>
         builder.Property(x => x.Id).HasConversion(i => i.Value, s => IdSertifikasi.Create(s).Value);
 
         builder.HasOne(x => x.Produk).WithOne().HasForeignKey<Sertifikasi>("ProdukId");
-        builder.HasMany(x => x.DaftarKolaborator).WithMany(x => x.DaftarSertifikasi);
+        builder.HasMany(x => x.DaftarKolaborator).WithMany(x => x.DaftarSertifikasi).UsingEntity<KolaboratorSertifikasi>(
+            l => l.HasOne(x => x.Entity2).WithMany(x => x.DaftarKolaboratorSertifikasi).HasForeignKey(x => x.Entity2Id),
+            r => r.HasOne(x => x.Entity1).WithMany(x => x.DaftarKolaboratorSertifikasi).HasForeignKey(x => x.Entity1Id));
     }
 }
