@@ -22,7 +22,7 @@ public class HomeController : Controller
         var appUser = await _signInManager.GetUser();
 
         if (appUser is not null && appUser.Role == UserRoles.KOLABORATOR)
-            return RedirectToAction("PengelolaanEvent", "ManajemenEvent");
+            return RedirectToAction("KegiatanPrima", "Prima");
 
         return View();
     }
