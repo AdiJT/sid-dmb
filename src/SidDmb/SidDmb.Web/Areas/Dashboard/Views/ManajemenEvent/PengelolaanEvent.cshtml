@@ -1,4 +1,4 @@
-﻿<div class="container-fluid">
+﻿﻿<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -41,6 +41,7 @@
                                 <th>Media Promosi</th>
                                 <th>Tanggal Input</th>
                                 <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
 
@@ -64,6 +65,9 @@
                                 <td>poster_festival.jpg</td>
                                 <td>2024-12-05</td>
                                 <td>2024-12-10</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PengelolaanEventDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>                                  
+                                </td>
                             </tr>
 
                             <tr>
@@ -85,6 +89,9 @@
                                 <td>poster_festival.jpg</td>
                                 <td>2024-12-05</td>
                                 <td>2024-12-10</td>
+                                <td class="table-action">
+                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PengelolaanEventDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>                         
+                                </td>
                             </tr>
 
                         </tbody>
