@@ -1,0 +1,87 @@
+﻿@model List<Distribusi>
+
+@{
+    ViewData["Title"] = "Manajemen Ditribusi";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Produk & Inventory</a></li>
+                        <li class="breadcrumb-item active">Manajemen Distribusi</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Manajemen Distribusi</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+    <!-- start row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Daftar Manajemen Distribusi</h4>
+                    <div class="pb-3 pt-1">
+                        <a asp-area="Dashboard" asp-controller="ManajemenDistribusi" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
+                    </div>
+                    <table id="alternative-page-datatable" class="table dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID Distribusi</th>
+                                <th>ID Produk</th>
+                                <th>Nama Produk</th>
+                                <th>Jumlah Produk</th>
+                                <th>Tanggal Pengiriman</th>
+                                <th>Alamat Tujuan</th>
+                                <th>Nama Distributor</th>
+                                <th>Kontak Distributor</th>
+                                <th>Biaya Pengiriman</th>
+                                <th>Pihak Kolaborator</th>
+                                <th>Dokumen Pengiriman</th>
+                                <th>Tanggal Input</th>
+                                <th>Tanggal Pembaruan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var distribusi in Model)
+                            {
+                                <tr>
+                                    <td>@distribusi.Id.Value</td>
+                                    <td>@distribusi.Produk.Id</td>
+                                    <td>@distribusi.Produk.Nama</td>
+                                    <td>@distribusi.JumlahProduk</td>
+                                    <td>@distribusi.TanggalPengiriman.ToString("yyyy-MM-dd")</td>
+                                    <td>@distribusi.AlamatTujuan</td>
+                                    <td>@distribusi.NamaDistributor</td>
+                                    <td>@distribusi.KontakDistributor</td>
+                                    <td>@distribusi.BiayaPengiriman.ToString("C2", cultureInfo)</td>
+                                    <td>@string.Join(", ", distribusi.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td><a href="@distribusi.DokumenPengiriman">@distribusi.DokumenPengiriman</a></td>
+                                    <td>@distribusi.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@distribusi.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="ManajemenDistribusi" asp-action="Edit" asp-route-id="@distribusi.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = distribusi.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+</div>

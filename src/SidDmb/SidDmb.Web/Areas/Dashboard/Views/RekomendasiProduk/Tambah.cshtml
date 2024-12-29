@@ -7,8 +7,8 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Research & Development</a></li>
-                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="ResearchDevelopment" asp-action="ManajemenDataRiset">Manajemen Data Riset</a></li>
-                        <li class="breadcrumb-item active">Edit</li>
+                        <li class="breadcrumb-item"><a asp-area="Dashboard" asp-controller="RekomendasiProduk" asp-action="Index">Rekomendasi & Pengembangan Produk</a></li>
+                        <li class="breadcrumb-item active">Tambah</li>
                     </ol>
                 </div>
                 @* <h4 class="page-title">Tambah</h4> *@
@@ -21,54 +21,46 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Edit Manajemen Data Riset</h4>
+                    <h4 class="header-title">Tambah Rekomendasi & Pengembangan Produk</h4>
                     <div class="row">
                         <div class="col-lg-6">
                             <form>
                                 <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Judul Penelitian<span class="text-danger">*</span></label>
+                                    <label for="simpleinput" class="form-label">Judul Rekomendasi<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="example-textarea" class="form-label">Deskripsi Penelitian<span class="text-danger">*</span></label>
+                                    <label for="example-textarea" class="form-label">Deskripsi Rekomendasi<span class="text-danger">*</span></label>
                                     <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Kategori Penelitian<span class="text-danger">*</span></label>
-                                    <select class="form-control select2" data-toggle="select2">
-                                        <option value="A">Kualitatif</option>
-                                        <option value="B">Kuantitatif</option>
-                                    </select>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="simpleinput" class="form-label">Peneliti<span class="text-danger">*</span></label>
+                                    <label for="simpleinput" class="form-label">Nama Produk (Relasi)<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="example-date" class="form-label">Tanggal Mulai Penelitian<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="example-date" type="date" name="date">
+                                    <label for="example-textarea" class="form-label">Tujuan Pengembangan<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="example-date" class="form-label">Tanggal Selesai Penelitian<span class="text-danger">*</span></label>
-                                    <input class="form-control" id="example-date" type="date" name="date">
+                                    <label for="simpleinput" class="form-label">Pemberi Rekomendasi<span class="text-danger">*</span></label>
+                                    <input type="text" id="simpleinput" class="form-control">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Data yang Dikumpulkan<span class="text-danger">*</span></label>
-                                    <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
-                                        <option value="A">Data Demografi</option>
-                                        <option value="B">Data Kunjungan Wisata</option>
-                                        <option value="C">Data Ekonomi Lokal</option>
+                                    <label class="form-label">Kategori Pengembangan<span class="text-danger">*</span></label>
+                                    <select class="form-control select2" data-toggle="select2">
+                                        <option value="A">Desain</option>
+                                        <option value="B">Bahan</option>
+                                        <option value="C">Pemasaran</option>
                                     </select>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="example-textarea" class="form-label">Metode Pengumpulan Data<span class="text-danger">*</span></label>
+                                    <label for="example-textarea" class="form-label">Strategi yang Direkomendasikan<span class="text-danger">*</span></label>
                                     <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                                 </div>
 
@@ -103,38 +95,37 @@
                         </div> <!-- end col -->
 
                         <div class="col-lg-6">
-
+                            
 
                             <div class="mb-3">
-                                <label for="example-textarea" class="form-label">Hasil Penelitian<span class="text-danger">*</span></label>
+                                <label for="example-textarea" class="form-label">Timeline Implementasi<span class="text-danger">*</span></label>
                                 <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                             </div>
 
                             <div class="mb-3">
-                                <label for="example-fileinput" class="form-label">Dokumen Hasil Penelitian<span class="text-danger">*</span></label>
-                                <input type="file" id="example-fileinput" class="form-control">
+                                <label for="simpleinput" class="form-label">Anggaran yang Dibutuhkan<span class="text-danger">*</span></label>
+                                <input type="number" id="simpleinput" class="form-control">
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Kolaborator Penelitian<span class="text-danger">*</span></label>
+                                <label for="example-textarea" class="form-label">Hasil yang Diharapkan<span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="example-textarea" rows="5"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Kolaborator dalam Pengembangan<span class="text-danger">*</span></label>
                                 <select class="select2 form-control select2-multiple" data-toggle="select2" multiple="multiple" data-placeholder="Choose ...">
-                                    <option value="A">Akademisi</option>
-                                    <option value="B">Dinas Pariwisata</option>
-                                    <option value="C">Asosiasi Pariwisata</option>
+                                    <option value="A">BPOM</option>
+                                    <option value="B">Dinas Koperasi & UMKM</option>
                                 </select>
                             </div>
 
                             <div class="mb-3">
-                                <label for="example-textarea" class="form-label">Manfaat Penelitian<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="example-textarea" rows="5"></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Status Penelitian<span class="text-danger">*</span></label>
+                                <label class="form-label">Status Implementasi<span class="text-danger">*</span></label>
                                 <select class="form-control select2" data-toggle="select2">
-                                    <option value="A">Sedang Berlangsung</option>
-                                    <option value="B">Selesai</option>
-                                    <option value="C">Dibatalkan</option>
+                                    <option value="A">Belum Dimulai</option>
+                                    <option value="B">Sedang Berjalan</option>
+                                    <option value="C">Selesai</option>
                                 </select>
                             </div>
 
@@ -143,10 +134,17 @@
                                 <textarea class="form-control" id="example-textarea" rows="5"></textarea>
                             </div>
 
+                            <div class="mb-3">
+                                <label for="example-fileinput" class="form-label">Dokumen Pendukung<span class="text-danger">*</span></label>
+                                <input type="file" id="example-fileinput" class="form-control">
+                            </div>
+
                             <div class="d-flex justify-content-end align-items-end mt-2 mb-3">
-                                <button type="submit" class="btn btn-primary" style="margin-right: 5px">Edit Data Riset</button>
+                                <button type="submit" class="btn btn-primary" style="margin-right: 5px">Tambah Rekomendasi</button>
                                 <button type="reset" class="btn btn-danger">Batal</button>
                             </div>
+
+
 
 
                             @* <p class="mb-1 fw-bold text-muted">Multiple Select</p>

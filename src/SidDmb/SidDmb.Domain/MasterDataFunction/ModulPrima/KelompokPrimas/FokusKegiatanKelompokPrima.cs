@@ -3,5 +3,5 @@
 [Flags]
 public enum FokusKegiatanKelompokPrima
 {
-    Kerajinan = 0, Pendidikan = 2, Kuliner = 4
+    Kerajinan = 1, Pendidikan = 2, Kuliner = 4
 }

@@ -3,5 +3,5 @@
 [Flags]
 public enum TargetPeserta
 {
-    Pokdarwis = 0, KelompokWisata = 2, KelompokBudaya = 4
+    Pokdarwis = 1, KelompokWisata = 2, KelompokBudaya = 4
 }

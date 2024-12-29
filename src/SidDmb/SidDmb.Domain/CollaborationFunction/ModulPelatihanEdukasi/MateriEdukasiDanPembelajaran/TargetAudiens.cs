@@ -3,5 +3,5 @@
 [Flags]
 public enum TargetAudiens
 {
-    Pokdarwis = 0, KelompokBudaya = 2, UMKM = 4, Lainnya = 8
+    Pokdarwis = 1, KelompokBudaya = 2, UMKM = 4, Lainnya = 8
 }

@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Daftar Rekomendasi & Pengembangan Produk</h4>
                     <div class="pb-3 pt-1">
-                        <a asp-area="Dashboard" asp-controller="ResearchDevelopment" asp-action="TambahRekomendasiProduk" class="btn btn-primary">+ Tambah</a>
+                        <a asp-area="Dashboard" asp-controller="RekomendasiProduk" asp-action="Tambah" class="btn btn-primary">+ Tambah</a>
                     </div>
                     <table id="alternative-page-datatable" class="table dt-responsive nowrap">
                         <thead>
@@ -69,8 +69,12 @@
                                 <td>2024-12-05</td>
                                 <td>2024-12-10</td>
                                 <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ResearchDevelopment" asp-action="EditRekomendasiProduk" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                    <a asp-area="Dashboard" asp-controller="RekomendasiProduk" asp-action="Edit" asp-route-id="" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                            data-url="@Url.Action("Hapus", new { id = "" })"
+                                            title="Hapus">
+                                        <i class="mdi mdi-delete"></i>
+                                    </button>
                                 </td>
                             </tr>
 
@@ -94,8 +98,12 @@
                                 <td>2024-12-05</td>
                                 <td>2024-12-10</td>
                                 <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ResearchDevelopment" asp-action="EditRekomendasiProduk" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <a href="#" class="action-icon" data-bs-toggle="tooltip" title="Delete"> <i class="mdi mdi-delete"></i></a>
+                                    <a asp-area="Dashboard" asp-controller="RekomendasiProduk" asp-action="Edit" asp-route-id="" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                            data-url="@Url.Action("Hapus", new { id = "" })"
+                                            title="Hapus">
+                                        <i class="mdi mdi-delete"></i>
+                                    </button>
                                 </td>
                             </tr>
 
