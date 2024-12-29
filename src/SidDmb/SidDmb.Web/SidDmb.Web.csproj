@@ -29,4 +29,11 @@
     <Folder Include="Models\Atraksi\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Areas\Dashboard\Views\ManajemenProduk\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

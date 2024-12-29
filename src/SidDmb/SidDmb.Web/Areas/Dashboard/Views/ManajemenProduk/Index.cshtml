@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿@model List<Produk>
+
+@{
+    ViewData["Title"] = "Manajemen Produk | Produk & Inventory";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -47,60 +54,37 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>MP001</td>
-                                <td>Geplak Bantul</td>
-                                <td>Kue tradisional khas Bantul dengan rasa manis dan bahan dasar kelapa parut serta gula.</td>
-                                <td>Makanan</td>
-                                <td>Geplak Lestari</td>
-                                <td>Rp35.000</td>
-                                <td>200</td>
-                                <td>120</td>
-                                <td>Tersedia</td>
-                                <td>2024-11-15</td>
-                                <td>2025-11-15</td>
-                                <td>PIRT 56789/2024, Halal MUI</td>
-                                <td>gambar_geplak.jpg</td>
-                                <td>BPOM</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ManajemenProduk" asp-action="Edit" asp-route-id="" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
-                                            data-url="@Url.Action("Hapus", new { id = "" })"
-                                            title="Hapus">
-                                        <i class="mdi mdi-delete"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>MP002</td>
-                                <td>Gudeg Manggar</td>
-                                <td>Makanan khas Yogyakarta berbahan manggar (bunga kelapa muda) yang diolah dengan santan dan rempah.</td>
-                                <td>Makanan</td>
-                                <td>Gudeg Manggar Resto</td>
-                                <td>Rp50.000</td>
-                                <td>150</td>
-                                <td>80</td>
-                                <td>Tersedia</td>
-                                <td>2024-11-20</td>
-                                <td>2025-11-20</td>
-                                <td>PIRT 67890/2024, Halal MUI</td>
-                                <td>gambar_gudeg_manggar.jpg</td>
-                                <td>BPOM, Kuliner UGM</td>
-                                <td>2024-12-06</td>
-                                <td>2024-12-11</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ManajemenProduk" asp-action="Edit" asp-route-id="" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
-                                            data-url="@Url.Action("Hapus", new { id = "" })"
-                                            title="Hapus">
-                                        <i class="mdi mdi-delete"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
+                            @foreach (var produk in Model)
+                            {
+                                <tr>
+                                    <td>@produk.Id.Value</td>
+                                    <td>@produk.Nama</td>
+                                    <td>@produk.Dekripsi</td>
+                                    <td>@produk.Kategori.Humanize()</td>
+                                    <td>@produk.UnitUsahaTerkait</td>
+                                    <td>@produk.HargaProduk.ToString("C2", cultureInfo)</td>
+                                    <td>@produk.StokAwal</td>
+                                    <td>@produk.StokSaatIni</td>
+                                    <td>@produk.StatusKetersediaan.Humanize()</td>
+                                    <td>@produk.TanggalProduksiTerakhir.ToString("yyyy-MM-dd")</td>
+                                    <td>@produk.TanggalKadaluarsa?.ToString("yyyy-MM-dd")</td>
+                                    <td>@produk.LegalitasProduk</td>
+                                    <td>
+                                        <a href="@produk.MediaPromosi">@produk.MediaPromosi</a>
+                                    </td>
+                                    <td>@string.Join(", ", produk.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td>@produk.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@produk.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="ManajemenProduk" asp-action="Edit" asp-route-id="@produk.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = produk.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

@@ -15,11 +15,13 @@ internal class RepositoriProduk : IRepositoriProduk
 
     public async Task<Produk?> Get(IdProduk id) => await _appDbContext.Produk
         .Include(p => p.DaftarDistribusi).ThenInclude(d => d.DaftarKolaborator)
+        .Include(p => p.DaftarSertifikasi).ThenInclude(x => x.DaftarKolaborator)
         .Include(p => p.DaftarKolaborator)
         .FirstOrDefaultAsync(p => p.Id == id);
 
     public async Task<List<Produk>> GetAll() => await _appDbContext.Produk
         .Include(p => p.DaftarDistribusi).ThenInclude(d => d.DaftarKolaborator)
+        .Include(p => p.DaftarSertifikasi).ThenInclude(x => x.DaftarKolaborator)
         .Include(p => p.DaftarKolaborator)
         .ToListAsync();
 

@@ -14,6 +14,7 @@ internal class ProdukConfiguration : IEntityTypeConfiguration<Produk>
 
         builder.HasMany(x => x.DaftarDistribusi).WithOne(x => x.Produk);
         builder.HasMany(x => x.DaftarKolaborator).WithMany(x => x.DaftarProduk);
+        builder.HasMany(x => x.DaftarSertifikasi).WithOne(x => x.Produk);
 
         builder.HasData(
             new Produk
@@ -29,7 +30,6 @@ internal class ProdukConfiguration : IEntityTypeConfiguration<Produk>
                 StatusKetersediaan = StatusKetersediaan.Tersedia,
                 TanggalProduksiTerakhir = new DateOnly(2024, 12, 1),
                 TanggalKadaluarsa = new DateOnly(2024, 12, 1),
-                LegalitasProduk = "PIRT 12345/2024, Halal MUI",
                 MediaPromosi = new Uri("/assets/produklokal2-test.png", UriKind.Relative),
             }
         );
