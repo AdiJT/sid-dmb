@@ -24,4 +24,12 @@ public class EventController : Controller
 
         return View(kalenderAcara);
     }
+
+    [HttpGet]
+    [Route("/kalender-acaras")]
+    public async Task<IActionResult> DaftarKalenderAcara() => 
+        Json((await _repositoriKalenderAcara.GetAll())
+            .OrderBy(k => k.TanggalDanWaktu)
+            .Select(x => new { title = x.NamaAcara, start = $"{x.TanggalDanWaktu:yyyy-MM-dd}T{x.TanggalDanWaktu:HH:mm:ss}", end = $"{x.TanggalDanWaktu.AddHours(3):yyyy-MM-dd}T{x.TanggalDanWaktu.AddHours(3):HH:mm:ss}" })
+            .ToList());
 }

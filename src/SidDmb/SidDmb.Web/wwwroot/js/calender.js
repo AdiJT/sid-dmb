@@ -1,24 +1,37 @@
-﻿document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', async function () {
+    const response = await fetch('/kalender-acaras');
+
+    let daftarAcara = [];
+    if (response.ok) {
+        daftarAcara = await response.json();
+    }
+
+    console.log(daftarAcara);
+
+    const events = [
+        {
+            title: 'tari Gilang',
+            start: '2025-01-02T10:00:00',
+            end: '2025-01-02T12:00:00'
+        },
+        {
+            title: 'Natal Kedua',
+            start: '2024-12-25T14:00:00',
+            end: '2024-12-26T16:00:00'
+        },
+        {
+            title: 'Malam Natal',
+            start: '2024-12-24T19:00:00',
+            end: '2024-12-25T21:00:00'
+        }
+    ];
+
+    console.log(events);
+
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        events: [
-            {
-                title: 'tari Gilang',
-                start: '2025-01-02T10:00:00',
-                end: '2025-01-02T12:00:00'
-            },
-            {
-                title: 'Natal Kedua',
-                start: '2024-12-25T14:00:00',
-                end: '2024-12-26T16:00:00'
-            },
-            {
-                title: 'Malam Natal',
-                start: '2024-12-24T19:00:00',
-                end: '2024-12-25T21:00:00'
-            }
-        ],
+        events: daftarAcara,
         eventDidMount: function (info) {
             const start = new Date(info.event.start);
             const end = new Date(info.event.end);
