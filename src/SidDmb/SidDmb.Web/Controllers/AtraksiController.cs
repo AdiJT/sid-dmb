@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SidDmb.Domain.Abstracts;
 using SidDmb.Domain.CollaborationFunction.ModulManajemenEvent.PengelolaanEvent;
+using SidDmb.Domain.MasterDataFunction.ModulBudaya;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.ArtefakBudayas;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.SeniBudayas;
 using SidDmb.Domain.MasterDataFunction.ModulBudaya.SitusBudayas;
@@ -18,6 +20,8 @@ public class AtraksiController : Controller
     private readonly IRepositoriSeniBudaya _repositoriSeniBudaya;
     private readonly IRepositoriUpacaraBudaya _repositoriUpacaraBudaya;
     private readonly IRepositoriEvent _repositoriEvent;
+    private readonly IRepositoriKomentar _repositoriKomentar;
+    private readonly IUnitOfWork _unitOfWork;
 
     public AtraksiController(
         IRepositoriDestinasiWisata repositoriDestinasiWisata,
@@ -26,7 +30,9 @@ public class AtraksiController : Controller
         IRepositoriSitusBudaya repositoriSitusBudaya,
         IRepositoriSeniBudaya repositoriSeniBudaya,
         IRepositoriUpacaraBudaya repositoriUpacaraBudaya,
-        IRepositoriEvent repositoriEvent)
+        IRepositoriEvent repositoriEvent,
+        IRepositoriKomentar repositoriKomentar,
+        IUnitOfWork unitOfWork)
     {
         _repositoriDestinasiWisata = repositoriDestinasiWisata;
         _repositoriProdukLokal = repositoriProdukLokal;
@@ -35,6 +41,8 @@ public class AtraksiController : Controller
         _repositoriSeniBudaya = repositoriSeniBudaya;
         _repositoriUpacaraBudaya = repositoriUpacaraBudaya;
         _repositoriEvent = repositoriEvent;
+        _repositoriKomentar = repositoriKomentar;
+        _unitOfWork = unitOfWork;
     }
 
     public IActionResult Index() => View();
@@ -115,5 +123,121 @@ public class AtraksiController : Controller
         if (produk is null) return NotFound();
 
         return View(produk);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> TambahKomentarArtefak(string id, string nama, string isi, double rating)
+    {
+        var resultId = IdArtefak.Create(id);
+        if(resultId.IsFailure) return BadRequest();
+
+        var artefak = await _repositoriArtefakBudaya.Get(resultId.Value);
+        if (artefak is null) return NotFound();
+
+        var komentar = new Komentar
+        {
+            Id = 0,
+            Nama = nama,
+            Isi = isi,
+            Rating = rating,
+            ArtefakBudaya = artefak
+        };
+
+        artefak.DaftarKomentar.Add(komentar);
+
+        _repositoriKomentar.Add(komentar);
+        _repositoriArtefakBudaya.Update(artefak);
+
+        var result = await _unitOfWork.SaveChangesAsync();
+        if(result.IsFailure) return BadRequest();
+
+        return RedirectToAction(nameof(DetailArtefak), new { id });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> TambahKomentarSitus(string id, string nama, string isi, double rating)
+    {
+        var resultId = IdSitus.Create(id);
+        if (resultId.IsFailure) return BadRequest();
+
+        var situs = await _repositoriSitusBudaya.Get(resultId.Value);
+        if (situs is null) return NotFound();
+
+        var komentar = new Komentar
+        {
+            Id = 0,
+            Nama = nama,
+            Isi = isi,
+            Rating = rating,
+            SitusBudaya = situs
+        };
+
+        situs.DaftarKomentar.Add(komentar);
+
+        _repositoriKomentar.Add(komentar);
+        _repositoriSitusBudaya.Update(situs);
+
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result.IsFailure) return BadRequest();
+
+        return RedirectToAction(nameof(DetailSitus), new { id });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> TambahKomentarSeni(string id, string nama, string isi, double rating)
+    {
+        var resultId = IdSeni.Create(id);
+        if (resultId.IsFailure) return BadRequest();
+
+        var seni = await _repositoriSeniBudaya.Get(resultId.Value);
+        if (seni is null) return NotFound();
+
+        var komentar = new Komentar
+        {
+            Id = 0,
+            Nama = nama,
+            Isi = isi,
+            Rating = rating,
+            SeniBudaya = seni
+        };
+
+        seni.DaftarKomentar.Add(komentar);
+
+        _repositoriKomentar.Add(komentar);
+        _repositoriSeniBudaya.Update(seni);
+
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result.IsFailure) return BadRequest();
+
+        return RedirectToAction(nameof(DetailSeni), new { id });
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> TambahKomentarUpacara(string id, string nama, string isi, double rating)
+    {
+        var resultId = IdUpacara.Create(id);
+        if (resultId.IsFailure) return BadRequest();
+
+        var upacara = await _repositoriUpacaraBudaya.Get(resultId.Value);
+        if (upacara is null) return NotFound();
+
+        var komentar = new Komentar
+        {
+            Id = 0,
+            Nama = nama,
+            Isi = isi,
+            Rating = rating,
+            UpacaraBudaya = upacara
+        };
+
+        upacara.DaftarKomentar.Add(komentar);
+
+        _repositoriKomentar.Add(komentar);
+        _repositoriUpacaraBudaya.Update(upacara);
+
+        var result = await _unitOfWork.SaveChangesAsync();
+        if (result.IsFailure) return BadRequest();
+
+        return RedirectToAction(nameof(DetailUpacara), new { id });
     }
 }

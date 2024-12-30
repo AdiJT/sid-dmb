@@ -1,4 +1,5 @@
 ﻿@using SidDmb.Domain.MasterDataFunction.ModulBudaya.ArtefakBudayas
+@using SidDmb.Web.Controllers
 @model ArtefakBudaya
 
 @{
@@ -95,27 +96,29 @@
             </div>
         </div>
         <div class="form_komentar">
-            <div class="grup_form_komentar">
-                <input placeholder="Nama Anda...">
-                <input placeholder="Rating Anda (0 - 5)...">
-            </div>
-            <textarea placeholder="Tulis komentar Anda..."></textarea>
-            <div class="button">
-                <button type="button">
-                    Kirim
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
-                    </svg>
-                </button>
-            </div>
+            <form asp-action="@nameof(AtraksiController.TambahKomentarArtefak)" asp-route-id="@Model.Id.Value">
+                <div class="grup_form_komentar">
+                    <input type="text" name="nama" id="nama" required placeholder="Nama Anda...">
+                    <input type="text" inputmode="numeric" name="rating" id="rating" required placeholder="Rating Anda (0 - 5)...">
+                </div>
+                <textarea required name="isi" id="isi" placeholder="Tulis komentar Anda..."></textarea>
+                <div class="button">
+                    <button type="submit">
+                        Kirim
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
         </div>
         <div class="kumpulan_komentar">
             @foreach (var komentar in Model.DaftarKomentar)
             {
                 <div class="card_komentar">
                     <div class="rating_tanggal_komentar">
-                            <h3>@komentar.Nama</h3>
-                            <p class="rating_text">@komentar.Rating.ToString("F1")/5 ★</p>
+                        <h3>@komentar.Nama</h3>
+                        <p class="rating_text">@komentar.Rating.ToString("F1")/5 ★</p>
                     </div>
                     <p>@komentar.Isi</p>
                 </div>
