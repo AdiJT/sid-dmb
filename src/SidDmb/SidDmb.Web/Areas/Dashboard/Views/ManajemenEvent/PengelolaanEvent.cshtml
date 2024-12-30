@@ -1,4 +1,11 @@
-﻿﻿<div class="container-fluid">
+﻿@model List<Event>
+
+@{
+    ViewData["Title"] = "Pengelolaan Event | Manajemen Event";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+﻿<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -44,46 +51,30 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>EV001</td>
-                                <td>Festival Kesenian Bantul</td>
-                                <td>Festival Kesenian Bantul menampilkan berbagai seni tradisional, seperti tari, musik, dan pameran kerajinan.</td>
-                                <td>Budaya</td>
-                                <td>2024-11-15 00:00</td>
-                                <td>Pendopo Parasamya Bantul, Yogyakarta</td>
-                                <td>Dinas Kebudayaan Bantul</td>
-                                <td>+62 813-5678-9012</td>
-                                <td>Umum</td>
-                                <td>2000</td>
-                                <td>Buka</td>
-                                <td> PT Seni Nusantara</td>
-                                <td>Rp30.000.000</td>
-                                <td>BPOM</td>
-                                <td>poster_festival.jpg</td>
-                                <td>2024-12-29</td>
-                                <td>2024-12-29</td>
-                            </tr>
-
-                            <tr>
-                                <td>EV002</td>
-                                <td>Festival Kesenian Sleman</td>
-                                <td>Acara tahunan ini menampilkan seni budaya khas Sleman dengan fokus pada musik dan tari.</td>
-                                <td>Budaya</td>
-                                <td>2024-11-20 00:00</td>
-                                <td>Taman Tebing Breksi, Sleman, Yogyakarta</td>
-                                <td>Dinas Pariwisata Sleman</td>
-                                <td>+62 812-3456-7890</td>
-                                <td>Umum</td>
-                                <td>1500</td>
-                                <td>Buka</td>
-                                <td>Bank Sleman</td>
-                                <td>Rp25.000.000</td>
-                                <td>BPOM</td>
-                                <td>poster_festival.jpg</td>
-                                <td>2024-12-29</td>
-                                <td>2024-12-29</td>
-                            </tr>
-
+                            @foreach (var eventX in Model)
+                            {
+                                <tr>
+                                    <td>@eventX.Id.Value</td>
+                                    <td>@eventX.Nama</td>
+                                    <td>@eventX.Dekripsi</td>
+                                    <td>@eventX.Kategori.Humanize()</td>
+                                    <td>@eventX.TanggalWaktu.ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>@eventX.Lokasi</td>
+                                    <td>@eventX.Penyelenggara</td>
+                                    <td>@eventX.KontakInformasi</td>
+                                    <td>@eventX.TargetPeserta.Humanize()</td>
+                                    <td>@eventX.JumlahPesertaMaksimal</td>
+                                    <td>@eventX.StatusPendaftaran.Humanize()</td>
+                                    <td>@eventX.Sponsor</td>
+                                    <td>@eventX.Anggaran.ToString("C2", cultureInfo)</td>
+                                    <td>@string.Join(", ", eventX.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td>
+                                        <a href="@eventX.MediaPromosi">@eventX.MediaPromosi</a>
+                                    </td>
+                                    <td>@eventX.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@eventX.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

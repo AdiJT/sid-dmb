@@ -1,4 +1,10 @@
-﻿<div class="container-fluid">
+﻿@model List<Pelatihan>
+
+@{
+    ViewData["Title"] = "Peningkatan Kapasitas | Pelatihan & Edukasi";
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -47,60 +53,33 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>PC001</td>
-                                <td>Strategi Digital untuk Pemasaran Desa Wisata</td>
-                                <td>Pelatihan ini membantu peserta memahami cara menggunakan platform digital untuk meningkatkan promosi desa wisata.</td>
-                                <td>Kewirausahaan</td>
-                                <td>Dinas Pariwisata Yogyakarta</td>
-                                <td>2024-01-15</td>
-                                <td>16.0 Jam</td>
-                                <td>Aula Balai Desa Nglinggo, Kulon Progo</td>
-                                <td>Pokdarwis, Kelompok wisata</td>
-                                <td>50</td>
-                                <td>Dr. Budi Santoso (Ahli Pemasaran Digital)</td>
-                                <td>Peserta akan mempelajari dasar-dasar digital marketing, cara membuat konten kreatif untuk promosi, memanfaatkan media sosial untuk branding desa, serta melakukan evaluasi dan optimalisasi kampanye digital.</td>
-                                <td>Quiz dan simulasi pemasaran digital</td>
-                                <td>
-                                    <a href="/assets/pelatihan/8597ae553bef447798b11686b0c7930d.pdf">/assets/pelatihan/8597ae553bef447798b11686b0c7930d.pdf</a>
-                                </td>
-                                <td>Kuesioner tentang relevansi materi dan keefektifan pelatihan.</td>
-                                <td>BPOM, Academics</td>
-                                <td>Tambahkan sesi praktik langsung dengan tamu.</td>
-                                <td>2024-12-29</td>
-                                <td>2024-12-29</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="PeningkatanEdukasiDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>                         
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>PC002</td>
-                                <td>Manajemen Keuangan untuk Usaha Desa Wisata</td>
-                                <td>Peserta diajarkan teknik pengelolaan keuangan yang efektif untuk usaha di desa wisata.</td>
-                                <td>Manajemen</td>
-                                <td>Bank BPD DIY</td>
-                                <td>2024-02-20</td>
-                                <td>8.0 Jam</td>
-                                <td>Gedung Serbaguna Desa Mangunan, Bantul</td>
-                                <td>Kelompok wisata, Kelompok budaya</td>
-                                <td>30</td>
-                                <td>Maya Andini, M.Sc. (Konsultan Keuangan)</td>
-                                <td>Peserta akan belajar cara mengelola arus kas, menyusun perencanaan anggaran dan investasi, serta membuat laporan keuangan untuk usaha kecil secara efektif.</td>
-                                <td>Studi kasus pengelolaan keuangan.</td>
-                                <td>
-                                    <a href="/assets/pelatihan/d4c113da4b974bc097923bb7e91a786d.pdf">/assets/pelatihan/d4c113da4b974bc097923bb7e91a786d.pdf</a>
-                                </td>
-                                <td>Saran tentang metode pembelajaran</td>
-                                <td>Assosiacation, BPOM</td>
-                                <td>Tambahkan sesi praktik langsung dengan tamu.</td>
-                                <td>2024-12-29</td>
-                                <td>2024-12-29</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="PeningkatanEdukasiDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>                                   
-                                </td>
-                            </tr>
-
+                            @foreach (var pelatihan in Model)
+                            {
+                                <tr>
+                                    <td>@pelatihan.Id.Value</td>
+                                    <td>@pelatihan.Nama</td>
+                                    <td>@pelatihan.Dekripsi</td>
+                                    <td>@pelatihan.Kategori.Humanize()</td>
+                                    <td>@pelatihan.Penyelenggara</td>
+                                    <td>@pelatihan.TanggalPelaksanaan.ToString("yyyy-MM-dd")</td>
+                                    <td>@pelatihan.Durasi.TotalHours.ToString("F1") Jam</td>
+                                    <td>@pelatihan.Lokasi</td>
+                                    <td>@string.Join(", ", Enum.GetValues<TargetPeserta>().Where(x => pelatihan.TargetPeserta.HasFlag(x)).Select(x => x.Humanize()))</td>
+                                    <td>@pelatihan.JumlahPeserta</td>
+                                    <td>@pelatihan.Fasilitator</td>
+                                    <td>@pelatihan.Materi</td>
+                                    <td>@pelatihan.EvaluasiPeserta</td>
+                                    <td><a href="@pelatihan.DokumenDanMedia">@pelatihan.DokumenDanMedia</a></td>
+                                    <td>@pelatihan.FeedbackPeserta</td>
+                                    <td>@string.Join(", ", pelatihan.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td>@string.Join(", ", pelatihan.DaftarKolaboratorPelatihan.Select(x => x.RekomendasiUntukPelatihanBerikutnya))</td>
+                                    <td>@pelatihan.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@pelatihan.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="PelatihanEdukasi" asp-action="PeningkatanEdukasiDetail" asp-route-id="@pelatihan.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿@model List<LaporanEvent>
+
+@{
+    ViewData["Title"] = "Pelaporan & Dokumentasi Event | Manajemen Event";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -45,51 +52,38 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>LE001</td>
-                                <td>EV001</td>
-                                <td>Festival Kesenian Bantul</td>
-                                <td>2025-03-16</td>
-                                <td>1800</td>
-                                <td>Rp35.000.000</td>
-                                <td>Rp25.000.000</td>
-                                <td>Festival berjalan lancar dengan banyaknya peserta dan pengunjung yang antusias.</td>
-                                <td>Perlu menambah area parkir untuk pengunjung yang semakin meningkat.</td>
-                                <td>dokumentasi_bantul.jpg</td>
-                                <td>video_bantul.mp4</td>
-                                <td>BPOM</td>
-                                <td>laporan_bantul.pdf</td>
-                                <td>Perluasan promosi melalui media sosial untuk menarik lebih banyak wisatawan luar daerah.</td>
-                                <td>Menambahkan workshop seni bagi pengunjung yang tertarik belajar langsung.</td>
-                                <td>2025-03-17</td>
-                                <td>2025-03-18</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PelaporanDanDokumentasiDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>                                 
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>LE002</td>
-                                <td>EV002</td>
-                                <td>Festival Kesenian Sleman</td>
-                                <td>2025-04-21</td>
-                                <td>1300</td>
-                                <td>Rp40.000.000</td>
-                                <td>Rp30.000.000</td>
-                                <td>Acara berjalan sukses, banyak pengunjung yang tertarik dengan pameran seni dan tari.</td>
-                                <td>Fasilitas panggung perlu lebih luas agar para penampil dapat lebih leluasa.</td>
-                                <td>dokumentasi_sleman.jpg</td>
-                                <td>video_sleman.mp4</td>
-                                <td>BPOM</td>
-                                <td>laporan_sleman.pdf</td>
-                                <td>Menambah kemasan event agar lebih menarik perhatian pengunjung muda.</td>
-                                <td>Menambahkan area interaktif bagi pengunjung untuk berpartisipasi langsung dalam seni.</td>
-                                <td>2025-04-22</td>
-                                <td>2025-04-23</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PelaporanDanDokumentasiDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>                                   
-                                </td>
-                            </tr>
+                            @foreach (var laporanEvent in Model)
+                            {
+                                <tr>
+                                    <td>@laporanEvent.Id.Value</td>
+                                    <td>@laporanEvent.Event.Id.Value</td>
+                                    <td>@laporanEvent.Event.Nama</td>
+                                    <td>@laporanEvent.TanggalPelaporan.ToString("yyyy-MM-dd")</td>
+                                    <td>@laporanEvent.JumlahPeserta</td>
+                                    <td>@laporanEvent.PendapatanEvent.ToString("C2", cultureInfo)</td>
+                                    <td>@laporanEvent.PengeluaranEvent.ToString("C2", cultureInfo)</td>
+                                    <td>@laporanEvent.UlasanSingkatEvent</td>
+                                    <td>@laporanEvent.FeedbackPeserta</td>
+                                    <td>
+                                        <a href="@laporanEvent.FotoDokumentasi">@laporanEvent.FotoDokumentasi</a>
+                                    </td>
+                                    <td>
+                                        <a href="@laporanEvent.VideoDokumentasi">@laporanEvent.VideoDokumentasi</a>
+                                    </td>
+                                    <td>@string.Join(", ", laporanEvent.Event.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td>
+                                        <a href="@laporanEvent.LaporanDetail">@laporanEvent.LaporanDetail</a>
+                                    </td>
+                                    <td>@string.Join(", ", laporanEvent.Event.DaftarKolaboratorEvent.Select(x => x.MasukanKolaborator))</td>
+                                    <td>@string.Join(", ", laporanEvent.Event.DaftarKolaboratorEvent.Select(x => x.RekomedasiEventBerikutnya))</td>
+                                    <td>@laporanEvent.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@laporanEvent.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="ManajemenEvent" asp-action="PelaporanDanDokumentasiDetail"
+                                           asp-route-id="@laporanEvent.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

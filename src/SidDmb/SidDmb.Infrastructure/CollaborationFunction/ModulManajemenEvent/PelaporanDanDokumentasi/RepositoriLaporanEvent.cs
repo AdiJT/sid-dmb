@@ -15,12 +15,12 @@ internal class RepositoriLaporanEvent : IRepositoriLaporanEvent
 
     public async Task<LaporanEvent?> Get(IdLaporanEvent id) => await _appDbContext.LaporanEvent
         .Include(x => x.Event).ThenInclude(e => e.DaftarKolaborator)
-        .Include(x => x.Event).ThenInclude(e => e.DaftarKolaboratorEvent)
+        .Include(x => x.Event).ThenInclude(e => e.DaftarKolaboratorEvent).ThenInclude(x => x.Entity2)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<List<LaporanEvent>> GetAll() => await _appDbContext.LaporanEvent
         .Include(x => x.Event).ThenInclude(e => e.DaftarKolaborator)
-        .Include(x => x.Event).ThenInclude(e => e.DaftarKolaboratorEvent)
+        .Include(x => x.Event).ThenInclude(e => e.DaftarKolaboratorEvent).ThenInclude(x => x.Entity2)
         .ToListAsync();
 
     public void Add(LaporanEvent laporanEvent) => _appDbContext.LaporanEvent.Add(laporanEvent);

@@ -1,4 +1,11 @@
-﻿<div class="container-fluid">
+﻿@model List<Distribusi>
+
+@{
+    ViewData["Title"] = "Manajemen Distribusi | Produk & Inventory";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -40,38 +47,24 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>MD001</td>
-                                <td>PL001</td>
-                                <td>Batik Tulis Gilang</td>
-                                <td>50</td>
-                                <td>2024-12-05</td>
-                                <td>Pasar Seni Bantul, Yogyakarta</td>
-                                <td>PT Distribusi Sejahtera</td>
-                                <td>+62 812-5678-9012</td>
-                                <td>Rp500.000</td>
-                                <td>BPOM</td>
-                                <td>surat_jalan.pdf</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-15</td>
-                            </tr>
-
-                            <tr>
-                                <td>MD001</td>
-                                <td>PL001</td>
-                                <td>Batik Tulis Gilang</td>
-                                <td>50</td>
-                                <td>2024-12-05</td>
-                                <td>Pasar Seni Bantul, Yogyakarta</td>
-                                <td>PT Distribusi Sejahtera</td>
-                                <td>+62 812-5678-9012</td>
-                                <td>Rp500.000</td>
-                                <td>BPOM</td>
-                                <td>surat_jalan.pdf</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-15</td>
-                            </tr>
-
+                            @foreach (var distribusi in Model)
+                            {
+                                <tr>
+                                    <td>@distribusi.Id.Value</td>
+                                    <td>@distribusi.Produk.Id.Value</td>
+                                    <td>@distribusi.Produk.Nama</td>
+                                    <td>@distribusi.JumlahProduk</td>
+                                    <td>@distribusi.TanggalPengiriman.ToString("yyyy-MM-dd")</td>
+                                    <td>@distribusi.AlamatTujuan</td>
+                                    <td>@distribusi.NamaDistributor</td>
+                                    <td>@distribusi.KontakDistributor</td>
+                                    <td>@distribusi.BiayaPengiriman.ToString("C2", cultureInfo)</td>
+                                    <td>@string.Join(", ", distribusi.DaftarKolaborator.Select(x => x.Nama))</td>
+                                    <td><a href="@distribusi.DokumenPengiriman">@distribusi.DokumenPengiriman</a></td>
+                                    <td>@distribusi.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@distribusi.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

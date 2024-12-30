@@ -1,4 +1,11 @@
-﻿﻿<div class="container-fluid">
+﻿@model List<KegiatanPrima>
+
+@{
+    ViewData["Title"] = "Kegiatan Prima | Prima";
+    var cultureInfo = new CultureInfo("id-ID");
+}
+
+﻿<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -45,56 +52,35 @@
                             </tr>
                         </thead>
 
-
                         <tbody>
-                            <tr>
-                                <td>KP001</td>
-                                <td>Pelatihan Membuat Kerajinan Limbah Plastik</td>
-                                <td>Kegiatan ini bertujuan untuk meningkatkan keterampilan anggota Kelompok Prima Gilang Sejahtera dalam memanfaatkan limbah plastik menjadi produk bernilai ekonomi.</td>
-                                <td>2024-12-15</td>
-                                <td>4</td>
-                                <td>Balai Desa Gilangharjo</td>
-                                <td>Pelatihan</td>
-                                <td>30</td>
-                                <td>Kelompok Prima Gilang Sejahtera</td>
-                                <td>Dr. Rini Wulandari, Akademisi UGM</td>
-                                <td>Rp5.000.000</td>
-                                <td>BPOM</td>
-                                <td>30 anggota berhasil memproduksi tas dari limbah plastik.</td>
-                                <td>dokumentasi_pelatihan.jpg</td>
-                                <td>Kegiatan sangat bermanfaat, tambahkan durasi praktik.</td>
-                                <td>Tambahkan sesi pemasaran produk hasil kegiatan.</td>
-                                <td>2024-12-05</td>
-                                <td>2024-12-10</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Prima" asp-action="KegiatanPrimaDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>                    
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>KP002</td>
-                                <td>Pelatihan Budidaya Tanaman Organik</td>
-                                <td>Kegiatan ini bertujuan untuk memberikan keterampilan kepada anggota Kelompok Prima Karang Sejahtera dalam budidaya tanaman organik serta pengolahan hasil pertanian.</td>
-                                <td>2024-12-20</td>
-                                <td>5</td>
-                                <td>Balai Desa Karangrejo</td>
-                                <td>Pelatihan</td>
-                                <td>30</td>
-                                <td>Kelompok Prima Karang Sejahtera</td>
-                                <td>Bapak Agus Prasetyo, Pakar Pertanian</td>
-                                <td>Rp6.000.000</td>
-                                <td>Dinas Pertanian, Petani Lokal</td>
-                                <td>30 peserta berhasil menanam dan mengelola tanaman organik secara efektif.</td>
-                                <td>dokumentasi_budidaya.jpg</td>
-                                <td>Peserta sangat antusias, perlu ada sesi untuk pemasaran hasil pertanian.</td>
-                                <td>Tambah sesi tentang teknik pemasaran produk organik.</td>
-                                <td>2024-12-10</td>
-                                <td>2024-12-15</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="Prima" asp-action="KegiatanPrimaDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>                                    
-                                </td>
-                            </tr>
-
+                            @foreach (var kegiatanPrima in Model)
+                            {
+                                <tr>
+                                    <td>@kegiatanPrima.Id.Value</td>
+                                    <td>@kegiatanPrima.Nama</td>
+                                    <td>@kegiatanPrima.Dekripsi</td>
+                                    <td>@kegiatanPrima.TanggalPelaksanaan.ToString("yyyy-MM-dd")</td>
+                                    <td>@kegiatanPrima.Durasi.TotalHours.ToString("F1") Jam</td>
+                                    <td>@kegiatanPrima.Lokasi</td>
+                                    <td>@kegiatanPrima.Jenis.Humanize()</td>
+                                    <td>@kegiatanPrima.JumlahPeserta Orang</td>
+                                    <td>@kegiatanPrima.KelompokPrima.Nama</td>
+                                    <td>@kegiatanPrima.Fasilitator</td>
+                                    <td>@kegiatanPrima.AnggaranKegiatan.ToString("C2", cultureInfo)</td>
+                                    <td>@string.Join(", ", kegiatanPrima.DaftarKolabolator.Select(k => k.Nama))</td>
+                                    <td>@kegiatanPrima.HasilKegiatan</td>
+                                    <td>
+                                        <a href="@kegiatanPrima.DokumentasiKegiatan">@kegiatanPrima.DokumentasiKegiatan</a>
+                                    </td>
+                                    <td>@kegiatanPrima.FeedbackPeserta</td>
+                                    <td>@string.Join(", ", kegiatanPrima.DaftarKolaboratorKegiatan.Select(k => k.RekomendasiBerikutnya))</td>
+                                    <td>@kegiatanPrima.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@kegiatanPrima.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="Prima" asp-action="KegiatanPrimaDetail" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
