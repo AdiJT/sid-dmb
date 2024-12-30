@@ -20,7 +20,6 @@ public class TambahVM
 	[Required(ErrorMessage = "{0} harus diisi")]
 	public string NamaDistributor { get; set; } = string.Empty;
 
-
     [Display(Name = "Kontak Distributor")]
 	[Required(ErrorMessage = "{0} harus diisi")]
 	public string KontakDistributor { get; set; } = string.Empty;
