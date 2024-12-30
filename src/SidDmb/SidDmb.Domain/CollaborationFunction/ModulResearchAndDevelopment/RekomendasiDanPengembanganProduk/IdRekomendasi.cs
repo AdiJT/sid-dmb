@@ -41,6 +41,6 @@ public class IdRekomendasi : ValueObject, IEquatable<IdRekomendasi>
             .Order()
             .LastOrDefault() + 1;
 
-        return new($"RP{newId:3}");
+        return new($"RP{newId:D3}");
     }
 }

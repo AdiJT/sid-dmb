@@ -1,4 +1,10 @@
-﻿<div class="container-fluid">
+﻿@model List<DataRiset>
+
+@{
+    ViewData["Title"] = "Manajemen Data Riset | Research & Development";
+}
+
+<div class="container-fluid">
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -48,61 +54,38 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>RD001</td>
-                                <td>Pengaruh Teknologi Pertanian pada Produktivitas Petani Lokal</td>
-                                <td>Studi ini mengeksplorasi penggunaan teknologi modern oleh petani di daerah pedesaan untuk meningkatkan hasil panen.</td>
-                                <td>Kuantitatif</td>
-                                <td>Institut Pertanian Bogor</td>
-                                <td>2024-03-01</td>
-                                <td>2024-08-01</td>
-                                <td>Data Hasil Panen, Data Penggunaan Teknologi, Data Biaya Produksi</td>
-                                <td>Survei, Pengamatan Lapangan, Analisis Data Sekunder</td>
-                                <td>Peningkatan produktivitas sebesar 25% setelah adopsi teknologi.</td>
-                                <td>laporan_teknologi_pertanian.pdf</td>
-                                <td>BPOM, Akademisi, Pemerintah Daerah, Petani Lokal</td>
-                                <td>Penelitian membantu menciptakan kebijakan subsidi untuk teknologi pertanian.</td>
-                                <td>Telah Selesai</td>
-                                <td>Tambahkan perbandingan biaya sebelum dan sesudah penggunaan teknologi.</td>
-                                <td>2024-12-20</td>
-                                <td>2024-12-25</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ManajemenDataRiset" asp-action="Edit" asp-route-id="" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
-                                            data-url="@Url.Action("Hapus", new { id = "" })"
-                                            title="Hapus">
-                                        <i class="mdi mdi-delete"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>RD002</td>
-                                <td>Studi Perubahan Iklim dan Dampaknya pada Ekosistem Mangrove</td>
-                                <td>Penelitian ini menganalisis dampak kenaikan permukaan laut pada kelangsungan ekosistem mangrove.</td>
-                                <td>Kombinasi</td>
-                                <td>Universitas Indonesia</td>
-                                <td>2023-12-01</td>
-                                <td>2024-04-30</td>
-                                <td>Data Keanekaragaman Hayati, Data Ketinggian Air Laut, Data Suhu Tahunan</td>
-                                <td>Pengamatan Lapangan, Simulasi Komputer, Wawancara Ahli</td>
-                                <td>Kerusakan pada 10% area mangrove dalam 5 tahun terakhir.</td>
-                                <td>laporan_perubahan_iklim.pdf</td>
-                                <td>BPOM, Akademisi, LSM Lingkungan, Komunitas Lokal</td>
-                                <td>Hasil penelitian digunakan untuk menyusun strategi konservasi mangrove.</td>
-                                <td>Sedang Berlangsung</td>
-                                <td>Tambahkan prediksi dampak untuk 10 tahun ke depan.</td>
-                                <td>2024-12-22</td>
-                                <td>2024-12-27</td>
-                                <td class="table-action">
-                                    <a asp-area="Dashboard" asp-controller="ManajemenDataRiset" asp-action="Edit" asp-route-id="" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
-                                    <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
-                                            data-url="@Url.Action("Hapus", new { id = "" })"
-                                            title="Hapus">
-                                        <i class="mdi mdi-delete"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            @foreach (var dataRiset in Model)
+                            {
+                                <tr>
+                                    <td>@dataRiset.Id.Value</td>
+                                    <td>@dataRiset.JudulPenelitian</td>
+                                    <td>@dataRiset.DekripsiPenelitian</td>
+                                    <td>@dataRiset.KategoriPenelitian.Humanize()</td>
+                                    <td>@dataRiset.EntitasPeneliti</td>
+                                    <td>@dataRiset.TanggalMulaiPenelitian.ToString("yyyy-MM-dd")</td>
+                                    <td>@dataRiset.TanggalSelesaiPenelitian.ToString("yyyy-MM-dd")</td>
+                                    <td>@string.Join(", ", dataRiset.DaftarJenisDataRiset)</td>
+                                    <td>@dataRiset.MetodePengumpulanData</td>
+                                    <td>@dataRiset.HasilPenelitian</td>
+                                    <td>
+                                        <a href="@dataRiset.DokumenPenelitian">@dataRiset.DokumenPenelitian</a>
+                                    </td>
+                                    <td>@string.Join(", ", dataRiset.DaftarKolaboratorPenelitian.Select(x => x.Nama))</td>
+                                    <td>@dataRiset.ManfaatPenelitian</td>
+                                    <td>@dataRiset.StatusPenelitian.Humanize()</td>
+                                    <td>@string.Join(", ", dataRiset.DaftarKolaboratorDataRiset.Select(x => x.FeedbackKolaborator))</td>
+                                    <td>@dataRiset.TanggalDiinputkan.ToString("yyyy-MM-dd")</td>
+                                    <td>@dataRiset.TanggalPembaruanData.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-action">
+                                        <a asp-area="Dashboard" asp-controller="ManajemenDataRiset" asp-action="Edit" asp-route-id="@dataRiset.Id.Value" class="action-icon" data-bs-toggle="tooltip" title="Edit"> <i class="mdi mdi-pencil"></i></a>
+                                        <button type="button" class="action-icon" data-bs-toggle="modal" data-bs-target="#basicModal2"
+                                                data-url="@Url.Action("Hapus", new { id = dataRiset.Id.Value })"
+                                                title="Hapus">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

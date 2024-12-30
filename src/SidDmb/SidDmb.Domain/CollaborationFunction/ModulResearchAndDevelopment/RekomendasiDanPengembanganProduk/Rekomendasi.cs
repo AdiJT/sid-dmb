@@ -24,8 +24,3 @@ public class Rekomendasi : Entity<IdRekomendasi>, IAuditableEntity
     public List<Kolaborator> DaftarKolaborator { get; set; } = [];
     public List<KolaboratorRekomendasi> DaftarKolaboratorRekomendasi { get; set; } = [];
 }
-
-public class KolaboratorRekomendasi : JoinEntity<Rekomendasi, Kolaborator, IdRekomendasi, int>
-{
-    public string FeedbackKolaborator { get; set; } = string.Empty;
-}

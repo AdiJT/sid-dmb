@@ -7,7 +7,7 @@ public class DataRiset : Entity<IdDataRiset>, IAuditableEntity
     public required string JudulPenelitian { get; set; }
     public required string DekripsiPenelitian { get; set; }
     public required KategoriPenelitian KategoriPenelitian { get; set; }
-    public required string EntitasPenelitian { get; set; }
+    public required string EntitasPeneliti { get; set; }
     public required DateOnly TanggalMulaiPenelitian { get; set; }
     public required DateOnly TanggalSelesaiPenelitian { get; set; }
     public required string MetodePengumpulanData { get; set; }
@@ -22,9 +22,4 @@ public class DataRiset : Entity<IdDataRiset>, IAuditableEntity
 
     public List<Kolaborator> DaftarKolaboratorPenelitian { get; set; } = [];
     public List<KolaboratorDataRiset> DaftarKolaboratorDataRiset { get; set; } = [];
-}
-
-public class KolaboratorDataRiset : JoinEntity<DataRiset, Kolaborator, IdDataRiset, int>
-{
-    public string FeedbackKolaborator { get; set; } = string.Empty;
 }
