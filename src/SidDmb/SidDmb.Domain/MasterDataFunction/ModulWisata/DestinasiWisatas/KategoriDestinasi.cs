@@ -2,5 +2,5 @@
 
 public enum KategoriDestinasi
 {
-    Alam, Budaya, Sejarah
+    Alam, Budaya, Sejarah, Lainnya
 }

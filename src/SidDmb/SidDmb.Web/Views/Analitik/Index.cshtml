@@ -19,19 +19,228 @@
     <h2 class="section__header">Statistik dan Laporan</h2>
     <div class="grup_graf">
         <div class="col-4 chart_card">
-            <canvas id="incomeCompositionChart"></canvas>      
+            <canvas id="incomeCompositionChart"></canvas>
         </div>
         <div class="col-8 chart_card">
             <canvas id="yearlyVisitStatsChart"></canvas>
-            
+
         </div>
-    </div>  
+    </div>
     <div class="grup_graf">
         <div class="col-6 chart_card">
-            <canvas id="monthlyVisitStatsChart"></canvas>        
+            <canvas id="monthlyVisitStatsChart"></canvas>
         </div>
         <div class="col-6 chart_card">
             <canvas id="weeklyVisitStatsChart"></canvas>
         </div>
     </div>
 </section>
+
+@section Scripts {
+    <script type="text/javascript">
+        async function initIncomeCompositionChart() {
+            const response = await fetch('/analitik/kunjungan-per-jenis');
+            
+            if (response.ok) {
+                const analitikPerkunjungan = await response.json();
+                const labels = [];
+                const data = [];
+
+                for (let key in analitikPerkunjungan) {
+                    labels.push(key);
+                    data.push(analitikPerkunjungan[key]);
+                }
+
+                const incomeCompositionCtx = document.getElementById('incomeCompositionChart');
+                new Chart(incomeCompositionCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.5)',
+                                'rgba(54, 162, 235, 0.5)',
+                                'rgba(255, 206, 86, 0.5)',
+                                'rgba(75, 192, 192, 0.5)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'left'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Komposisi Pendapatan Kunjungan',
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        initIncomeCompositionChart();
+    </script>
+
+    <script type="text/javascript">
+        async function initYearlyChart() {
+            const response = await fetch('/analitik/kunjungan-per-tahun');
+
+            if (response.ok) {
+                const analitikPerTahun = await response.json();
+                const labels = [];
+                const data = [];
+
+                for (let key in analitikPerTahun) {
+                    labels.push(key);
+                    data.push(analitikPerTahun[key]);
+                }
+
+                const yearlyVisitStatsCtx = document.getElementById('yearlyVisitStatsChart');
+                new Chart(yearlyVisitStatsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Jumlah Kunjungan Tahunan',
+                            data: data,
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Statistik Kunjungan Tahunan'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        initYearlyChart();
+
+        async function initMonthlyChart() {
+            const today = new Date();
+            const response = await fetch('/analitik/kunjungan-per-bulan');
+
+            if (response.ok) {
+                const analitikPerBulan = await response.json();
+                const labels = [];
+                const data = [];
+
+                for (let key in analitikPerBulan) {
+                    labels.push(key);
+                    data.push(analitikPerBulan[key]);
+                }
+
+                const monthlyVisitStatsCtx = document.getElementById('monthlyVisitStatsChart');
+                new Chart(monthlyVisitStatsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Jumlah Kunjungan Bulanan',
+                            data: data,
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Statistik Kunjungan Bulanan di Tahun ' + today.getFullYear()
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        initMonthlyChart();
+        
+        async function initWeeklyChart() {
+            const today = new Date();
+            const response = await fetch('/analitik/kunjungan-per-minggu');
+
+            if (response.ok) {
+                const analitikPerBulan = await response.json();
+                const labels = [];
+                const data = [];
+
+                for (let key in analitikPerBulan) {
+                    labels.push(key);
+                    data.push(analitikPerBulan[key]);
+                }
+
+                // Grafik Mingguan: Statistik Kunjungan Mingguan (4 Minggu Terakhir)
+                const weeklyVisitStatsCtx = document.getElementById('weeklyVisitStatsChart');
+                new Chart(weeklyVisitStatsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Jumlah Kunjungan Mingguan',
+                            data: data,
+                            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Statistik Kunjungan 4 Minggu Terakhir'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        initWeeklyChart();
+    </script>
+}
